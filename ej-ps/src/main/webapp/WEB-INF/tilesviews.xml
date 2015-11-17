@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition name="foundationLayout" template="/sample/layouts/standard.jsp">
+        <put-attribute name="top" value="/sample/layouts/top.jsp" />
+        <put-attribute name="left" value="/sample/layouts/left.jsp" />
+        <put-attribute name="body" value="/sample/layouts/welcome.jsp" />
+    </definition>
+    <definition name="plugin" template="/plugins.jsp" />
+    <definition name="error" extends="foundationLayout">
+        <put-attribute name="body" value="/sample/common/error.jsp" />
+    </definition>
+    <definition name="foundationListMovie" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/list.jsp" />
+    </definition>
+    <definition name="foundationViewMovie" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/form.jsp" />
+    </definition>
+<!--Add new tiles definition here-->
+<!--hibernate-tiles-definition-START-->
+    <definition name="hibernateListMovie" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/hibernate/moviefinder/movie/list.jsp" />
+    </definition>
+    <definition name="hibernateViewMovie" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/hibernate/moviefinder/movie/form.jsp" />
+    </definition>
+<!--hibernate-tiles-definition-END-->
+<!--jquery-tiles-definition-START-->
+	<definition name="jqueryListMovie" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/jquery/list.jsp" />
+    </definition>
+
+	<definition name="jqueryViewMovie" template="/WEB-INF/jsp/jquery/form.jsp"/>
+<!--jquery-tiles-definition-END-->
+
+    <definition name="standardLayout" template="/sample/layouts/standard.jsp">
+        <put-attribute name="top" value="/sample/layouts/top.jsp" />
+        <put-attribute name="left" value="/sample/layouts/left.jsp" />
+        <put-attribute name="body" value="/sample/layouts/welcome.jsp" />
+    </definition>
+    
+    	<definition name="welcomeAction" extends="popupLayout">
+		<put-attribute name="body" value="/index.do" />
+	</definition>
+	<definition name="welcome" extends="foundationLayout">
+		<put-attribute name="body" value="/sample/layouts/welcome.jsp" />
+	</definition>
+	 
+	<definition name="popupLayout" template="sample/layouts/popup.jsp">
+		<put-attribute name="body" value="sample/layouts/welcome.jsp" />
+	</definition>
+</tiles-definitions>

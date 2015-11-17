@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Standard Ruleset_2.0">
+    <description>PMD Plugin preferences rule set</description>
+    <rule class="net.sourceforge.pmd.rules.XPathRule" message="Empty Catch Block" name="EmptyCatchBlock">
+        <description>
+Empty Catch Block finds instances where an exception is caught,
+but nothing is done.  In most circumstances, this swallows an exception
+which should either be acted on or reported.
+      </description>
+        <example><![CDATA[
+  
+public void doSomething() {
+  try {
+    FileInputStream fis = new FileInputStream("/tmp/bugger");
+  } catch (IOException ioe) {
+      // not good
+  }
+}
+ 
+      ]]></example>
+        <priority>1</priority>
+        <properties>
+            <property name="xpath">
+                <value><![CDATA[
+    
+//CatchStatement
+ [count(Block/BlockStatement) = 0 and ($allowCommentedBlocks != 'true' or Block/@containsComment = 'false')]
+ [FormalParameter/Type/ReferenceType
+   /ClassOrInterfaceType[@Image != 'InterruptedException' and @Image != 'CloneNotSupportedException']
+ ]
+ 
+             ]]></value>
+            </property>
+            <property name="allowCommentedBlocks" value="false"/>
+        </properties>
+    </rule>
+    <rule class="net.sourceforge.pmd.rules.XPathRule" message="Empty If Statement" name="EmptyIfStmt">
+        <description>
+Empty If Statement finds instances where a condition is checked but nothing is done about it.
+    </description>
+        <example><![CDATA[
+    
+public class Foo {
+ void bar(int x) {
+  if (x == 0) {
+   // empty!
+  }
+ }
+}
+ 
+       ]]></example>
+        <priority>1</priority>
+        <properties>
+            <property name="xpath">
+                <value><![CDATA[
+
+//IfStatement/Statement
+ [EmptyStatement or Block[count(*) = 0]]
+ 
+              ]]></value>
+            </property>
+        </properties>
+    </rule>
+    <rule class="net.sourceforge.pmd.rules.XPathRule" message="SimpleDateFormat" name="SimpleDateFormatNeedsLocale">
+        <description>
+Be sure to specify a Locale when creating a new instance of SimpleDateFormat.
+        </description>
+        <example><![CDATA[
+        
+public class Foo {
+ // Should specify Locale.US (or whatever)
+ private SimpleDateFormat sdf = new SimpleDateFormat("pattern");
+}
+        
+        ]]></example>
+        <priority>1</priority>
+        <properties>
+            <property name="xpath">
+                <value><![CDATA[
+
+//AllocationExpression
+ [ClassOrInterfaceType[@Image='SimpleDateFormat']]
+ [Arguments[@ArgumentCount=1]]
+
+                    ]]></value>
+            </property>
+        </properties>
+    </rule>
+    <rule class="net.sourceforge.pmd.rules.XPathRule" message="Uncommented Empty Method" name="UncommentedEmptyMethod">
+        <description>
+Uncommented Empty Method finds instances where a method does not contain
+statements, but there is no comment. By explicitly commenting empty methods
+it is easier to distinguish between intentional (commented) and unintentional
+empty methods.
+      </description>
+        <example><![CDATA[
+  
+public void doSomething() {
+}
+ 
+      ]]></example>
+        <priority>1</priority>
+        <properties>
+            <property name="xpath">
+                <value><![CDATA[
+    
+//MethodDeclaration/Block[count(BlockStatement) = 0 and @containsComment = 'false']
+ 
+             ]]></value>
+            </property>
+        </properties>
+    </rule>
+    <rule class="net.sourceforge.pmd.rules.XPathRule" message="unnecessary parentheses" name="UnnecessaryParentheses">
+        <description>
+Sometimes expressions are wrapped in unnecessary parentheses,
+making them look like a function call.
+      </description>
+        <example><![CDATA[
+  public class Foo {
+      boolean bar() {
+          return (true);
+      }
+  }
+      ]]></example>
+        <priority>1</priority>
+        <properties>
+            <property name="xpath">
+                <value><![CDATA[
+                
+//ReturnStatement
+          /Expression
+           /PrimaryExpression
+            /PrimaryPrefix
+             /Expression[count(*)=1]
+              /PrimaryExpression
+              /PrimaryPrefix
+            ]]></value>
+            </property>
+        </properties>
+    </rule>
+    <rule class="net.sourceforge.pmd.rules.XPathRule" message="System.(out|err).print is used" name="SystemPrintln">
+        <description>
+System.(out|err).print is used, consider using a logger.
+     </description>
+        <example><![CDATA[
+ 
+class Foo{
+    Logger log = Logger.getLogger(Foo.class.getName());
+    public void testA () {
+        System.out.println("Entering test");
+        // Better use this
+        log.fine("Entering test");
+    }
+}
+
+     ]]></example>
+        <priority>1</priority>
+        <properties>
+            <property name="xpath">
+                <value><![CDATA[
+                 
+//Name[
+    starts-with(@Image, 'System.out.print')
+    or
+    starts-with(@Image, 'System.err.print')
+    ]
+                
+             ]]></value>
+            </property>
+        </properties>
+    </rule>
+</ruleset>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+	<bean id="loginInterceptor"
+		class="com.sds.ps.common.web.interceptor.LoginInterceptor" />
+
+	<!-- Enables plain Controllers -->
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="error" />
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.sds.ps.common.AuthenticationException">
+					login_error
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="authorizationInterceptor"
+		class="com.sds.ps.common.web.interceptor.AuthorizationInterceptor">
+		<property name="permissions">
+			<props>
+			</props>
+		</property>
+		<property name="defaultPermission" value="*" />
+	</bean>
+	
+	<!-- Annotation handler mapping definition -->
+	<bean id="annotationHandlerMapping"
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="1" />
+		<property name="interceptors" ref ="loginInterceptor" />
+	</bean>
+	
+</beans>

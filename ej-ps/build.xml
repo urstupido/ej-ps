@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ej-ps" default="default" basedir=".">
+
+	<property file="./.metadata/project.mf" />
+	<property name="anyframe.home" value="${anyframeHome}" />
+	<property file="${anyframe.home}/ide/cli/scripts/project-build.properties" />
+
+	<path id="anyframe.antpath">
+		<fileset dir="${anyframe.home}/ide/cli/lib" includes="**/*.jar" />
+	</path>
+
+	<path id="web.classpath">
+		<fileset dir="${web.lib.dir}" includes="**/*.jar" />
+		<fileset dir="${anyframe.home}/ide/cli/lib" includes="**/servlet-api-2.5.jar" />
+		<fileset dir="${anyframe.home}/ide/cli/lib" includes="**/jsp-api-2.5.jar" />
+	</path>
+
+	<path id="service.classpath">
+		<fileset dir="${service.lib.dir}" includes="**/*.jar" />
+	</path>
+
+	<path id="anyframe.reportpath">
+		<fileset dir="${anyframe.home}/ide/inspection" includes="**/*.jar" excludes="**/*-sources.jar" />
+	</path>
+	
+	<!--
+	<taskdef resource="emma_ant.properties" classpathref="anyframe.reportpath" />
+	-->
+	<target name="clean">
+		<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="anyframe.antpath" />
+		<delete failonerror="false" dir="${basedir}/dist" />
+		<delete failonerror="false" dir="${target.dir}" />
+		<if>
+			<equals arg1="${project.type}" arg2="web" />
+			<then>
+				<delete failonerror="false">
+					<fileset dir="${web.bin.dir}" includes="**/*.*" />
+				</delete>
+			</then>
+		</if>
+	</target>
+
+
+	<target name="init">
+		<mkdir dir="${basedir}/dist" />
+		<mkdir dir="${target.dir}/temp/lib" />
+		<mkdir dir="${target.dir}/temp/instrlib" />
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${testbin.dir}" />
+		<mkdir dir="${artifactsDir}/test-results/xml" />
+	</target>
+
+	<target name="resources">
+		<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="anyframe.antpath" />
+		<if>
+			<equals arg1="${project.type}" arg2="web" />
+			<then>
+				<move todir="${web.bin.dir}" overwrite="true">
+					<fileset dir="${bin.dir}">
+						<include name="**/log4j.xml" />
+						<include name="**/META-INF/*.*" />
+					</fileset>
+				</move>
+			</then>
+		</if>
+		<copy todir="${bin.dir}">
+			<fileset dir="${resources.dir}">
+				<exclude name="**/.svn/*.*" />
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="compile">
+		<depend srcdir="${src.dir}" destdir="${bin.dir}" cache="${target.dir}/depcache" closure="yes" />
+		<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="anyframe.antpath" />
+		<if>
+			<equals arg1="${project.type}" arg2="web" />
+			<then>
+				<javac debug="true" encoding="UTF-8" srcdir="${src.dir}" destdir="${bin.dir}" includeAntRuntime="false">
+					<classpath>
+						<path location="${bin.dir}" />
+						<path refid="web.classpath" />
+					</classpath>
+				</javac>
+				<copy todir="${web.bin.dir}">
+					<fileset dir="${bin.dir}">
+						<include name="**/*.*" />
+					</fileset>
+				</copy>
+			</then>
+			<else>
+				<javac debug="true" encoding="UTF-8" srcdir="${src.dir}" destdir="${bin.dir}}" includeAntRuntime="false">
+					<classpath>
+						<path location="${bin.dir}" />
+						<path refid="service.classpath" />
+					</classpath>
+				</javac>
+			</else>
+		</if>
+	</target>
+
+
+	<target name="package">
+		<jar destfile="${jar.output.file}">
+			<zipfileset dir="${bin.dir}" includes="**/*" />
+		</jar>
+		<copy todir="${basedir}/target/temp/lib">
+			<fileset dir="${basedir}/dist/">
+				<include name="${project.name}-${project.version}.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${basedir}/target/temp/instrlib">
+			<fileset dir="${basedir}/dist/">
+				<include name="${project.name}-${project.version}.jar" />
+			</fileset>
+		</copy>
+		<if>
+			<equals arg1="${project.type}" arg2="web" />
+			<then>
+				<war destfile="${basedir}/dist/${web.context.path}.war" webxml="${web.src.dir}/WEB-INF/web.xml">
+					<fileset dir="${web.src.dir}">
+						<include name="**/*.*" />
+					</fileset>
+				</war>
+				<delete failonerror="false">
+					<fileset dir="${basedir}/dist/" includes="${project.name}-${project.version}.jar" />
+				</delete>
+			</then>
+		</if>
+	</target>
+	<property name="tomcat.dir" value="C:\Apache Tomcat\apache-tomcat-7.0.6-team4" />
+	<property name="tomcat.svc.name" value="Apache Tomcat Team4" />
+	
+	<target name="tomcat.stop"> 
+		<exec executable="net">
+			<arg value="stop"/>
+			<arg value="${tomcat.svc.name}"/>
+		</exec>
+	</target> 
+	<target name="extract">
+		<delete file="${tomcat.dir}/webapps/${web.context.path}.war" />
+		<delete dir="${tomcat.dir}/webapps/${web.context.path}" />
+		<copy todir="${tomcat.dir}/webapps" overwrite="true">
+			<fileset dir="${basedir}/dist" />
+		</copy>
+	</target>
+
+	<target name="tomcat.start"> 
+		<exec executable="net">
+			<arg value="start"/>
+			<arg value="${tomcat.svc.name}"/>
+		</exec>
+	</target> 
+
+	<property name="pmd.dir" value="pmd" />
+	<property name="pmd.home" value="C:\dev\pmd-4.2.5" />
+
+	<target name="pmd.report">
+		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask">
+			<classpath>
+				<pathelement location="${pmd.home}/lib/pmd-4.2.5.jar"/>
+			</classpath>
+		</taskdef>
+		<pmd shortFilenames="true">
+			<ruleset>${pmd.dir}/ruleset.xml</ruleset>
+
+			<formatter type="html" toFile="${pmd.dir}/pmd_report.html" 
+                        linkPrefix="http://pmd.sourceforge.net/xref/" />
+			<formatter type="xml" toFile="${pmd.dir}/report_pmd.xml"/>
+			<fileset dir="${src.dir}/">
+				<include name="**/*.java" />
+			</fileset>
+		</pmd>
+	</target>
+
+	<target name="test">
+		<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="anyframe.antpath" />
+		<var name="test.libpath" value="web.classpath" />
+		<if>
+			<equals arg1="${project.type}" arg2="service" />
+			<then>
+				<var name="test.libpath" value="service.classpath" />
+			</then>
+		</if>
+
+		<property name="max.memory" value="256M" />
+		<junit maxmemory="${max.memory}" printsummary="true" fork="true" dir="${basedir}" errorProperty="test.failed" failureProperty="test.failed">
+			<classpath>
+				<path location="${testbin.dir}" />
+				<fileset dir="${basedir}/target/temp/lib" includes="${project.name}-${project.version}.jar" />
+				<path refid="${test.libpath}" />
+				<path refid="anyframe.reportpath" />
+			</classpath>
+			<formatter type="xml" />
+			<formatter type="brief" usefile="false" />
+			<batchtest fork="yes" todir="${artifactsDir}/test-results/xml">
+				<fileset dir="${basedir}/src/test/java">
+					<include name="**/*Test.java" />
+					<include name="**/*TestCase.java" />
+					<exclude name="**/Abstract*.java" />
+				</fileset>
+				<formatter type="xml" />
+			</batchtest>
+		</junit>
+	</target>
+
+	<!--
+	<target name="emma-jars" description="Uses Emma to instrument the jar files">
+		<emma enabled="true">
+			<instr mode="fullcopy" destdir="${basedir}/target/temp" merge="yes" filter="*" metadatafile="${artifactsDir}/test-coverage/coverage.em">
+				<instrpath>
+					<fileset dir="${basedir}/target/temp/instrlib" includes="${project.name}-${project.version}.jar" />
+				</instrpath>
+			</instr>
+		</emma>
+	</target>
+	-->
+
+	<target name="test-resources">
+		<copy todir="${testbin.dir}">
+			<fileset dir="${testresources.dir}">
+				<exclude name="**/.svn/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="test-compile">
+		<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="anyframe.antpath" />
+		<if>
+			<equals arg1="${project.type}" arg2="web" />
+			<then>
+				<javac debug="true" encoding="UTF-8" srcdir="${testsrc.dir}" 
+					destdir="${testbin.dir}" includeAntRuntime="false">
+					<classpath>
+						<path location="${bin.dir}" />
+						<path location="${testbin.dir}" />
+						<path refid="web.classpath" />
+					</classpath>
+				</javac>
+			</then>
+			<else>
+				<javac debug="true" encoding="UTF-8" srcdir="${testsrc.dir}" 
+					destdir="${testbin.dir}" includeAntRuntime="false">
+					<classpath>
+						<path location="${bin.dir}" />
+						<path location="${testbin.dir}" />
+						<path refid="service.classpath" />
+					</classpath>
+				</javac>
+			</else>
+		</if>
+	</target>
+
+	<target name="fail" if="test.failed">
+		<fail message="Tests failed in project ${project.name}." />
+	</target>
+
+	<target name="report">
+		<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="anyframe.antpath" />
+
+		<!-- 1.Junit Test Result Report  -->
+		<junitreport todir="${artifactsDir}/test-results">
+			<fileset dir="${artifactsDir}/test-results/xml">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${artifactsDir}/test-results" />
+		</junitreport>
+
+		<!-- 2.Test Code Coverage Report  -->
+		<!--
+		<move file="${basedir}/coverage.ec" todir="${artifactsDir}/test-coverage" failonerror="false" />
+		<available file="${artifactsDir}/test-coverage" type="dir" property="test-coverage.present" />
+		<if>
+			<equals arg1="${test-coverage.present}" arg2="true" />
+			<then>
+				<emma description="now we can generate the emma report" enabled="true">
+					<report sourcepath="${basedir}/src/main/java" 
+						sort="+name,+method,+class" metrics="method:70,line:80,class:100" 
+						depth="method" columns="name,class,method,line" encoding="UTF-8">
+						<infileset dir="${artifactsDir}/test-coverage" includes="*.em, *.ec" />
+						<html outfile="${basedir}/${artifactsDir}/test-coverage/coverage.html" />
+						<xml outfile="${basedir}/${artifactsDir}/test-coverage/coverage.xml" />
+					</report>
+				</emma>
+			</then>
+			<else>
+			</else>
+		</if>
+		-->
+	</target>
+
+	<target name="default" depends="init, resources, compile, package" />
+	<target name="deploy" depends="default, tomcat.stop, extract, tomcat.start" />
+	<!--
+		EMMA 제외
+	<target name="test-report" depends="default, test-resources, test-compile, emma-jars, test, report" />
+	-->
+	<target name="test-report" depends="default, test-resources, test-compile, test, report" />
+	<target name="cibuild" depends="clean, default, deploy, pmd.report, test-report" />
+
+</project>
