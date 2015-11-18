@@ -129,8 +129,8 @@
 			</then>
 		</if>
 	</target>
-	<property name="tomcat.dir" value="C:\Apache Tomcat\apache-tomcat-7.0.6-team4" />
-	<property name="tomcat.svc.name" value="Apache Tomcat Team4" />
+	<property name="tomcat.dir" value="C:\Apache Tomcat\apache-tomcat-7.0.6-team3" />
+	<property name="tomcat.svc.name" value="Apache Tomcat Team3" />
 	
 	<target name="tomcat.stop"> 
 		<exec executable="net">
@@ -185,7 +185,7 @@
 		</if>
 
 		<property name="max.memory" value="256M" />
-		<junit maxmemory="${max.memory}" printsummary="true" fork="true" dir="${basedir}" errorProperty="test.failed" failureProperty="test.failed">
+		<junit maxmemory="${max.memory}" printsummary="true" fork="true" dir="${basedir}" errorProperty="test.failed" failureProperty="test.failed" haltOnFailure="true">
 			<classpath>
 				<path location="${testbin.dir}" />
 				<fileset dir="${basedir}/target/temp/lib" includes="${project.name}-${project.version}.jar" />
