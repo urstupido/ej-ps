@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE queryservice PUBLIC "-//ANYFRAME//DTD QUERYSERVICE//EN"
+"http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
+<queryservice>
+	<queries>
+		<query id="createMovie">
+			<statement>
+				SELECT custom.cus_no, custom.user_tc, custom.rbno, custom.cnm, custom.psno, custom.addr, custom.dong_blw_addr, custom.last_chng_usid, custom.last_chng_dt FROM custom
+			</statement>
+		</query>
+	</queries>
+</queryservice>
+
