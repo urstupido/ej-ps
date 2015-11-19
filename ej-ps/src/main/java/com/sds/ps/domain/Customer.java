@@ -13,14 +13,14 @@ public class Customer extends CommonVo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String cus_no;
+	private String cusNo;
 	
 	@NotNull
-	private char user_tc;
+	private char userTc;
 	
 	@NotNull
 	@Size(min=1, max = 50)
-	private String pbno = "";
+	private String rbno = "";
 
 	@NotNull
 	@Size(min=1, max = 50)
@@ -36,94 +36,137 @@ public class Customer extends CommonVo implements Serializable{
 
 	@NotNull
 	@Size(min=1, max = 50)
-	private String dong_blw_addr = "";
+	private String dongBlwAddr = "";
 	
 	@NotNull
 	@Size(min=1, max = 50)
-	private String last_chng_usid = "";
+	private String lastChngUsid = "";
 	
 	@NotNull
 	@DateTimeFormat(pattern = "YYYY-MM-DD")
-	private Date last_chng_dt;
+	private Date lastChngDt;
 
-	public String getCus_no() {
-		return cus_no;
+
+	public String getCusNo() {
+		return cusNo;
 	}
 
-	public void setCus_no(String cus_no) {
-		this.cus_no = cus_no;
+
+
+	public void setCusNo(String cusNo) {
+		this.cusNo = cusNo;
 	}
 
-	public char getUser_tc() {
-		return user_tc;
+
+
+	public char getUserTc() {
+		return userTc;
 	}
 
-	public void setUser_tc(char user_tc) {
-		this.user_tc = user_tc;
+
+
+	public void setUserTc(char userTc) {
+		this.userTc = userTc;
 	}
 
-	public String getPbno() {
-		return pbno;
+
+
+	public String getRbno() {
+		return rbno;
 	}
 
-	public void setPbno(String pbno) {
-		this.pbno = pbno;
+
+
+	public void setRbno(String rbno) {
+		this.rbno = rbno;
 	}
+
+
 
 	public String getCnm() {
 		return cnm;
 	}
 
+
+
 	public void setCnm(String cnm) {
 		this.cnm = cnm;
 	}
+
+
 
 	public String getPsno() {
 		return psno;
 	}
 
+
+
 	public void setPsno(String psno) {
 		this.psno = psno;
 	}
+
+
 
 	public String getAddr() {
 		return addr;
 	}
 
+
+
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
 
-	public String getDong_blw_addr() {
-		return dong_blw_addr;
+
+
+	public String getDongBlwAddr() {
+		return dongBlwAddr;
 	}
 
-	public void setDong_blw_addr(String dong_blw_addr) {
-		this.dong_blw_addr = dong_blw_addr;
+
+
+	public void setDongBlwAddr(String dongBlwAddr) {
+		this.dongBlwAddr = dongBlwAddr;
 	}
 
-	public String getLast_chng_usid() {
-		return last_chng_usid;
+
+
+	public String getLastChngUsid() {
+		return lastChngUsid;
 	}
 
-	public void setLast_chng_usid(String last_chng_usid) {
-		this.last_chng_usid = last_chng_usid;
+
+
+	public void setLastChngUsid(String lastChngUsid) {
+		this.lastChngUsid = lastChngUsid;
 	}
 
-	public Date getLast_chng_dt() {
-		return last_chng_dt;
+
+
+	public Date getLastChngDt() {
+		return lastChngDt;
 	}
 
-	public void setLast_chng_dt(Date last_chng_dt) {
-		this.last_chng_dt = last_chng_dt;
+
+
+	public void setLastChngDt(Date lastChngDt) {
+		this.lastChngDt = lastChngDt;
 	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Customer [cus_no=" + cus_no + ", user_tc=" + user_tc
-				+ ", pbno=" + pbno + ", cnm=" + cnm + ", psno=" + psno
-				+ ", addr=" + addr + ", dong_blw_addr=" + dong_blw_addr
-				+ ", last_chng_usid=" + last_chng_usid + ", last_chng_dt="
-				+ last_chng_dt + "]";
+		return "Customer [cus_no=" + cusNo + ", user_tc=" + userTc
+				+ ", pbno=" + rbno + ", cnm=" + cnm + ", psno=" + psno
+				+ ", addr=" + addr + ", dong_blw_addr=" + dongBlwAddr
+				+ ", last_chng_usid=" + lastChngUsid + ", last_chng_dt="
+				+ lastChngDt + "]";
 	}
 }

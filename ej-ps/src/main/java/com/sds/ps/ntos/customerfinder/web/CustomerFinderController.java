@@ -13,6 +13,7 @@ import anyframe.common.Page;
 
 import com.sds.ntos.customerfinder.service.CustomerFinder;
 import com.sds.ps.domain.Customer;
+import com.sds.ps.domain.Movie;
 
 @Controller("ntosCustomerFinderController")
 @RequestMapping("/ntosCustomerFinder.do")
@@ -26,17 +27,15 @@ public class CustomerFinderController {
 	public String list(
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
 			Customer customer, BindingResult result, Model model) throws Exception {
-		
 		Page resultPage = customerFinder.getPagingList(customer, pageIndex);
 		
 		model.addAttribute("customer", customer);
 		model.addAttribute("customers", resultPage.getList());
 		model.addAttribute("size", resultPage.getTotalCount());
 		model.addAttribute("pagesize", resultPage.getPagesize());
-		model.addAttribute("pageunit", resultPage.getPageunit());
-		model.addAttribute("reusltPage", resultPage);
-
-		return "ntosListCustomer";
+		model.addAttribute("pageunit", resultPage.getPageunit());		
+		model.addAttribute("resultPage", resultPage);
+		
+		return "customerListView";
 	}
 }
-

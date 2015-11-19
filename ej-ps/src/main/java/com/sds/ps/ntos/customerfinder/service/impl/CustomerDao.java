@@ -11,7 +11,7 @@ import anyframe.core.query.AbstractDAO;
 
 import com.sds.ps.domain.Customer;
 
-@Repository("customerDao")
+@Repository("ntosCustomerDao")
 public class CustomerDao extends AbstractDAO {
 	@Value("#{contextProperties['pageSize'] ?: 10}")
 	int pageSize;
