@@ -1,7 +1,7 @@
 /classes/
 /target/
 /dist/
-ej-ps/db/hsqldb/sampledb.log
-ej-ps/db/hsqldb/sampledb.lck
+db/hsqldb/sampledb.log
+db/hsqldb/sampledb.lck
 /pmd/pmd_report.html
 /pmd/report_pmd.xml
