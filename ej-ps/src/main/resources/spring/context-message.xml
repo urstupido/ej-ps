@@ -5,6 +5,7 @@
 			<list>
 			    <value>message/message-generation</value>
 				<value>message/message-moviefinder</value>
+				<value>message/message-customerfinder</value>
 				<value>message/message-converter</value>
 				<value>message/message-security</value>
 				<value>anyframe/core/ria/mip/messages/mip</value>

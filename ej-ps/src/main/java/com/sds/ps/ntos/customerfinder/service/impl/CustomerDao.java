@@ -23,6 +23,26 @@ public class CustomerDao extends AbstractDAO {
 	public void setQueryService(IQueryService queryService) {
 		super.setQueryService(queryService);
 	}
+	
+	public void create(Customer customer) throws Exception {
+		create("Customer", customer);
+	}
+	
+	public void remove(String cusNo) throws Exception {
+		Customer customer = new Customer();
+		customer.setCusNo(cusNo);
+		remove("Customer", customer);
+	}
+	
+	public void update(Customer customer) throws Exception {
+		update("Customer", customer);
+	}
+	
+	public Customer get(String cusNo) throws Exception {
+		Customer customer = new Customer();
+		customer.setCusNo(cusNo);
+		return (Customer)findByPk("Customer", customer);
+	}
 
 	public Page getPagingList(Customer customer, int pageIndex) throws Exception {
 		return this.findListWithPaging("Customer", customer, pageIndex, pageSize,

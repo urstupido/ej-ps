@@ -44,14 +44,12 @@ public class Customer extends CommonVo implements Serializable{
 	
 	@NotNull
 	@DateTimeFormat(pattern = "YYYY-MM-DD")
-	private Date lastChngDt;
+	private DateTimeFormat lastChngDt;
 
 
 	public String getCusNo() {
 		return cusNo;
 	}
-
-
 
 	public void setCusNo(String cusNo) {
 		this.cusNo = cusNo;
@@ -143,13 +141,13 @@ public class Customer extends CommonVo implements Serializable{
 
 
 
-	public Date getLastChngDt() {
+	public DateTimeFormat getLastChngDt() {
 		return lastChngDt;
 	}
 
 
 
-	public void setLastChngDt(Date lastChngDt) {
+	public void setLastChngDt(DateTimeFormat lastChngDt) {
 		this.lastChngDt = lastChngDt;
 	}
 

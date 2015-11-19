@@ -4,12 +4,14 @@
     <%@ include file="/sample/common/meta.jsp" %>
 	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">
     <script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script> 
+    
     <script type="text/javascript">
-		function fncSearchMovie(arg) {
+		function fncSearchCustomer(arg) {
 		   	document.searchForm.action="<c:url value='/ntosCustomerFinder.do?method=list'/>";
 		   	document.searchForm.submit();						
-		}
-	</script>   
+		}		
+	</script>
+	
 </head>
 <!--************************** begin of contents *****************************-->
 <!--begin of title-->
@@ -43,7 +45,10 @@
 		<tbody>
 			<c:forEach var="customer" items="${customers}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
-					<td align="center">${customer.cusNo}</td>
+					<td class="underline" align="center">
+						<a class="linkClass" href="${ctx}/ntosCustomer.do?method=get&cusNo=${customer.cusNo}">${customer.cusNo}</a>
+					</td>
+					</td>
 					<td align="center">${customer.userTc}</td>
 					<td align="center">${customer.rbno}</td>
 					<td align="center">${customer.cnm}</td>
@@ -58,7 +63,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<tr>
 			<td class="page" height="50" align="center">
-				<anyframe:pagenavigator linkUrl="javascript:fncSearchMovie();"
+				<anyframe:pagenavigator linkUrl="javascript:fncSearchCustomer();"
 					pages="${resultPage}" 
 					firstImg="${ctx}/sample/images/pagenav/page_before1.gif" 
 					lastImg="${ctx}/sample/images/pagenav/page_after1.gif" 
