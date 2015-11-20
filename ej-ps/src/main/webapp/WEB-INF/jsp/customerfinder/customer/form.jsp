@@ -49,14 +49,11 @@
 		</td>
 	</tr>
 </table>
-<form:form modelAttribute="customer" name="customerForm" method="post" enctype="multipart/form-data">
+<form:form modelAttribute="customer" name="customerForm" method="post">
 	
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
-		<c:if test="${not empty customer.cusNo}">
-			<form:hidden path="cusNo" />
-		</c:if>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.no" />&nbsp;*</td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.no" />&nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 				<form:input path="cusNo" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/> <form:errors path="cusNo" cssClass="errors" />
@@ -66,7 +63,7 @@
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.cnm" /></td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.cnm" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 				<form:input path="cnm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="cnm" cssClass="errors" />
@@ -76,7 +73,7 @@
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.userTc" /></td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.userTc" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 			<%-- <form:select path="genre.genreId">
@@ -88,7 +85,7 @@
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.rbno" /></td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.rbno" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<c:choose>
 				<c:when test="${customer.userTc eq 2}">
@@ -111,64 +108,55 @@
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
-		<%-- <tr>
-			<td width="150" class="ct_td"><spring:message code="movie.runtime" /></td>
+		<tr>
+			<td rowspan="5" class="ct_td">우편물 수령지</td>
+			<td width="150" class="ct_td"><spring:message code="customer.psno" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="runtime" cssClass="ct_input_g" cssErrorClass="text medium error" size="10" maxlength="3" /> min. <form:errors path="runtime" cssClass="errors" />
+				<form:hidden path="psno" cssClass="ct_input_g" cssErrorClass="text medium error" size="10" maxlength="3" /> <form:errors path="psno" cssClass="errors" />
+				<input type="text" value="${fn:substring(customer.psno,0,3)}"> - 
+				<input type="text" value="${fn:substring(customer.psno,3,6)}">
+				<input type="button" value="우편번호 찾기">
 			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.releaseDate" /></td>
+			<td width="150" class="ct_td"><spring:message code="customer.addr" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="releaseDate" id="releaseDate" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
-				<c:if test="${empty movie.movieId}">
-					<anyframe:validate id="releaseDate" type="Date" value="currentDate"/>
-				</c:if>
-				<c:if test="${not empty movie.movieId}">
-					<anyframe:validate id="releaseDate" type="Date"/>
-				</c:if>
-				<form:errors path="releaseDate" cssClass="errors" />
+				<form:input path="addr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
+				<form:errors path="addr" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.ticketPrice" /></td>
+			<td width="150" class="ct_td"><spring:message code="customer.dongBlwAddr" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input id="ticketPrice" path="ticketPrice" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="5" /> <form:errors path="ticketPrice" cssClass="errors" />
+				<form:input path="dongBlwAddr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
+				<form:errors path="dongBlwAddr" cssClass="errors" />
 			</td>
 		</tr>
+	</table>
+	<br><br>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.nowPlaying" /></td>
+			<td width="150" class="ct_td" colspan="7">최종변경정보</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">Is this movie now playing ? <form:checkbox path="nowPlaying" value="Y" /><input type="hidden" name="!nowPlaying" value="N" /></td>
 		</tr>
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>	
-		<tr>
-			<td width="150" class="ct_td">
-			<spring:message code="movie.posterFile"/></td><td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">		
-				<c:if test="${not empty movie.posterFile}">
-					<img src="<c:url value='${movie.posterFile}'/>" alt="<spring:message code='movie.posterFile'/>" border="0" />
-					<form:hidden path="posterFile"/>
-				</c:if>
-				<c:if test="${empty movie.posterFile}">
-					<input type="file" name="realPosterFile" class="ct_input_g" style="width:309px; height:19px" maxLength="100" >
-				</c:if>							        
+			<td width="150" class="ct_td"><spring:message code="customer.lastChngUsid"/></td>
+			<td bgcolor="D6D6D6" width="1"></td>
+			<td class="ct_write01">${customer.lastChngUsid}</td>
+			<td bgcolor="D6D6D6" width="1"></td>
+			<td width="150" class="ct_td"><spring:message code="customer.lastChngDt"/></td>
+			<td bgcolor="D6D6D6" width="1"></td><td class="ct_write01">${customer.lastChngDt}
 			</td>
-		</tr> --%>
+		</tr>
 	</table>
 	<!--begin of button-->
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">

@@ -56,7 +56,7 @@ public class CustomerController {
 		return "ntosViewCustomer";
 	}
 	
-	@RequestMapping(params = "method = update")
+	@RequestMapping(params = "method=update")
 	public String update(@Valid Customer customer, BindingResult results, SessionStatus status) throws Exception {
 		if(results.hasErrors()){
 			return "ntosViewCustomer";
