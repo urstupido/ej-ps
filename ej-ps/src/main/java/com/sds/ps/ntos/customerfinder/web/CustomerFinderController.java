@@ -13,7 +13,6 @@ import anyframe.common.Page;
 
 import com.sds.ntos.customerfinder.service.CustomerFinder;
 import com.sds.ps.domain.Customer;
-import com.sds.ps.domain.Movie;
 
 @Controller("ntosCustomerFinderController")
 @RequestMapping("/ntosCustomerFinder.do")

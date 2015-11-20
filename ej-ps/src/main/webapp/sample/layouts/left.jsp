@@ -4,7 +4,7 @@
 <script language="javascript" src="<c:url value='/sample/javascript/common.js'/>"></script>
 <div id="left">
 <style type="text/css">
-<!--
+
 .menus {
 	background-image: url("<c:url value='/sample/images/top_menus.png'/>");
 }
@@ -57,7 +57,7 @@
 	background-repeat: repeat;
 	text-align: center;
 	}
--->
+
 </style>
 <table border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee">
 	<tr>
@@ -74,7 +74,7 @@
 					width="177">
 					<tr>
 						<td id="menu1" class="Depth02off"><a
-							href="javascript:toggle(1)">Query Service</a></td>
+							href="javascript:toggle(1)">고객관리</a></td>
 					</tr>
 				</table>
 
@@ -89,6 +89,7 @@
 				</td>
 			</tr>
 			<!--hibernate-menu-START-->
+
 			<tr>
 				<td valign="top">
 				<table id="Main2" border="0" cellspacing="0" cellpadding="0"
@@ -118,28 +119,7 @@
 				
 				</td>
 			</tr>
-			<!-- 
-			<tr>
-				<td valign="top">
-				<table id="Main2" border="0" cellspacing="0" cellpadding="0"
-					width="177">
-					<tr>
-						<td id="menu2" class="Depth02off"><a
-							href="javascript:toggle(2)">jQuery</a></td>
-					</tr>
-				</table>
-
-				<div ID="sub2" style="DISPLAY: none">
-				<table border="0" cellspacing="0" cellpadding="0" width="177">
-					<tr>
-						<td class="Depth03"><a
-							href="${ctx}/jqueryMovieList.do">영화목록</a></td>
-					</tr>
-				</table>
-				</div>
-				</td>
-			</tr>
-			-->
+			
 			<!--hibernate-menu-END-->
 		</table>
 		</td>

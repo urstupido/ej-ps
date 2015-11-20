@@ -4,10 +4,9 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.sun.istack.internal.NotNull;
 
 public class Customer extends CommonVo implements Serializable{
 	
@@ -16,7 +15,7 @@ public class Customer extends CommonVo implements Serializable{
 	private String cusNo;
 	
 	@NotNull
-	private char userTc;
+	private String userTc;
 	
 	@NotNull
 	@Size(min=1, max = 50)
@@ -44,7 +43,7 @@ public class Customer extends CommonVo implements Serializable{
 	
 	@NotNull
 	@DateTimeFormat(pattern = "YYYY-MM-DD")
-	private DateTimeFormat lastChngDt;
+	private Date lastChngDt;
 
 
 	public String getCusNo() {
@@ -57,13 +56,13 @@ public class Customer extends CommonVo implements Serializable{
 
 
 
-	public char getUserTc() {
+	public String getUserTc() {
 		return userTc;
 	}
 
 
 
-	public void setUserTc(char userTc) {
+	public void setUserTc(String userTc) {
 		this.userTc = userTc;
 	}
 
@@ -141,13 +140,13 @@ public class Customer extends CommonVo implements Serializable{
 
 
 
-	public DateTimeFormat getLastChngDt() {
+	public Date getLastChngDt() {
 		return lastChngDt;
 	}
 
 
 
-	public void setLastChngDt(DateTimeFormat lastChngDt) {
+	public void setLastChngDt(Date lastChngDt) {
 		this.lastChngDt = lastChngDt;
 	}
 
