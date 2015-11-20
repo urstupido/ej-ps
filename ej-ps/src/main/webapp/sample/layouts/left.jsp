@@ -4,7 +4,6 @@
 <script language="javascript" src="<c:url value='/sample/javascript/common.js'/>"></script>
 <div id="left">
 <style type="text/css">
-<!--
 .menus {
 	background-image: url("<c:url value='/sample/images/top_menus.png'/>");
 }
@@ -57,7 +56,6 @@
 	background-repeat: repeat;
 	text-align: center;
 	}
--->
 </style>
 <table border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee">
 	<tr>
