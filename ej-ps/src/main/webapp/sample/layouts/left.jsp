@@ -89,6 +89,35 @@
 				</td>
 			</tr>
 			<!--hibernate-menu-START-->
+			<tr>
+				<td valign="top">
+				<table id="Main2" border="0" cellspacing="0" cellpadding="0"
+					width="177">
+					<tr>
+						<td id="menu2" class="Depth02off"><a
+							href="javascript:toggle(2)">상품관리</a></td>
+					</tr>
+				</table>
+
+				<div ID="sub2" style="DISPLAY: none">
+				<table border="0" cellspacing="0" cellpadding="0" width="177">
+					<tr>
+						<td class="Depth03"><a
+							href="${ctx}/ntosProductFinder.do?method=list">상품목록</a></td>
+					</tr>
+				</table>
+				
+				<table border="0" cellspacing="0" cellpadding="0" width="177">
+					<tr>
+						<td class="Depth03"><a
+							href="${ctx}/ntosProduct????????.do?method=list">상품등록</a></td>
+					</tr>
+				</table>
+				</div>
+				
+				
+				</td>
+			</tr>
 			<!-- 
 			<tr>
 				<td valign="top">

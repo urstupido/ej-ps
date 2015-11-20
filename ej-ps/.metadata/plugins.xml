@@ -24,4 +24,19 @@
     <customed>false</customed>
     <samples>true</samples>
   </plugin>
+
+<!-- 추가 -->  
+   <plugin>
+    <checked>false</checked>
+    <name>ntos</name>
+    <groupId>anyframe.plugin</groupId>
+    <artifactId>anyframe.plugin.ntos</artifactId>
+    <version>4.6.1</version>
+    <latestVersion>4.6.1</latestVersion>
+    <installed>true</installed>
+    <srcInstalled>true</srcInstalled>
+    <customed>false</customed>
+    <samples>true</samples>
+  </plugin>
+  
 </plugins>

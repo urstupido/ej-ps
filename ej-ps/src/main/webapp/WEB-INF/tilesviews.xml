@@ -12,6 +12,20 @@
     <definition name="error" extends="foundationLayout">
         <put-attribute name="body" value="/sample/common/error.jsp" />
     </definition>
+    <definition name="foundationListMovie" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/list.jsp" />
+    </definition>
+    <definition name="foundationViewMovie" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/form.jsp" />
+    </definition>
+
+<!-- 상품 -->
+    <definition name="ntosListProduct" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/list.jsp" />
+    </definition>
+    <definition name="ntosViewProduct" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/form.jsp" />
+    </definition>
     <!-- customer list view -->
     <definition name="customerListView" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/list.jsp" /> 
@@ -21,12 +35,8 @@
         <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/form.jsp" />
     </definition>
     
-    <definition name="foundationListMovie" extends="foundationLayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/list.jsp" />
-    </definition>
-    <definition name="foundationViewMovie" extends="foundationLayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/form.jsp" />
-    </definition>
+    
+    
 <!--Add new tiles definition here-->
 <!--hibernate-tiles-definition-START-->
     <definition name="hibernateListMovie" extends="foundationLayout">
