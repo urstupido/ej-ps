@@ -79,12 +79,6 @@
 				</table>
 
 				<div ID="sub1" style="DISPLAY: none">
-				<table border="0" cellspacing="0" cellpadding="0" width="177">
-					<tr>
-						<td class="Depth03"><a
-							href="${ctx}/foundationMovieFinder.do?method=list">영화목록1</a></td>
-					</tr>
-				</table>
 				
 				<table border="0" cellspacing="0" cellpadding="0" width="177">
 					<tr>
