@@ -33,28 +33,23 @@
 	<table class="scrollTable" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<thead>
 			<tr>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">고객번호</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">사용자_구분코드</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">주민사업자등록번호</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">고객명</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">우편번호</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">주소</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">동_이하_주소</th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid">No.</th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="customer.no"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="customer.userTc"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="customer.cnm"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="customer.lastChngDt"/></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="customer" items="${customers}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
+					<td align="center">${customer.no}</td>
 					<td class="underline" align="center">
 						<a class="linkClass" href="${ctx}/ntosCustomer.do?method=get&cusNo=${customer.cusNo}">${customer.cusNo}</a>
 					</td>
-					</td>
 					<td align="center">${customer.userTc}</td>
-					<td align="center">${customer.rbno}</td>
 					<td align="center">${customer.cnm}</td>
-					<td align="center">${customer.psno}</td>
-					<td align="center">${customer.addr}</td>
-					<td align="center">${customer.dongBlwAddr}</td>
+					<td align="center">${customer.lastChngDt}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
