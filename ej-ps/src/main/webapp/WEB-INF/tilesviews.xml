@@ -26,7 +26,14 @@
     <definition name="ntosViewProduct" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/form.jsp" />
     </definition>
-    
+    <!-- customer list view -->
+    <definition name="customerListView" extends="foundationLayout">
+  		<put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/list.jsp" /> 
+  	</definition>
+  	<!-- customer view -->
+  	<definition name="ntosViewCustomer" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/form.jsp" />
+    </definition>
     
     
     

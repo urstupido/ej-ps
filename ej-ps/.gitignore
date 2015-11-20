@@ -1,1 +1,9 @@
 /classes/
+/target/
+/dist/
+db/hsqldb/sampledb.log
+db/hsqldb/sampledb.lck
+db/hsqldb/sampledb.script
+db/hsqldb/sampledb.properties
+/pmd/pmd_report.html
+/pmd/report_pmd.xml

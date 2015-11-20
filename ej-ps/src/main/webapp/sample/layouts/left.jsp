@@ -4,6 +4,7 @@
 <script language="javascript" src="<c:url value='/sample/javascript/common.js'/>"></script>
 <div id="left">
 <style type="text/css">
+<!--
 .menus {
 	background-image: url("<c:url value='/sample/images/top_menus.png'/>");
 }
@@ -56,6 +57,7 @@
 	background-repeat: repeat;
 	text-align: center;
 	}
+-->
 </style>
 <table border="0" cellpadding="0" cellspacing="0" bgcolor="#eeeeee">
 	<tr>
@@ -77,20 +79,16 @@
 				</table>
 
 				<div ID="sub1" style="DISPLAY: none">
-				
 				<table border="0" cellspacing="0" cellpadding="0" width="177">
 					<tr>
 						<td class="Depth03"><a
-							href="${ctx}/ntosProductFinder.do?method=list">영화목록2</a></td>
+							href="${ctx}/ntosCustomerFinder.do?method=list">고객목록</a></td>
 					</tr>
 				</table>
 				</div>
-				
 				</td>
-				
 			</tr>
-			
-			
+			<!--hibernate-menu-START-->
 			<tr>
 				<td valign="top">
 				<table id="Main2" border="0" cellspacing="0" cellpadding="0"
@@ -120,9 +118,6 @@
 				
 				</td>
 			</tr>
-			
-			
-			<!--hibernate-menu-START-->
 			<!-- 
 			<tr>
 				<td valign="top">
