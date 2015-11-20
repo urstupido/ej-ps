@@ -12,6 +12,15 @@
     <definition name="error" extends="foundationLayout">
         <put-attribute name="body" value="/sample/common/error.jsp" />
     </definition>
+    <!-- customer list view -->
+    <definition name="customerListView" extends="foundationLayout">
+  		<put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/list.jsp" /> 
+  	</definition>
+  	<!-- customer view -->
+  	<definition name="ntosViewCustomer" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/form.jsp" />
+    </definition>
+    
     <definition name="foundationListMovie" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/list.jsp" />
     </definition>

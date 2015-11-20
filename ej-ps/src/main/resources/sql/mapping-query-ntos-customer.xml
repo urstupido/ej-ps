@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE queryservice PUBLIC "-//ANYFRAME//DTD QUERYSERVICE//EN"
+"http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
+<queryservice>
+	<queries>
+		<query id="findCustomerList">
+			<statement>
+				SELECT custom.cus_no, custom.user_tc, custom.rbno, custom.cnm, custom.psno, custom.addr, custom.dong_blw_addr, custom.last_chng_usid, custom.last_chng_dt FROM custom
+			</statement>
+		</query>
+		
+		<query id="findCustomerByPk">
+			<statement>
+				SELECT custom.cus_no, custom.user_tc, custom.rbno, custom.cnm, custom.psno, custom.addr, custom.dong_blw_addr, custom.last_chng_usid, custom.last_chng_dt
+				FROM custom
+				WHERE cus_no = :vo.cusNo
+			</statement>
+			<result class="com.sds.ps.domain.Customer" />
+		</query>
+		
+	</queries>
+</queryservice>
+
