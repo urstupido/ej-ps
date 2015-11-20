@@ -82,7 +82,7 @@
 				<table border="0" cellspacing="0" cellpadding="0" width="177">
 					<tr>
 						<td class="Depth03"><a
-							href="${ctx}/foundationMovieFinder.do?method=list">영화목록</a></td>
+							href="${ctx}/ntosCustomerFinder.do?method=list">고객목록</a></td>
 					</tr>
 				</table>
 				</div>
