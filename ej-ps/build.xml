@@ -185,7 +185,7 @@
 		</if>
 
 		<property name="max.memory" value="256M" />
-		<junit maxmemory="${max.memory}" printsummary="true" fork="true" dir="${basedir}" errorProperty="test.failed" failureProperty="test.failed" haltOnFailure="true">
+		<junit maxmemory="${max.memory}" printsummary="true" fork="true" dir="${basedir}" errorProperty="test.failed" failureProperty="test.failed" haltOnFailure="false">
 			<classpath>
 				<path location="${testbin.dir}" />
 				<fileset dir="${basedir}/target/temp/lib" includes="${project.name}-${project.version}.jar" />
