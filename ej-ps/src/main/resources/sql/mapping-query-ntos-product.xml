@@ -47,7 +47,7 @@
 		
 		<query id="updateProduct">
 			<statement>
-				UPDATE product 
+				UPDATE prod_base
 				SET prod_name = :vo.prodName,
 					prod_lcls_c = :vo.prodLclsC,
 					prod_mcls_c = :vo.prodMclsC,

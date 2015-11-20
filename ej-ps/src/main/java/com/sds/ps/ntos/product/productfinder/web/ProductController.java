@@ -1,27 +1,19 @@
 package com.sds.ps.ntos.product.productfinder.web;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Collection;
-
-import com.sds.ps.ntos.product.productfinder.service.ProductService;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.ps.domain.Product;
+import com.sds.ps.ntos.product.productfinder.service.ProductService;
 
 @Controller("ntosProductController")
 @RequestMapping("/ntosProduct.do")
@@ -107,7 +99,9 @@ public class ProductController {
 
 	@RequestMapping(params = "method=update")
 	public String update(@Valid Product product, BindingResult results, SessionStatus status) throws Exception {
-		System.out.println("왓니???");
+		System.out.println("=========================================aaaaaaa");
+		System.out.println(results);
+		
 		if (results.hasErrors()) {
 			return "ntosViewProduct";
 		}
