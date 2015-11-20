@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE queryservice PUBLIC "-//ANYFRAME//DTD QUERYSERVICE//EN"
+"http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
+<queryservice>
+	<queries>
+		<query id="findProductList">
+			<statement>
+				<!--foundation findMovieList-START-->
+				SELECT rownum as no, 
+					   p.prod_no, 
+					   p.prod_name,
+					   c1.code_name as prodLclsC,
+					   c2.code_name as astsMngOrgC, 
+					   c3.code_name as prodOffrOrgC,
+					   p.prod_sell_entr_dt,
+					   p.prod_sell_end_dt
+				FROM prod_base p, code c1, code c2, code c3 
+				WHERE 1=1
+				  and p.prod_lcls_c = c1.code
+				  and c1.code_desc = '상품_대분류_코드'
+				  and p.asts_mng_org_c = c2.code 
+				  and p.prod_offr_org_c = c3.code
+				<!--foundation findMovieList-END-->
+			</statement>			
+		</query>		
+		<query id="findProductByPk">
+			<statement>
+				SELECT p.prod_no, 
+					   p.prod_name,
+					   p.prod_sell_entr_dt,
+					   p.prod_sell_end_dt,
+					   c1.code_name as prodLclsC,
+					   
+					   //상품 중분류 , 소분류
+					   c2.code_name as astsMngOrgC, 
+					   c3.code_name as prodOffrOrgC,
+					   최종변경자 아이디
+					   최종변경 일시
+				FROM prod_base p, code c1, code c2, code c3 
+				WHERE 1=1
+				  and p.prod_lcls_c = c1.code
+				  and c1.code_desc = '상품_대분류_코드'
+				  and p.asts_mng_org_c = c2.code 
+				  and p.prod_offr_org_c = c3.code
+			</statement>
+			<result class="com.sds.ps.domain.Movie">
+				<result-mapping column="{genre_id}" attribute="{genre.genreId}" />
+			</result>
+		</query>	
+	</queries>
+</queryservice>
+
