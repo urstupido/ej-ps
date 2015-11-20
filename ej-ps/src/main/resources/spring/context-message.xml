@@ -5,10 +5,10 @@
 			<list>
 			    <value>message/message-generation</value>
 				<value>message/message-moviefinder</value>
-				<value>message/message-customerfinder</value>
 				<value>message/message-converter</value>
 				<value>message/message-security</value>
 				<value>message/message-customer</value>
+				<value>message/message-product</value>
 				<value>anyframe/core/ria/mip/messages/mip</value>
 				<value>anyframe/core/ria/flex/messages/flex</value>
 				<value>anyframe/core/hibernate/messages/hibernate</value>

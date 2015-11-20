@@ -94,11 +94,11 @@ public class ProductController {
 	}*/
 
 	@RequestMapping(params = "method=get")
-	public String get(@RequestParam("productNo") String productNo, Model model)
+	public String get(@RequestParam("prodNo") String prodNo, Model model)
 			throws Exception {
-		Product Product = this.ProductService.get(productNo);
+		Product Product = this.ProductService.get(prodNo);
 		if (Product == null) {
-			throw new Exception("Resource not found " + productNo);
+			throw new Exception("Resource not found " + prodNo);
 		}
 		model.addAttribute(Product);
 
@@ -106,12 +106,16 @@ public class ProductController {
 	}
 
 	@RequestMapping(params = "method=update")
-	public String update(@Valid Product Product, BindingResult results, SessionStatus status) throws Exception {
+	public String update(@Valid Product product, BindingResult results, SessionStatus status) throws Exception {
+		System.out.println("왓니???");
 		if (results.hasErrors()) {
 			return "ntosViewProduct";
 		}
 		
-		this.ProductService.update(Product);
+		System.out.println("=========================================");
+		System.out.println(product);
+		
+		this.ProductService.update(product);
 		status.setComplete();
 
 		return "redirect:/ntosProductFinder.do?method=list";
