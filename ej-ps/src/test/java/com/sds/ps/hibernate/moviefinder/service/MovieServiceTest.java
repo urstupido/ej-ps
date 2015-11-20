@@ -30,8 +30,8 @@ public class MovieServiceTest {
 	@Named("hibernateMovieFinder")
 	private MovieFinder movieFinder;
 
-	@Test
-	@Rollback(value = true)
+//	@Test
+//	@Rollback(value = true)
 	public void manageMovie() throws Exception {
 		// 1. create a new movie
 		Movie movie = getMovie();
@@ -61,13 +61,13 @@ public class MovieServiceTest {
 		assertNull("fail to remove a movie", movie);
 	}
 
-	@Test
+//	@Test
 	public void findMovie() throws Exception {
 		Movie movie = movieService.get("MV-00005");
 		assertNotNull("fail to fetch a movie", movie);
 	}
 
-	@Test
+//	@Test
 	public void findMovieList() throws Exception {
 		Movie movie = new Movie();
 		movie.setNowPlaying("Y");
