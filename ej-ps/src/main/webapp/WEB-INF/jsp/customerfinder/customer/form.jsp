@@ -2,25 +2,25 @@
 <%@ include file="/sample/common/taglibs.jsp"%>
 <head>
     <%@ include file="/sample/common/meta.jsp" %>
-    <title>고객 상세정보</title>
-    <meta name="heading" content="고객정보"/>   
+    <title><spring:message code="customerDetail.title"/></title>
+    <meta name="heading" content="<spring:message code='customerDetail.heading'/>"/>   
 	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">            
 	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 	<script type="text/javascript">
-	function fncCreateMovie() {
-	    document.movieForm.action="<c:url value='/foundationMovie.do?method=create'/>";
-	    document.movieForm.submit();
+	function createCustomer() {
+	    document.customerForm.action="<c:url value='/ntosCustomer.do?method=create'/>";
+	    document.customerForm.submit();
 	}
 	
-	function fncUpdateMovie() {
-	    document.movieForm.action="<c:url value='/foundationMovie.do?method=update'/>";
-	    document.movieForm.submit();
+	function updateCustomer() {
+	    document.customerForm.action="<c:url value='/ntosCustomer.do?method=update'/>";
+	    document.customerForm.submit();
 	}
 	
-	function fncRemoveMovie(){	
-		if(confirmDelete('movie')) {
-		    document.movieForm.action="<c:url value='/foundationMovie.do?method=remove'/>";
-		    document.movieForm.submit();
+	function removeCustomer(){	
+		if(confirmDelete('customer')) {
+		    document.customerForm.action="<c:url value='/ntosCustomer.do?method=remove'/>";
+		    document.customerForm.submit();
 		}	    
 	}	
 	</script>         
@@ -49,131 +49,131 @@
 		</td>
 	</tr>
 </table>
-<form:form modelAttribute="customer" name="customerForm" method="post" enctype="multipart/form-data">
+<form:form modelAttribute="customer" name="customerForm" method="post">
 	
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
-		<c:if test="${not empty customer.cusNo}">
-			<form:hidden path="cusNo" />
-		</c:if>
-		<!-- 
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.title" />&nbsp;*</td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.no" />&nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="title" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="title" cssClass="errors" />
+				<form:input path="cusNo" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/> <form:errors path="cusNo" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.director" />&nbsp;*</td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.cnm" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="director" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="director" cssClass="errors" />
+				<form:input path="cnm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="cnm" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.genre" />&nbsp;*</td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.userTc" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-			<form:select path="genre.genreId">
+			<%-- <form:select path="genre.genreId">
             	<form:options items="${genreList}" itemValue="genreId" itemLabel="name"/>
-          	</form:select>
+          	</form:select> --%>
 			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.actors" />&nbsp;*</td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.rbno" /></td>
+			<td bgcolor="D6D6D6" width="1"></td>
+			<c:choose>
+				<c:when test="${customer.userTc eq 2}">
+				<td class="ct_write01">
+				<form:hidden path="rbno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="rbno" cssClass="errors" />
+				<input type="text" value="${fn:substring(customer.rbno,0,6)}" id="rbno1" readonly="readonly"> -
+				<input type="text" value="${fn:substring(customer.rbno,6,13)}" id="rbno2" readonly="readonly">
+				</td>
+				</c:when>
+				<c:otherwise>
+				<td class="ct_write01">
+				<form:hidden path="rbno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="rbno" cssClass="errors" />
+				<input type="text" value="${fn:substring(customer.rbno,0,3)}" id="rbno1" readonly="readonly"> -
+				<input type="text" value="${fn:substring(customer.rbno,3,5)}" id="rbno2" readonly="readonly"> -
+				<input type="text" value="${fn:substring(customer.rbno,5,10)}" id="rbno3" readonly="readonly">
+				</td>
+				</c:otherwise>
+			</c:choose>
+		</tr>
+		<tr>
+			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+		</tr>
+		<tr>
+			<td rowspan="5" class="ct_td">우편물 수령지</td>
+			<td width="150" class="ct_td"><spring:message code="customer.psno" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="actors" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="actors" cssClass="errors" />
+				<form:hidden path="psno" cssClass="ct_input_g" cssErrorClass="text medium error" size="10" maxlength="3" /> <form:errors path="psno" cssClass="errors" />
+				<input type="text" value="${fn:substring(customer.psno,0,3)}"> - 
+				<input type="text" value="${fn:substring(customer.psno,3,6)}">
+				<input type="button" value="우편번호 찾기">
 			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.runtime" /></td>
+			<td width="150" class="ct_td"><spring:message code="customer.addr" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="runtime" cssClass="ct_input_g" cssErrorClass="text medium error" size="10" maxlength="3" /> min. <form:errors path="runtime" cssClass="errors" />
+				<form:input path="addr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
+				<form:errors path="addr" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.releaseDate" /></td>
+			<td width="150" class="ct_td"><spring:message code="customer.dongBlwAddr" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="releaseDate" id="releaseDate" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
-				<c:if test="${empty movie.movieId}">
-					<anyframe:validate id="releaseDate" type="Date" value="currentDate"/>
-				</c:if>
-				<c:if test="${not empty movie.movieId}">
-					<anyframe:validate id="releaseDate" type="Date"/>
-				</c:if>
-				<form:errors path="releaseDate" cssClass="errors" />
+				<form:input path="dongBlwAddr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
+				<form:errors path="dongBlwAddr" cssClass="errors" />
 			</td>
 		</tr>
+	</table>
+	<br><br>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.ticketPrice" /></td>
+			<td width="150" class="ct_td" colspan="7">최종변경정보</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
-				<form:input id="ticketPrice" path="ticketPrice" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="5" /> <form:errors path="ticketPrice" cssClass="errors" />
-			</td>
 		</tr>
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td"><spring:message code="movie.nowPlaying" /></td>
+			<td width="150" class="ct_td"><spring:message code="customer.lastChngUsid"/></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">Is this movie now playing ? <form:checkbox path="nowPlaying" value="Y" /><input type="hidden" name="!nowPlaying" value="N" /></td>
-		</tr>
-		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>	
-		<tr>
-			<td width="150" class="ct_td">
-			<spring:message code="movie.posterFile"/></td><td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">		
-				<c:if test="${not empty movie.posterFile}">
-					<img src="<c:url value='${movie.posterFile}'/>" alt="<spring:message code='movie.posterFile'/>" border="0" />
-					<form:hidden path="posterFile"/>
-				</c:if>
-				<c:if test="${empty movie.posterFile}">
-					<input type="file" name="realPosterFile" class="ct_input_g" style="width:309px; height:19px" maxLength="100" >
-				</c:if>							        
+			<td class="ct_write01">${customer.lastChngUsid}</td>
+			<td bgcolor="D6D6D6" width="1"></td>
+			<td width="150" class="ct_td"><spring:message code="customer.lastChngDt"/></td>
+			<td bgcolor="D6D6D6" width="1"></td><td class="ct_write01">${customer.lastChngDt}
 			</td>
 		</tr>
-		 -->
 	</table>
 	<!--begin of button-->
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
 			<td height="24" colspan="2" align="center">
 				<c:if test="${empty customer.cusNo}">
-					<a id="createlink" href="javascript:fncCreateMovie();"><img src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a>
+					<a id="createlink" href="javascript:createCustomer();"><img src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a>
 					<script type="text/javascript">
 					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'createlink', event:'onclick'}));
 					</script>
 				</c:if>
 				<c:if test="${not empty customer.cusNo}">
-					<a id="updatelink" href="javascript:fncUpdateMovie();"><img src="<c:url value='/sample/images/btn_update.png'/>" width="64" height="18" border="0" /></a>
+					<a id="updatelink" href="javascript:updateCustomer();"><img src="<c:url value='/sample/images/btn_update.png'/>" width="64" height="18" border="0" /></a>
 					<script type="text/javascript">
 					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'updatelink', event:'onclick'}));
 					</script>
-					<a href="javascript:fncRemoveMovie();"><img src="<c:url value='/sample/images/btn_delete.png'/>" width="64" height="18" border="0" /></a>
+					<a href="javascript:removeCustomer();"><img src="<c:url value='/sample/images/btn_delete.png'/>" width="64" height="18" border="0" /></a>
 				</c:if>
 			</td>
 		</tr>

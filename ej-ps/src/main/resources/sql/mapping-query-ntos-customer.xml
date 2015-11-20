@@ -23,7 +23,22 @@
 			</statement>
 			<result class="com.sds.ps.domain.Customer" />
 		</query>
-
+		
+		<query id="updateCustomer">
+			<statement>
+				UPDATE custom 
+				SET user_tc = :vo.userTc,
+				    rbno = :vo.rbno,
+				    cnm = :vo.cnm,
+				    psno = :vo.psno, 
+				    addr = :vo.addr,
+				    dong_blw_addr = :vo.dongBlwAddr,
+				    last_chng_usid = :vo.lastChngUsid,
+				    last_chng_dt = sysdate
+				WHERE cus_no = :vo.cusNo
+			</statement>
+		</query>
+		
 	</queries>
 </queryservice>
 
