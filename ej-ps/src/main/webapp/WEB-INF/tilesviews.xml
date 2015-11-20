@@ -18,6 +18,18 @@
     <definition name="foundationViewMovie" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/form.jsp" />
     </definition>
+
+<!-- 상품 -->
+    <definition name="ntosListProduct" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/list.jsp" />
+    </definition>
+    <definition name="ntosViewProduct" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/form.jsp" />
+    </definition>
+    
+    
+    
+    
 <!--Add new tiles definition here-->
 <!--hibernate-tiles-definition-START-->
     <definition name="hibernateListMovie" extends="foundationLayout">
