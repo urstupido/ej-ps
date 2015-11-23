@@ -99,7 +99,7 @@ public class ProductController {
 
 	@RequestMapping(params = "method=update")
 	public String update(@Valid Product product, BindingResult results, SessionStatus status) throws Exception {
-		System.out.println("=========================================aaaaaaa");
+		System.out.println("=========================================");
 		System.out.println(results);
 		
 		if (results.hasErrors()) {
@@ -108,7 +108,7 @@ public class ProductController {
 		
 		System.out.println("=========================================");
 		System.out.println(product);
-		
+		System.out.println("ㅇㅁㄴ어롬ㄴㅇㄹ");
 		this.ProductService.update(product);
 		status.setComplete();
 
