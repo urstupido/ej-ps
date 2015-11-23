@@ -7,6 +7,13 @@
     <script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
     
     <script type="text/javascript">
+    	$(function(){
+    		$('#keyword').keypress(function(key){
+    			if (key.keyCode == 13) {
+    				fncSearchCustomer();
+				}
+    		})
+    	})
 		function fncSearchCustomer(arg) {
 			if ($('#gubun').val() == '고객번호') {
 				$('#cusNo').val($('#keyword').val());
@@ -41,6 +48,9 @@
 <!--begin of search-->
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
 		<tr>
+			<td align="left">
+				총 ${size}건
+			</td>
 			<td align="right">
 				<form:select path="codeInfo.code" cssClass="ct_input_g" cssStyle="width:80px;">
 					<form:option value="">전체</form:option>
