@@ -32,7 +32,33 @@
 <!--end of title-->
 
 <form:form modelAttribute="customer" method="post" name="searchForm">
-
+<!--begin of search-->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
+		<tr>
+			<td align="right" width="180">
+				<form:select path="userTc" cssClass="ct_input_g" cssStyle="width:80px;">
+					<form:option value="">전체</form:option>
+					<form:option value="1">사용자</form:option>
+					<form:option value="2">가입자</form:option>
+				</form:select>
+			</td>
+			<td align="right" width="180">
+				<form:select path="gubun" cssClass="ct_input_g" cssStyle="width:80px;">
+					<form:option value="1">고객번호</form:option>
+					<form:option value="2">고객명</form:option>
+				</form:select>
+			</td>
+			<td align="right">
+				<form:input path="keyword" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" />
+				
+			</td>
+			
+			<td align="right" width="35">
+				<a href="javascript:fncSearchCustomer();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
+			</td>
+		</tr>
+	</table>
+	<!--end of search-->
 	<table class="scrollTable" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<thead>
 			<tr>
