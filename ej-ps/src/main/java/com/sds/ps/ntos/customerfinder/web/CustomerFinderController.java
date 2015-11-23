@@ -32,6 +32,7 @@ public class CustomerFinderController {
 			code.setCode("");
 			customer.setCodeInfo(code);
 		}
+		
 		Page resultPage = customerFinder.getPagingList(customer, pageIndex);
 		
 		model.addAttribute("customer", customer);
