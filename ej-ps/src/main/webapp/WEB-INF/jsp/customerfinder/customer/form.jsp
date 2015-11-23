@@ -76,9 +76,9 @@
 			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.userTc" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-			<%-- <form:select path="genre.genreId">
-            	<form:options items="${genreList}" itemValue="genreId" itemLabel="name"/>
-          	</form:select> --%>
+			<form:select path="codeInfo.code">
+            	<form:options items="${codeList}" itemValue="code" itemLabel="codeName"/>
+          	</form:select>
 			</td>
 		</tr>
 		<tr>
@@ -88,7 +88,7 @@
 			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.rbno" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<c:choose>
-				<c:when test="${customer.userTc eq 2}">
+				<c:when test="${customer.codeInfo.code eq 2}">
 				<td class="ct_write01">
 				<form:hidden path="rbno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="rbno" cssClass="errors" />
 				<input type="text" value="${fn:substring(customer.rbno,0,6)}" id="rbno1" readonly="readonly"> -
