@@ -9,7 +9,7 @@ public class Code implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String codeType;
-	private String code;
+	private String code = "";
 	private String codeName;
 	private Set<Customer> customers = new HashSet<Customer>(0);
 

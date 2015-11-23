@@ -11,6 +11,9 @@
 				FROM custom,
 				code c
 				where c.code_type='USER_TC' and c.code = custom.user_tc
+				AND cus_no like '%' || :vo.cusNo || '%'
+				AND cnm like '%' || :vo.cnm || '%'
+				and user_tc like '%' || :vo.codeInfo.code || '%'
 			</statement>
 			<result class="com.sds.ps.domain.Customer">
 				<result-mapping column="{code_name}" attribute="{codeInfo.codeName}" />
@@ -43,6 +46,13 @@
 				last_chng_usid = :vo.lastChngUsid,
 				last_chng_dt = sysdate
 				WHERE cus_no = :vo.cusNo
+			</statement>
+		</query>
+		
+		<query id="createCustomer">
+			<statement>
+				INSERT INTO custom (cus_no, user_tc, rbno, cnm, psno, addr, dong_blw_addr, last_chng_usid, last_chng_dt)
+				VALUES (:vo.cusNo, :vo.codeInfo.code, :vo.rbno, :vo.cnm, :vo.psno, :vo.addr, :vo.dongBlwAddr, :vo.lastChngUsid, sysdate)
 			</statement>
 		</query>
 

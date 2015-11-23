@@ -3,10 +3,16 @@
 <head>
     <%@ include file="/sample/common/meta.jsp" %>
 	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">
-    <script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script> 
+    <script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
     
     <script type="text/javascript">
 		function fncSearchCustomer(arg) {
+			if ($('#gubun').val() == '고객번호') {
+				$('#cusNo').val($('#keyword').val());
+			}else{
+				$('#cnm').val($('#keyword').val());
+			}
 		   	document.searchForm.action="<c:url value='/ntosCustomerFinder.do?method=list'/>";
 		   	document.searchForm.submit();						
 		}
@@ -32,7 +38,27 @@
 <!--end of title-->
 
 <form:form modelAttribute="customer" method="post" name="searchForm">
-
+<!--begin of search-->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
+		<tr>
+			<td align="right">
+				<form:select path="codeInfo.code" cssClass="ct_input_g" cssStyle="width:80px;">
+					<form:option value="">전체</form:option>
+					<form:option value="1">사용자</form:option>
+					<form:option value="2">가입자</form:option>
+				</form:select>
+				<select cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
+					<option value="고객번호">고객번호</option>
+					<option value="고객명">고객명</option>
+				</select>
+				<input type="text" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" id="keyword">
+				<a href="javascript:fncSearchCustomer();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
+			</td>
+			<input type="hidden" id="cnm" name="cnm"/>
+			<input type="hidden" id="cusNo" name="cusNo"/>
+		</tr>
+	</table>
+	<!--end of search-->
 	<table class="scrollTable" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<thead>
 			<tr>

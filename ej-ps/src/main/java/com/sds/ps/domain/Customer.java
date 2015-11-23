@@ -12,7 +12,7 @@ public class Customer extends CommonVo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String cusNo;
+	private String cusNo = "";
 	
 	private int no;
 	
@@ -164,7 +164,7 @@ public class Customer extends CommonVo implements Serializable{
 		this.no = no;
 	}
 
-	public Code getCodeInfo() {
+	public Code getcodeInfo() {
 		return codeInfo;
 	}
 
