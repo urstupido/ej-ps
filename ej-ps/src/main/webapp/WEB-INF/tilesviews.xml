@@ -35,7 +35,9 @@
         <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/form.jsp" />
     </definition>
     
-    
+<!-- 우편번호 -->
+    <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
+    </definition>    
     
 <!--Add new tiles definition here-->
 <!--hibernate-tiles-definition-START-->
