@@ -17,12 +17,33 @@
 				FROM prod_base p, code c1, code c2, code c3 
 				WHERE 1=1
 				  and p.prod_lcls_c = c1.code
-				  and c1.code_desc = '상품_대분류_코드'
+				  and c1.code_type = 'PROD_LCLS_C'
 				  and p.asts_mng_org_c = c2.code 
 				  and p.prod_offr_org_c = c3.code
-				<!--foundation findMovieList-END-->
-			</statement>			
-		</query>		
+			</statement>	
+			<result class="com.sds.ps.domain.Product">
+				<result-mapping column="{prodLclsC}" attribute="{prodLclsC.code}" />
+				<result-mapping column="{astsMngOrgC}" attribute="{prodMclsC.code}" />
+				<result-mapping column="{prodOffrOrgC}" attribute="{prodSclsC.code}" />
+			</result>
+		</query>
+		
+		<!-- 
+		<query id="findCustomerByPk">
+			<statement>
+				SELECT cus_no, user_tc as code, rbno, cnm, psno, addr,
+				dong_blw_addr,
+				last_chng_usid, last_chng_dt
+				FROM custom
+				WHERE cus_no =
+				:vo.cusNo
+			</statement>
+			<result class="com.sds.ps.domain.Customer">
+				<result-mapping column="{code}" attribute="{codeInfo.code}" />
+			</result>
+		</query> -->
+		
+			
 		<query id="findProductByPk">
 			<statement>
 				SELECT prod_no, 
