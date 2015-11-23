@@ -45,6 +45,10 @@
 		}	    
 	}
 	
+	function findZipCode(){
+		window.open("${ctx}/ntosZipcodeFinder.do?method=openWindow", "zipcode", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+	}
+	
 	</script>         
 </head>
 <!--************************** begin of contents *****************************-->
@@ -140,7 +144,7 @@
 				<form:hidden path="psno" cssClass="ct_input_g" cssErrorClass="text medium error" size="10" maxlength="3" /> <form:errors path="psno" cssClass="errors" />
 				<input type="text" value="${fn:substring(customer.psno,0,3)}" id="psno1"> - 
 				<input type="text" value="${fn:substring(customer.psno,3,6)}" id="psno2">
-				<input type="button" value="우편번호 찾기">
+				<input type="button" value="우편번호 찾기" onclick="findZipCode()">
 			</td>
 		</tr>
 		<tr>
