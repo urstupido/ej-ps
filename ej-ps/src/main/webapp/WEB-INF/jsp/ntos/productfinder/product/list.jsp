@@ -56,9 +56,9 @@
 						<a class="linkClass" href="${ctx}/ntosProduct.do?method=get&prodNo=${product.prodNo}">${product.prodNo}</a>
 					</td>
 					<td align="center">${product.prodName}</td>
-					<td align="center">${product.prodLclsC}</td>
-					<td align="center">${product.astsMngOrgC}</td>
-					<td align="center">${product.prodOffrOrgC}</td>
+					<td align="center">${product.codeInfo.codeName}</td>
+					<td align="center">${product.codeInfo.codeName}</td>
+					<td align="center">${product.codeInfo.codeName}</td>
 					<td align="center">${product.prodSellEntrDt}</td>
 					<td align="center">${product.prodSellEndDt}</td>
 				</tr>
