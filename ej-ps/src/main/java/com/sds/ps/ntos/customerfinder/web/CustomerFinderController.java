@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import anyframe.common.Page;
 
 import com.sds.ntos.customerfinder.service.CustomerFinder;
+import com.sds.ps.domain.Code;
 import com.sds.ps.domain.Customer;
 
 @Controller("ntosCustomerFinderController")
@@ -26,6 +27,11 @@ public class CustomerFinderController {
 	public String list(
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
 			Customer customer, BindingResult result, Model model) throws Exception {
+		if (customer.getCodeInfo() == null) {
+			Code code = new Code();
+			code.setCode("");
+			customer.setCodeInfo(code);
+		}
 		Page resultPage = customerFinder.getPagingList(customer, pageIndex);
 		
 		model.addAttribute("customer", customer);
