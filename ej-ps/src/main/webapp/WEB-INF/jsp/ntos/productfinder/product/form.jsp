@@ -13,7 +13,6 @@
 	}
 	
 	function updateProduct() {
-		alert('야호');
 	    document.productForm.action="<c:url value='/ntosProduct.do?method=update'/>";
 	    document.productForm.submit();
 	}
@@ -139,7 +138,7 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.last_chng_dt" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="lastChngDt" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/> <form:errors path="lastChngDt" cssClass="errors" />
+				<form:input path="lastChngDt" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="false"/> <form:errors path="lastChngDt" cssClass="errors" />
 			</td> 
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.last_chng_usid" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
@@ -149,97 +148,6 @@
 		</tr>
 		
 
-		
-<%-- 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.userTc" /></td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
-			<form:select path="genre.genreId">
-            	<form:options items="${genreList}" itemValue="genreId" itemLabel="name"/>
-          	</form:select>
-			</td>
-		</tr>
-		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.rbno" /></td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			<c:choose>
-				<c:when test="${customer.userTc eq 2}">
-				<td class="ct_write01">
-				<form:hidden path="rbno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="rbno" cssClass="errors" />
-				<input type="text" value="${fn:substring(customer.rbno,0,6)}" id="rbno1" readonly="readonly"> -
-				<input type="text" value="${fn:substring(customer.rbno,6,13)}" id="rbno2" readonly="readonly">
-				</td>
-				</c:when>
-				<c:otherwise>
-				<td class="ct_write01">
-				<form:hidden path="rbno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="rbno" cssClass="errors" />
-				<input type="text" value="${fn:substring(customer.rbno,0,3)}" id="rbno1" readonly="readonly"> -
-				<input type="text" value="${fn:substring(customer.rbno,3,5)}" id="rbno2" readonly="readonly"> -
-				<input type="text" value="${fn:substring(customer.rbno,5,10)}" id="rbno3" readonly="readonly">
-				</td>
-				</c:otherwise>
-			</c:choose>
-		</tr>
-		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td rowspan="5" class="ct_td">우편물 수령지</td>
-			<td width="150" class="ct_td"><spring:message code="customer.psno" /></td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
-				<form:hidden path="psno" cssClass="ct_input_g" cssErrorClass="text medium error" size="10" maxlength="3" /> <form:errors path="psno" cssClass="errors" />
-				<input type="text" value="${fn:substring(customer.psno,0,3)}"> - 
-				<input type="text" value="${fn:substring(customer.psno,3,6)}">
-				<input type="button" value="우편번호 찾기">
-			</td>
-		</tr>
-		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.addr" /></td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
-				<form:input path="addr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
-				<form:errors path="addr" cssClass="errors" />
-			</td>
-		</tr>
-		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.dongBlwAddr" /></td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
-				<form:input path="dongBlwAddr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
-				<form:errors path="dongBlwAddr" cssClass="errors" />
-			</td>
-		</tr>
-	</table>
-	<br><br>
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
-		<tr>
-			<td width="150" class="ct_td" colspan="7">최종변경정보</td>
-			<td bgcolor="D6D6D6" width="1"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.lastChngUsid"/></td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">${customer.lastChngUsid}</td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			<td width="150" class="ct_td"><spring:message code="customer.lastChngDt"/></td>
-			<td bgcolor="D6D6D6" width="1"></td><td class="ct_write01">${customer.lastChngDt}
-			</td>
-		</tr>
-	</table> --%>
-	<!--begin of button-->
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
 			<td height="24" colspan="2" align="center">

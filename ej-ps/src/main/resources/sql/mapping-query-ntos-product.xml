@@ -44,7 +44,6 @@
 		</query>	
 		
 		
-		
 		<query id="updateProduct">
 			<statement>
 				UPDATE prod_base
@@ -61,6 +60,7 @@
 				WHERE prod_no = :vo.prodNo
 			</statement>
 		</query>
+		
 	</queries>
 </queryservice>
 

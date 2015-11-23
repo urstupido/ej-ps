@@ -68,7 +68,7 @@ public class Product extends CommonVo implements Serializable {
 	private String lastChngUsid;
 
 	@NotNull
-	@DateTimeFormat(pattern = "YYYY-MM-DD")
+	//@DateTimeFormat(pattern = "YYYY-MM-DD")
 	private Date lastChngDt;
 
 	
