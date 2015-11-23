@@ -164,7 +164,7 @@ public class Customer extends CommonVo implements Serializable{
 		this.no = no;
 	}
 
-	public Code getcodeInfo() {
+	public Code getCodeInfo() {
 		return codeInfo;
 	}
 

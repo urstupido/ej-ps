@@ -18,10 +18,10 @@ public class Product extends CommonVo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int no;
-		
+
 	@NotNull
 	@Size(min = 1, max = 5)
-	private String prodLclsC;
+	private String prodLclsC = "";
 	
 	@NotNull
 	@Size(min = 1, max = 5)
@@ -42,12 +42,12 @@ public class Product extends CommonVo implements Serializable {
 	
 	@NotNull
 	@Size(min = 1, max = 13)
-	private String prodNo;
+	private String prodNo = "";
 
 
 	@NotNull
 	@Size(min = 1, max = 60)
-	private String prodName;
+	private String prodName = "";
 
 	@NotNull
 	private String prodSellEntrDt;
