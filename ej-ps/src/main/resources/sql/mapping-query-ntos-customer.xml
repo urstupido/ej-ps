@@ -45,6 +45,13 @@
 				WHERE cus_no = :vo.cusNo
 			</statement>
 		</query>
+		
+		<query id="createCustomer">
+			<statement>
+				INSERT INTO custom (cus_no, user_tc, rbno, cnm, psno, addr, dong_blw_addr, last_chng_usid, last_chng_dt)
+				VALUES (:vo.cusNo, :vo.codeInfo.code, :vo.rbno, :vo.cnm, :vo.psno, :vo.addr, :vo.dongBlwAddr, :vo.lastChngUsid, sysdate)
+			</statement>
+		</query>
 
 	</queries>
 </queryservice>

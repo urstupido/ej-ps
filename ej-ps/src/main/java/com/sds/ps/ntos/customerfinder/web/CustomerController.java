@@ -1,5 +1,6 @@
 package com.sds.ps.ntos.customerfinder.web;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,11 +50,14 @@ public class CustomerController {
 	@RequestMapping(params = "method=create")
 	public String create(@Valid Customer customer, BindingResult results, SessionStatus status, HttpSession session)
 			throws Exception {
-		
-		if(results.hasErrors()){
+		customer.setLastChngUsid("test");
+		customer.setLastChngDt(new Date(0));
+		/*if(results.hasErrors()){
+			for (ObjectError e : results.getAllErrors()) {
+				System.out.println(e.toString());
+			}
 			return "ntosViewCustomer";
-		}
-		
+		}*/
 		this.customerService.create(customer);
 		status.setComplete();
 		
