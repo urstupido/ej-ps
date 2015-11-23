@@ -1,5 +1,7 @@
 package com.sds.ps.ntos.customerfinder.web;
 
+import java.util.Collection;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -8,13 +10,16 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.sds.ntos.customerfinder.service.CustomerService;
+import com.sds.ps.domain.Code;
 import com.sds.ps.domain.Customer;
+import com.sds.ps.ntos.codefinder.service.CodeService;
 
 @Controller("ntosCustomerController")
 @RequestMapping("/ntosCustomer.do")
@@ -24,6 +29,15 @@ public class CustomerController {
 	@Inject
 	@Named("ntosCustomerService")
 	private CustomerService customerService;
+	
+	@Inject
+	@Named("ntosCodeService")
+	private CodeService codeService;
+	
+	@ModelAttribute("codeList")
+	public Collection<Code> populateGenreList() throws Exception {
+		return this.codeService.getList("USER_TC");
+	}
 	
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
@@ -51,7 +65,6 @@ public class CustomerController {
 		if(customer==null){
 			throw new Exception("Resource not found " + cusNo);
 		}
-		
 		model.addAttribute(customer);
 		return "ntosViewCustomer";
 	}

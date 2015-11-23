@@ -9,7 +9,10 @@
 		function fncSearchCustomer(arg) {
 		   	document.searchForm.action="<c:url value='/ntosCustomerFinder.do?method=list'/>";
 		   	document.searchForm.submit();						
-		}		
+		}
+		function createCustomerView(){
+			document.location.href="<c:url value='/ntosCustomer.do?method=createView'/>";
+		}
 	</script>
 	
 </head>
@@ -47,7 +50,7 @@
 					<td class="underline" align="center">
 						<a class="linkClass" href="${ctx}/ntosCustomer.do?method=get&cusNo=${customer.cusNo}">${customer.cusNo}</a>
 					</td>
-					<td align="center">${customer.userTc}</td>
+					<td align="center">${customer.codeInfo.codeName}</td>
 					<td align="center">${customer.cnm}</td>
 					<td align="center">${customer.lastChngDt}</td>
 				</tr>
@@ -67,4 +70,13 @@
 			</td>
 		</tr>
 	</table>
+	
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
+		<tr>
+			<td align="right"><a href='<c:url value="javascript:createCustomerView();" />'><img
+				src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a></td>
+		</tr>
+	</table>
+	
 </form:form>

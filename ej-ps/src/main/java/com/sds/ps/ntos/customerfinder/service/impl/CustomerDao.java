@@ -41,7 +41,6 @@ public class CustomerDao extends AbstractDAO {
 	public Customer get(String cusNo) throws Exception {
 		Customer customer = new Customer();
 		customer.setCusNo(cusNo);
-		System.out.println(cusNo);
 		return (Customer)findByPk("Customer", customer);
 	}
 

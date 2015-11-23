@@ -14,8 +14,9 @@ public class Customer extends CommonVo implements Serializable{
 	
 	private String cusNo;
 	
-	@NotNull
-	private String userTc;
+	private int no;
+	
+	private Code codeInfo;
 	
 	@NotNull
 	@Size(min=1, max = 50)
@@ -52,18 +53,6 @@ public class Customer extends CommonVo implements Serializable{
 
 	public void setCusNo(String cusNo) {
 		this.cusNo = cusNo;
-	}
-
-
-
-	public String getUserTc() {
-		return userTc;
-	}
-
-
-
-	public void setUserTc(String userTc) {
-		this.userTc = userTc;
 	}
 
 
@@ -160,10 +149,27 @@ public class Customer extends CommonVo implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Customer [cus_no=" + cusNo + ", user_tc=" + userTc
+		return "Customer [cus_no=" + cusNo + ", code="
 				+ ", pbno=" + rbno + ", cnm=" + cnm + ", psno=" + psno
 				+ ", addr=" + addr + ", dong_blw_addr=" + dongBlwAddr
 				+ ", last_chng_usid=" + lastChngUsid + ", last_chng_dt="
 				+ lastChngDt + "]";
 	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public Code getCodeInfo() {
+		return codeInfo;
+	}
+
+	public void setCodeInfo(Code codeInfo) {
+		this.codeInfo = codeInfo;
+	}
+
 }

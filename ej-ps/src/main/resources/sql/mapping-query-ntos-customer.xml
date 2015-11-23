@@ -5,40 +5,47 @@
 	<queries>
 		<query id="findCustomerList">
 			<statement>
-				SELECT custom.cus_no, c.code_name as custom.user_tc, custom.rbno,
+				SELECT custom.cus_no, c.code_name, custom.rbno,
 				custom.cnm, custom.psno, custom.addr, custom.dong_blw_addr,
 				custom.last_chng_usid, custom.last_chng_dt, rownum as no
-				FROM custom, code c
+				FROM custom,
+				code c
 				where c.code_type='USER_TC' and c.code = custom.user_tc
 			</statement>
+			<result class="com.sds.ps.domain.Customer">
+				<result-mapping column="{code_name}" attribute="{codeInfo.codeName}" />
+			</result>
 		</query>
 
 		<query id="findCustomerByPk">
 			<statement>
-				SELECT custom.cus_no, custom.user_tc, custom.rbno,
-				custom.cnm, custom.psno, custom.addr, custom.dong_blw_addr,
-				custom.last_chng_usid, custom.last_chng_dt
+				SELECT cus_no, user_tc as code, rbno, cnm, psno, addr,
+				dong_blw_addr,
+				last_chng_usid, last_chng_dt
 				FROM custom
-				WHERE cus_no = :vo.cusNo
+				WHERE cus_no =
+				:vo.cusNo
 			</statement>
-			<result class="com.sds.ps.domain.Customer" />
+			<result class="com.sds.ps.domain.Customer">
+				<result-mapping column="{code}" attribute="{codeInfo.code}" />
+			</result>
 		</query>
-		
+
 		<query id="updateCustomer">
 			<statement>
-				UPDATE custom 
-				SET user_tc = :vo.userTc,
-				    rbno = :vo.rbno,
-				    cnm = :vo.cnm,
-				    psno = :vo.psno, 
-				    addr = :vo.addr,
-				    dong_blw_addr = :vo.dongBlwAddr,
-				    last_chng_usid = :vo.lastChngUsid,
-				    last_chng_dt = sysdate
+				UPDATE custom
+				SET rbno = :vo.rbno,
+				user_tc = :vo.codeInfo.code,
+				cnm = :vo.cnm,
+				psno = :vo.psno,
+				addr = :vo.addr,
+				dong_blw_addr = :vo.dongBlwAddr,
+				last_chng_usid = :vo.lastChngUsid,
+				last_chng_dt = sysdate
 				WHERE cus_no = :vo.cusNo
 			</statement>
 		</query>
-		
+
 	</queries>
 </queryservice>
 
