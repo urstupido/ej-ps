@@ -13,6 +13,7 @@
 	}
 	
 	function updateProduct() {
+		alert('야호');
 	    document.productForm.action="<c:url value='/ntosProduct.do?method=update'/>";
 	    document.productForm.submit();
 	}

@@ -2,7 +2,8 @@ package com.sds.ps.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 
 import javax.validation.constraints.NotNull;
@@ -10,13 +11,33 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import antlr.collections.List;
+
 public class Product extends CommonVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private int no;
+		
+	@NotNull
+	@Size(min = 1, max = 5)
+	private String prodLclsC;
 	
-	private Set<Code> codes = new HashSet<Code>(0);
+	@NotNull
+	@Size(min = 1, max = 5)
+	private String prodMclsC;
+	
+	@NotNull
+	@Size(min = 1, max = 5)
+	private String prodSclsC;
+	
+	@NotNull
+	@Size(min = 1, max = 10)
+	private String prodOffrOrgC;
+	
+	@NotNull
+	@Size(min = 1, max = 10)
+	private String astsMngOrgC;
 	
 	
 	@NotNull
@@ -59,20 +80,56 @@ public class Product extends CommonVo implements Serializable {
 		this.no = no;
 	}
 
-	public Set<Code> getCodes() {
-		return codes;
-	}
-
-	public void setCodes(Set<Code> codes) {
-		this.codes = codes;
-	}
-
 	public String getProdNo() {
 		return prodNo;
 	}
 
 	public void setProdNo(String prodNo) {
 		this.prodNo = prodNo;
+	}
+	
+	
+
+	public String getProdLclsC() {
+		return prodLclsC;
+	}
+
+	public void setProdLclsC(String prodLclsC) {
+		this.prodLclsC = prodLclsC;
+	}
+	
+	
+
+	public String getProdMclsC() {
+		return prodMclsC;
+	}
+
+	public void setProdMclsC(String prodMclsC) {
+		this.prodMclsC = prodMclsC;
+	}
+
+	public String getProdSclsC() {
+		return prodSclsC;
+	}
+
+	public void setProdSclsC(String prodSclsC) {
+		this.prodSclsC = prodSclsC;
+	}
+
+	public String getProdOffrOrgC() {
+		return prodOffrOrgC;
+	}
+
+	public void setProdOffrOrgC(String prodOffrOrgC) {
+		this.prodOffrOrgC = prodOffrOrgC;
+	}
+
+	public String getAstsMngOrgC() {
+		return astsMngOrgC;
+	}
+
+	public void setAstsMngOrgC(String astsMngOrgC) {
+		this.astsMngOrgC = astsMngOrgC;
 	}
 
 	public String getProdName() {
@@ -140,8 +197,16 @@ public class Product extends CommonVo implements Serializable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Product [no=");
 		builder.append(no);
-		builder.append(", codes=");
-		builder.append(codes);
+		builder.append(", prodLclsC=");
+		builder.append(prodLclsC);
+		builder.append(", prodMclsC=");
+		builder.append(prodMclsC);
+		builder.append(", prodSclsC=");
+		builder.append(prodSclsC);
+		builder.append(", prodOffrOrgC=");
+		builder.append(prodOffrOrgC);
+		builder.append(", astsMngOrgC=");
+		builder.append(astsMngOrgC);
 		builder.append(", prodNo=");
 		builder.append(prodNo);
 		builder.append(", prodName=");
@@ -161,4 +226,6 @@ public class Product extends CommonVo implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 }
