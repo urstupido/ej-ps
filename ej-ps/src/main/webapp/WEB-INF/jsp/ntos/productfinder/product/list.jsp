@@ -4,15 +4,32 @@
     <%@ include file="/sample/common/meta.jsp" %>
     <title>상품관리</title>
 	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">
-    <script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>    
-	<script type="text/javascript">
-		function fncCreateproductView() {
-			document.location.href="<c:url value='/ntosProduct.do?method=createView'/>";
-		}	
-		function fncSearchproduct(arg) {
+    <script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>   
+    <script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
+	
+	 <script type="text/javascript">
+    	$(function(){
+    		$('#keyword').keypress(function(key){
+    			if (key.keyCode == 13) {
+    				searchProduct();
+				}
+    		})
+    	})
+    	
+		function searchProduct(arg) {
+			if ($('#gubun').val() == "1") {
+				$('#prodNo').val($('#keyword').val());
+			}else{
+				$('#prodName').val($('#keyword').val());
+			}
+			
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
 		   	document.searchForm.submit();						
-		}		
+		}
+    	function createProductView() {
+			document.location.href="<c:url value='/ntosProduct.do?method=createView'/>";
+		}	
+
 	</script>
 </head>
 
@@ -35,6 +52,41 @@
 <!--end of title-->
 
 <form:form modelAttribute="product" method="post" name="searchForm">
+	<!--begin of search-->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
+		<tr>
+			<td align="left">
+				총 ${size}건
+			</td>
+			<td align="right">
+				<select cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
+					<option value="" selected="selected">전체</option>
+					<option value="1">상품번호</option>
+					<option value="2">상품명</option>
+				</select>
+				
+				<input type="hidden" id="prodName" name="prodName"/>
+				<input type="hidden" id="prodNo" name="prodNo"/>
+				
+				<input type="text" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" id="keyword">
+				
+				<select cssClass="ct_input_g" cssStyle="width:80px;" id="prodLcls">
+					<option value="" selected="selected">전체</option>
+					<option value="1"><spring:message code="product.lcls_c1"/></option>
+					<option value="2"><spring:message code="product.lcls_c2"/></option>
+					<option value="3"><spring:message code="product.lcls_c3"/></option>
+					<option value="4"><spring:message code="product.lcls_c4"/></option>
+					<option value="5"><spring:message code="product.lcls_c5"/></option>
+					<option value="6"><spring:message code="product.lcls_c6"/></option>
+				</select>
+				
+				<a href="javascript:searchProduct();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
+			</td>
+			
+		</tr>
+	</table>
+	<!--end of search-->
+
 	<table class="scrollTable" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<thead>
 			<tr>
@@ -81,7 +133,7 @@
 
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
-			<td align="right"><a href='<c:url value="javascript:fncCreateproductView();" />'><img
+			<td align="right"><a href='<c:url value="javascript:createProductView();" />'><img
 				src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a></td>
 		</tr>
 	</table>

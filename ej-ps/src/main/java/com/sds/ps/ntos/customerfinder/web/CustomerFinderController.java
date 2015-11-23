@@ -41,7 +41,7 @@ public class CustomerFinderController {
 		model.addAttribute("pagesize", resultPage.getPagesize());
 		model.addAttribute("pageunit", resultPage.getPageunit());		
 		model.addAttribute("resultPage", resultPage);
-		
+
 		return "customerListView";
 	}
 }
