@@ -11,6 +11,9 @@
 				FROM custom,
 				code c
 				where c.code_type='USER_TC' and c.code = custom.user_tc
+				AND cus_no like '%' || :vo.cusNo || '%'
+				AND cnm like '%' || :vo.cnm || '%'
+				and user_tc like '%' || :vo.codeInfo.code || '%'
 			</statement>
 			<result class="com.sds.ps.domain.Customer">
 				<result-mapping column="{code_name}" attribute="{codeInfo.codeName}" />
