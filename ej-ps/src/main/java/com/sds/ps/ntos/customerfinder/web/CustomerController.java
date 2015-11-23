@@ -61,7 +61,6 @@ public class CustomerController {
 		if(results.hasErrors()){
 			return "ntosViewCustomer";
 		}
-		
 		this.customerService.update(customer);
 		status.setComplete();
 		

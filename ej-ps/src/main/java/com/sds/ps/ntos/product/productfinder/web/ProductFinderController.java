@@ -36,9 +36,6 @@ public class ProductFinderController {
 		model.addAttribute("pageunit", resultPage.getPageunit());
 		model.addAttribute("resultPage", resultPage);
 		
-		System.out.println("==========================");
-		System.out.println(resultPage.getList());
-
 		return "ntosListProduct";
 	}
 }

@@ -1,9 +1,12 @@
 package com.sds.ps.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Product extends CommonVo implements Serializable {
 
@@ -25,10 +28,9 @@ public class Product extends CommonVo implements Serializable {
 	private String prodName;
 
 	@NotNull
-	@Size(min = 1, max = 8)
 	private String prodSellEntrDt;
+	
 	@NotNull
-	@Size(min = 1, max = 8)
 	private String prodSellEndDt;
 	@NotNull
 	@Size(min = 1, max = 1)
@@ -41,9 +43,9 @@ public class Product extends CommonVo implements Serializable {
 	@Size(min = 1, max = 4)
 	private String prodSclsC;
 
-	@NotNull
+//	@NotNull
 	@Size(min = 1, max = 3)
-	private int maxIvtRto;
+	private String maxIvtRto;
 
 	@NotNull
 	@Size(min = 1, max = 4)
@@ -53,7 +55,7 @@ public class Product extends CommonVo implements Serializable {
 	@Size(min = 1, max = 4)
 	private String astsMngOrgC;
 
-	@NotNull
+//	@NotNull
 	@Size(min = 1, max = 1)
 	private String delYn;
 
@@ -64,109 +66,169 @@ public class Product extends CommonVo implements Serializable {
 	@NotNull
 	private String lastChngDt;
 
+	
+	
 	public String getProdNo() {
 		return prodNo;
 	}
+
+
 
 	public void setProdNo(String prodNo) {
 		this.prodNo = prodNo;
 	}
 
+
+
 	public String getProdName() {
 		return prodName;
 	}
+
+
 
 	public void setProdName(String prodName) {
 		this.prodName = prodName;
 	}
 
+
+
 	public String getProdSellEntrDt() {
 		return prodSellEntrDt;
 	}
+
+
 
 	public void setProdSellEntrDt(String prodSellEntrDt) {
 		this.prodSellEntrDt = prodSellEntrDt;
 	}
 
+
+
 	public String getProdSellEndDt() {
 		return prodSellEndDt;
 	}
+
+
 
 	public void setProdSellEndDt(String prodSellEndDt) {
 		this.prodSellEndDt = prodSellEndDt;
 	}
 
+
+
 	public String getProdLclsC() {
 		return prodLclsC;
 	}
+
+
 
 	public void setProdLclsC(String prodLclsC) {
 		this.prodLclsC = prodLclsC;
 	}
 
+
+
 	public String getProdMclsC() {
 		return prodMclsC;
 	}
+
+
 
 	public void setProdMclsC(String prodMclsC) {
 		this.prodMclsC = prodMclsC;
 	}
 
+
+
 	public String getProdSclsC() {
 		return prodSclsC;
 	}
+
+
 
 	public void setProdSclsC(String prodSclsC) {
 		this.prodSclsC = prodSclsC;
 	}
 
-	public int getMaxIvtRto() {
+
+
+	public String getMaxIvtRto() {
 		return maxIvtRto;
 	}
 
-	public void setMaxIvtRto(int maxIvtRto) {
+
+
+	public void setMaxIvtRto(String maxIvtRto) {
 		this.maxIvtRto = maxIvtRto;
 	}
+
+
 
 	public String getProdOffrOrgC() {
 		return prodOffrOrgC;
 	}
 
+
+
 	public void setProdOffrOrgC(String prodOffrOrgC) {
 		this.prodOffrOrgC = prodOffrOrgC;
 	}
+
+
 
 	public String getAstsMngOrgC() {
 		return astsMngOrgC;
 	}
 
+
+
 	public void setAstsMngOrgC(String astsMngOrgC) {
 		this.astsMngOrgC = astsMngOrgC;
 	}
+
+
 
 	public String getDelYn() {
 		return delYn;
 	}
 
+
+
 	public void setDelYn(String delYn) {
 		this.delYn = delYn;
 	}
+
+
 
 	public String getLastChngUsid() {
 		return lastChngUsid;
 	}
 
+
+
 	public void setLastChngUsid(String lastChngUsid) {
 		this.lastChngUsid = lastChngUsid;
 	}
+
+
 
 	public String getLastChngDt() {
 		return lastChngDt;
 	}
 
+
+
 	public void setLastChngDt(String lastChngDt) {
 		this.lastChngDt = lastChngDt;
 	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 
 	@Override
 	public String toString() {
