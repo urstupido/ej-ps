@@ -42,7 +42,7 @@ public class ZipcodeFinderController {
 	public String list(
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
 			Zipcode zipcode, Model model) throws Exception {
-
+		
 		Page resultPage = zipcodeFinder.getPagingList(zipcode, pageIndex);
 
 		model.addAttribute("zipcode", zipcode);
@@ -56,7 +56,9 @@ public class ZipcodeFinderController {
 	}
 
 	@RequestMapping(params = "method=openWindow")
-	public String openWindow() throws Exception {
+	public String openWindow(Model model) throws Exception {
+		
+		model.addAttribute("zipcode", new Zipcode());
 		return "ntosListZipcode";
 	}
 

@@ -36,11 +36,14 @@
 		})
 	})
 	
-	function addToOpener(){
-		var check = $(this).attr("seq");
-		console.log($(this).attr("seq"));
-		console.log(this.innerHTML);
-		console.log($("#"+check));
+	function addToOpener(seq){
+		var zip1 = $("a[seq="+seq+"]").html().split("-")[0];
+		var zip2 = $("a[seq="+seq+"]").html().split("-")[1];
+		var dong = $.trim($("#"+seq).html());
+		$("#psno1", opener.document).val(zip1);
+		$("#psno2", opener.document).val(zip2);
+		$("#addr", opener.document).val(dong);
+		window.close();
 	}
 	
 </script>
@@ -54,26 +57,26 @@
 				height="18" border="0" align="middle" /></a></td>
 	</tr>
 </table>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
-		<tr>
+	
 		<table class="scrollTable" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<thead>
 			<tr>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">우편번호</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">행정동명</th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid" width="20%">우편번호</th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid" width="80%">행정동명</th>
 			</tr>
 		</thead>
-		
+	<c:if test="${resultPage ne null}">
 		<tbody>
 			<c:forEach var="zipcode" items="${zipcodes}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
-					<td class="underline" align="center"><a class="linkClass" href="javascript:addToOpener(this)" seq="${zipcode.seq}">${zipcode.zip1}-${zipcode.zip2}</a></td>
+					<td class="underline" align="center"><a class="linkClass" href="javascript:addToOpener(${zipcode.seq})" seq="${zipcode.seq}">${zipcode.zip1}-${zipcode.zip2}</a></td>
 					<td align="left" id="${zipcode.seq}">${zipcode.sido}시 ${zipcode.gugun} ${zipcode.dong} ${zipcode.bunji}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		</table>
-	<c:if test="${resultPage ne null}">
+		<br>
+		<span style="margin-left: 5%"><c:if test="${size ne null}">검색결과 : ${size} 개</c:if></span>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<tr>
 			<td class="page" height="50" align="center">

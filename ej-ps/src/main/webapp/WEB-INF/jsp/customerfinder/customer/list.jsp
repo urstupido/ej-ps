@@ -45,6 +45,14 @@
 		<tr>
 			<td align="left">
 				총 ${size}건
+				
+				<select cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
+					<option value="10" selected="selected">10건씩 보기</option>
+					<option value="20">20건씩 보기</option>
+					<option value="30">30건씩 보기</option>
+					<option value="40">40건씩 보기</option>
+					<option value="50">50건씩 보기</option>
+				</select>
 			</td>
 			<td align="right">
 				<form:select path="codeInfo.code" cssClass="ct_input_g" cssStyle="width:80px;">
