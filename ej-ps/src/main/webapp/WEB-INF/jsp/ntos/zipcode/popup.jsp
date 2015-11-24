@@ -35,6 +35,14 @@
 			}
 		})
 	})
+	
+	function addToOpener(){
+		var check = $(this).attr("seq");
+		console.log($(this).attr("seq"));
+		console.log(this.innerHTML);
+		console.log($("#"+check));
+	}
+	
 </script>
 </head>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
@@ -59,8 +67,8 @@
 		<tbody>
 			<c:forEach var="zipcode" items="${zipcodes}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
-					<td class="underline" align="center"><a class="linkClass" href="">${zipcode.zip1}-${zipcode.zip2}</a></td>
-					<td align="left">${zipcode.sido}시 ${zipcode.gugun} ${zipcode.dong} ${zipcode.bunji}</td>
+					<td class="underline" align="center"><a class="linkClass" href="javascript:addToOpener(this)" seq="${zipcode.seq}">${zipcode.zip1}-${zipcode.zip2}</a></td>
+					<td align="left" id="${zipcode.seq}">${zipcode.sido}시 ${zipcode.gugun} ${zipcode.dong} ${zipcode.bunji}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
