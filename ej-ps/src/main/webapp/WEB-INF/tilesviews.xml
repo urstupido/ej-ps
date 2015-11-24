@@ -20,12 +20,20 @@
     </definition>
 
 <!-- 상품 -->
+	<!-- product list view -->
     <definition name="ntosListProduct" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/list.jsp" />
     </definition>
+	<!-- product view -->
     <definition name="ntosViewProduct" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/form.jsp" />
     </definition>
+	<!-- product create -->
+    <definition name="ntosAddProduct" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/addform.jsp" />
+    </definition>
+    
+<!-- 고객 -->    
     <!-- customer list view -->
     <definition name="customerListView" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/list.jsp" /> 

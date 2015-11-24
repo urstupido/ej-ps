@@ -1,9 +1,11 @@
 package com.sds.ps.ntos.product.productfinder.web;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,7 @@ public class ProductController {
 
 	@Inject
 	@Named("ntosProductService") 
-	private ProductService ProductService;
+	private ProductService productService;
 
 	@Inject
 	@Named("ntosCodeService")
@@ -41,57 +43,31 @@ public class ProductController {
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
 		model.addAttribute(new Product());
-		return "ntosViewProduct";
+		return "ntosAddProduct";
 	}
 
-	/*@RequestMapping(params = "method=create")
-	public String create(
-			@RequestParam(value = "realPosterFile", required = false) MultipartFile posterFile,
-			@Valid Product Product, BindingResult results, SessionStatus status, HttpSession session)
+	@RequestMapping(params = "method=create")
+	public String create(@Valid Product product, BindingResult results, SessionStatus status, HttpSession session)
 			throws Exception {
-		
-		if (results.hasErrors()) {
-			return "ntosViewProduct";
-		}
-		
-		System.out.println(results);
-		
-		if (posterFile != null && !posterFile.getOriginalFilename().equals("")) {
-			String pictureName = posterFile.getOriginalFilename();
-
-			String destDir = session.getServletContext().getRealPath(
-					"/sample/images/posters/");
-
-			File dirPath = new File(destDir);
-			if (!dirPath.exists()) {
-				boolean created = dirPath.mkdirs();
-				if (!created) {
-					throw new Exception(
-							"Fail to create a directory for Product image. ["
-									+ destDir + "]");
-				}
+		product.setLastChngUsid("test");
+		product.setLastChngDt(new Date(0));
+		/*if(results.hasErrors()){
+			for (ObjectError e : results.getAllErrors()) {
+				System.out.println(e.toString());
 			}
-			
-			File destination = File
-					.createTempFile("file", pictureName, dirPath);
-
-			FileCopyUtils.copy(posterFile.getInputStream(),
-					new FileOutputStream(destination));
-
-			Product.setPosterFile("sample/images/posters/"
-					+ destination.getName());
-		}
-
-		this.ProductService.create(Product);
+			return "ntosViewCustomer";
+		}*/
+		
+		this.productService.create(product);
 		status.setComplete();
-
+		
 		return "redirect:/ntosProductFinder.do?method=list";
-	}*/
+	}
 
 	@RequestMapping(params = "method=get")
 	public String get(@RequestParam("prodNo") String prodNo, Model model)
 			throws Exception {
-		Product Product = this.ProductService.get(prodNo);
+		Product Product = this.productService.get(prodNo);
 		if (Product == null) {
 			throw new Exception("Resource not found " + prodNo);
 		}
@@ -105,7 +81,7 @@ public class ProductController {
 		if (results.hasErrors()) {
 			return "ntosViewProduct";
 		}
-		this.ProductService.update(product);
+		this.productService.update(product);
 		status.setComplete();
 		return "redirect:/ntosProductFinder.do?method=list";
 	}
@@ -113,7 +89,7 @@ public class ProductController {
 	@RequestMapping(params = "method=remove")
 	public String remove(@RequestParam("ProductId") String ProductId)
 			throws Exception {
-		this.ProductService.remove(ProductId);
+		this.productService.remove(ProductId);
 		return "redirect:/ntosProductFinder.do?method=list";
 	}
 }
