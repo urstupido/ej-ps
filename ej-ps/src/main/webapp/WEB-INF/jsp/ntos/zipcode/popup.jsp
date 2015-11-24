@@ -19,14 +19,20 @@
 			"url" : "${ctx}/ntosZipcodeFinder.do?method=list",
 			"type" : "POST",
 			"dataType" : "json",
-			"data" : {"dong" : keyword},
+			"data" : {"searchKeyword" : keyword},
 			success : function(data) {
 				alert("check");
 				console.log(data);
 			}
 		});
-		
 	}
+	$(function(){
+		$('#dong').keypress(function(key){
+			if (key.keyCode == 13) {
+				searchZipcode();
+			}
+		})
+	})
 </script>
 </head>
 <table>
@@ -38,5 +44,6 @@
 	<tr>
 		<td>검색결과</td>
 	</tr>
+	
 </table>
 </html>

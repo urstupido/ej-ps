@@ -7,7 +7,7 @@
 			<statement>
 				SELECT zip1, zip2, sido, gugun, dong, bunji
 				FROM zipcode
-				where dong like '%' || :vo.dong || '%'
+				where dong like '%' || :vo.searchKeyword || '%'
 			</statement>
 			<result class="com.sds.ps.domain.Zipcode" />
 		</query>
