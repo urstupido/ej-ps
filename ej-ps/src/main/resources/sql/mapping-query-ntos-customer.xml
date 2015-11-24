@@ -3,7 +3,7 @@
 "http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
 <queryservice>
 	<queries>
-		<query id="findCustomerList">
+		<query id="findCustomerList" isDynamic="true">
 			<statement>
 				SELECT custom.cus_no, c.code_name, custom.rbno,
 				custom.cnm, custom.psno, custom.addr, custom.dong_blw_addr,
@@ -11,9 +11,15 @@
 				FROM custom,
 				code c
 				where c.code_type='USER_TC' and c.code = custom.user_tc
-				AND cus_no like '%' || :vo.cusNo || '%'
-				AND cnm like '%' || :vo.cnm || '%'
-				and user_tc like '%' || :vo.codeInfo.code || '%'
+				#if($vo.searchCondition=="고객번호")
+				AND cus_no like '%' || :vo.searchKeyword || '%'
+				#end
+				#if($vo.searchCondition=="고객명")
+				AND cnm like '%' || :vo.searchKeyword || '%'
+				#end
+				#if($vo.codeInfo.code != "")
+				AND user_tc = :vo.codeInfo.code
+				#end
 			</statement>
 			<result class="com.sds.ps.domain.Customer">
 				<result-mapping column="{code_name}" attribute="{codeInfo.codeName}" />

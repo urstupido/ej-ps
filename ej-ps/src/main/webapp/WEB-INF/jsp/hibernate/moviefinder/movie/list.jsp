@@ -5,7 +5,7 @@
     <title><spring:message code="movieList.title"/></title>
 	<meta name="heading" content="<spring:message code='movieList.heading'/>"/>    
     <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/sample/css/displaytag.css'/>" />     
-	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">
 	
     <script type="text/javascript" src="<c:url value='/sample/javascript/prototype.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/sample/javascript/global.js'/>"></script>
