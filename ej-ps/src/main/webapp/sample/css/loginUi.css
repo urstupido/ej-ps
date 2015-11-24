@@ -1,0 +1,137 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background-image: url("http://bigappled.com/wp-content/uploads/2014/12/o-NEW-YORK-CITY-WRITER-facebook.jpg");
+	overflow-x: hidden;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.background {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	border-radius: 2px;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+h1 {
+	font-size: 40;
+	color: #fff;
+	font-family: 'Lobster', cursive;
+}
+.login_container {
+	width: 100%;
+  	position: relative;
+  	display: inline-block;
+  	margin: 200px 0 0 0;
+  	text-align: center;
+}
+
+.ct_input_g_id {
+	font-size:15pt; 
+	border:1px solid #fff; 
+	color:#fff; 
+	background-color: rgba(0, 0, 0, 0.1); 
+	text-indent:35px;
+	height:27px;
+	padding: 0 10 0 10;
+	width:350px;
+	height:40px;
+	-webkit-border-radius: 25;
+  	-moz-border-radius: 25;
+  	border-radius: 25px;
+  	font-family: 'Exo 2', sans-serif;
+  	background-image:url("../images/user43.png"); 
+	background-repeat: no-repeat; 
+	background-position: 10px 5px;
+	outline-style: none;
+	transition: .9s ease;
+}
+.ct_input_g_pw {
+	font-size:15pt; 
+	border:1px solid #fff; 
+	color:#fff; 
+	background-color: rgba(0, 0, 0, 0.1); 
+	text-indent:35px;
+	height:27px;
+	padding: 0 10 0 10;
+	width:350px;
+	height:40px;
+	-webkit-border-radius: 25;
+  	-moz-border-radius: 25;
+  	border-radius: 25px;
+  	font-family: 'Exo 2', sans-serif;
+  	background-image:url("../images/key21.png"); 
+	background-repeat: no-repeat; 
+	background-position: 10px 5px;
+	outline-style: none;
+	transition: .9s ease;
+}
+.ct_input_g_id:hover {
+    background-color: rgba(235,154,57, 0.4);
+    color: #fff;
+    transition: .9s ease;
+  }	
+  .ct_input_g_pw:hover {
+    background-color: rgba(235,154,57, 0.4);
+    color: #fff;
+    transition: .9s ease;
+  }	
+  
+.login_btn {
+  	background-color: transparent;
+  	width: 350px;
+  	height: 40px;
+  	color: #F07444;
+  	border: 1px solid #F07444;
+  	transition: .2s ease;
+  	-webkit-border-radius: 25;
+  	-moz-border-radius: 25;
+  	border-radius: 25px;
+  	font-size: 22px;
+  	font-family: 'Exo 2', sans-serif;
+}
+
+.login_btn:hover {
+    background-color: #F07444;;
+    color: white;
+    transition: .9s ease;
+  }
