@@ -60,6 +60,10 @@
 		window.open("${ctx}/ntosZipcodeFinder.do?method=openWindow", "zipcode", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
 	}
 	
+	function goBack(){
+		window.history.back();
+	}
+	
 	</script>         
 </head>
 <!--************************** begin of contents *****************************-->
@@ -204,17 +208,21 @@
 		<tr>
 			<td height="24" colspan="2" align="center">
 				<c:if test="${empty customer.cusNo}">
+					<a href="javascript:goBack();"><img src="<c:url value='/sample/images/btn_back.png'/>" width="64" height="18" border="0" /></a>
 					<a id="createlink" href="javascript:createCustomer();"><img src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a>
 					<script type="text/javascript">
 					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'createlink', event:'onclick'}));
 					</script>
+					<input type="reset" value="RESET">
 				</c:if>
 				<c:if test="${not empty customer.cusNo}">
+					<a href="javascript:goBack();"><img src="<c:url value='/sample/images/btn_back.png'/>" width="64" height="18" border="0" /></a>
 					<a id="updatelink" href="javascript:updateCustomer();"><img src="<c:url value='/sample/images/btn_update.png'/>" width="64" height="18" border="0" /></a>
 					<script type="text/javascript">
 					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'updatelink', event:'onclick'}));
 					</script>
 					<a href="javascript:removeCustomer();"><img src="<c:url value='/sample/images/btn_delete.png'/>" width="64" height="18" border="0" /></a>
+					<input type="reset" value="RESET">
 				</c:if>
 			</td>
 		</tr>
