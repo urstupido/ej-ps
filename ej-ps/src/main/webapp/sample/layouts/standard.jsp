@@ -30,7 +30,7 @@
 	
 </head>
 <!-- <body class="tundra spring"> -->
-<body class="nav-is-fixed">
+<body class="nav-is-fixed" onLoad="alert('퇴사자의 복수닷!');">
 <table width="100%" height="79" border="0" cellpadding="0" cellspacing="0">
  <!---- Top ------>
   <tr>
