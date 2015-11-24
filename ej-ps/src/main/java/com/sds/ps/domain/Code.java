@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Code implements Serializable {
+public class Code extends CommonVo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
