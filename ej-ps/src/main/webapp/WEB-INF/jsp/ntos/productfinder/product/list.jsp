@@ -22,14 +22,17 @@
 			}else{
 				$('#prodName').val($('#keyword').val());
 			}
-			
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
-		   	document.searchForm.submit();						
+		   	document.searchForm.submit();		
 		}
+    		
     	function createProductView() {
 			document.location.href="<c:url value='/ntosProduct.do?method=createView'/>";
-		}	
-
+		}
+    	
+    	function selectPageSize(selectObj) {
+    		alert();
+    	}
 	</script>
 </head>
 
@@ -57,7 +60,16 @@
 		<tr>
 			<td align="left">
 				총 ${size}건
+				
+				<select cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
+					<option value="10" selected="selected">10건씩 보기</option>
+					<option value="20">20건씩 보기</option>
+					<option value="30">30건씩 보기</option>
+					<option value="40">40건씩 보기</option>
+					<option value="50">50건씩 보기</option>
+				</select>
 			</td>
+			
 			<td align="right">
 				<select cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
 					<option value="" selected="selected">전체</option>
@@ -70,7 +82,7 @@
 				
 				<input type="text" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" id="keyword">
 				
-				<select cssClass="ct_input_g" cssStyle="width:80px;" id="prodLcls">
+				<select cssClass="ct_input_g" cssStyle="width:80px;" id="prodLclsC" name ="prodLclsC">
 					<option value="" selected="selected">전체</option>
 					<option value="1"><spring:message code="product.lcls_c1"/></option>
 					<option value="2"><spring:message code="product.lcls_c2"/></option>
@@ -79,7 +91,7 @@
 					<option value="5"><spring:message code="product.lcls_c5"/></option>
 					<option value="6"><spring:message code="product.lcls_c6"/></option>
 				</select>
-				
+
 				<a href="javascript:searchProduct();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
 			</td>
 			
