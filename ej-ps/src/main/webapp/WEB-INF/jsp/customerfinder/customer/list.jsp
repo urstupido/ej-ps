@@ -58,7 +58,7 @@
 					<form:option value="고객명">고객명</form:option>
 				</form:select>
 				
-				<form:input type="text" path = "searchKeyword" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" />
+				<form:input path = "searchKeyword" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" />
 				
 				<a href="javascript:fncSearchCustomer();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
 			</td>

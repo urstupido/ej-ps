@@ -13,6 +13,7 @@ import anyframe.core.query.IQueryService;
 
 @Repository("ntosZipcodeDao")
 public class ZipcodeDao extends AbstractDAO {
+	
 	@Value("#{contextProperties['pageSize'] ?: 10}")
 	int pageSize;
 

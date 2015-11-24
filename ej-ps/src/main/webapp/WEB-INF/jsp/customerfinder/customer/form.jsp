@@ -46,7 +46,7 @@
 	}
 	
 	function findZipCode(){
-		window.open("${ctx}/ntosZipcodeFinder.do?method=openWindow", "zipcode", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+		window.open("${ctx}/ntosZipcodeFinder.do?method=list", "zipcode", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
 	}
 	
 	</script>         
