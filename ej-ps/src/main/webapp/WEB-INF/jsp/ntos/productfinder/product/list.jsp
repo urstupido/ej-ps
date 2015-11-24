@@ -22,6 +22,7 @@
 			}else{
 				$('#prodName').val($('#keyword').val());
 			}
+			
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
 		   	document.searchForm.submit();		
 		}
@@ -82,15 +83,15 @@
 				
 				<input type="text" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" id="keyword">
 				
-				<select cssClass="ct_input_g" cssStyle="width:80px;" id="prodLclsC" name ="prodLclsC">
-					<option value="" selected="selected">전체</option>
-					<option value="1"><spring:message code="product.lcls_c1"/></option>
-					<option value="2"><spring:message code="product.lcls_c2"/></option>
-					<option value="3"><spring:message code="product.lcls_c3"/></option>
-					<option value="4"><spring:message code="product.lcls_c4"/></option>
-					<option value="5"><spring:message code="product.lcls_c5"/></option>
-					<option value="6"><spring:message code="product.lcls_c6"/></option>
-				</select>
+				<form:select path="prodLclsC" cssClass="ct_input_g" cssStyle="width:80px;">
+					<form:option value="">전체</form:option>
+					<form:option value="1"><spring:message code="product.lcls_c1"/></form:option>
+					<form:option value="2"><spring:message code="product.lcls_c2"/></form:option>
+					<form:option value="3"><spring:message code="product.lcls_c3"/></form:option>
+					<form:option value="4"><spring:message code="product.lcls_c4"/></form:option>
+					<form:option value="5"><spring:message code="product.lcls_c5"/></form:option>
+					<form:option value="6"><spring:message code="product.lcls_c6"/></form:option>
+				</form:select>
 
 				<a href="javascript:searchProduct();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
 			</td>
