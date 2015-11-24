@@ -25,9 +25,10 @@ public class ProductFinderController {
 	@RequestMapping(params = "method=list")
 	public String list(
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
 			Product product, BindingResult result, Model model) throws Exception {
 
-		Page resultPage = productFinder.getPagingList(product, pageIndex);
+		Page resultPage = productFinder.getPagingList(product, pageSize, pageIndex);
 
 		model.addAttribute("product", product);
 		model.addAttribute("products", resultPage.getList());

@@ -24,8 +24,6 @@ import com.sds.ps.ntos.product.productfinder.service.ProductService;
 @RequestMapping("/ntosProduct.do")
 @SessionAttributes(types = Product.class)
 public class ProductController {
-	
-	
 
 	@Inject
 	@Named("ntosProductService") 
@@ -104,19 +102,11 @@ public class ProductController {
 
 	@RequestMapping(params = "method=update")
 	public String update(@Valid Product product, BindingResult results, SessionStatus status) throws Exception {
-		System.out.println("=========================================");
-		System.out.println(results);
-		
 		if (results.hasErrors()) {
 			return "ntosViewProduct";
 		}
-		
-		System.out.println("=========================================");
-		System.out.println(product);
-		System.out.println("ㅇㅁㄴ어롬ㄴㅇㄹ");
 		this.ProductService.update(product);
 		status.setComplete();
-
 		return "redirect:/ntosProductFinder.do?method=list";
 	}
 

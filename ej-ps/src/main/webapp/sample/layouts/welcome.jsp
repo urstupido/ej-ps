@@ -10,7 +10,10 @@
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td height="89" align="center" valign="middle">There are simple Anyframe examples in this web application.</td>
+            <td height="89" align="center" valign="middle">
+            
+            
+            There are simple Anyframe examples in this web application.</td>
           </tr>
         </table></td>
       </tr>
