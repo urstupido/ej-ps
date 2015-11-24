@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">
     <script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>   
     <script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
+    <script  type="text/javascript" src="<c:url value='/sample/javascript/calendar.js'/>"></script>
 	
 	 <script type="text/javascript">
     	$(function(){
@@ -56,6 +57,9 @@
 		<tr>
 			<td align="left">
 				총 ${size}건
+				
+				<input  type="text" id="txtDate" value="" onclick="fnPopUpCalendar(txtDate,txtDate,'yyyy/mm/dd')" class='text_box1'>
+
 				
 				<form:select path="pageSize" cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
 					<form:option value="10" selected="selected">10건씩 보기</form:option>
