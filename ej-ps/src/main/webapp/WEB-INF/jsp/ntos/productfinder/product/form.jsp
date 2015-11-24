@@ -4,7 +4,7 @@
     <%@ include file="/sample/common/meta.jsp" %>
     <title> <spring:message code="productDetail.title"/> </title>
     <meta name="heading" content="<spring:message code='productDetail.heading'/>"/>    
-	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">            
+	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">        
 	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 	<script type="text/javascript">
 	function createProduct() {

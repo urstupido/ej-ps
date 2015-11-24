@@ -4,7 +4,7 @@
 <%@ include file="/sample/common/meta.jsp" %>
 <title><spring:message code="movieList.title"/></title>
 <meta name="heading" content="<spring:message code='movieList.heading'/>"/>       
-<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">
+<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/sample/css/jquery-ui-1.10.4.custom.css'/>" type="text/css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/sample/javascript/jqgrid/ui.jqgrid.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/sample/javascript/jqgrid/plugins/ui.multiselect.css" />
