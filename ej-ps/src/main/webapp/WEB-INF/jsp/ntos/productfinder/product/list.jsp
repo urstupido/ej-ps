@@ -16,13 +16,7 @@
     		})
     	})
     	
-		function searchProduct(arg) {
-			if ($('#gubun').val() == "1") {
-				$('#prodNo').val($('#keyword').val());
-			}else{
-				$('#prodName').val($('#keyword').val());
-			}
-			
+		function searchProduct(arg) {			
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
 		   	document.searchForm.submit();		
 		}
@@ -32,7 +26,8 @@
 		}
     	
     	function selectPageSize(selectObj) {
-    		alert();
+    		document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
+		   	document.searchForm.submit();
     	}
 	</script>
 </head>
@@ -62,26 +57,27 @@
 			<td align="left">
 				총 ${size}건
 				
-				<select cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
-					<option value="10" selected="selected">10건씩 보기</option>
-					<option value="20">20건씩 보기</option>
-					<option value="30">30건씩 보기</option>
-					<option value="40">40건씩 보기</option>
-					<option value="50">50건씩 보기</option>
-				</select>
+				<form:select path="pageSize" cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
+					<form:option value="10" selected="selected">10건씩 보기</form:option>
+					<form:option value="20">20건씩 보기</form:option>
+					<form:option value="30">30건씩 보기</form:option>
+					<form:option value="40">40건씩 보기</form:option>
+					<form:option value="50">50건씩 보기</form:option>
+				</form:select>
+				
 			</td>
 			
 			<td align="right">
-				<select cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
-					<option value="" selected="selected">전체</option>
-					<option value="1">상품번호</option>
-					<option value="2">상품명</option>
-				</select>
+				<form:select path="searchCondition" cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
+					<form:option value="" selected="selected">전체</form:option>
+					<form:option value="1">상품번호</form:option>
+					<form:option value="2">상품명</form:option>
+				</form:select>
 				
 				<input type="hidden" id="prodName" name="prodName"/>
 				<input type="hidden" id="prodNo" name="prodNo"/>
 				
-				<input type="text" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" id="keyword">
+				<form:input path="searchKeyword" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50"/>
 				
 				<form:select path="prodLclsC" cssClass="ct_input_g" cssStyle="width:80px;">
 					<form:option value="">전체</form:option>
@@ -134,7 +130,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<tr>
 			<td class="page" height="50" align="center">
-				<anyframe:pagenavigator linkUrl="javascript:fncSearchproduct();"
+				<anyframe:pagenavigator linkUrl="javascript:searchProduct();"
 					pages="${resultPage}" 
 					firstImg="${ctx}/sample/images/pagenav/page_before1.gif" 
 					lastImg="${ctx}/sample/images/pagenav/page_after1.gif" 
