@@ -9,7 +9,7 @@ public class Zipcode extends CommonVo implements Serializable {
 	private String zip1;
 	private String zip2;
 	private String sido;
-	private String gogun;
+	private String gugun;
 	private String dong;
 	private String bunji;
 
@@ -37,14 +37,6 @@ public class Zipcode extends CommonVo implements Serializable {
 		this.sido = sido;
 	}
 
-	public String getGogun() {
-		return gogun;
-	}
-
-	public void setGogun(String gogun) {
-		this.gogun = gogun;
-	}
-
 	public String getDong() {
 		return dong;
 	}
@@ -70,14 +62,22 @@ public class Zipcode extends CommonVo implements Serializable {
 		builder.append(zip2);
 		builder.append(", sido=");
 		builder.append(sido);
-		builder.append(", gogun=");
-		builder.append(gogun);
+		builder.append(", gugun=");
+		builder.append(gugun);
 		builder.append(", dong=");
 		builder.append(dong);
 		builder.append(", bunji=");
 		builder.append(bunji);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	public String getGugun() {
+		return gugun;
+	}
+
+	public void setGugun(String gugun) {
+		this.gugun = gugun;
 	}
 
 }
