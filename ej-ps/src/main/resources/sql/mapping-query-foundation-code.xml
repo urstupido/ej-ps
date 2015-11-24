@@ -12,7 +12,7 @@
 			<result class="com.sds.ps.domain.Code" />
 		</query>
 
-		<query id="findCodeList">
+		<query id="findCodeList" isDynamic="true">
 			<statement>
 				SELECT code, code_name
 				FROM code
