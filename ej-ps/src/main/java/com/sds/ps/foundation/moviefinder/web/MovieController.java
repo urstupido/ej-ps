@@ -59,8 +59,6 @@ public class MovieController {
 			return "foundationViewMovie";
 		}
 		
-		System.out.println(results);
-		
 		if (posterFile != null && !posterFile.getOriginalFilename().equals("")) {
 			String pictureName = posterFile.getOriginalFilename();
 

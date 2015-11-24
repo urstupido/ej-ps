@@ -132,6 +132,7 @@ public class DBAuthenticationService implements AuthenticationService {
                 if (conn != null)
                     conn.close();
             } catch (Exception e) {
+            	e.printStackTrace();
             }
         }
         return subject;

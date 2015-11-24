@@ -25,10 +25,6 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDao productDao;
 
 	public void create(Product product) throws Exception {
-		if(product == null){
-			
-		}
-		
 		product.setProdNo(idGenerationService.getNextStringId());
 		productDao.create(product);
 	}

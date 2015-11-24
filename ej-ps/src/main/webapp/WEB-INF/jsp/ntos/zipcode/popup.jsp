@@ -29,7 +29,7 @@
 		document.searchForm.submit();
 	}
 	$(function(){
-		$('#dong').keypress(function(key){
+		$('#searchKeyword').keypress(function(key){
 			if (key.keyCode == 13) {
 				searchZipcode();
 			}
