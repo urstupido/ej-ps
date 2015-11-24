@@ -16,8 +16,8 @@ import com.sds.ps.ntos.product.productfinder.service.ProductService;
 @Transactional(rollbackFor = { Exception.class }, propagation = Propagation.REQUIRED)
 public class ProductServiceImpl implements ProductService {
 
-	//@Inject
-	//@Named("idGenerationServiceProduct")
+	@Inject
+	@Named("idGenerationServiceProduct")
 	IIdGenerationService idGenerationService;
 
 	@Inject
