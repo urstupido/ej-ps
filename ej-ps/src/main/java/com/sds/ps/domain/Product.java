@@ -2,16 +2,9 @@ package com.sds.ps.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import antlr.collections.List;
 
 public class Product extends CommonVo implements Serializable {
 

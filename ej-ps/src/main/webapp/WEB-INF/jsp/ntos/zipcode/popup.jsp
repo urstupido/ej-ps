@@ -22,6 +22,7 @@
 			"data" : {"dong" : keyword},
 			success : function(data) {
 				alert("check");
+				console.log(data);
 			}
 		});
 		
