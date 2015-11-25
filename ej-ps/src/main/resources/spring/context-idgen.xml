@@ -3,20 +3,16 @@
 	xmlns:config="http://www.anyframejava.org/schema/service"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 						http://www.anyframejava.org/schema/service http://www.anyframejava.org/schema/service/anyframe-core-service-2.0.xsd">
-						
 	<bean name="idGenerationServiceMovie" class="anyframe.core.idgen.impl.TableIdGenerationService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
 		<property name="strategy" ref="mixPrefixMovie" />
 		<config:configuration block-size="1" table="ids" key-table="MOVIE" />
 	</bean>
-
 	<bean name="idGenerationServiceProduct" class="anyframe.core.idgen.impl.TableIdGenerationService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
 		<property name="strategy" ref="mixPrefixProduct" />
 		<config:configuration block-size="1" table="ids" key-table="CONTRACT" />
 	</bean>
-
-
 
 	<bean name="mixPrefixProduct" class="anyframe.core.idgen.impl.strategy.MixPrefix">
 		<property name="prefix" value="PR-" />
@@ -29,25 +25,24 @@
 		<property name="cipers" value="5" />
 		<property name="fillChar" value="0" />
 	</bean>
-	
+	 
 	<bean name="idGenerationServiceCustomer" class="anyframe.core.idgen.impl.TableIdGenerationService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
 		<property name="strategy" ref="mixPrefixCustomer" />
 		<config:configuration block-size="1" table="ids" key-table="CUSTOMER" />
 	</bean>
-
 	<bean name="mixPrefixCustomer" class="anyframe.core.idgen.impl.strategy.MixPrefix">
 		<property name="prefix" value="CUSTOMER-" />
 		<property name="cipers" value="5" />
 		<property name="fillChar" value="0" />
 	</bean>
-	
+
 	<bean name="idGenerationServiceGenre" class="anyframe.core.idgen.impl.TableIdGenerationService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
 		<property name="strategy" ref="mixPrefixGenre" />
 		<config:configuration block-size="1" table="ids" key-table="GENRE" />
 	</bean>
-
+	 
 	<bean name="mixPrefixGenre" class="anyframe.core.idgen.impl.strategy.MixPrefix">
 		<property name="prefix" value="GR-" />
 		<property name="cipers" value="2" />

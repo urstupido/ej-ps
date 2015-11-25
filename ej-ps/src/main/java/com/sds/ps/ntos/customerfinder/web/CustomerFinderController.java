@@ -16,7 +16,7 @@ import com.sds.ps.domain.Code;
 import com.sds.ps.domain.Customer;
 
 @Controller("ntosCustomerFinderController")
-@RequestMapping("/ntosCustomerFinder.doNoNo")
+@RequestMapping("/ntosCustomerFinder.do")
 public class CustomerFinderController {
 
 	@Inject

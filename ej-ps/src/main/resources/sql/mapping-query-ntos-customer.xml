@@ -20,7 +20,6 @@
 				#if($vo.codeInfo.code != "")
 				AND user_tc = :vo.codeInfo.code
 				#end
-				NoNo
 			</statement>
 			<result class="com.sds.ps.domain.Customer">
 				<result-mapping column="{code_name}" attribute="{codeInfo.codeName}" />
