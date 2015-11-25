@@ -34,7 +34,7 @@
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosProductFinder.do?method=list">상품목록</a></li>
-							<li>상품등록</li>
+							<li><a href="${ctx}/ntosProduct.do?method=createView">상품등록</a></li>
 
 						</ul></li>
 
@@ -85,7 +85,7 @@
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
-							<li>상품목록></li>
+							<li><a href="${ctx}/ntosProductSelectFinder.do?method=list">상품선정목록</a></li>
 							<li>상품선정등록</li>
 						</ul></li>
 
