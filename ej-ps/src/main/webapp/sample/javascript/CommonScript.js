@@ -1,3 +1,18 @@
+window.onload = function(){
+document.addEventListener("keypress", function() {
+	if ((event.keyCode > 32 && event.keyCode < 48)
+			|| (event.keyCode > 57 && event.keyCode < 65)
+			|| (event.keyCode > 90 && event.keyCode < 97)) {
+		event.returnValue = false;
+	}
+
+	if (event.keyCode == 34 || event.keyCode == 39) {
+		event.returnValue = false;
+	}
+	
+})
+}
+
 function listFormValidation(conditions){
 	for(i=0; i<conditions.length;i++){
 		var condition = conditions[i];
@@ -499,5 +514,5 @@ function fncNumLengthCheck(value, first, last){
             return true;
         } else {
             return false;
-        }
-    }
+	        }
+}
