@@ -15,27 +15,33 @@
 		}
 		
 		function selectProdC(obj) {
+			
+			
 			if(obj.id=="prodLclsC"){
 				document.getElementById("prodMclsC")[0].selected = true;
 				document.getElementById("prodSclsC")[0].selected = true;
 				
-				for (var i = 0; i < document.getElementById("prodMclsC").length; i++) {
-					if(obj.value != document.getElementById("prodMclsC")[i].value.substring(0,1)){
-						document.getElementById("prodMclsC")[i].style.visibility = "hidden";
-					} else {
-						document.getElementById("prodMclsC")[i].removeAttribute("style");
-					}
+				for (var i = 1; i < document.getElementById("prodMclsC").length; i++) {
+					document.getElementById("prodMclsC")[i].hidden = "hidden";
+										
+					if(obj.value == document.getElementById("prodMclsC")[i].value.substring(0,1)){
+						document.getElementById("prodMclsC")[i].removeAttribute("hidden");
+					} 
+				}
+				
+				for (var i = 1; i < document.getElementById("prodSclsC").length; i++) {
+					document.getElementById("prodSclsC")[i].hidden = "hidden";
 				}
 				
 			} else if(obj.id=="prodMclsC"){
 				document.getElementById("prodSclsC")[0].selected = true;
 				
-				for (var i = 0; i < document.getElementById("prodSclsC").length; i++) {
-					if(obj.value != document.getElementById("prodSclsC")[i].value.substring(0,3)){
-						document.getElementById("prodSclsC")[i].style.visibility = "hidden";
-					} else {
-						document.getElementById("prodSclsC")[i].removeAttribute("style");
-					}
+				for (var i = 1; i < document.getElementById("prodSclsC").length; i++) {
+					document.getElementById("prodSclsC")[i].hidden = "hidden";
+					
+					if(obj.value == document.getElementById("prodSclsC")[i].value.substring(0,3)){
+						document.getElementById("prodSclsC")[i].removeAttribute("hidden");
+					} 
 				}
 			}
 		}
@@ -80,7 +86,7 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_lcls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:select path="prodLclsC" id="prodLclsC" cssClass="ct_input_g" cssStyle="width:120px;" onchange="javascript:selectProdC(this)">
+				<form:select path="prodLclsC" id="prodLclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
 					<form:option value="" label="분류를 선택하세요"/>
 					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
 					<c:if test="${codeInfo.codeType eq 'PROD_LCLS_C'}">
@@ -95,8 +101,8 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_mcls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:select path="prodMclsC" id="prodMclsC" cssClass="ct_input_g" cssStyle="width:120px;" onchange="javascript:selectProdC(this)">
-					<form:option value="" label="분류를 선택하세요"/>
+				<form:select path="prodMclsC" id="prodMclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="대분류를 선택하세요"/>
 					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
 					<c:if test="${codeInfo.codeType eq 'PROD_MCLS_C'}">
 						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
@@ -108,8 +114,8 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_scls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:select path="prodSclsC" id="prodSclsC" cssClass="ct_input_g" cssStyle="width:120px;" onchange="javascript:selectProdC(this)">
-					<form:option value="" label="분류를 선택하세요"/>				
+				<form:select path="prodSclsC" id="prodSclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="중분류를 선택하세요"/>				
 					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
 					<c:if test="${codeInfo.codeType eq 'PROD_SCLS_C'}">
 						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>

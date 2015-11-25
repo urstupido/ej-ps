@@ -37,7 +37,7 @@ public class ProductController {
 	
 	@ModelAttribute("codeList")
 	public Collection<CodeInfo> populateGenreList() throws Exception {
-		return this.codeService.getList("PROD_LCLS_C");
+		return this.codeService.getList("PROD_%");
 	}
 	
 	@RequestMapping(params = "method=createView")
