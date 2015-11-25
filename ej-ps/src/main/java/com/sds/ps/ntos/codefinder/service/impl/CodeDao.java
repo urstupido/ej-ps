@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
 
-import com.sds.ps.domain.Code;
+import com.sds.ps.domain.CodeInfo;
 
 import anyframe.core.query.AbstractDAO;
 import anyframe.core.query.IQueryService;
@@ -20,10 +20,10 @@ public class CodeDao extends AbstractDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Code> getList(String codeType) throws Exception {
-		Code code = new Code();
+	public List<CodeInfo> getList(String codeType) throws Exception {
+		CodeInfo code = new CodeInfo();
 		code.setCodeType(codeType);
-		return (List<Code>) this.findList("Code", code);
+		return (List<CodeInfo>) this.findList("CodeInfo", code);
 	}
 
 }

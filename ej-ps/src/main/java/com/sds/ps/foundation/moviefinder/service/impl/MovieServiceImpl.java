@@ -24,10 +24,6 @@ public class MovieServiceImpl implements MovieService {
 	private MovieDao movieDao;
 
 	public void create(Movie movie) throws Exception {
-		if(movie == null){
-			
-		}
-		
 		movie.setMovieId(idGenerationService.getNextStringId());
 		movieDao.create(movie);
 	}

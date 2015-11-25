@@ -13,8 +13,6 @@ import com.sds.ps.domain.Customer;
 
 @Repository("ntosCustomerDao")
 public class CustomerDao extends AbstractDAO {
-	@Value("#{contextProperties['pageSize'] ?: 10}")
-	int pageSize;
 
 	@Value("#{contextProperties['pageUnit'] ?: 10}")
 	int pageUnit;
@@ -45,7 +43,7 @@ public class CustomerDao extends AbstractDAO {
 	}
 
 	public Page getPagingList(Customer customer, int pageIndex) throws Exception {
-		return this.findListWithPaging("Customer", customer, pageIndex, pageSize,
+		return this.findListWithPaging("Customer", customer, pageIndex, customer.getPageSize(),
 				pageUnit);
 	}
 

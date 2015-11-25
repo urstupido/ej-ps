@@ -6,15 +6,16 @@
 	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">
     <script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>   
     <script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
+    <script  type="text/javascript" src="<c:url value='/sample/javascript/calendar.js'/>"></script>
 	
 	 <script type="text/javascript">
     	$(function(){
-    		$('#keyword').keypress(function(key){
+    		$('#searchKeyword').keypress(function(key){
     			if (key.keyCode == 13) {
     				searchProduct();
 				}
     		})
-    	})
+    	});
     	
 		function searchProduct(arg) {			
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
@@ -64,12 +65,11 @@
 					<form:option value="40">40건씩 보기</form:option>
 					<form:option value="50">50건씩 보기</form:option>
 				</form:select>
-				
 			</td>
 			
 			<td align="right">
 				<form:select path="searchCondition" cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
-					<form:option value="" selected="selected">전체</form:option>
+					<form:option value="2" selected="selected">전체</form:option>
 					<form:option value="1">상품번호</form:option>
 					<form:option value="2">상품명</form:option>
 				</form:select>

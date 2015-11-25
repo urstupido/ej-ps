@@ -45,6 +45,15 @@
 		<tr>
 			<td align="left">
 				총 ${size}건
+				
+				<form:select path="pageSize" cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:fncSearchCustomer(this)">
+					<form:option value="10" selected="selected">10건씩 보기</form:option>
+					<form:option value="20">20건씩 보기</form:option>
+					<form:option value="30">30건씩 보기</form:option>
+					<form:option value="40">40건씩 보기</form:option>
+					<form:option value="50">50건씩 보기</form:option>
+				</form:select>
+				
 			</td>
 			<td align="right">
 				<form:select path="codeInfo.code" cssClass="ct_input_g" cssStyle="width:80px;">
@@ -104,7 +113,6 @@
 			</td>
 		</tr>
 	</table>
-	
 	
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
