@@ -14,7 +14,7 @@ public class CustContract extends CommonVo implements Serializable {
 
 	private int no;
 
-	private Code codeInfo; //
+	private CodeInfo codeInfo; //
 
 	// 받아오는 고객번호
 	@NotNull
@@ -60,11 +60,11 @@ public class CustContract extends CommonVo implements Serializable {
 		this.no = no;
 	}
 
-	public Code getCodeInfo() {
+	public CodeInfo getCodeInfo() {
 		return codeInfo;
 	}
 
-	public void setCodeInfo(Code codeInfo) {
+	public void setCodeInfo(CodeInfo codeInfo) {
 		this.codeInfo = codeInfo;
 	}
 
