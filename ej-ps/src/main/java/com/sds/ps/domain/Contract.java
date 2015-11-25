@@ -15,7 +15,7 @@ public class Contract extends CommonVo implements Serializable {
 
 	private int no;
 
-	private Code codeInfo;
+	private CodeInfo codeInfo;
 
 	@Size(min = 1, max = 60)
 	private String contNameNo = "";
@@ -72,11 +72,11 @@ public class Contract extends CommonVo implements Serializable {
 		this.no = no;
 	}
 
-	public Code getCodeInfo() {
+	public CodeInfo getCodeInfo() {
 		return codeInfo;
 	}
 
-	public void setCodeInfo(Code codeInfo) {
+	public void setCodeInfo(CodeInfo codeInfo) {
 		this.codeInfo = codeInfo;
 	}
 
