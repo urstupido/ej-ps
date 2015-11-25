@@ -72,12 +72,11 @@
 							<li><a href="${ctx}/ntosCustomer.do?method=createView">고객등록</a></li>
 						</ul></li>
 
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">운용비율관리</a>
+					<li class="has-children"><a href="http://codyhouse.co/?p=409">상품배분비율관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
-							<li>운용비율목록</li>
-
+							<li><a href="${ctx}/ntosProductDistributionFinder.do?method=list">상품배분비율</a></li>
 						</ul></li>
 
 
