@@ -27,7 +27,6 @@ public class Customer extends CommonVo implements Serializable{
 	private String cnm = "";
 	
 	@NotNull
-	@Size(min=1, max = 50)
 	private String psno = "";
 	
 	@NotNull
@@ -38,14 +37,12 @@ public class Customer extends CommonVo implements Serializable{
 	@Size(min=1, max = 50)
 	private String dongBlwAddr = "";
 	
-	@NotNull
-	@Size(min=1, max = 50)
 	private String lastChngUsid = "";
 	
-	@NotNull
 	@DateTimeFormat(pattern = "YYYY-MM-DD")
 	private Date lastChngDt;
-
+	
+	private String pictureFile;
 
 	public String getCusNo() {
 		return cusNo;
@@ -170,6 +167,14 @@ public class Customer extends CommonVo implements Serializable{
 
 	public void setCodeInfo(CodeInfo codeInfo) {
 		this.codeInfo = codeInfo;
+	}
+
+	public String getPictureFile() {
+		return pictureFile;
+	}
+
+	public void setPictureFile(String pictureFile) {
+		this.pictureFile = pictureFile;
 	}
 
 }

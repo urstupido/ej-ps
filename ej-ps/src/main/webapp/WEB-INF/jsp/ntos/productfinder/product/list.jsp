@@ -10,12 +10,12 @@
 	
 	 <script type="text/javascript">
     	$(function(){
-    		$('#keyword').keypress(function(key){
+    		$('#searchKeyword').keypress(function(key){
     			if (key.keyCode == 13) {
     				searchProduct();
 				}
     		})
-    	})
+    	});
     	
 		function searchProduct(arg) {			
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
@@ -58,9 +58,6 @@
 			<td align="left">
 				총 ${size}건
 				
-				<input  type="text" id="txtDate" value="" onclick="fnPopUpCalendar(txtDate,txtDate,'yyyy/mm/dd')" class='text_box1'>
-
-				
 				<form:select path="pageSize" cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
 					<form:option value="10" selected="selected">10건씩 보기</form:option>
 					<form:option value="20">20건씩 보기</form:option>
@@ -68,12 +65,11 @@
 					<form:option value="40">40건씩 보기</form:option>
 					<form:option value="50">50건씩 보기</form:option>
 				</form:select>
-				
 			</td>
 			
 			<td align="right">
 				<form:select path="searchCondition" cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
-					<form:option value="" selected="selected">전체</form:option>
+					<form:option value="2" selected="selected">전체</form:option>
 					<form:option value="1">상품번호</form:option>
 					<form:option value="2">상품명</form:option>
 				</form:select>

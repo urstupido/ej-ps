@@ -23,10 +23,25 @@
 	function createCustomer() {
 	    if ($("input:radio[name=bunho]:checked").val()=='saup') {
 			$('#rbno').val($('#rbno3').val()+$('#rbno4').val()+$('#rbno5').val());
+			if ($('#rbno').val().length != 10) {
+				showError();
+				return;
+			}
 		}else{
 			$('#rbno').val($('#rbno1').val()+$('#rbno2').val());
+			if ($('#rbno').val().length != 13) {
+				showError();
+				return;
+			}
 		}
-	    $('#psno').val($('#psno1').val()+$('#psno2').val());
+	    
+	    $("span","td[name='rbno']").html("");
+	    
+	    function showError(){
+	    	$("span","td[name='rbno']").html("");
+			$("td[name='rbno']").append("<span style='color: red'><spring:message code='customer.invalidrbno'/></span>");
+	    }
+	    
 	    document.customerForm.action="<c:url value='/ntosCustomer.do?method=create'/>";
 	    document.customerForm.submit();
 	    
@@ -90,7 +105,7 @@
 		</td>
 	</tr>
 </table>
-<form:form modelAttribute="customer" name="customerForm" method="post">
+<form:form modelAttribute="customer" name="customerForm" method="post" enctype="multipart/form-data">
 	
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
 		<c:if test="${not empty customer.cusNo}">
@@ -106,17 +121,17 @@
 		</tr>
 		</c:if>
 		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.cnm" /></td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.cnm" />&nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 				<form:input path="cnm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="cnm" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+			<td height="1" colspan="3" bgcolor="D6D6D6" ></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.userTc" /></td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.userTc" />&nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 			<form:select path="codeInfo.code">
@@ -128,9 +143,9 @@
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.rbno" /></td>
+			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.rbno" />&nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
+			<td class="ct_write01" name="rbno">
 			<c:if test="${empty customer.cusNo}">
 				<input type="radio" name="bunho" value="saup"> 사업자등록번호
 				<input type="radio" name="bunho" value="jumin"> 주민등록번호
@@ -153,23 +168,24 @@
 		</tr>
 		<tr>
 			<td rowspan="5" class="ct_td">우편물 수령지</td>
-			<td width="150" class="ct_td"><spring:message code="customer.psno" /></td>
+			<td width="150" class="ct_td"><spring:message code="customer.psno" />&nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:hidden path="psno" cssClass="ct_input_g" cssErrorClass="text medium error" size="10" maxlength="3" /> <form:errors path="psno" cssClass="errors" />
-				<input type="text" value="${fn:substring(customer.psno,0,3)}" id="psno1"> - 
-				<input type="text" value="${fn:substring(customer.psno,3,6)}" id="psno2">
+				<input type="text" value="${fn:substring(customer.psno,0,3)}" id="psno1" onclick="findZipCode()" readonly="true"> - 
+				<input type="text" value="${fn:substring(customer.psno,3,6)}" id="psno2" onclick="findZipCode()" readonly="true">
+				<form:hidden path="psno"/>
 				<input type="button" value="우편번호 찾기" onclick="findZipCode()">
+				<form:errors path="psno" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.addr" /></td>
+			<td width="150" class="ct_td"><spring:message code="customer.addr" />&nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="addr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
+				<form:input path="addr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" readonly="true" onclick="findZipCode()"/>
 				<form:errors path="addr" cssClass="errors" />
 			</td>
 		</tr>
@@ -182,6 +198,19 @@
 			<td class="ct_write01">
 				<form:input path="dongBlwAddr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
 				<form:errors path="dongBlwAddr" cssClass="errors" />
+			</td>
+		</tr>
+		<tr>
+			<td width="150" class="ct_td" colspan="2">
+			<spring:message code="customer.pictureFile"/></td><td bgcolor="D6D6D6" width="1"></td>
+			<td class="ct_write01">		
+				<c:if test="${not empty customer.pictureFile}">
+					<img src="<c:url value='${customer.pictureFile}'/>" alt="<spring:message code='customer.pictureFile'/>" border="0" />
+					<form:hidden path="pictureFile"/>
+				</c:if>
+				<c:if test="${empty customer.pictureFile}">
+					<input type="file" name="realPictureFile" class="ct_input_g" style="width:309px; height:19px" maxLength="100" >
+				</c:if>							        
 			</td>
 		</tr>
 	</table>
