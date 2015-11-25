@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE queryservice PUBLIC "-//ANYFRAME//DTD QUERYSERVICE//EN"
+"http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
+<queryservice>
+	<queries>
+		<query id="findChargemanList">
+			<statement>
+			SELECT rownum as no,
+				   cont_no,
+				   chmn_seq,
+				   chmn_nm,
+				   chmn_dpnm,
+				   chmn_psnm
+			FROM chmn_istm
+			</statement>
+			<result class="com.sds.ps.domain.Chargeman"/>
+		</query>
+
+	</queries>
+</queryservice>
