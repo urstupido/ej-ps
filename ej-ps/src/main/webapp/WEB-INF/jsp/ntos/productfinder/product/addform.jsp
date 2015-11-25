@@ -9,33 +9,48 @@
 	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	<script type="text/javascript">
+		$(function(){
+			for (var i = 1; i < document.getElementById("prodMclsC").length; i++) {
+				document.getElementById("prodMclsC")[i].hidden = "hidden";
+			}
+			for (var i = 1; i < document.getElementById("prodSclsC").length; i++) {
+				document.getElementById("prodSclsC")[i].hidden = "hidden";
+			}
+		});
+		
 		function createProduct() {
 	    	document.productForm.action="<c:url value='/ntosProduct.do?method=create'/>";
 	    	document.productForm.submit();
 		}
 		
 		function selectProdC(obj) {
+			
+			
 			if(obj.id=="prodLclsC"){
 				document.getElementById("prodMclsC")[0].selected = true;
 				document.getElementById("prodSclsC")[0].selected = true;
 				
-				for (var i = 0; i < document.getElementById("prodMclsC").length; i++) {
-					if(obj.value != document.getElementById("prodMclsC")[i].value.substring(0,1)){
-						document.getElementById("prodMclsC")[i].style.visibility = "hidden";
-					} else {
-						document.getElementById("prodMclsC")[i].removeAttribute("style");
-					}
+				for (var i = 1; i < document.getElementById("prodMclsC").length; i++) {
+					document.getElementById("prodMclsC")[i].hidden = "hidden";
+										
+					if(obj.value == document.getElementById("prodMclsC")[i].value.substring(0,1)){
+						document.getElementById("prodMclsC")[i].removeAttribute("hidden");
+					} 
+				}
+				
+				for (var i = 1; i < document.getElementById("prodSclsC").length; i++) {
+					document.getElementById("prodSclsC")[i].hidden = "hidden";
 				}
 				
 			} else if(obj.id=="prodMclsC"){
 				document.getElementById("prodSclsC")[0].selected = true;
 				
-				for (var i = 0; i < document.getElementById("prodSclsC").length; i++) {
-					if(obj.value != document.getElementById("prodSclsC")[i].value.substring(0,3)){
-						document.getElementById("prodSclsC")[i].style.visibility = "hidden";
-					} else {
-						document.getElementById("prodSclsC")[i].removeAttribute("style");
-					}
+				for (var i = 1; i < document.getElementById("prodSclsC").length; i++) {
+					document.getElementById("prodSclsC")[i].hidden = "hidden";
+					
+					if(obj.value == document.getElementById("prodSclsC")[i].value.substring(0,3)){
+						document.getElementById("prodSclsC")[i].removeAttribute("hidden");
+					} 
 				}
 			}
 		}
@@ -80,9 +95,9 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_lcls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:select path="prodLclsC" id="prodLclsC" cssClass="ct_input_g" cssStyle="width:120px;" onchange="javascript:selectProdC(this)">
-					<form:option value="" label="분류를 선택하세요"/>
-					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
+				<form:select path="prodLclsC" id="prodLclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="-- 선택하세요 --"/>
+					<c:forEach items="${prodCodeList}" var="codeInfo" varStatus="status">
 					<c:if test="${codeInfo.codeType eq 'PROD_LCLS_C'}">
 						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
 					</c:if>
@@ -95,9 +110,9 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_mcls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:select path="prodMclsC" id="prodMclsC" cssClass="ct_input_g" cssStyle="width:120px;" onchange="javascript:selectProdC(this)">
-					<form:option value="" label="분류를 선택하세요"/>
-					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
+				<form:select path="prodMclsC" id="prodMclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="-- 선택하세요 --"/>
+					<c:forEach items="${prodCodeList}" var="codeInfo" varStatus="status">
 					<c:if test="${codeInfo.codeType eq 'PROD_MCLS_C'}">
 						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
 					</c:if>
@@ -108,13 +123,13 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_scls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:select path="prodSclsC" id="prodSclsC" cssClass="ct_input_g" cssStyle="width:120px;" onchange="javascript:selectProdC(this)">
-					<form:option value="" label="분류를 선택하세요"/>				
-					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
-					<c:if test="${codeInfo.codeType eq 'PROD_SCLS_C'}">
-						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
-					</c:if>
-				</c:forEach>
+				<form:select path="prodSclsC" id="prodSclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="-- 선택하세요 --"/>				
+					<c:forEach items="${prodCodeList}" var="codeInfo" varStatus="status">
+						<c:if test="${codeInfo.codeType eq 'PROD_SCLS_C'}">
+							<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
+						</c:if>
+					</c:forEach>
 				</form:select>
 				<form:errors path="prodSclsC" cssClass="errors" />
 			</td> 
@@ -127,13 +142,14 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_sell_entr_dt" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-			    <input type="date" id="prodSellEntrDt" name="prodSellEntrDt"/>
+			    <input type="text" id="prodSellEntrDt" name="prodSellEntrDt" value="날짜를 선택하세요" onclick="fnPopUpCalendar(prodSellEntrDt,prodSellEntrDt,'yyyymmdd')" class='text_box1'>
 			</td> 
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_sell_end_dt" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01" colspan="6">
-				<input type="date" id="prodSellEndDt" name="prodSellEndDt"/>
-			</td> 
+				<input type="text" id="prodSellEndDt" name="prodSellEndDt" value="날짜를 선택하세요" onclick="fnPopUpCalendar(prodSellEndDt,prodSellEndDt,'yyyymmdd')" class='text_box1'>
+
+			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -142,12 +158,20 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_offr_org_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="prodOffrOrgC" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="prodOffrOrgC" cssClass="errors" />
+				<form:select path="prodOffrOrgC" id="prodOffrOrgC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="기관을 선택하세요"/>				
+					<form:options items="${orgCodeList}" itemValue="code" itemLabel="codeName"/>
+				</form:select>
+				<form:errors path="prodOffrOrgC" cssClass="errors" />
 			</td> 
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.asts_mng_org_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01" colspan="6">
-				<form:input path="astsMngOrgC" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="astsMngOrgC" cssClass="errors" />
+				<form:select path="astsMngOrgC" id="astsMngOrgC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="기관을 선택하세요"/>				
+					<form:options items="${orgCodeList}" itemValue="code" itemLabel="codeName"/>
+				</form:select>
+				<form:errors path="astsMngOrgC" cssClass="errors" />
 			</td> 
 		</tr>
 		

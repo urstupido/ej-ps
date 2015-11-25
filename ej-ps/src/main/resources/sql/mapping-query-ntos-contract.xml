@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE queryservice PUBLIC "-//ANYFRAME//DTD QUERYSERVICE//EN"
+"http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
+<queryservice>
+	<queries>
+		<query id="findContractList">
+			<statement>
+				SELECT rownum as no,
+					   cb.cont_no,
+					   ct.cnm || ' ('||cb.cus_no||')' as cont_name_no,
+					   cd2.code_name as plan_code,
+					   cd1.code_name as cont_proc,
+					   cb.plan_entr_date
+				FROM cont_base cb, custom ct, code cd1,	code cd2
+				WHERE 1=1
+				and cb.cus_no = ct.cus_no
+				and cb.cont_proc_stat_c = cd1.code	
+				and cb.plan_kind_c = cd2.code
+				and cd1.code_type='CONT_PROC_STAT_C'
+				and cd2.code_type='PLAN_KIND_C'
+			</statement>
+			<result class="com.sds.ps.domain.Contract" >
+				<!-- <result-mapping column="{cont_no}" attribute="{contNo}" />
+				<result-mapping column="{cont_name_no}" attribute="{contNameNo}" />
+				<result-mapping column="{plan_code}" attribute="{planCode}" />
+				<result-mapping column="{cont_proc}" attribute="{contProc}" />
+				<result-mapping column="{plan_entr_date}" attribute="{planEntrDate}" /> -->
+			</result>
+		</query>
+
+		<query id="findContractByPk">
+			<statement>
+				SELECT cont_no,
+				cus_no,
+				plan_kind_c,
+				plan_entr_date,
+				cont_proc_stat_c,
+				plan_end_date,
+				rsnd_acc_bnk_c,
+				rsnd_acc_no,
+				rsnd_acc_depo_nm,
+				last_chng_usid,
+				last_chng_dt
+				FROM cont_base
+				WHERE 1=1
+				and cont_no = :vo.contNo
+			</statement>
+			<result class="com.sds.ps.domain.Contract" />
+		</query>
+
+
+		<!-- <query id="updateContract"> <statement> UPDATE prod_base SET prod_name 
+			= :vo.prodName, prod_lcls_c = :vo.prodLclsC, prod_mcls_c = :vo.prodMclsC, 
+			prod_scls_c = :vo.prodSclsC, prod_sell_entr_dt = :vo.prodSellEntrDt, prod_sell_end_dt 
+			= :vo.prodSellEndDt, asts_mng_org_c = :vo.astsMngOrgC, prod_offr_org_c = 
+			:vo.prodOffrOrgC, last_chng_usid = :vo.lastChngUsid, last_chng_dt = sysdate 
+			WHERE prod_no = :vo.prodNo </statement> </query> -->
+
+	</queries>
+</queryservice>

@@ -35,9 +35,14 @@ public class ProductController {
 	@Named("ntosCodeService")
 	private CodeService codeService;
 	
-	@ModelAttribute("codeList")
-	public Collection<CodeInfo> populateGenreList() throws Exception {
-		return this.codeService.getList("PROD_LCLS_C");
+	@ModelAttribute("prodCodeList")
+	public Collection<CodeInfo> populateProdCodeList() throws Exception {
+		return this.codeService.getList("PROD_%");
+	}
+	
+	@ModelAttribute("orgCodeList")
+	public Collection<CodeInfo> populateOrgList() throws Exception {
+		return this.codeService.getList("ORG_C");
 	}
 	
 	@RequestMapping(params = "method=createView")
@@ -87,9 +92,9 @@ public class ProductController {
 	}
 
 	@RequestMapping(params = "method=remove")
-	public String remove(@RequestParam("ProductId") String ProductId)
+	public String remove(@RequestParam("prodNo") String prodNo)
 			throws Exception {
-		this.productService.remove(ProductId);
+		this.productService.remove(prodNo);
 		return "redirect:/ntosProductFinder.do?method=list";
 	}
 }
