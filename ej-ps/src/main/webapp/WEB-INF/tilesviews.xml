@@ -39,6 +39,12 @@
         <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/form.jsp" />
     </definition>
     
+<!-- 사무담당자 -->
+    <!-- chargeman list view -->
+    <definition name="ntosListChargeman" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/list.jsp" />
+    </definition>
+    
 <!-- 우편번호 -->
     <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
     </definition>    
