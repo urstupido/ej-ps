@@ -11,39 +11,63 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class CustContract extends CommonVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	
-	//받아오는 고객번호
-	@NotNull 
-	@Size(min=1, max = 14)
-    private String cusNo = "";
-	
-	//받아오는 계약번호
+
+	private int no;
+
+	private Code codeInfo; //
+
+	// 받아오는 고객번호
 	@NotNull
-	@Size(min=1, max = 14)
-	private String contractNO = "" ;
-	
+	@Size(min = 1, max = 14)
+	private String cusNo = "";
+
+	// 고객명
 	@NotNull
-	@Size(min=1, max = 8)
+	@Size(min = 1, max = 50)
+	private String cusNameNo = "";
+
+	// 받아오는 계약번호
+	@NotNull
+	@Size(min = 1, max = 14)
+	private String contNo = "";
+
+	@NotNull
+	@Size(min = 1, max = 8)
 	private String entrDate = "";
 
 	@NotNull
-	@Size(min=1, max = 2)
+	@Size(min = 1, max = 2)
 	private String incoStacC = "";
-	
+
 	@NotNull
-	@Size(min=1, max = 8)
+	@Size(min = 1, max = 8)
 	private String retrDate = "";
-	
+
 	@NotNull
-	@Size(min=1, max = 14)
+	@Size(min = 1, max = 14)
 	private String lastChngUsid = "";
-	
+
 	@NotNull
-	@DateTimeFormat(pattern = "YYYY-MM-DD") //주석처리??
+	// @DateTimeFormat(pattern = "YYYY-MM-DD")
+	// 주석처리??
 	private Date lastChngDt;
 
-	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public Code getCodeInfo() {
+		return codeInfo;
+	}
+
+	public void setCodeInfo(Code codeInfo) {
+		this.codeInfo = codeInfo;
+	}
+
 	public String getCusNo() {
 		return cusNo;
 	}
@@ -52,12 +76,20 @@ public class CustContract extends CommonVo implements Serializable {
 		this.cusNo = cusNo;
 	}
 
-	public String getContractNO() {
-		return contractNO;
+	public String getCusNameNo() {
+		return cusNameNo;
 	}
 
-	public void setContractNO(String contractNO) {
-		this.contractNO = contractNO;
+	public void setCusNameNo(String cusNameNo) {
+		this.cusNameNo = cusNameNo;
+	}
+
+	public String getContNo() {
+		return contNo;
+	}
+
+	public void setContNo(String contNo) {
+		this.contNo = contNo;
 	}
 
 	public String getEntrDate() {
@@ -106,15 +138,29 @@ public class CustContract extends CommonVo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CustContract [cusNo=" + cusNo + ", contractNO=" + contractNO
-				+ ", entrDate=" + entrDate + ", incoStacC=" + incoStacC
-				+ ", retrDate=" + retrDate + ", lastChngUsid=" + lastChngUsid
-				+ ", lastChngDt=" + lastChngDt + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("CustContract [no=");
+		builder.append(no);
+		builder.append(", codeInfo=");
+		builder.append(codeInfo);
+		builder.append(", cusNo=");
+		builder.append(cusNo);
+		builder.append(", cusNameNo=");
+		builder.append(cusNameNo);
+		builder.append(", contNo=");
+		builder.append(contNo);
+		builder.append(", entrDate=");
+		builder.append(entrDate);
+		builder.append(", incoStacC=");
+		builder.append(incoStacC);
+		builder.append(", retrDate=");
+		builder.append(retrDate);
+		builder.append(", lastChngUsid=");
+		builder.append(lastChngUsid);
+		builder.append(", lastChngDt=");
+		builder.append(lastChngDt);
+		builder.append("]");
+		return builder.toString();
 	}
-
-	
-	
-	
-	
 
 }

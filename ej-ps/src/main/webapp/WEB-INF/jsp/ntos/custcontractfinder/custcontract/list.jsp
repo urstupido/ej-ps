@@ -9,7 +9,7 @@
     
     <script type="text/javascript">
     	$(function(){
-    		$('#keyword').keypress(function(key){
+    		$('#searchKeyword').keypress(function(key){
     			if (key.keyCode == 13) {
     				SearchCustContract();
 				}
@@ -46,7 +46,7 @@
 
 <!-- 이 model은 어디에서 정의되어 있나?????? customer product custcontract-->
 
-<form:form modelAttribute="custcontract" method="post" name="searchForm">
+<form:form modelAttribute="CustContract" method="post" name="searchForm">
 <!--begin of search-->
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
 		<tr>
@@ -61,14 +61,8 @@
 				</form:select>
 			</td>
 			
-			
-			<!-- 여기까지 수정함 -->
-			
-			
-			
-			
 			<td align="right">
-				<form:select path="codeInfo.code" cssClass="ct_input_g" cssStyle="width:80px;">
+			<%-- 	<form:select path="codeInfo.code" cssClass="ct_input_g" cssStyle="width:80px;">
 					<form:option value="">전체</form:option>
 					<form:option value="1">사용자</form:option>
 					<form:option value="2">가입자</form:option>
@@ -77,14 +71,14 @@
 				<form:select path="searchCondition">
 					<form:option value="고객번호">고객번호</form:option>
 					<form:option value="고객명">고객명</form:option>
-				</form:select>
+				</form:select> --%>
 				
 				<form:input path = "searchKeyword" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" />
 				
-				<a href="javascript:fncSearchCustomer();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
+				<a href="javascript:fncSearchCustContract();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
 			</td>
-			<input type="hidden" id="cnm" name="cnm"/>
-			<input type="hidden" id="cusNo" name="cusNo"/>
+			<!-- <input type="hidden" id="cnm" name="cnm"/>
+			<input type="hidden" id="cusNo" name="cusNo"/> -->
 		</tr>
 	</table>
 	<!--end of search-->
@@ -92,22 +86,22 @@
 		<thead>
 			<tr>
 				<th scope="col" style="border-right: 1px #CCCCCC solid">No.</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="customer.no"/></th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="customer.userTc"/></th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="customer.cnm"/></th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="customer.lastChngDt"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.cusNameNo"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.incoStacC"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.entrDate"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.retrDate"/></th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="customer" items="${customers}">
+			<c:forEach var="custContract" items="${CustContracts}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
-					<td align="center">${customer.no}</td>
+					<td align="center">${custContract.no}</td>
 					<td class="underline" align="center">
-						<a class="linkClass" href="${ctx}/ntosCustomer.do?method=get&cusNo=${customer.cusNo}">${customer.cusNo}</a>
+						<a class="linkClass" href="${ctx}/ntosCustContract.do?method=get&cusNameNo=${custContract.cusNameNo}">${custContract.cusNameNo}</a>
 					</td>
-					<td align="center">${customer.codeInfo.codeName}</td>
-					<td align="center">${customer.cnm}</td>
-					<td align="center">${customer.lastChngDt}</td>
+					<td align="center">${custContract.incoStacC}</td>
+					<td align="center">${custContract.entrDate}</td>
+					<td align="center">${custContract.retrDate}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -116,7 +110,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<tr>
 			<td class="page" height="50" align="center">
-				<anyframe:pagenavigator linkUrl="javascript:fncSearchCustomer();"
+				<anyframe:pagenavigator linkUrl="javascript:SearchCustContract();"
 					pages="${resultPage}" 
 					firstImg="${ctx}/sample/images/pagenav/page_before1.gif" 
 					lastImg="${ctx}/sample/images/pagenav/page_after1.gif" 
@@ -129,7 +123,7 @@
 	
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
-			<td align="right"><a href='<c:url value="javascript:createCustomerView();" />'><img
+			<td align="right"><a href='<c:url value="javascript:createCustContractView();" />'><img
 				src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a></td>
 		</tr>
 	</table>

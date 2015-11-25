@@ -40,6 +40,14 @@
     <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
     </definition>    
     
+<!-- 가입자 -->
+    <definition name="ntosListCustContract" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/custcontractfinder/custcontract/list.jsp" />
+    </definition>
+    <definition name="ntosViewCustContract" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/custcontractfinder/custcontract/form.jsp" />
+    </definition>
+    
 
     
     
