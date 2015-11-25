@@ -3,66 +3,58 @@
 "http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
 <queryservice>
 	<queries>
-		<query id="findCustomerList" isDynamic="true">
-			<statement>
-				SELECT custom.cus_no, c.code_name, custom.rbno,
+		<query id="findCustomerList" isDynamic="true" mappingStyle="camel">
+			<statement>SELECT custom.cus_no, c.code_name, custom.rbno,
 				custom.cnm, custom.psno, custom.addr, custom.dong_blw_addr,
-				custom.last_chng_usid, custom.last_chng_dt, rownum as no
-				FROM custom,
-				code c
-				where c.code_type='USER_TC' and c.code = custom.user_tc
-				#if($vo.searchCondition=="고객번호")
-				AND cus_no like '%' || :vo.searchKeyword || '%'
+				custom.last_chng_usid, custom.last_chng_dt, custom.picture_file,
+				rownum as no 
+				FROM custom, code c 
+				where c.code_type='USER_TC' and	c.code = custom.user_tc 
+				#if($vo.searchCondition=="고객번호") 
+				AND cus_no like '%' || :vo.searchKeyword || '%' 
 				#end
-				#if($vo.searchCondition=="고객명")
-				AND cnm like '%' || :vo.searchKeyword || '%'
-				#end
-				#if($vo.codeInfo.code != "")
-				AND user_tc = :vo.codeInfo.code
+				#if($vo.searchCondition=="고객명") 
+				AND cnm like '%' ||	:vo.searchKeyword || '%' 
+				#end 
+				#if($vo.codeInfo.code != "") 
+				AND user_tc = :vo.codeInfo.code 
 				#end
 			</statement>
 			<result class="com.sds.ps.domain.Customer">
 				<result-mapping column="{code_name}" attribute="{codeInfo.codeName}" />
 			</result>
 		</query>
-
-		<query id="findCustomerByPk">
+		<query id="findCustomerByPk" mappingStyle="camel">
 			<statement>
-				SELECT cus_no, user_tc as code, rbno, cnm, psno, addr,
-				dong_blw_addr,
-				last_chng_usid, last_chng_dt
-				FROM custom
-				WHERE cus_no =
-				:vo.cusNo
+			SELECT cus_no, user_tc as code, rbno, cnm, psno, addr, dong_blw_addr, 
+				   last_chng_usid, last_chng_dt, picture_file 
+			FROM custom
+			WHERE cus_no = :vo.cusNo
 			</statement>
 			<result class="com.sds.ps.domain.Customer">
 				<result-mapping column="{code}" attribute="{codeInfo.code}" />
 			</result>
 		</query>
-
-		<query id="updateCustomer">
+		
+		<query id="updateCustomer" mappingStyle="camel">
 			<statement>
-				UPDATE custom
-				SET rbno = :vo.rbno,
-				user_tc = :vo.codeInfo.code,
-				cnm = :vo.cnm,
-				psno = :vo.psno,
-				addr = :vo.addr,
-				dong_blw_addr = :vo.dongBlwAddr,
-				last_chng_usid = :vo.lastChngUsid,
-				last_chng_dt = sysdate
-				WHERE cus_no = :vo.cusNo
+			UPDATE custom SET rbno = :vo.rbno, user_tc = :vo.codeInfo.code, 
+				              cnm = :vo.cnm, psno = :vo.psno, addr = :vo.addr,
+							  dong_blw_addr = :vo.dongBlwAddr, last_chng_usid = :vo.lastChngUsid,
+							  last_chng_dt = sysdate 
+			WHERE cus_no = :vo.cusNo
 			</statement>
 		</query>
 		
-		<query id="createCustomer">
+		<query id="createCustomer" mappingStyle="camel">
 			<statement>
-				INSERT INTO custom (cus_no, user_tc, rbno, cnm, psno, addr, dong_blw_addr, last_chng_usid, last_chng_dt)
-				VALUES (:vo.cusNo, :vo.codeInfo.code, :vo.rbno, :vo.cnm, :vo.psno, :vo.addr, :vo.dongBlwAddr, :vo.lastChngUsid, sysdate)
+				INSERT INTO custom (cus_no, user_tc, rbno, cnm, psno, addr, dong_blw_addr, last_chng_usid, last_chng_dt, picture_file)
+				VALUES (:vo.cusNo, :vo.codeInfo.code, :vo.rbno, :vo.cnm, :vo.psno,
+				:vo.addr, :vo.dongBlwAddr, :vo.lastChngUsid, sysdate, :vo.pictureFile)
 			</statement>
 		</query>
 		
-		<query id="removeCustomer">
+		<query id="removeCustomer" mappingStyle="camel">
 			<statement>
 				DELETE FROM custom 
 				WHERE cus_no = :vo.cusNo

@@ -26,6 +26,9 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	public void create(Customer customer) throws Exception {
 		customer.setCusNo(idGenerationService.getNextStringId());
+		if (customer.getPictureFile() != null) {
+			customer.setPictureFile(customer.getPictureFile()+customer.getCusNo()+".png");
+		}
 		customerDao.create(customer);
 	}
 	
