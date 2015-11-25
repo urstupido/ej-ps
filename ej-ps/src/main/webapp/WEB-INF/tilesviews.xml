@@ -19,13 +19,14 @@
         <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/form.jsp" />
     </definition>
 
-<!-- 상품 -->
+    <!-- 상품 -->
     <definition name="ntosListProduct" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/list.jsp" />
     </definition>
     <definition name="ntosViewProduct" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/form.jsp" />
     </definition>
+    
     <!-- customer list view -->
     <definition name="customerListView" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/list.jsp" /> 
@@ -38,6 +39,13 @@
 <!-- 우편번호 -->
     <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
     </definition>    
+    
+
+    
+    
+    
+    
+    
     
 <!--Add new tiles definition here-->
 <!--hibernate-tiles-definition-START-->
