@@ -87,8 +87,8 @@
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 				<form:select path="prodLclsC" id="prodLclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
-					<form:option value="" label="분류를 선택하세요"/>
-					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
+					<form:option value="" label="-- 선택하세요 --"/>
+					<c:forEach items="${prodCodeList}" var="codeInfo" varStatus="status">
 					<c:if test="${codeInfo.codeType eq 'PROD_LCLS_C'}">
 						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
 					</c:if>
@@ -102,8 +102,8 @@
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 				<form:select path="prodMclsC" id="prodMclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
-					<form:option value="" label="대분류를 선택하세요"/>
-					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
+					<form:option value="" label="-- 선택하세요 --"/>
+					<c:forEach items="${prodCodeList}" var="codeInfo" varStatus="status">
 					<c:if test="${codeInfo.codeType eq 'PROD_MCLS_C'}">
 						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
 					</c:if>
@@ -115,12 +115,12 @@
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 				<form:select path="prodSclsC" id="prodSclsC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
-					<form:option value="" label="중분류를 선택하세요"/>				
-					<c:forEach items="${codeList}" var="codeInfo" varStatus="status">
-					<c:if test="${codeInfo.codeType eq 'PROD_SCLS_C'}">
-						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
-					</c:if>
-				</c:forEach>
+					<form:option value="" label="-- 선택하세요 --"/>				
+					<c:forEach items="${prodCodeList}" var="codeInfo" varStatus="status">
+						<c:if test="${codeInfo.codeType eq 'PROD_SCLS_C'}">
+							<form:option value="${codeInfo.code}" label="${codeInfo.codeName}"/>
+						</c:if>
+					</c:forEach>
 				</form:select>
 				<form:errors path="prodSclsC" cssClass="errors" />
 			</td> 
@@ -133,13 +133,14 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_sell_entr_dt" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-			    <input type="date" id="prodSellEntrDt" name="prodSellEntrDt"/>
+			    <input type="text" id="prodSellEntrDt" name="prodSellEntrDt" value="날짜를 선택하세요" onclick="fnPopUpCalendar(prodSellEntrDt,prodSellEntrDt,'yyyymmdd')" class='text_box1'>
 			</td> 
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_sell_end_dt" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01" colspan="6">
-				<input type="date" id="prodSellEndDt" name="prodSellEndDt"/>
-			</td> 
+				<input type="text" id="prodSellEndDt" name="prodSellEndDt" value="날짜를 선택하세요" onclick="fnPopUpCalendar(prodSellEndDt,prodSellEndDt,'yyyymmdd')" class='text_box1'>
+
+			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -148,12 +149,20 @@
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_offr_org_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="prodOffrOrgC" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="prodOffrOrgC" cssClass="errors" />
+				<form:select path="prodOffrOrgC" id="prodOffrOrgC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="기관을 선택하세요"/>				
+					<form:options items="${orgCodeList}" itemValue="code" itemLabel="codeName"/>
+				</form:select>
+				<form:errors path="prodOffrOrgC" cssClass="errors" />
 			</td> 
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.asts_mng_org_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01" colspan="6">
-				<form:input path="astsMngOrgC" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="astsMngOrgC" cssClass="errors" />
+				<form:select path="astsMngOrgC" id="astsMngOrgC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
+					<form:option value="" label="기관을 선택하세요"/>				
+					<form:options items="${orgCodeList}" itemValue="code" itemLabel="codeName"/>
+				</form:select>
+				<form:errors path="astsMngOrgC" cssClass="errors" />
 			</td> 
 		</tr>
 		
