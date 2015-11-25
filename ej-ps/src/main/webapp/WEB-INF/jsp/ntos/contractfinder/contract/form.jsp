@@ -40,26 +40,25 @@
 			<table width="100%" height="24" border="0" cellpadding="0"
 				cellspacing="0">
 				<tr>
-					<td height="24" class="ct_ttl01" style="padding-left: 12px"><c:if
-							test="${empty contract.contNo}">
-				 	Add Contract Information
-				 	<c:set var="readonly" value="false" />
-						</c:if> <c:if test="${not empty contract.contNo}">	
-					Update Contract Information
-					<c:set var="readonly" value="true" />
-						</c:if></td>
+					<td height="24" class="ct_ttl01" style="padding-left: 12px">
+						Update Contract Information
+					</td>
 				</tr>
 			</table>
 		</td>
 	</tr>
 </table>
+${contract.contNo}
+<spring:message code="contract.contNo" />
+
+
 <form:form modelAttribute="contract" name="contractForm" method="post">
 
-	<table width="100%" border="0" cellspacing="0" cellpadding="0"
+ <table width="100%" border="0" cellspacing="0" cellpadding="0"
 		style="margin-top: 13px;">
 		<tr>
 			<td width="150" class="ct_td" colspan="2"><spring:message
-					code="contract.cont_no" /> &nbsp;*</td>
+					code="contract.contNo" /> &nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01" colspan="10"><form:input path="contNo"
 					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
@@ -71,19 +70,29 @@
 		</tr>
 		<tr>
 			<td width="150" class="ct_td" colspan="2"><spring:message
-					code="contract.cont_name" /></td>
+					code="contract.cusNo" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01" colspan="10"><form:input path="contName"
+			<td class="ct_write01" colspan="10"><form:input path="cusNo"
 					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
-					maxlength="50" /> <form:errors path="contName" cssClass="errors" />
+					maxlength="50" /> <form:errors path="cusNo" cssClass="errors" />
 			</td>
+			<td width="150" class="ct_td" colspan="2"><spring:message
+					code="contract.contProc" /></td>
+			<td bgcolor="D6D6D6" width="1"></td>
+			<td class="ct_write01" colspan="10"><form:input path="contProc"
+					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
+					maxlength="50" /> <form:errors path="contProc" cssClass="errors" />
+			</td>
+			
+			
+			
 		</tr>
 
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
+		</tr> 
 
-		<tr>
+	<%-- 	<tr>
 			<td width="150" class="ct_td" colspan="2"><spring:message
 					code="contract.cont_lcls_c" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
@@ -148,9 +157,10 @@
 
 		<tr>
 			<td height="25" colspan="3"></td>
-		</tr>
+		</tr> --%>
 
-		<tr>
+
+	<%-- 	<tr>
 			<td width="150" class="ct_td" colspan="12">최종변경정보</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 		</tr>
@@ -173,9 +183,12 @@
 					cssErrorClass="text medium error" size="40" maxlength="50"
 					readonly="true" /> <form:errors path="lastChngUsid"
 					cssClass="errors" /></td>
-		</tr>
+		</tr> --%>
+</table>
 
 
+
+<%-- 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0"
 			style="margin-top: 10px;">
 			<tr>
@@ -209,5 +222,5 @@
 							height="18" border="0" /></a>
 					</c:if></td>
 			</tr>
-		</table>
-		</form:form>
+		</table> --%>
+	</form:form>

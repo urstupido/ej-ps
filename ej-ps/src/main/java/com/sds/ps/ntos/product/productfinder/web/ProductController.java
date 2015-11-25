@@ -73,6 +73,7 @@ public class ProductController {
 	public String get(@RequestParam("prodNo") String prodNo, Model model)
 			throws Exception {
 		Product Product = this.productService.get(prodNo);
+		System.out.println("=========야야야야먕먀얌ㅇ=="+Product);
 		if (Product == null) {
 			throw new Exception("Resource not found " + prodNo);
 		}

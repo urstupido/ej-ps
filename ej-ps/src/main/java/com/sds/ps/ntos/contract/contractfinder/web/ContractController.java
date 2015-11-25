@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import sun.security.action.GetLongAction;
+import anyframe.common.Page;
+
 import com.sds.ps.domain.CodeInfo;
 import com.sds.ps.domain.Contract;
 import com.sds.ps.ntos.codefinder.service.CodeService;
@@ -42,6 +45,7 @@ public class ContractController {
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
 		model.addAttribute(new Contract());
+		
 		return "ntosViewContract";
 	}
 
@@ -93,6 +97,7 @@ public class ContractController {
 	public String get(@RequestParam("contNo") String contNo, Model model)
 			throws Exception {
 		Contract Contract = this.ContractService.get(contNo);
+		System.out.println(Contract);
 		if (Contract == null) {
 			throw new Exception("Resource not found " + contNo);
 		}

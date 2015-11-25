@@ -15,7 +15,7 @@
     		})
     	})
     	
-	/* 	function fncSearchContract(arg) {
+	/*  	function fncSearchContract(arg) {
 			if ($('#gubun').val() == '고객번호') {
 				$('#contNo').val($('#keyword').val());
 			}else{
@@ -23,8 +23,9 @@
 			}
 		   	document.searchForm.action="<c:url value='/ntosContractFinder.do?method=list'/>";
 		   	document.searchForm.submit();						
-		} */
+		}  */
     	
+		
 		function createContractView(){
 			document.location.href="<c:url value='/ntosContract.do?method=createView'/>";
 		}
