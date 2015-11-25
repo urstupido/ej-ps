@@ -41,44 +41,14 @@
     </definition>    
 
 <!-- 계약관리 -->
- 	<definition name="contractListView" extends="foundationLayout">
-  		<put-attribute name="body" value="/WEB-INF/jsp/contractfinder/contract/list.jsp" /> 
+ 	<definition name="ntosListContract" extends="foundationLayout">
+  		<put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/list.jsp" /> 
   	</definition>
  	<definition name="ntosViewContract" extends="foundationLayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/contractfinder/contract/form.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/form.jsp" />
     </definition>
 
-<!-- 가입자관리 -->
- 	<definition name="custContractListView" extends="foundationLayout">
-  		<put-attribute name="body" value="/WEB-INF/jsp/custContractfinder/custContract/list.jsp" /> 
-  	</definition>
- 	<definition name="ntosViewCustContract" extends="foundationLayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/custContractfinder/custContract/form.jsp" />
-    </definition>
-    
-<!-- 사무담당자관리 -->
- 	<definition name="manInChargetListView" extends="foundationLayout">
-  		<put-attribute name="body" value="/WEB-INF/jsp/manInChargefinder/manInCharge/list.jsp" /> 
-  	</definition>
- 	<definition name="ntosViewmanInCharge" extends="foundationLayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/manInChargefinder/manInCharge/form.jsp" />
-    </definition>
 
-<!-- 운용비율관리 -->
- 	<definition name="productDistListView" extends="foundationLayout">
-  		<put-attribute name="body" value="/WEB-INF/jsp/productDistfinder/productDist/list.jsp" /> 
-  	</definition>
- 	<definition name="ntosViewproductDist" extends="foundationLayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/productDistfinder/productDist/form.jsp" />
-    </definition>    
-    
-<!-- 상품선정관리 -->
- 	<definition name="productSelectListView" extends="foundationLayout">
-  		<put-attribute name="body" value="/WEB-INF/jsp/productSelectfinder/productSelect/list.jsp" /> 
-  	</definition>
- 	<definition name="ntosViewproductDist" extends="foundationLayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/productSelectfinder/productSelect/form.jsp" />
-    </definition>    
     
 <!--Add new tiles definition here-->
 <!--hibernate-tiles-definition-START-->

@@ -6,12 +6,10 @@ import java.sql.Date;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
 
-
 public class Contract extends CommonVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@NotNull
 	@Size(min = 1, max = 14)
 	private String contNo = "";
 
@@ -19,43 +17,42 @@ public class Contract extends CommonVo implements Serializable {
 
 	private Code codeInfo;
 
-	@NotNull
+	@Size(min = 1, max = 60)
+	private String contNameNo = "";
+
+	@Size(min = 1, max = 10)
+	private String planCode = "";
+
+	@Size(min = 1, max = 10)
+	private String contProc = "";
+
 	@Size(min = 1, max = 14)
 	private String cusNo = "";
 
-	@NotNull
 	@Size(min = 1, max = 1)
 	private String planKindC = "";
 
-	@NotNull
 	@Size(min = 1, max = 8)
 	private String planEntrDate = "";
 
-	@NotNull
 	@Size(min = 1, max = 3)
 	private String contProcStatC = "";
 
-	@NotNull
 	@Size(min = 1, max = 8)
 	private String planEndDate = "";
 
-	@NotNull
 	@Size(min = 1, max = 3)
 	private String rsndAccBnkC = "";
 
-	@NotNull
 	@Size(min = 1, max = 23)
 	private String rsndAccNo = "";
 
-	@NotNull
 	@Size(min = 1, max = 60)
 	private String rsndAccDepoNm = "";
 
-	@NotNull
 	@Size(min = 1, max = 14)
 	private String lastChngUsid = "";
 
-	@NotNull
 	// @DateTimeFormat(pattern = "YYYY-MM-DD")
 	private Date lastChngDt;
 
@@ -167,6 +164,32 @@ public class Contract extends CommonVo implements Serializable {
 		return serialVersionUID;
 	}
 
+	public String getContNameNo() {
+		return contNameNo;
+	}
+
+	public void setContNameNo(String contNameNo) {
+		this.contNameNo = contNameNo;
+	}
+
+	public String getPlanCode() {
+		return planCode;
+	}
+
+	public void setPlanCode(String planCode) {
+		this.planCode = planCode;
+	}
+
+	public String getContProc() {
+		return contProc;
+	}
+
+	public void setContProc(String contProc) {
+		this.contProc = contProc;
+	}
+
+	
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
