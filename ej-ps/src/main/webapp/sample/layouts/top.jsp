@@ -60,7 +60,7 @@
 					<li class="has-children"><a href="http://codyhouse.co/?p=409">가입자관리</a>
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
-							<li>가입자목록</li>
+							<li><a href="${ctx}/ntosCustContractFinder.do?method=list">가입자목록</a></li>
 							<li>가입자등록</li>
 						</ul></li>
 

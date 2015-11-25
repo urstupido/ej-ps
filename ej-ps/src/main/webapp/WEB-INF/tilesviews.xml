@@ -19,6 +19,7 @@
         <put-attribute name="body" value="/WEB-INF/jsp/foundation/moviefinder/movie/form.jsp" />
     </definition>
 
+
 <!-- 상품 -->
 	<!-- product list view -->
     <definition name="ntosListProduct" extends="foundationLayout">
@@ -29,8 +30,8 @@
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/form.jsp" />
     </definition>
 
-    
-<!-- customer list view -->
+<!-- 고객 -->
+    <!-- customer list view -->
     <definition name="customerListView" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/list.jsp" /> 
   	</definition>
@@ -38,7 +39,6 @@
   	<definition name="ntosViewCustomer" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/form.jsp" />
     </definition>
-    
 
 <!-- 상품선정 -->
     <definition name="ntosListProductSelect" extends="foundationLayout">
@@ -50,7 +50,6 @@
     <definition name="ntosListChargeman" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/list.jsp" />
     </definition>
-
     
 <!-- 우편번호 -->
     <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
@@ -63,8 +62,15 @@
  	<definition name="ntosViewContract" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/form.jsp" />
     </definition>
-
-
+    
+<!-- 가입자 -->
+    <definition name="ntosListCustContract" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/custcontractfinder/custcontract/list.jsp" />
+    </definition>
+    <definition name="ntosViewCustContract" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/custcontractfinder/custcontract/form.jsp" />
+    </definition>
+    
     
 <!--Add new tiles definition here-->
 <!--hibernate-tiles-definition-START-->

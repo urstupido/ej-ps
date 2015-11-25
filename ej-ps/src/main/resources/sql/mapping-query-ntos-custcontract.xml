@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE queryservice PUBLIC "-//ANYFRAME//DTD QUERYSERVICE//EN"
+"http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
+<queryservice>
+	<queries>
+		<query id="findCustContractList" isDynamic="true">
+			<statement>
+				<!--foundation findMovieList-START -->
+				SELECT rownum as no,
+				cu.cnm || '(' || cu.cus_no || ')' as cus_name_no,
+				co.code_name as incoStacC,
+				cc.entr_date ,
+				cc.retr_date
+				from custom cu, enmn_cont cc, code co
+				where cc.cus_no = cu.cus_no
+				  and cc.inco_stac_c = co.code
+			</statement>
+		</query>
+
+		<query id="findCustContractByPk">
+			<statement>
+				SELECT prod_no,
+				prod_name,
+				prod_lcls_c,
+				prod_mcls_c,
+				prod_scls_c,
+				prod_sell_entr_dt,
+				prod_sell_end_dt,
+				asts_mng_org_c,
+				prod_offr_org_c,
+				last_chng_usid,
+				last_chng_dt
+				FROM prod_base
+				WHERE 1=1
+				and prod_no = :vo.prodNo
+			</statement>
+			<result class="com.sds.ps.domain.CustContract" />
+		</query>
+
+
+		<!-- <query id="updateProduct"> <statement> UPDATE prod_base SET prod_name 
+			= :vo.prodName, prod_lcls_c = :vo.prodLclsC, prod_mcls_c = :vo.prodMclsC, 
+			prod_scls_c = :vo.prodSclsC, prod_sell_entr_dt = :vo.prodSellEntrDt, prod_sell_end_dt 
+			= :vo.prodSellEndDt, asts_mng_org_c = :vo.astsMngOrgC, prod_offr_org_c = 
+			:vo.prodOffrOrgC, last_chng_usid = :vo.lastChngUsid, last_chng_dt = sysdate 
+			WHERE prod_no = :vo.prodNo </statement> </query> -->
+
+	</queries>
+</queryservice>
