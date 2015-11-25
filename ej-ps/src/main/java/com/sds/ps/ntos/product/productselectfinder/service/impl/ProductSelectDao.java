@@ -27,24 +27,24 @@ public class ProductSelectDao extends AbstractDAO {
 	}
 
 	public void remove(ProductSelect productSelect) throws Exception {
-		remove("Product", productSelect);
+		remove("ProductSelect", productSelect);
 	}
 
 	public void update(ProductSelect productSelect) throws Exception {
-		update("Product", productSelect);
+		update("ProductSelect", productSelect);
 	}
 
 	public ProductSelect get(ProductSelect productSelect) throws Exception {
 		return (ProductSelect) findByPk("ProductSelect", productSelect);
 	}
 
-	public Page getPagingList(Product product, int pageSize ,int pageIndex) throws Exception {
-		return this.findListWithPaging("Product", product, pageIndex, pageSize,
+	public Page getPagingList(ProductSelect productSelect, int pageSize ,int pageIndex) throws Exception {
+		return this.findListWithPaging("ProductSelect", productSelect, pageIndex, pageSize,
 				pageUnit);
 	}
 
-	public Page getPagingList(Product product)  throws Exception {
-		return findListWithPaging("Product", product, product.getCurrentPageNo(),
-				product.getRecordCountPerPage());
+	public Page getPagingList(ProductSelect productSelect)  throws Exception {
+		return findListWithPaging("ProductSelect", productSelect, productSelect.getCurrentPageNo(),
+				productSelect.getRecordCountPerPage());
 	}
 }

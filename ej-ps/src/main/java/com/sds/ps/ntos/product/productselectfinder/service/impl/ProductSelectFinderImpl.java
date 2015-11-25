@@ -8,19 +8,24 @@ import org.springframework.stereotype.Service;
 import anyframe.common.Page;
 
 import com.sds.ps.domain.Product;
-import com.sds.ps.ntos.product.productfinder.service.ProductFinder;
+import com.sds.ps.domain.ProductSelect;
+import com.sds.ps.ntos.product.productselectfinder.service.ProductSelectFinder;
 
 @Service("ntosProductSelectFinder")
-public class ProductSelectFinderImpl implements ProductFinder {
+public class ProductSelectFinderImpl implements ProductSelectFinder {
 	@Inject
 	@Named("ntosProductSelectDao")
-	private ProductSelectDao productDao;
+	private ProductSelectDao productSelectDao;
 
-	public Page getPagingList(Product product, int pageSize, int pageIndex)throws Exception {
-		return this.productDao.getPagingList(product, pageSize, pageIndex);
+	@Override
+	public Page getPagingList(ProductSelect productSelect, int pageSize,
+			int pageIndex) throws Exception {
+		return productSelectDao.getPagingList(productSelect, pageSize, pageIndex);
 	}
 
-	public Page getPagingList(Product product) throws Exception {
-		return this.productDao.getPagingList(product);
+	@Override
+	public Page getPagingList(ProductSelect productSelect) throws Exception {
+		// TODO Auto-generated method stub
+		return productSelectDao.getPagingList(productSelect);
 	}
 }

@@ -51,7 +51,7 @@
 </table>
 <!--end of title-->
 
-<form:form modelAttribute="product" method="post" name="searchForm">
+<form:form modelAttribute="productSelect" method="post" name="searchForm">
 	<!--begin of search-->
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
 		<tr>
@@ -113,12 +113,9 @@
 			<c:forEach var="productSelect" items="${productSelects}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >
 					<td align="center">${productSelect.rows}</td>
-					<td class="underline" align="center">
-						<a class="linkClass" href="${ctx}/ntosProduct.do?method=get&prodNo=${product.prodNo}">${product.prodNo}</a>
-					</td>
-					<td align="center">${productSelect.contNo}</td>
+					<td align="center">${productSelect.contract.contNo}</td>
 					<td align="center">${productSelect.contract.planKindC}</td>
-					<td align="center">${productSelect.prodNo}</td>
+					<td align="center">${productSelect.product.prodNo}</td>
 					<td align="center">${productSelect.product.prodName}</td>
 					<td align="center">${productSelect.prodSlctDate}</td>
 					<td align="center">${productSelect.prodRelsDate}</td>
