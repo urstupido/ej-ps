@@ -9,6 +9,15 @@
 	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	<script type="text/javascript">
+		$(function(){
+			for (var i = 1; i < document.getElementById("prodMclsC").length; i++) {
+				document.getElementById("prodMclsC")[i].hidden = "hidden";
+			}
+			for (var i = 1; i < document.getElementById("prodSclsC").length; i++) {
+				document.getElementById("prodSclsC")[i].hidden = "hidden";
+			}
+		});
+		
 		function createProduct() {
 	    	document.productForm.action="<c:url value='/ntosProduct.do?method=create'/>";
 	    	document.productForm.submit();

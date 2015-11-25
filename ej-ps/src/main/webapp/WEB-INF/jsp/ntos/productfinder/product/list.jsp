@@ -10,12 +10,12 @@
 	
 	 <script type="text/javascript">
     	$(function(){
-    		$('#keyword').keypress(function(key){
+    		$('#searchKeyword').keypress(function(key){
     			if (key.keyCode == 13) {
     				searchProduct();
 				}
     		})
-    	})
+    	});
     	
 		function searchProduct(arg) {			
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
@@ -73,7 +73,7 @@
 			
 			<td align="right">
 				<form:select path="searchCondition" cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
-					<form:option value="" selected="selected">전체</form:option>
+					<form:option value="2" selected="selected">전체</form:option>
 					<form:option value="1">상품번호</form:option>
 					<form:option value="2">상품명</form:option>
 				</form:select>
