@@ -3,24 +3,23 @@
 "http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
 <queryservice>
 	<queries>
-		<query id="findCodeByPk">
+		<query id="findCodeInfoByPk">
 			<statement>
 				SELECT code, code_name
 				FROM code
 				WHERE code_type = :vo.codeType
 			</statement>
-			<result class="com.sds.ps.domain.Code" />
+			<result class="com.sds.ps.domain.CodeInfo" />
 		</query>
 
-		<query id="findCodeList">
+		<query id="findCodeInfoList">
 			<statement>
-				SELECT code, code_name
+				SELECT code_type, code, code_name
 				FROM code
-				WHERE code_type = :vo.codeType
+				WHERE code_type like :vo.codeType
 				order by code
 			</statement>
-			<result class="com.sds.ps.domain.Code" />
+			<result class="com.sds.ps.domain.CodeInfo" />
 		</query>
 	</queries>
 </queryservice>
-

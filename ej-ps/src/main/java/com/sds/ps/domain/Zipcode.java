@@ -6,6 +6,7 @@ public class Zipcode extends CommonVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private String seq;
 	private String zip1;
 	private String zip2;
 	private String sido;
@@ -78,6 +79,14 @@ public class Zipcode extends CommonVo implements Serializable {
 
 	public void setGugun(String gugun) {
 		this.gugun = gugun;
+	}
+
+	public String getSeq() {
+		return seq;
+	}
+
+	public void setSeq(String seq) {
+		this.seq = seq;
 	}
 
 }

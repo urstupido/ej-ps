@@ -70,5 +70,21 @@
 			</statement>
 		</query>
 		
+		
+		<query id="createProduct">
+			<statement>
+				INSERT INTO prod_base (prod_no, prod_name, prod_lcls_c, prod_mcls_c, prod_scls_c, prod_sell_entr_dt, prod_sell_end_dt,
+										asts_mng_org_c, prod_offr_org_c, last_chng_usid, last_chng_dt)
+				VALUES (:vo.prodNo, :vo.prodName, :vo.prodLclsC, :vo.prodMclsC, :vo.prodSclsC, :vo.prodSellEntrDt, :vo.prodSellEndDt,
+						 :vo.astsMngOrgC, :vo.prodOffrOrgC, :vo.lastChngUsid, sysdate)
+			</statement>
+		</query>
+		
+		<query id="removeProduct">
+			<statement>
+				DELETE FROM prod_base 
+				WHERE prod_no = :vo.prodNo
+			</statement>
+		</query>
 	</queries>
 </queryservice>

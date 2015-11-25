@@ -13,23 +13,23 @@ public class Product extends CommonVo implements Serializable {
 	private int no;
 
 	@NotNull
-	@Size(min = 1, max = 5)
+	@Size(min = 1, max = 1)
 	private String prodLclsC = "";
 	
 	@NotNull
-	@Size(min = 1, max = 5)
+	@Size(min = 1, max = 3)
 	private String prodMclsC;
 	
 	@NotNull
-	@Size(min = 1, max = 5)
+	@Size(min = 1, max = 4)
 	private String prodSclsC;
 	
 	@NotNull
-	@Size(min = 1, max = 10)
+	@Size(min = 1, max = 4)
 	private String prodOffrOrgC;
 	
 	@NotNull
-	@Size(min = 1, max = 10)
+	@Size(min = 1, max = 4)
 	private String astsMngOrgC;
 	
 	
@@ -53,7 +53,7 @@ public class Product extends CommonVo implements Serializable {
 	private String maxIvtRto;
 
 //	@NotNull
-	@Size(min = 1, max = 1)
+	@Size(min = 1, max = 5)
 	private String delYn;
 
 	@NotNull

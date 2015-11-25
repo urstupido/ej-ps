@@ -11,15 +11,15 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.sds.ntos.customerfinder.service.CustomerService;
-import com.sds.ps.domain.Code;
+import com.sds.ps.domain.CodeInfo;
 import com.sds.ps.domain.Customer;
 import com.sds.ps.ntos.codefinder.service.CodeService;
 
@@ -37,7 +37,7 @@ public class CustomerController {
 	private CodeService codeService;
 	
 	@ModelAttribute("codeList")
-	public Collection<Code> populateGenreList() throws Exception {
+	public Collection<CodeInfo> populateGenreList() throws Exception {
 		return this.codeService.getList("USER_TC");
 	}
 	
@@ -86,8 +86,9 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(params = "method=remove")
+	@ResponseBody
 	public String remove(@RequestParam("cusNo") String cusNo) throws Exception {
 		this.customerService.remove(cusNo);
-		return "redirect:/ntosCustomerFinder.do?method=list";
+		return "true";
 	}
 }

@@ -25,10 +25,6 @@ public class CustomerServiceImpl implements CustomerService{
 	private CustomerDao customerDao;
 	
 	public void create(Customer customer) throws Exception {
-		if(customer == null) {
-			
-		}
-		
 		customer.setCusNo(idGenerationService.getNextStringId());
 		customerDao.create(customer);
 	}

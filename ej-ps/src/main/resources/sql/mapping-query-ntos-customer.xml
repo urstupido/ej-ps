@@ -61,7 +61,12 @@
 				VALUES (:vo.cusNo, :vo.codeInfo.code, :vo.rbno, :vo.cnm, :vo.psno, :vo.addr, :vo.dongBlwAddr, :vo.lastChngUsid, sysdate)
 			</statement>
 		</query>
-
+		
+		<query id="removeCustomer">
+			<statement>
+				DELETE FROM custom 
+				WHERE cus_no = :vo.cusNo
+			</statement>
+		</query>
 	</queries>
 </queryservice>
-

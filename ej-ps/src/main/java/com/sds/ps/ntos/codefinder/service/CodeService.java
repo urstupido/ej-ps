@@ -2,8 +2,8 @@ package com.sds.ps.ntos.codefinder.service;
 
 import java.util.List;
 
-import com.sds.ps.domain.Code;
+import com.sds.ps.domain.CodeInfo;
 
 public interface CodeService {
-	public List<Code> getList(String codeType) throws Exception;
+	public List<CodeInfo> getList(String codeType) throws Exception;
 }
