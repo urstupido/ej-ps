@@ -58,9 +58,6 @@
 			<td align="left">
 				총 ${size}건
 				
-				<input  type="text" id="txtDate" value="" onclick="fnPopUpCalendar(txtDate,txtDate,'yyyy/mm/dd')" class='text_box1'>
-
-				
 				<form:select path="pageSize" cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
 					<form:option value="10" selected="selected">10건씩 보기</form:option>
 					<form:option value="20">20건씩 보기</form:option>
@@ -68,7 +65,6 @@
 					<form:option value="40">40건씩 보기</form:option>
 					<form:option value="50">50건씩 보기</form:option>
 				</form:select>
-				
 			</td>
 			
 			<td align="right">
