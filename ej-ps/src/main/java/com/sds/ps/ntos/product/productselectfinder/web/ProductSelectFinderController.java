@@ -31,7 +31,7 @@ public class ProductSelectFinderController {
 		Page resultPage = productSelectFinder.getPagingList(productSelect, pageSize, pageIndex);
 
 		model.addAttribute("productSelect", productSelect);
-		model.addAttribute("products", resultPage.getList());
+		model.addAttribute("productSelects", resultPage.getList());
 		model.addAttribute("size", resultPage.getTotalCount());
 		model.addAttribute("pagesize", resultPage.getPagesize());
 		model.addAttribute("pageunit", resultPage.getPageunit());

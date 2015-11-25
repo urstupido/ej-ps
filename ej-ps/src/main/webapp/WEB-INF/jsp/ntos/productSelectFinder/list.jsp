@@ -2,7 +2,7 @@
 <%@ include file="/sample/common/taglibs.jsp"%>
 <head>
     <%@ include file="/sample/common/meta.jsp" %>
-    <title>상품관리</title>
+    <title>상품선정관리</title>
 	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">
     <script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>   
     <script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
@@ -12,17 +12,17 @@
     	$(function(){
     		$('#keyword').keypress(function(key){
     			if (key.keyCode == 13) {
-    				searchProduct();
+    				searchProductSelect();
 				}
     		})
     	})
     	
-		function searchProduct(arg) {			
+		function searchProductSelect(arg) {			
 		   	document.searchForm.action="<c:url value='/ntosProductSelectFinder.do?method=list'/>";
 		   	document.searchForm.submit();		
 		}
     		
-    	function createProductView() {
+    	function createProductSelectView() {
 			document.location.href="<c:url value='/ntosProductSelect.do?method=createView'/>";
 		}
     	
@@ -110,18 +110,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="product" items="${products}">
+			<c:forEach var="productSelect" items="${productSelects}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >
-					<td align="center">${product.no}</td>
+					<td align="center">${productSelect.rows}</td>
 					<td class="underline" align="center">
 						<a class="linkClass" href="${ctx}/ntosProduct.do?method=get&prodNo=${product.prodNo}">${product.prodNo}</a>
 					</td>
-					<td align="center">${product.prodName}</td>
-					<td align="center">${product.prodLclsC}</td>
-					<td align="center">${product.prodOffrOrgC}</td>
-					<td align="center">${product.astsMngOrgC}</td>
-					<td align="center">${product.prodSellEntrDt}</td>
-					<td align="center">${product.prodSellEndDt}</td>
+					<td align="center">${productSelect.contNo}</td>
+					<td align="center">${productSelect.contract.planKindC}</td>
+					<td align="center">${productSelect.prodNo}</td>
+					<td align="center">${productSelect.product.prodName}</td>
+					<td align="center">${productSelect.prodSlctDate}</td>
+					<td align="center">${productSelect.prodRelsDate}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -130,7 +130,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<tr>
 			<td class="page" height="50" align="center">
-				<anyframe:pagenavigator linkUrl="javascript:searchProduct();"
+				<anyframe:pagenavigator linkUrl="javascript:searchProductSelect();"
 					pages="${resultPage}" 
 					firstImg="${ctx}/sample/images/pagenav/page_before1.gif" 
 					lastImg="${ctx}/sample/images/pagenav/page_after1.gif" 
@@ -142,7 +142,7 @@
 
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
-			<td align="right"><a href='<c:url value="javascript:createProductView();" />'><img
+			<td align="right"><a href='<c:url value="javascript:createProductSelectView();" />'><img
 				src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a></td>
 		</tr>
 	</table>

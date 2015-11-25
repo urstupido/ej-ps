@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE queryservice PUBLIC "-//ANYFRAME//DTD QUERYSERVICE//EN"
+"http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
+<queryservice>
+	<queries>
+		<query id="findProductSelectList" isDynamic="true">
+			<statement>
+				SELECT rownum as rows, ps.cont_no, c.code_name as plan_kind_c, ps.prod_no, p.prod_name, ps.prod_slct_date, ps.prod_rels_date
+				FROM prod_slct_istm ps, cont_base cb, code c, prod_base p   
+				WHERE 1=1
+					and ps.cont_no = cb.cont_no
+					and ps.prod_no = p.prod_no
+					and cb.plan_kind_c = c.code
+					and c.code_type = 'PLAN_KIND_C'; 
+			</statement>
+			<result class="com.sds.ps.domain.ProductSelect">
+				<result-mapping column="{plan_kind_c}" attribute="{contract.planKindC}" />
+				<result-mapping column="{prod_name}" attribute="{product.productName}" />
+			</result>
+		</query>
+	</queries>
+</queryservice>

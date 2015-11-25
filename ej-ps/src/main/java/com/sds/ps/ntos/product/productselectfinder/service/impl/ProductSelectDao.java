@@ -12,7 +12,7 @@ import anyframe.core.query.IQueryService;
 import com.sds.ps.domain.Product;
 import com.sds.ps.domain.ProductSelect;
 
-@Repository("ntosProductDao")
+@Repository("ntosProductSelectDao")
 public class ProductSelectDao extends AbstractDAO {
 	@Value("#{contextProperties['pageUnit'] ?: 10}")
 	int pageUnit;
