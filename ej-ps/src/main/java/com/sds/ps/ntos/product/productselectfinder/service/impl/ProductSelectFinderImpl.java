@@ -10,10 +10,10 @@ import anyframe.common.Page;
 import com.sds.ps.domain.Product;
 import com.sds.ps.ntos.product.productfinder.service.ProductFinder;
 
-@Service("ntosProductFinder")
+@Service("ntosProductSelectFinder")
 public class ProductSelectFinderImpl implements ProductFinder {
 	@Inject
-	@Named("ntosProductDao")
+	@Named("ntosProductSelectDao")
 	private ProductSelectDao productDao;
 
 	public Page getPagingList(Product product, int pageSize, int pageIndex)throws Exception {
