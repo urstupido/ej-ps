@@ -18,11 +18,11 @@
 	<div class="cd-overlay"></div>
 	<nav class="cd-nav">
 		<ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
-			<li class="has-children"><a href="http://codyhouse.co/?p=409">View</a>
+			<li class="has-children"><a href="">NAVIGATION</a>
 
 				<ul class="cd-secondary-nav is-hidden">
 					<li class="go-back"><a href="#0">Menu</a></li>
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">상품관리</a>
+					<li class="has-children"><a href="">상품관리</a>
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosProductFinder.do?method=list">상품목록</a></li>
@@ -30,7 +30,7 @@
 
 						</ul></li>
 
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">플랜(계약)관리</a>
+					<li class="has-children"><a href="">플랜(계약)관리</a>
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosContractFinder.do?method=list">계약목록</a></li>
@@ -49,14 +49,14 @@
 							</li> -->
 						</ul></li>
 
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">가입자관리</a>
+					<li class="has-children"><a href="">가입자관리</a>
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosCustContractFinder.do?method=list">가입자목록</a></li>
 							<li><a href="${ctx}/ntosCustContract.do?method=createView">가입자등록</a></li>
 						</ul></li>
 
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">고객관리</a>
+					<li class="has-children"><a href="">고객관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
@@ -64,7 +64,7 @@
 							<li><a href="${ctx}/ntosCustomer.do?method=createView">고객등록</a></li>
 						</ul></li>
 
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">상품배분비율관리</a>
+					<li class="has-children"><a href="">상품배분비율관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
@@ -72,7 +72,7 @@
 						</ul></li>
 
 
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">상품선정관리</a>
+					<li class="has-children"><a href="">상품선정관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
@@ -80,7 +80,7 @@
 							<li>상품선정등록</li>
 						</ul></li>
 
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">사무담당자관리</a>
+					<li class="has-children"><a href="">사무담당자관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
@@ -89,7 +89,7 @@
 						</ul></li>
 				</ul></li>
 
-			<li class="has-children"><a href="http://codyhouse.co/?p=409">Registration</a>
+			<li class="has-children"><a href="http://codyhouse.co/?p=409">REGISTRATION</a>
 
 				<ul class="cd-nav-gallery is-hidden">
 					<li class="go-back"><a href="#0">back</a></li>
