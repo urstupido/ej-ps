@@ -17,7 +17,7 @@
     	});
     	
     	function findContract(){
-    		window.open("${ctx}/ntosContractFinder.do?method=openWindow", "contract", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+    		window.open("${ctx}/ntosContractFinder.do?method=popup", "contract", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
     	}
     	
 		function searchProductDistribution(arg) {			
@@ -26,11 +26,14 @@
 		}
     	
 		function updateProductDistribution() {
-			
 		    document.customerForm.action="<c:url value='/ntosCustomer.do?method=update'/>";
 		    document.customerForm.submit();
 		}
 		
+		function selectPageSize(selectObj) {
+    		document.searchForm.action="<c:url value='/ntosProductDistributionFinder.do?method=list'/>";
+		   	document.searchForm.submit();
+    	}
 	</script>
 </head>
 
@@ -58,16 +61,23 @@
 		<tr>
 			<td align="left">
 				총 ${size}건
+				
+				<form:select path="pageSize" cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
+					<form:option value="10" selected="selected">10건씩 보기</form:option>
+					<form:option value="20">20건씩 보기</form:option>
+					<form:option value="30">30건씩 보기</form:option>
+					<form:option value="40">40건씩 보기</form:option>
+					<form:option value="50">50건씩 보기</form:option>
+				</form:select>
 			</td>
 			
+			
 			<td align="right">
-				
 				<input type="button" value="<spring:message code="productDistribution.find_contract"/>" onclick="findContract()">
+				<input type="text" id="contNo" readonly="true"> - 
 				
-				<input type="text" value="" id="contNo" readonly="true">
-				<input type="text" value="" id="contNo" readonly="true">
+				
 				<input type="button" value="Search" onclick="searchProductDistribution()">
-				
 			</td>
 			
 		</tr>

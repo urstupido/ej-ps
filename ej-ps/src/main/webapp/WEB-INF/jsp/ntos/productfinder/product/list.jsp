@@ -74,9 +74,6 @@
 					<form:option value="2">상품명</form:option>
 				</form:select>
 				
-				<input type="hidden" id="prodName" name="prodName"/>
-				<input type="hidden" id="prodNo" name="prodNo"/>
-				
 				<form:input path="searchKeyword" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50"/>
 				
 				<form:select path="prodLclsC" cssClass="ct_input_g" cssStyle="width:80px;">

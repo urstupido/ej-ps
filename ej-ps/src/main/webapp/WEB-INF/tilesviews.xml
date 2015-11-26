@@ -75,6 +75,9 @@
  	<definition name="ntosViewContract" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/form.jsp" />
     </definition>
+    <definition name="ntosContractPopup" extends="popupLayout">
+    	<put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/list.jsp" />
+    </definition>   
     
 <!-- 가입자 -->
     <definition name="ntosListCustContract" extends="foundationLayout">

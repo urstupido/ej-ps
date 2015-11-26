@@ -7,26 +7,31 @@
     <script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
     
     <script type="text/javascript">
-    	$(function(){
-    		$('#keyword').keypress(function(key){
-    			if (key.keyCode == 13) {
-    				fncSearchContract();
+	    $(function(){
+			$('#searchKeyword').keypress(function(key){
+				if (key.keyCode == 13) {
+					searchContract();
 				}
-    		})
-    	})
-    	
-	/* 	function fncSearchContract(arg) {
-			if ($('#gubun').val() == '고객번호') {
-				$('#contNo').val($('#keyword').val());
-			}else{
-				$('#cnm').val($('#keyword').val());
-			}
-		   	document.searchForm.action="<c:url value='/ntosContractFinder.do?method=list'/>";
-		   	document.searchForm.submit();						
-		} */
+			})
+		});
+	
+		function searchContract() {			
+		   	document.searchForm.action="<c:url value='/ntosContractFinder.do?method=popup'/>";
+		   	document.searchForm.submit();		
+		}
     	
 		function createContractView(){
 			document.location.href="<c:url value='/ntosContract.do?method=createView'/>";
+		}
+		
+		function addToOpener(seq){
+			var zip1 = $("a[seq="+seq+"]").html().split("-")[0];
+			var zip2 = $("a[seq="+seq+"]").html().split("-")[1];
+			var dong = $.trim($("#"+seq).html());
+			$("#psno1", opener.document).val(zip1);
+			$("#psno2", opener.document).val(zip2);
+			$("#addr", opener.document).val(dong);
+			window.close();
 		}
 	</script>
 	
@@ -52,29 +57,28 @@
 		<tr>
 			<td align="left">
 				총 ${size}건
+				
+				<form:select path="pageSize" cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
+					<form:option value="10" selected="selected">10건씩 보기</form:option>
+					<form:option value="20">20건씩 보기</form:option>
+					<form:option value="30">30건씩 보기</form:option>
+					<form:option value="40">40건씩 보기</form:option>
+					<form:option value="50">50건씩 보기</form:option>
+				</form:select>
 			</td>
+			
 			<td align="right">
-			<%-- 	<form:select path="codeInfo.code" cssClass="ct_input_g" cssStyle="width:80px;">
-					<form:option value="">전체</form:option>
-					<form:option value="1">사용자</form:option>
-					<form:option value="2">가입자</form:option>
-				</form:select> 
-				<select cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
-					<option value="고객번호">고객번호</option>
-					<option value="고객명">고객명</option>
-				</select>--%>
+				조회조건 : 
+				<form:select path="searchCondition" cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
+					<form:option value="1" selected="selected">계약번호</form:option>
+					<form:option value="2">계약자명</form:option>
+				</form:select>
 				
-				<select cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
-					<option value="계약번호">계약번호</option>
-					<option value="고객번호">고객번호</option>
-					<option value="고객명">고객명</option>
-				</select>
-				
-				<input type="text" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" id="keyword">
-				<a href="javascript:fncSearchContract();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
+				<form:input path="searchKeyword" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50"/>
+
+				<a href="javascript:searchContract();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
 			</td>
-			<input type="hidden" id="cnm" name="cnm"/>
-			<input type="hidden" id="contNo" name="contNo"/>
+			
 		</tr>
 	</table>
 	<!--end of search-->
