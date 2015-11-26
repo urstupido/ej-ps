@@ -36,6 +36,8 @@ public class Chargeman extends CommonVo implements Serializable {
 	@Size(min = 1, max = 50)
 	private String chmnEmail;
 
+	private String chmnEmail2;
+	
 	@NotNull
 	@Size(min = 1, max = 12)
 	private String chmnMnph;
@@ -107,6 +109,14 @@ public class Chargeman extends CommonVo implements Serializable {
 	public void setChmnEmail(String chmnEmail) {
 		this.chmnEmail = chmnEmail;
 	}
+	
+	public String getChmnEmail2() {
+		return chmnEmail2;
+	}
+
+	public void setChmnEmail2(String chmnEmail2) {
+		this.chmnEmail2 = chmnEmail2;
+	}
 
 	public String getChmnMnph() {
 		return chmnMnph;
@@ -161,6 +171,8 @@ public class Chargeman extends CommonVo implements Serializable {
 		builder.append(chmnPsnm);
 		builder.append(", chmnEmail=");
 		builder.append(chmnEmail);
+		builder.append(", chmnEmail2=");
+		builder.append(chmnEmail2);
 		builder.append(", chmnMnph=");
 		builder.append(chmnMnph);
 		builder.append(", chmnRrno=");

@@ -40,7 +40,7 @@ public class ChargemanDao extends AbstractDAO {
 		Chargeman chargeman = new Chargeman();
 		chargeman.setContNo(contNo);
 		chargeman.setChmnSeq(chmnSeq);
-		System.out.println("=========================DAO");
+		System.out.println("=========================DAO"+chargeman.toString());
 		return (Chargeman) findByPk("Chargeman", chargeman);
 	}
 
