@@ -7,28 +7,32 @@
 			<statement>
 				<!--foundation findMovieList-START -->
 				SELECT rownum as no,
+				cu.cus_no,
 				cu.cnm || '(' || cu.cus_no || ')' as cus_name_no,
-				co.code_name as incoStacC,
+				cc.cont_no,
 				cc.entr_date ,
+				co.code_name as incoStacC,
 				cc.retr_date
 				from custom cu, enmn_cont cc, code co
 				where cc.cus_no = cu.cus_no
 				  and cc.inco_stac_c = co.code
 			</statement>
 		</query>
-
+		
 		<query id="findCustContractByPk">
-			<statement>  SELECT cc.cont_no,
-                                cc.cus_no,
-	                            co.code_name as incoStacC,
+			<statement>  SELECT cc.cus_no,
+                                cc.cont_no,
 	   							cc.entr_date,
+	                            co.code_name as incoStacC,
 	   							cc.retr_date
 						FROM enmn_cont cc, code co
 						WHERE 1=1
-  						and cc.inco_stac_c = co.code
+  						and cc.inco_stac_c = co.code  						
+  						and cc.cont_no = :vo.contNo  						
 
 			</statement>
 			<result class="com.sds.ps.domain.CustContract" />
+			
 		</query>
 
 
