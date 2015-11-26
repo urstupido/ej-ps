@@ -41,7 +41,7 @@
 			UPDATE custom SET rbno = :vo.rbno, user_tc = :vo.codeInfo.code, 
 				              cnm = :vo.cnm, psno = :vo.psno, addr = :vo.addr,
 							  dong_blw_addr = :vo.dongBlwAddr, last_chng_usid = :vo.lastChngUsid,
-							  last_chng_dt = sysdate 
+							  last_chng_dt = sysdate , picture_file = :vo.pictureFile
 			WHERE cus_no = :vo.cusNo
 			</statement>
 		</query>
