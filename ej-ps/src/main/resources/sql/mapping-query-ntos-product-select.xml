@@ -18,5 +18,37 @@
 				<result-mapping column="{prod_name}" attribute="{product.productName}" />
 			</result>
 		</query>
+		
+		<query id="findProductSelectByPk">
+			<statement>
+				SELECT ps.cont_no, c.code_name as plan_kind_c, ps.prod_no, p.prod_name, 
+					   to_date(ps.prod_slct_date, 'YYYYMMDD') as prod_slct_date, 
+					   to_date(ps.prod_rels_date, 'YYYYMMDD') as prod_rels_date, 
+					   ps.last_chng_usid, ps.last_chng_dt,
+					   cu.cnm as cont_name_no
+				FROM prod_slct_istm ps, cont_base cb, code c, prod_base p, custom cu
+				WHERE 1=1
+					and c.code_type = 'PLAN_KIND_C'
+					and ps.cont_no = cb.cont_no
+					and ps.prod_no = p.prod_no
+					and cb.plan_kind_c = c.code
+					and cb.cus_no = cu.cus_no
+					and ps.cont_no = :vo.contract.contNo
+					and ps.prod_no = :vo.product.prodNo
+			</statement>
+			<result class="com.sds.ps.domain.ProductSelect">
+				<result-mapping column="{plan_kind_c}" attribute="{contract.planKindC}" />
+				<result-mapping column="{prod_name}" attribute="{product.prodName}" />
+				<result-mapping column="{cont_name_no}" attribute="{contract.contNameNo}" />
+			</result>
+		</query>
+		
+		<query id="removeProductSelect" mappingStyle="camel">
+			<statement>
+				DELETE FROM prod_slct_istm
+				WHERE cont_no = :vo.contract.contNo
+				and prod_no = :vo.contract.prodNo
+			</statement>
+		</query>
 	</queries>
 </queryservice>

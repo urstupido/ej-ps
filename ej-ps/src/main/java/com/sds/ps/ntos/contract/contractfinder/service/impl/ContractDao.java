@@ -39,6 +39,7 @@ public class ContractDao extends AbstractDAO {
 	public Contract get(String contNo) throws Exception {
 		Contract contract = new Contract();
 		contract.setContNo(contNo);
+		System.out.println("=======asdasdasdasd======" + contract.toString());
 		return (Contract) findByPk("Contract", contract);
 	}
 

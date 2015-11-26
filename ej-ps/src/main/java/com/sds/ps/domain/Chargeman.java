@@ -36,13 +36,15 @@ public class Chargeman extends CommonVo implements Serializable {
 	@Size(min = 1, max = 50)
 	private String chmnEmail;
 
+	private String chmnEmail2;
+	
 	@NotNull
 	@Size(min = 1, max = 12)
 	private String chmnMnph;
 
 	@NotNull
 	@Size(min = 1, max = 13)
-	private String chmnRpno;
+	private String chmnRrno;
 
 	@NotNull
 	@Size(min = 1, max = 18)
@@ -107,6 +109,14 @@ public class Chargeman extends CommonVo implements Serializable {
 	public void setChmnEmail(String chmnEmail) {
 		this.chmnEmail = chmnEmail;
 	}
+	
+	public String getChmnEmail2() {
+		return chmnEmail2;
+	}
+
+	public void setChmnEmail2(String chmnEmail2) {
+		this.chmnEmail2 = chmnEmail2;
+	}
 
 	public String getChmnMnph() {
 		return chmnMnph;
@@ -116,12 +126,12 @@ public class Chargeman extends CommonVo implements Serializable {
 		this.chmnMnph = chmnMnph;
 	}
 
-	public String getChmnRpno() {
-		return chmnRpno;
+	public String getChmnRrno() {
+		return chmnRrno;
 	}
 
-	public void setChmnRpno(String chmnRpno) {
-		this.chmnRpno = chmnRpno;
+	public void setChmnRrno(String chmnRrno) {
+		this.chmnRrno = chmnRrno;
 	}
 
 	public String getLastChngUsid() {
@@ -161,10 +171,12 @@ public class Chargeman extends CommonVo implements Serializable {
 		builder.append(chmnPsnm);
 		builder.append(", chmnEmail=");
 		builder.append(chmnEmail);
+		builder.append(", chmnEmail2=");
+		builder.append(chmnEmail2);
 		builder.append(", chmnMnph=");
 		builder.append(chmnMnph);
-		builder.append(", chmnRpno=");
-		builder.append(chmnRpno);
+		builder.append(", chmnRrno=");
+		builder.append(chmnRrno);
 		builder.append(", lastChngUsid=");
 		builder.append(lastChngUsid);
 		builder.append(", lastChngDt=");

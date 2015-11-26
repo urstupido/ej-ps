@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -48,7 +49,7 @@ public class ProductController {
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
 		model.addAttribute(new Product());
-		return "ntosViewProduct";
+		return "ntosViewCreateProduct";
 	}
 
 	@RequestMapping(params = "method=create")
@@ -73,6 +74,7 @@ public class ProductController {
 	public String get(@RequestParam("prodNo") String prodNo, Model model)
 			throws Exception {
 		Product Product = this.productService.get(prodNo);
+		System.out.println("=========야야야야먕먀얌ㅇ=="+Product);
 		if (Product == null) {
 			throw new Exception("Resource not found " + prodNo);
 		}
@@ -91,10 +93,11 @@ public class ProductController {
 		return "redirect:/ntosProductFinder.do?method=list";
 	}
 
+	@ResponseBody
 	@RequestMapping(params = "method=remove")
 	public String remove(@RequestParam("prodNo") String prodNo)
 			throws Exception {
 		this.productService.remove(prodNo);
-		return "redirect:/ntosProductFinder.do?method=list";
+		return "1";
 	}
 }

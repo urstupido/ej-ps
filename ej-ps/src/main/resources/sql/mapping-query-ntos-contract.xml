@@ -3,34 +3,46 @@
 "http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
 <queryservice>
 	<queries>
-		<query id="findContractList">
+		<query id="findContractList" isDynamic="true">
 			<statement>
-				SELECT rownum as no,
-					   cb.cont_no,
-					   ct.cnm || ' ('||cb.cus_no||')' as cont_name_no,
-					   cd2.code_name as plan_code,
-					   cd1.code_name as cont_proc,
-					   cb.plan_entr_date
-				FROM cont_base cb, custom ct, code cd1,	code cd2
+				SELECT 
+				cb.cont_no,
+				rownum as no,
+				ct.cnm || '('||cb.cus_no||')' as cont_name_no,
+				cd2.code_name as plan_code,
+				cd1.code_name as cont_proc,
+				ct.cnm as cus_name,
+				cb.plan_entr_date,
+				cd3.code_name as rsnd_acc_bnk_c
+				
+				FROM cont_base cb,
+				custom ct, code cd1, code cd2, code cd3
 				WHERE 1=1
 				and cb.cus_no = ct.cus_no
-				and cb.cont_proc_stat_c = cd1.code	
+				and cb.cont_proc_stat_c = cd1.code
 				and cb.plan_kind_c = cd2.code
 				and cd1.code_type='CONT_PROC_STAT_C'
 				and cd2.code_type='PLAN_KIND_C'
+				and cb.rsnd_acc_bnk_c = cd3.code
+				and cd3.code_type='BNK_C'
+				
+				
+				#if ($vo.searchCondition=="1")
+				  and cb.cont_no like '%' || :vo.searchKeyword || '%'
+				#end
+				#if ($vo.searchCondition=="2")
+				  and ct.cnm like '%' || :vo.searchKeyword || '%'
+				#end
 			</statement>
-			<result class="com.sds.ps.domain.Contract" >
-				<!-- <result-mapping column="{cont_no}" attribute="{contNo}" />
-				<result-mapping column="{cont_name_no}" attribute="{contNameNo}" />
-				<result-mapping column="{plan_code}" attribute="{planCode}" />
-				<result-mapping column="{cont_proc}" attribute="{contProc}" />
-				<result-mapping column="{plan_entr_date}" attribute="{planEntrDate}" /> -->
-			</result>
+				<result class="com.sds.ps.domain.Contract" />
 		</query>
 
 		<query id="findContractByPk">
 			<statement>
 				SELECT cont_no,
+				ct.cnm || ' ('||cb.cus_no||')' as cont_name_no,
+				cd2.code_name as plan_code,
+				cd1.code_name as cont_proc,
 				cus_no,
 				plan_kind_c,
 				plan_entr_date,
@@ -41,8 +53,14 @@
 				rsnd_acc_depo_nm,
 				last_chng_usid,
 				last_chng_dt
-				FROM cont_base
+				FROM cont_base cb, custom ct, code cd1,
+				code cd2
 				WHERE 1=1
+				and cb.cus_no = ct.cus_no
+				and cb.cont_proc_stat_c = cd1.code
+				and cb.plan_kind_c = cd2.code
+				and cd1.code_type='CONT_PROC_STAT_C'
+				and cd2.code_type='PLAN_KIND_C'
 				and cont_no = :vo.contNo
 			</statement>
 			<result class="com.sds.ps.domain.Contract" />

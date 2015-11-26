@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.sds.ps.domain.Contract;
+import com.sds.ps.domain.Product;
 import com.sds.ps.domain.ProductSelect;
 import com.sds.ps.ntos.product.productselectfinder.service.ProductSelectService;
 
@@ -51,8 +53,16 @@ public class ProductSelectController {
 	}
 
 	@RequestMapping(params = "method=get")
-	public String get(ProductSelect productSelect, Model model)
+	public String get(String prodNo, String contNo, Model model)
 			throws Exception {
+		Contract contract = new Contract();
+		contract.setContNo(contNo);
+		Product product = new Product();
+		product.setProdNo(prodNo);
+		ProductSelect productSelect = new ProductSelect();
+		productSelect.setContract(contract);
+		productSelect.setProduct(product);
+		
 		ProductSelect ProductSelect = this.productSelectService.get(productSelect);
 		
 		if (ProductSelect == null) {
@@ -60,7 +70,7 @@ public class ProductSelectController {
 		}
 		model.addAttribute(ProductSelect);
 
-		return "ntosViewProductSelect";
+		return "ntosUpdateProductSelect";
 	}
 
 	@RequestMapping(params = "method=update")
@@ -68,8 +78,10 @@ public class ProductSelectController {
 		if (results.hasErrors()) {
 			return "ntosViewProduct";
 		}
+		
 		this.productSelectService.update(productSelect);
 		status.setComplete();
+		
 		return "redirect:/ntosProductSelectFinder.do?method=list";
 	}
 
