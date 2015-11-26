@@ -8,8 +8,6 @@
 	content="<spring:message code='contractDetail.heading'/>" />
 <link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>"
 	type="text/css">
-<script type="text/javascript"
-	src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 <script type="text/javascript">
 	function createContract() {
 		document.contractForm.action = "<c:url value='/ntosContract.do?method=create'/>";
@@ -26,6 +24,24 @@
 			document.contractForm.action = "<c:url value='/ntosContract.do?method=remove'/>";
 			document.contractForm.submit();
 		}
+	}
+	
+	function removeContract(){	
+		if(confirmDelete('contract')) {
+			var prodNo = $('#contNo').val();
+			 $.ajax({
+				"url" : "${ctx}/ntosContract.do?method=remove",
+				"type" : "POST",
+				"dataType" : "json",
+				"data" : {"contNo" : contNo},
+				success : function(data) {
+					location.href = "${ctx}/ntosContractFinder.do?method=list";
+				},
+				error : function(request, status, error){
+					alert("해당 계약은 가입자가 있어서 삭제가 불가능합니다.");
+				}
+			});
+		}	  
 	}
 
 	function searchCus() {
@@ -144,10 +160,9 @@ ${contract.contNo}
 			<td width="150" class="ct_td"><spring:message
 					code="contract.planEntrDate" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01"><form:input path="planEntrDate"
-					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
-					maxlength="50" /> <form:errors path="planEntrDate"
-					cssClass="errors" /></td>
+			<td class="ct_write01">
+				<input type="text" id="planEntrDate" name="planEntrDate" value="${contract.planEntrDate}" onclick="fnPopUpCalendar(planEntrDate,planEntrDate,'yyyymmdd')" class='text_box1'>
+			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -163,20 +178,10 @@ ${contract.contNo}
 			<td width="150" class="ct_td"><spring:message
 					code="contract.planEndDate" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01"><form:input path="planEndDate"
-					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
-					maxlength="50" /> <form:errors path="planEndDate"
-					cssClass="errors" /></td>
-
+			<td class="ct_write01">
+				<input type="text" id="planEndDate" name="planEndDate" value="${contract.planEndDate}" onclick="fnPopUpCalendar(planEndDate,planEndDate,'yyyymmdd')" class='text_box1'>
+			</td>
 		</tr>
-
-
-
-
-
-
-
-
 
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>

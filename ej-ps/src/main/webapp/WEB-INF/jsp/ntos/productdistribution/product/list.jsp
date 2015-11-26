@@ -20,6 +20,7 @@
     	
     	function findContract(){
     		window.open("${ctx}/ntosContractFinder.do?method=popup", "popup", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+    		event.preventDefault();
     	}
     	
 		function searchProductDistribution(arg) {			
@@ -39,12 +40,6 @@
 	</script>
 </head>
 
-
-
-
-
-
-
 <form:form modelAttribute="productDistribution" method="post" name="searchForm">
 	<!--begin of search-->
 	<div class="list_header">
@@ -53,36 +48,16 @@
 		<div class="right">
 				<button class="list_search_btn_find" value="<spring:message code="productDistribution.find_contract"/>" onclick="findContract()">계약찾기</button>
 				<input type="text" id="contNo" readonly="true" class="ct_input_g">
+				<input type="text" id="cusName" readonly="true" class="ct_input_g">
 				<button class="list_search_btn" onclick="searchProductDistribution()">검색</button>
 		</div>
 	</div>
-	<table class="table table-condensed">
-		<tr>
-			<td align="left">
-				
-			</td>
-			
-			<td align="right">
-				</td>
-			
-		</tr>
-	</table>
 	<!--end of search-->
 	<div class="table_view">
 	<table width="100%;">
 		<thead>
 			<tr>
 				<td>
-				<%-- <form:select path="prodLclsC" cssClass="ct_input_list_num" cssStyle="width:130px;">
-					<form:option value="">전체</form:option>
-					<form:option value="1"><spring:message code="product.lcls_c1"/></form:option>
-					<form:option value="2"><spring:message code="product.lcls_c2"/></form:option>
-					<form:option value="3"><spring:message code="product.lcls_c3"/></form:option>
-					<form:option value="4"><spring:message code="product.lcls_c4"/></form:option>
-					<form:option value="5"><spring:message code="product.lcls_c5"/></form:option>
-					<form:option value="6"><spring:message code="product.lcls_c6"/></form:option>
-				</form:select> --%>
-				
 				<span class="search_result_msg">총 ${size}건의 검색결과가 있습니다.</span>
 				</td>
 				<td align="right">

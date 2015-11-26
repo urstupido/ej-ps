@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="<c:url value='/sample/css/bootstrap.css'/>" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/sample/css/list/component.css'/>" type="text/css">
+	
     
     <script type="text/javascript">
 	    $(function(){
@@ -31,15 +32,22 @@
 			document.location.href="<c:url value='/ntosContract.do?method=createView'/>";
 		}
 		
-		function addToOpener(seq){
-			var zip1 = $("a[seq="+seq+"]").html().split("-")[0];
-			var zip2 = $("a[seq="+seq+"]").html().split("-")[1];
-			var dong = $.trim($("#"+seq).html());
-			$("#psno1", opener.document).val(zip1);
-			$("#psno2", opener.document).val(zip2);
-			$("#addr", opener.document).val(dong);
+		function selectPageSize(selectObj) {
+			if(window.name == "popup"){
+				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=popup'/>";
+			} else {
+				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=list'/>";
+			}
+		   	document.searchForm.submit();
+    	}
+		
+		function addToOpener(val1, val2){
+			$("#contNo", opener.document).val(val1);
+			$("#cusName", opener.document).val(val2);
 			window.close();
 		}
+		
+		
 	</script>
 	
 </head>
@@ -126,7 +134,7 @@
 					<td class="underline" align="center">
 						<c:choose>
 							<c:when test="${windowName eq 'popup'}">
-								<a class="linkClass" href="${ctx}/ntosContract.do?method=get&contNo=${contract.contNo}">${contract.contNo}</a>
+								<a class="linkClass" href="javascript:addToOpener('${contract.contNo}', '${contract.cusName}')">${contract.contNo}</a>
 							</c:when>
 							<c:otherwise>
 								<a class="linkClass" href="${ctx}/ntosContract.do?method=get&contNo=${contract.contNo}">${contract.contNo}</a>
@@ -144,7 +152,7 @@
 	<table width="100%">
 		<tr>
 			<td class="page" height="50" align="center">
-				<anyframe:pagenavigator linkUrl="javascript:fncSearchContract();"
+				<anyframe:pagenavigator linkUrl="javascript:searchContract();"
 					pages="${resultPage}" 
 					firstImg="${ctx}/sample/images/pagenav/page_before1.gif" 
 					lastImg="${ctx}/sample/images/pagenav/page_after1.gif" 

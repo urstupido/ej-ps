@@ -37,6 +37,17 @@
 			</statement>
 		</query>
 		
+		<!-- 
 		
+		SELECT rownum as no, cont_no, prod_no, p.prod_name , dstr_rto
+FROM prod_dstr_rto d, prod_base p, (select cont_no, prod_no, count(*) as seq from prod_dstr_rto group by cont_no,prod_no) a
+WHERE d.prod_no = p.prod_no AND a.cont_no=d.cont_no and a.prod_no = d.prod_no and d.seq = lpad(a.seq,3,'0');
+
+select lpad(count(*)+1,3,'0')
+from prod_dstr_rto
+where cont_no = 'CONTRACT-00001' and prod_no = 'PRODUCT-00001'
+group by cont_no, prod_no
+
+		 -->
 	</queries>
 </queryservice>
