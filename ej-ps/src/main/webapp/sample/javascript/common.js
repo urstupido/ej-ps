@@ -1,4 +1,4 @@
-
+<!--
 function MM_openBrWindow(theURL,winName,features) { //v2.0
   window.open(theURL,winName,features);
 }
@@ -12,6 +12,7 @@ function popupCenterWindow(url, name, popupHeight, popupWidth) {
 	newWindow.focus();		
 }
 
+<!-- 날짜 선후관계 판단 -->
 function fncTermCheck(form) {
 	var startDay=0;
 	var endDay=0;
@@ -73,6 +74,7 @@ function toggle(no){
 
 }
 
+<!--롤오버 스크립트-->
 function overColor(td){
 if(document.getElementById||(document.all && !(document.getElementById))){
 td.style.backgroundColor="#fdf2e3";

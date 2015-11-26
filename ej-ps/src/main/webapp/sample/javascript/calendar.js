@@ -1,4 +1,4 @@
-	var oPopup = document.createElement('div'); 
+var oPopup = document.createElement('div'); 
 	var PageLoaded;
 	var LogPageLoaded;
 	var PageLoadedCancell;

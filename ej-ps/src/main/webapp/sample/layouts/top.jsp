@@ -1,25 +1,21 @@
-<%@ page language="java" pageEncoding="UTF-8"
-	contentType="text/html;charset=utf-8"%>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/sample/common/taglibs.jsp"%>
 
-<div id="Topapplication" style="margin: 0">
-	<header class="cd-main-header">
-
-		<a class="cd-logo" href="http://localhost:8080/ej-ps/">Ntos</a> <a
-			class="cd-logo" href="http://localhost:8080/ej-ps/"> <img
-			src="<c:url value='/sample/css/cd-logo.svg'/>"></a>
+<div id="Topapplication" style="margin:0">
+<header class="cd-main-header">
+		
+		<a class="cd-logo" href="http://localhost:8080/ej-ps/">Ntos</a>
+		<a class="cd-logo" href="http://localhost:8080/ej-ps/"> <img src="<c:url value='/sample/css/cd-logo.svg'/>"></a>
 
 		<ul class="cd-header-buttons">
 			<li><a class="cd-search-trigger" href="#cd-search"><span></span></a></li>
 			<li><a class="cd-nav-trigger" href="#cd-primary-nav"><span></span></a></li>
 		</ul>
-		<!-- cd-header-buttons -->
 	</header>
 
-	<main class="cd-main-content"> <!-- your content here --> </main>
-
+	<main class="cd-main-content">
+	</main>
 	<div class="cd-overlay"></div>
-
 	<nav class="cd-nav">
 		<ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
 			<li class="has-children"><a href="http://codyhouse.co/?p=409">View</a>
