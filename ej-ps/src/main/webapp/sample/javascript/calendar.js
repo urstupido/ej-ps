@@ -523,7 +523,7 @@
 	function fnPopUpCalendar(ctl, ctl2, format) {
 		var	leftpos=0
 		var	toppos=0
-		
+		console.log("AAA");
 		if (bPageLoaded)
 		{
 			if ( crossobj.visibility ==	"hidden" ) {

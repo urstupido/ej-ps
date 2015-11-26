@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.validation.constraints.Size;
-import javax.validation.constraints.NotNull;
 
 public class Contract extends CommonVo implements Serializable {
 
@@ -28,6 +27,9 @@ public class Contract extends CommonVo implements Serializable {
 
 	@Size(min = 1, max = 14)
 	private String cusNo = "";
+	
+	@Size(min = 1, max = 14)
+	private String cusName = "";
 
 	@Size(min = 1, max = 1)
 	private String planKindC = "";
@@ -88,6 +90,14 @@ public class Contract extends CommonVo implements Serializable {
 		this.cusNo = cusNo;
 	}
 
+	public String getCusName() {
+		return cusName;
+	}
+
+	public void setCusName(String cusName) {
+		this.cusName = cusName;
+	}
+	
 	public String getPlanKindC() {
 		return planKindC;
 	}

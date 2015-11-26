@@ -29,6 +29,10 @@
     <definition name="ntosViewProduct" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/form.jsp" />
     </definition>
+    <!-- product view -->
+    <definition name="ntosViewCreateProduct" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/addform.jsp" />
+    </definition>
 
 <!-- 고객 -->
     <!-- customer list view -->
@@ -44,12 +48,21 @@
     <definition name="ntosListProductSelect" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/ntos/productSelectFinder/list.jsp" /> 
   	</definition>
+  	
+<!-- 상품배분비율 -->
+    <definition name="ntosListProductDistribution" extends="foundationLayout">
+  		<put-attribute name="body" value="/WEB-INF/jsp/ntos/productdistribution/product/list.jsp" /> 
+  	</definition>
 
 <!-- 사무담당자 -->
     <!-- chargeman list view -->
     <definition name="ntosListChargeman" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/list.jsp" />
     </definition>
+	<!-- chargeman view -->
+    <definition name="ntosViewChargeman" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/form.jsp" />
+    </definition>    
     
 <!-- 우편번호 -->
     <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
@@ -62,6 +75,9 @@
  	<definition name="ntosViewContract" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/form.jsp" />
     </definition>
+    <definition name="ntosContractPopup" extends="popupLayout">
+    	<put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/list.jsp" />
+    </definition>   
     
 <!-- 가입자 -->
     <definition name="ntosListCustContract" extends="foundationLayout">
