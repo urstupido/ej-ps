@@ -3,10 +3,11 @@
 "http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
 <queryservice>
 	<queries>
-		<query id="findContractList">
+		<query id="findContractList" isDynamic="true">
 			<statement>
 				SELECT rownum as no,
 					   cb.cont_no,
+					   ct.cnm as cusName,
 					   ct.cnm || ' ('||cb.cus_no||')' as cont_name_no,
 					   cd2.code_name as plan_code,
 					   cd1.code_name as cont_proc,
@@ -18,8 +19,14 @@
 				and cb.plan_kind_c = cd2.code
 				and cd1.code_type='CONT_PROC_STAT_C'
 				and cd2.code_type='PLAN_KIND_C'
+				#if ($vo.searchCondition=="1")
+				  and cb.cont_no like '%' || :vo.searchKeyword || '%'
+				#end
+				#if ($vo.searchCondition=="2")
+				  and ct.cnm like '%' || :vo.searchKeyword || '%'
+				#end
 			</statement>
-			<result class="com.sds.ps.domain.Contract" >
+				<result class="com.sds.ps.domain.Contract" >
 				<!-- <result-mapping column="{cont_no}" attribute="{contNo}" />
 				<result-mapping column="{cont_name_no}" attribute="{contNameNo}" />
 				<result-mapping column="{plan_code}" attribute="{planCode}" />
