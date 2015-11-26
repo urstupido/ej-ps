@@ -48,11 +48,15 @@
     <definition name="ntosListProductSelect" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/ntos/productSelectFinder/list.jsp" /> 
   	</definition>
+    <definition name="ntosUpdateProductSelect" extends="foundationLayout">
+  		<put-attribute name="body" value="/WEB-INF/jsp/ntos/productSelectFinder/updateForm.jsp" /> 
+  	</definition>
   	
 <!-- 상품배분비율 -->
     <definition name="ntosListProductDistribution" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/ntos/productdistribution/product/list.jsp" /> 
   	</definition>
+  	
 
 <!-- 사무담당자 -->
     <!-- chargeman list view -->
