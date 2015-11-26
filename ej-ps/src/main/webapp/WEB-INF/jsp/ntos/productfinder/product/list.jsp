@@ -35,7 +35,7 @@
 	</script>
 </head>
 
-<body bg-color:"#fff";></body>
+
 <form:form modelAttribute="product" method="post" name="searchForm">
 	<!--begin of search-->
 	<div class="list_header">
