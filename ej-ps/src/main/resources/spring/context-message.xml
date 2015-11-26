@@ -12,6 +12,7 @@
 				<value>message/message-product</value>
 				<value>message/message-productdistribution</value>
 				<value>message/message-custcontract</value>
+				<value>message/message-chargeman</value>
 				<value>anyframe/core/ria/mip/messages/mip</value>
 				<value>anyframe/core/ria/flex/messages/flex</value>
 				<value>anyframe/core/hibernate/messages/hibernate</value>
