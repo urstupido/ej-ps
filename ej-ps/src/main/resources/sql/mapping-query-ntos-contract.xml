@@ -11,11 +11,11 @@
 				('||cb.cus_no||')' as cont_name_no,
 				cd2.code_name as plan_code,
 				cd1.code_name as cont_proc,
-				cb.plan_entr_date
-				
+				cb.plan_entr_date,
+				cd3.code_name as rsnd_acc_bnk_c
 				
 				FROM cont_base cb,
-				custom ct, code cd1, code cd2
+				custom ct, code cd1, code cd2, code cd3
 				WHERE 1=1
 				and
 				cb.cus_no = ct.cus_no
@@ -26,6 +26,7 @@
 				cd1.code_type='CONT_PROC_STAT_C'
 				and
 				cd2.code_type='PLAN_KIND_C'
+				and cb.rsnd_acc_bnk_c = cd3.code 
 			</statement>
 			<result class="com.sds.ps.domain.Contract">
 				<!-- <result-mapping column="{cont_no}" attribute="{contNo}" /> <result-mapping 
