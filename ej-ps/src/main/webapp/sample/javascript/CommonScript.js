@@ -1,5 +1,8 @@
 window.onload = function(){
 document.addEventListener("keypress", function() {
+	if (event.keyCode == 46) {
+		return;
+	}
 	if ((event.keyCode > 32 && event.keyCode < 48)
 			|| (event.keyCode > 57 && event.keyCode < 65)
 			|| (event.keyCode > 90 && event.keyCode < 97)) {
