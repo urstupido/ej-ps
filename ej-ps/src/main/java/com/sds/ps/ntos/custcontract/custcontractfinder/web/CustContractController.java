@@ -1,17 +1,23 @@
 package com.sds.ps.ntos.custcontract.custcontractfinder.web;
 
+import java.sql.Date;
+import java.util.Collection;
+
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.sds.ps.domain.CodeInfo;
 import com.sds.ps.domain.CustContract;
 import com.sds.ps.ntos.codefinder.service.CodeService;
 import com.sds.ps.ntos.custcontract.custcontractfinder.service.CustContractService;
@@ -29,10 +35,10 @@ public class CustContractController {
 	@Named("ntosCodeService")
 	private CodeService codeService;
 	
-//	@ModelAttribute("codeList")
-//	public Collection<Code> populateGenreList() throws Exception {
-//		return this.codeService.getList("PROD_LCLS_C");
-//	}
+	@ModelAttribute("incoCodeList")
+	public Collection<CodeInfo> populateGenreList() throws Exception {
+		return this.codeService.getList("INCO_STAC_C");
+	}
 	
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
@@ -40,49 +46,15 @@ public class CustContractController {
 		return "ntosViewCustContract";
 	}
 
-	/*@RequestMapping(params = "method=create")
-	public String create(
-			@RequestParam(value = "realPosterFile", required = false) MultipartFile posterFile,
-			@Valid Product Product, BindingResult results, SessionStatus status, HttpSession session)
+	@RequestMapping(params = "method=create")
+	public String create(@Valid CustContract custContract, BindingResult results, SessionStatus status, HttpSession session)
 			throws Exception {
 		
-		if (results.hasErrors()) {
-			return "ntosViewProduct";
-		}
-		
-		System.out.println(results);
-		
-		if (posterFile != null && !posterFile.getOriginalFilename().equals("")) {
-			String pictureName = posterFile.getOriginalFilename();
-
-			String destDir = session.getServletContext().getRealPath(
-					"/sample/images/posters/");
-
-			File dirPath = new File(destDir);
-			if (!dirPath.exists()) {
-				boolean created = dirPath.mkdirs();
-				if (!created) {
-					throw new Exception(
-							"Fail to create a directory for Product image. ["
-									+ destDir + "]");
-				}
-			}
-			
-			File destination = File
-					.createTempFile("file", pictureName, dirPath);
-
-			FileCopyUtils.copy(posterFile.getInputStream(),
-					new FileOutputStream(destination));
-
-			Product.setPosterFile("sample/images/posters/"
-					+ destination.getName());
-		}
-
-		this.ProductService.create(Product);
+		this.custContractService.create(custContract);
 		status.setComplete();
-
-		return "redirect:/ntosProductFinder.do?method=list";
-	}*/
+		
+		return "redirect:/ntosCustContractFinder.do?method=list";
+	}
 
 	@RequestMapping(params = "method=get")
 	public String get(@RequestParam("contNo") String contNo, Model model)

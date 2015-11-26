@@ -16,27 +16,28 @@ import com.sds.ps.ntos.custcontract.custcontractfinder.service.CustContractServi
 @Transactional(rollbackFor = { Exception.class }, propagation = Propagation.REQUIRED)
 public class CustContractServiceImpl implements CustContractService {
 
-//	@Inject
-//	@Named("idGenerationServiceCustContract")
-//	IIdGenerationService idGenerationService;
+	
+/*	@Inject
+	@Named("idGenerationServiceCustContract")
+	IIdGenerationService idGenerationService;*/
 
 	@Inject
 	@Named("ntosCustContractDao")
 	private CustContractDao custcontractDao;
 
-	public void create(CustContract custcontract) throws Exception {
-//		if(custcontract == null){
-//		}
-//		custcontract.setContNo(idGenerationService.getNextStringId());
-//		custcontractDao.create(custcontract);
+	public void create(CustContract custContract) throws Exception {
+		if(custContract == null){
+		}
+		//custContract.setContNo(idGenerationService.getNextStringId());
+		custcontractDao.create(custContract);
 	}
 
 	public void remove(String contNo) throws Exception {
 		custcontractDao.remove(contNo);
 	}
 
-	public void update(CustContract custcontract) throws Exception {
-		custcontractDao.update(custcontract);
+	public void update(CustContract custContract) throws Exception {
+		custcontractDao.update(custContract);
 	}
 
 	public CustContract get(String contNo) throws Exception {
