@@ -31,8 +31,23 @@
 				FROM chmn_istm
 				WHERE 1=1
 				  and cont_no = :vo.contNo
+				  and chmn_seq = :vo.chmnSeq
 			</statement>
 			<result class="com.sds.ps.domain.Chargeman" />
+		</query>
+		
+		<query id="updateChargeman">
+			<statement>
+				UPDATE chmn_istm
+				SET chmn_dpnm = :vo.chmnDpnm,
+				    chmn_psnm = :vo.chmnPsnm,
+				    chmn_mnph = :vo.chmnMnph,
+				    chmn_email = :vo.chmnEmail,
+					last_chng_usid = :vo.lastChngUsid,
+					last_chng_dt = sysdate
+				WHERE cont_no = :vo.contNo
+				  and chmn_seq = :vo.chmnSeq
+			</statement>
 		</query>	
 	</queries>
 </queryservice>

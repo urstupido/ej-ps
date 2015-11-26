@@ -9,7 +9,19 @@
 	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	<script type="text/javascript">
+		function findEmailAddr() {
+			if ($('#emailAddr').val() != "") {
+				$('#email2').attr("readonly", "readonly");
+				$('#email2').val($('#emailAddr').val());
+			}else{
+				$('#email2').removeAttr("readonly");
+				$('#email2').val("");
+			}
+		}
+		
 		function updateChargeman() {
+			$('#chmnMnph').val($('#mnph1').val() + $('#mnph2').val() + $('#mnph3').val());
+			$('#chmnEmail').val($('#email1').val() + "@" + $('#email2').val());
 		    document.chargemanForm.action="<c:url value='/ntosChargeman.do?method=update'/>";
 		    document.chargemanForm.submit();
 		}
@@ -71,8 +83,8 @@
 			<td width="150" class="ct_td" colspan="2"> <spring:message code="chargeman.chmnRrno" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="chmnRrno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
-				<form:errors path="chmnRrno" cssClass="errors" />
+				<input type="text" value="${fn:substring(chargeman.chmnRrno,0,6)}" id="rrno1" readonly="readonly"> -
+				<input type="text" value="${fn:substring(chargeman.chmnRrno,6,13)}" id="rrno2" readonly="readonly">
 			</td>
 		</tr>
 		
@@ -84,13 +96,13 @@
 			<td width="150" class="ct_td" colspan="2"><spring:message code="chargeman.chmnDpnm" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="chmnDpnm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
+				<form:input path="chmnDpnm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50"/>
 				<form:errors path="chmnDpnm" cssClass="errors" />
 			</td>
 			<td width="150" class="ct_td" colspan="2"> <spring:message code="chargeman.chmnPsnm" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="chmnPsnm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
+				<form:input path="chmnPsnm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50"/>
 				<form:errors path="chmnPsnm" cssClass="errors" />
 			</td>
 		</tr>
@@ -103,14 +115,40 @@
 			<td width="150" class="ct_td" colspan="2"><spring:message code="chargeman.chmnMnph" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="chmnMnph" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
-				<form:errors path="chmnMnph" cssClass="errors" />
+			<form:hidden path="chmnMnph" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> 
+			<form:errors path="chmnMnph" cssClass="errors" />
+				<input type="text" value="${fn:substring(chargeman.chmnMnph,0,3)}" id="mnph1"> -
+				<c:choose>
+					<c:when test="${fn:length(chargeman.chmnMnph) eq 11}">
+						<input type="text" value="${fn:substring(chargeman.chmnMnph,3,7)}" id="mnph2"> -
+						<input type="text" value="${fn:substring(chargeman.chmnMnph,7,11)}" id="mnph3">
+					</c:when>
+					<c:otherwise>
+						<input type="text" value="${fn:substring(chargeman.chmnMnph,3,6)}" id="mnph2"> -
+						<input type="text" value="${fn:substring(chargeman.chmnMnph,6,10)}" id="mnph3">
+					</c:otherwise>
+				</c:choose>
 			</td>
 			<td width="150" class="ct_td" colspan="2"> <spring:message code="chargeman.chmnEmail" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<form:input path="chmnEmail" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
+				<form:hidden path="chmnEmail" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> 
 				<form:errors path="chmnEmail" cssClass="errors" />
+				<input type="text" value="${fn:substringBefore(chargeman.chmnEmail, '@')}" id="email1"> @
+				<input type="text" value="${fn:substringAfter(chargeman.chmnEmail, '@')}" id="email2">
+			        <select onchange="findEmailAddr()" id="emailAddr">
+						<option value="samsung.com">samsung.com</option>
+						<option value="naver.com">naver.com</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="nate.com">nate.com</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="hotmail.com">hotmail.com</option>
+						<option value="lycos.co.kr">lycos.co.kr</option>
+						<option value="empal.com">empal.com</option>
+						<option value="dreamwiz.com">dreamwiz.com</option>
+						<option value="korea.com">korea.com</option>
+				        <option value="" selected="selected">직접입력</option>
+			        </select>
 			</td>
 		</tr>
 		 
@@ -137,6 +175,7 @@
 				<form:input path="lastChngUsid" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/> <form:errors path="lastChngUsid" cssClass="errors" />
 			</td> 
 		</tr>
+		</table>
 	
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>

@@ -34,7 +34,8 @@ public class ChargemanServiceImpl implements ChargemanService {
 	public void update(Chargeman chargeman) throws Exception {
 		chargemanDao.update(chargeman);
 	}
-	public Chargeman get(String contNo) throws Exception {
-		return chargemanDao.get(contNo);
+	public Chargeman get(String contNo, String chmnSeq) throws Exception {
+		System.out.println("=========================serviceImpl");
+		return chargemanDao.get(contNo, chmnSeq);
 	}
 }

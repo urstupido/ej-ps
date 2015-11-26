@@ -36,9 +36,11 @@ public class ChargemanDao extends AbstractDAO {
 		update("Chargeman", chargeman);
 	}
 
-	public Chargeman get(String contNo) throws Exception {
+	public Chargeman get(String contNo, String chmnSeq) throws Exception {
 		Chargeman chargeman = new Chargeman();
 		chargeman.setContNo(contNo);
+		chargeman.setChmnSeq(chmnSeq);
+		System.out.println("=========================DAO");
 		return (Chargeman) findByPk("Chargeman", chargeman);
 	}
 
