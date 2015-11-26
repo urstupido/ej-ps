@@ -17,7 +17,7 @@
     	});
     	
     	function findContract(){
-    		window.open("${ctx}/ntosContractFinder.do?method=popup", "contract", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+    		window.open("${ctx}/ntosContractFinder.do?method=popup", "popup", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
     	}
     	
 		function searchProductDistribution(arg) {			

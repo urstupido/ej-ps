@@ -5,12 +5,13 @@
 	<queries>
 		<query id="findContractList" isDynamic="true">
 			<statement>
-				SELECT rownum as no,
+				SELECT 
 				cb.cont_no,
-				ct.cnm || '
-				('||cb.cus_no||')' as cont_name_no,
+				rownum as no,
+				ct.cnm || '('||cb.cus_no||')' as cont_name_no,
 				cd2.code_name as plan_code,
 				cd1.code_name as cont_proc,
+				ct.cnm as cus_name,
 				cb.plan_entr_date,
 				cd3.code_name as rsnd_acc_bnk_c
 				
@@ -30,13 +31,7 @@
 				  and ct.cnm like '%' || :vo.searchKeyword || '%'
 				#end
 			</statement>
-				<result class="com.sds.ps.domain.Contract" >
-				<!-- <result-mapping column="{cont_no}" attribute="{contNo}" />
-				<result-mapping column="{cont_name_no}" attribute="{contNameNo}" />
-				<result-mapping column="{plan_code}" attribute="{planCode}" />
-				<result-mapping column="{cont_proc}" attribute="{contProc}" />
-				<result-mapping column="{plan_entr_date}" attribute="{planEntrDate}" /> -->
-			</result>
+				<result class="com.sds.ps.domain.Contract" />
 		</query>
 
 		<query id="findContractByPk">

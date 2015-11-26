@@ -15,8 +15,12 @@
 			})
 		});
 	
-		function searchContract() {			
-		   	document.searchForm.action="<c:url value='/ntosContractFinder.do?method=popup'/>";
+		function searchContract() {
+			if(window.name == "popup"){
+				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=popup'/>";
+			} else {
+				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=list'/>";
+			}
 		   	document.searchForm.submit();		
 		}
 		
@@ -88,14 +92,7 @@
 	<table class="scrollTable" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<thead>
 			<tr>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">No.</th>
-				<!-- <th scope="col" style="border-right: 1px #CCCCCC solid">1</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">2</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">3</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">4</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid">5</th>  -->
-				
-				
+				<th scope="col" style="border-right: 1px #CCCCCC solid">No</th>
 				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="contract.contNo"/></th>
 				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="contract.contNameNo"/></th>
 				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="contract.planCode"/></th>
@@ -110,7 +107,14 @@
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
 					<td align="center">${contract.no}</td>
 					<td class="underline" align="center">
-						<a class="linkClass" href="${ctx}/ntosContract.do?method=get&contNo=${contract.contNo}">${contract.contNo}</a>
+						<c:choose>
+							<c:when test="${windowName eq 'popup'}">
+								<a class="linkClass" href="${ctx}/ntosContract.do?method=get&contNo=${contract.contNo}">${contract.contNo}</a>
+							</c:when>
+							<c:otherwise>
+								<a class="linkClass" href="${ctx}/ntosContract.do?method=get&contNo=${contract.contNo}">${contract.contNo}</a>
+							</c:otherwise>
+						</c:choose>
 					</td>
 					<td align="center">${contract.contNameNo}</td>
 					<td align="center">${contract.planCode}</td>
@@ -134,13 +138,12 @@
 			</td>
 		</tr>
 	</table>
-	
-	
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
-		<tr>
-			<td align="right"><a href='<c:url value="javascript:createContractView();" />'><img
-				src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a></td>
-		</tr>
-	</table>
-	
+	<c:if test="${windowName != 'popup'}">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
+			<tr>
+				<td align="right"><a href='<c:url value="javascript:createContractView();" />'><img
+					src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a></td>
+			</tr>
+		</table>
+	</c:if>
 </form:form>
