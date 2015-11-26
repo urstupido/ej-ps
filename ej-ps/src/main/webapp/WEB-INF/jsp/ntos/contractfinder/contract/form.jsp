@@ -28,13 +28,6 @@
 		}
 	}
 
-	function selectContract(obj) {
-		alert("안뇽");
-		alert(obj);
-		alert(document.getElementById("PlanKindC")[0].val);
-
-	}
-
 	function searchCus() {
 		alert("안뇽");
 	}
@@ -86,15 +79,18 @@ ${contract.contNo}
 					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
 					maxlength="50" /> <form:errors path="cusNo" cssClass="errors" />
 
-				<input type="button" value="버튼" onclick="searchCus()" /></td>
+				<input type="button" value="고객찾기" onclick="searchCus()" /></td>
 			<td width="150" class="ct_td" colspan="3"><spring:message
 					code="contract.contProc" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01" colspan="1"><form:select
 					path="ContProcStatC" id="ContProcStatC" cssClass="ct_input_g"
-					cssStyle="width:150px;" onchange="javascript:selectContract(this)">
+					cssStyle="width:150px;">
 					<form:options items="${ContProcList}" itemValue="code"
 						itemLabel="codeName" />
+					<c:if test="${codeInfo.codeType eq 'CONT_PROC_STAT_C'}">
+						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}" />
+					</c:if>
 				</form:select> <form:errors path="ContProcStatC" cssClass="errors" /></td>
 		</tr>
 		<tr>
@@ -111,10 +107,12 @@ ${contract.contNo}
 					code="contract.rsndAccBnk_c" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01"><form:select path="rsndAccBnkC"
-					id="rsndAccBnkC" cssClass="ct_input_g" cssStyle="width:150px;"
-					onchange="javascript:selectContract(this)">
+					id="rsndAccBnkC" cssClass="ct_input_g" cssStyle="width:150px;">
 					<form:options items="${BankList}" itemValue="code"
 						itemLabel="codeName" />
+					<c:if test="${codeInfo.codeType eq 'RSND_ACC_BAK_C'}">
+						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}" />
+					</c:if>
 				</form:select> <form:errors path="rsndAccBnkC" cssClass="errors" /></td>
 			<td rowspan="5" class="ct_td"><spring:message
 					code="contract.contInfo" /></td>
@@ -123,10 +121,11 @@ ${contract.contNo}
 			<td width="150" class="ct_td"><spring:message
 					code="contract.planCode" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
-			
-				<form:select path="PlanKindC" id="PlanKindC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectContract(this)">
-					<form:options items="${PlanKindList}" itemValue="code" itemLabel="codeName" />
+			<td class="ct_write01"><form:select path="PlanKindC"
+					id="PlanKindC" cssClass="ct_input_g" cssStyle="width:150px;"
+					>
+					<form:options items="${PlanKindList}" itemValue="code"
+						itemLabel="codeName" />
 					<c:if test="${codeInfo.codeType eq 'PLAN_KIND_C'}">
 						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}" />
 					</c:if>
