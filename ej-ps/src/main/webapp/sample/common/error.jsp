@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>Error</title>
-<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>"
+<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>"
 	type="text/css">
 </head>
 <script type="text/javascript">

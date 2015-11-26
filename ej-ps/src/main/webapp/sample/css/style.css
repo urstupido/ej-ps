@@ -52,28 +52,6 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 
-
-/* -----------------------------------
-Å×ÀÌºí °ü·Ã
------------------------------------- */
-.search_result_msg{
-	font-size: 13px;
-}
-@media only screen and (max-width: 1169px) {
-	.table_filters{
-		width: 100%;
-		height: 100%px;
-		display: fixed;
-	}
-}
-@media only screen and (min-width: 1170px) {
-	.table_filters{
-		width: 300px;
-		height: 100px;
-		display: fixed;
-		background-color: #41307c;
-	}
-}
 /* -----------------------------------
 »ó´Ü ÆùÆ® »çÀÌÁî
 ------------------------------------ */
@@ -82,15 +60,15 @@ input[type="search"]::-webkit-search-results-decoration {
  a:visited {font-size: 16px; color: #555; text-decoration: none; font-family:"verdana";}  
  a:active  {font-size: 16px; color: #555; text-decoration: none; font-family:"verdana";}
  a:hover   {font-size: 16px; color: #000; text-decoration: none; font-family:"verdana";}
- a:clicked {font-size: 16px; color: #555; text-decoration: none; font-family:"verdana";}
+ a:clicked {font-size: 16px; color: #555; text-decoration: none; font-family:"verdana";} 
 
 
 
 /* -----------------------------------
 Å×ÀÌºí °ü·Ã
 ----------------------------------- */
-/* td {font-size: 12pt; color: #58595B; font-style: normal; font-weight: normal; font-family:"verdana", "µ¸¿ò"}
- */
+td { font-size: 9pt; color: #58595B; font-style: normal; font-weight: normal; font-family:"verdana", "µ¸¿ò"}
+
 .ct_box    {font-family:"verdana"; font-size:9pt; border-left:1px solid #CECFCE;  border-right:1px solid #CECFCE; border-bottom:1px solid #CECFCE; 
             color:#000000; background-color:#FFFFFF;}            
             
@@ -122,176 +100,9 @@ input[type="search"]::-webkit-search-results-decoration {
 .ct_list01 A:active  {font-size: 9pt; color: #525152; text-decoration: none; font-family:"verdana", "µ¸¿ò"}
 .ct_list01 A:hover   {font-size: 9pt; color: #000000; text-decoration: none; font-family:"verdana", "µ¸¿ò";}
 
-
-
-.cd-filter-block input[type='search'],
-.cd-filter-block input[type='text'],
-.cd-filter-block select {
-  width: 100%;
-  padding: .8em;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  box-shadow: none;
-}
-.cd-filter-block input[type='search']:focus,
-.cd-filter-block input[type='text']:focus,
-.cd-filter-block select:focus {
-  outline: none;
-  background-color: #ffffff;
-  border-color: #41307c;
-}
-
-
-.list_header{
-	position: relative;
-	height: 50px;
-	right: 0; 
-	text-align: center;
-	top: 0;
-}
-/* .header_bar .bar_left, .header_bar .bar_center, .header_bar .bar_right{
-	display: inline-block;
-} */
-.list_header .left{
-	width: 270px;
-	height: 50px;
-	float: left;
-	background-color:#f4f4f7;
-	color: #787878;
-	line-height: 50px;
-	font-family: 'Cantarell', sans-serif;
-	font-size: 1.3rem;
-	font-weight: bold;
-	font-style: normal;
-	font-stretch: normal;
-	font-variant: normal;
-	padding-right: 10px;
-	vertical-align: middle;
-	text-align: right;
-	letter-spacing: -1px;
-}
-.list_header .center{
-	float:left;
-	width: 7px;
-	height: 50px;
-	background-color:#eaeaea;
-}
-.list_header .right{
-	line-height: 54px;
-	height: 50px;
-	overflow: hidden;
-	background-color:#fff;
-	vertical-align: middle;
-	text-align: right;
-	padding: 5px;
-}
-
-.list_header .right > * {vertical-align:top;}
-
-.table_view{
-	width: 100%;
-	padding: 0 35px 0 35px;
-	background-color: #fff;
-}
-.ct_input select:focus {
-    outline: none;
-}
-.ct_input_list    {
-	border: 1px solid #e6e6e6;
-	background-color: #fff;
-	font-size: 1.6rem !important;
-	width: 150px;
-	padding: .2em;
-	height: 40px;
-	transition: .9s ease;
-  }
-.ct_input_list:focus,  .ct_input_list select:focus   {
-	transition: .9s ease;
-	border: 1px soild #3e424f;
- 	outline: none;
-  	background-color: #ffffff;
-  	border-color: #69aa6f;
-  }
-  
-  
-  .ct_input_list_num    {
-	border: 1px solid #e6e6e6;
-	background-color: #fff;
-	font-size: 1.6rem !important;
-	width: 150px;
-	padding: .2em;
-	height: 30px;
-	transition: .9s ease;
-  }
-.ct_input_list_num:focus,  .ct_input_list_num select:focus   {
-	transition: .9s ease;
-	border: 1px soild #3e424f;
- 	outline: none;
-  	background-color: #ffffff;
-  	border-color: #69aa6f;
-  }
-  
-  
-.ct_input_g    {
-	border: 1px solid #e6e6e6;
-  background-color: #efefef;
-  /* prevent jump - ios devices */
-  font-size: 1.6rem !important;
-width: 30%;
-  padding: .2em;
-  line-height: 40px;
-  height: 40px;
-  vertical-align: middle;
-  box-shadow: none;
-  transition: .9s ease;
-  outline: none;
-  vertical-align: middle;
-  }
- .ct_input_g:focus, .ct_input_g select:focus{
- transition: .9s ease;
- outline: none;
- height: 40px;
-  background-color: #ffffff;
-  border: 1px solid;
-  border-color:  #3e424f;
- }
- 
-.list_search_btn{
- border: 1px solid #3e424f;
- width: 70px;
- height: 40px;
- line-height: 40px;
- border: none;
- background-color: #3e424f;
- outline: none;
- vertical-align: middle;
- color: #fff;
- transition: .9s ease;
- }
-  .list_search_btn:hover{
- background-color: #5a6074;
- transition: .9s ease;
-	
- }
- .list_search_btn a{
- vertical-align: middle;
- text-align: center;
- }
- 
- .table_spacing{
- width: 100%;
- height: 10px;
- }
-/* ¼±ÅÃ¹Ú½º ¸ñ·ÏÇü */
-
- 
- 
- 
- 
- 
+.ct_input      {font-size:12px; border:1px solid #468720; color:#777777; background-color:#ffffff; font-family:"verdana", "µ¸¿ò"; padding-top:2px;}
+.ct_input_g    {font-size:9pt; border:1px solid #9cacc5; color:#777777; background-color:#ffffff; font-family:"verdana", "µ¸¿ò";
+text-indent:2px;height:19px;}
 .ct_input_bg    {font-size:9pt; border:1px solid #ADAEAD; color:#777777; background-color:#dddddd; font-family:"verdana", "µ¸¿ò"; padding-top:2px;}
 .ct_input_login    {font-size:12px; border:1px solid #9cacc5; color:#777777; background-color:#ffffff; font-family:"verdana", "µ¸¿ò"; padding-top:2px;
 text-indent:2px;height:18px;}
@@ -315,10 +126,10 @@ select {border:1px solid #ADAEAD; color:#777777; background-color:#ffffff; font-
 
 
 .ct_list_pop          {font-size: 9pt; color: #666666; font-family:"verdana", "µ¸¿ò"; padding-top:2px; height:30px;}
-.ct_list_pop A:link    {font-size: 9pt; color: #666666; font-family:"verdana", "µ¸¿ò"}
-.ct_list_pop A:visited {font-size: 9pt; color: #666666; font-family:"verdana", "µ¸¿ò"}
-.ct_list_pop A:active  {font-size: 9pt; color: #666666; font-family:"verdana", "µ¸¿ò"}
-.ct_list_pop A:hover   {font-size: 9pt; color: #000000; font-family:"verdana", "µ¸¿ò"}
+.ct_list_pop A:link    {font-size: 9pt; color: #666666; text-decoration: underline; font-family:"verdana", "µ¸¿ò"}
+.ct_list_pop A:visited {font-size: 9pt; color: #666666; text-decoration: underline; font-family:"verdana", "µ¸¿ò"}
+.ct_list_pop A:active  {font-size: 9pt; color: #666666; text-decoration: underline; font-family:"verdana", "µ¸¿ò"}
+.ct_list_pop A:hover   {font-size: 9pt; color: #000000; text-decoration: underline; font-family:"verdana", "µ¸¿ò"}
 
 
 .ct_list_no          {font-size: 9pt; color: #666666; font-family:"verdana", "µ¸¿ò";}
@@ -340,15 +151,13 @@ select {border:1px solid #ADAEAD; color:#777777; background-color:#ffffff; font-
 .ct_btn01 A:active  {font-size: 9pt; color: #666666; text-decoration: none; font-family:"verdana", "µ¸¿ò"}
 .ct_btn01 A:hover   {font-size: 9pt; color: #666666; text-decoration: none; font-family:"verdana", "µ¸¿ò"}
 
-
-/* 
  table {
             font-size: 1em;
             margin: 0 0 0 0;
         }
 
         table caption {
-            font-weight: bold;
+            /*font-weight: bold;*/
             margin: 0 0 0 0;
             padding: 0 0 1.5em 0;
         }
@@ -356,23 +165,22 @@ select {border:1px solid #ADAEAD; color:#777777; background-color:#ffffff; font-
         th {
 		    font-family:"verdana";
             font-weight: bold;
-            font-size: 13px;
+            font-size: 11px;
             text-align: center;
-            vertical-align: middle;
 			color: #fff;
 			background-color:#586384;
-			height:30px;
+			height:22px;
 			padding:0;
         }
 
-        ********************************
+        /*********************************
            Project: CSS Table Galery
            Title: Like Adwords
            Author: Cleiton Francisco
            URL: http://www.cleiton.net/
            Country: Brazil
            Update: 2005-12-18
-         ******************************
+         *******************************/
 
             .table {
                 border-collapse: collapse;
@@ -384,13 +192,13 @@ select {border:1px solid #ADAEAD; color:#777777; background-color:#ffffff; font-
                 .table caption {
                     padding: 0 0.6em 0.8em;
                     font-size: 1.3em;
-                    font-weight: bold;
+                    /*font-weight: bold;*/
                     text-align: center;
                     color: #000;
                     background: transparent;
                 }
               
-       */        
+              
 
 /* -------------------------------- 
 
@@ -438,7 +246,7 @@ Main components
 .cd-main-header {
   height: 50px;
   background: #3e424f;
-  z-index:100;
+  z-index: 3;
 }
 .nav-is-fixed .cd-main-header {
   /* add .nav-is-fixed class to body if you want a fixed navigation on > 1170px */
@@ -509,7 +317,7 @@ Main components
 @media only screen and (min-width: 1170px) {
   .user_name{
 	color:#dedede; 
-	margin-top: 30px;
+	margin-top: 33px;
 	font-size: 15px; 
 	margin-right: -40px;
 	}
@@ -549,27 +357,25 @@ Main components
 	
   .action-btn a{
   display: block;
-  padding: 1em 0;
+    padding: 1em 0;
   background-color: #ff8000;
   border-radius: .55em;
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
   margin: 10% 5% 5% 5%;
   width: 235px;
-  transition: .9s ease;
 }
   .action-btn > a::before {
-   transition: .9s ease;
+  display: none;
   }
   .action-btn a:hover {
-  color: #fff;
-  background-color: #f83f10;
+  background-color: #FF6208;
    -webkit-transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
-  transition: .9s ease;
+  transition: opacity 0.3s;
   }
 }
 
@@ -1094,7 +900,7 @@ Main components
     color: #69aa6f;
     font-weight: bold;
     font-size: 1.5rem;
-    /* margin-bottom: .6em; */
+    margin-bottom: .6em;
   }
   .cd-primary-nav .cd-secondary-nav a {
     height: 30px;
@@ -1484,7 +1290,3 @@ support for no js
     position: fixed;
   }
 }
-
-
-
-
