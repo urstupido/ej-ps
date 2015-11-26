@@ -15,7 +15,6 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,9 +61,6 @@ public class CustomerController {
 		customer.setLastChngDt(new Date(0));
 		
 		if (results.hasErrors()) {
-			for (ObjectError e : results.getAllErrors()) {
-				System.out.println(e.toString());
-			}
 			return "ntosViewCustomer";
 		}
 
@@ -108,11 +104,32 @@ public class CustomerController {
 	}
 
 	@RequestMapping(params = "method=update")
-	public String update(@Valid Customer customer, BindingResult results,
-			SessionStatus status) throws Exception {
+	public String update(
+			@RequestParam(value = "realPictureFile", required = false) MultipartFile pictureFile,
+			@Valid Customer customer, BindingResult results,
+			SessionStatus status, HttpSession session) throws Exception {
 		if (results.hasErrors()) {
 			return "ntosViewCustomer";
 		}
+		
+		if (pictureFile != null
+				&& !pictureFile.getOriginalFilename().equals("")) {
+			byte[] imageData = pictureFile.getBytes();
+			BufferedImage inputImage = ImageIO.read(new ByteArrayInputStream(
+					imageData));
+
+			String pictureName = customer.getCusNo();
+
+			String destDir = session.getServletContext().getRealPath(
+					"/sample/images/picture/");
+
+			File file = new File(destDir + "/" + pictureName + ".png");
+
+			ImageIO.write(inputImage, "png", file);
+
+			customer.setPictureFile("/sample/images/picture/"+customer.getCusNo()+".png");
+		}
+		
 		this.customerService.update(customer);
 		status.setComplete();
 
