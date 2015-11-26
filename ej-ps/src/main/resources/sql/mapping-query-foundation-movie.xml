@@ -54,7 +54,7 @@
 				<!--foundation findMovieList-END-->
 			</statement>
 			<result class="com.sds.ps.domain.Movie">
-				
+				<result-mapping column="{name}" attribute="{genre.name}" />
 			</result>
 		</query>		
 	</queries>

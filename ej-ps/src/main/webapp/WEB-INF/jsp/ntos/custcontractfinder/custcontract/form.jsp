@@ -97,19 +97,15 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
 			<td height="24" colspan="2" align="center">
-				<%-- <c:if test="${empty product.prodNo}"> --%>
 					<a id="createlink" href="javascript:createCustContract();"><img src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a>
 					<script type="text/javascript">
 					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'createlink', event:'onclick'}));
 					</script>
-				<%-- </c:if>
-				<c:if test="${not empty product.prodNo}"> --%>
 					<a id="updatelink" href="javascript:updateCustContract();"><img src="<c:url value='/sample/images/btn_update.png'/>" width="64" height="18" border="0" /></a>
 					<script type="text/javascript">
 					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'updatelink', event:'onclick'}));
 					</script>
 					<a href="javascript:removeCustContract();"><img src="<c:url value='/sample/images/btn_delete.png'/>" width="64" height="18" border="0" /></a>
-				<%-- </c:if> --%>
 			</td>
 		</tr>
 	</table>
