@@ -50,6 +50,10 @@
     <definition name="ntosListChargeman" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/list.jsp" />
     </definition>
+	<!-- chargeman view -->
+    <definition name="ntosViewChargeman" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/form.jsp" />
+    </definition>    
     
 <!-- 우편번호 -->
     <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
