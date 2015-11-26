@@ -30,8 +30,8 @@ public class CustContractFinderController {
 
 		Page resultPage = custContractFinder.getPagingList(custContract, pageSize, pageIndex);
 
-		model.addAttribute("CustContract", custContract);
-		model.addAttribute("CustContracts", resultPage.getList());
+		model.addAttribute("custContract", custContract);
+		model.addAttribute("custContracts", resultPage.getList());
 		model.addAttribute("size", resultPage.getTotalCount());
 		model.addAttribute("pagesize", resultPage.getPagesize());
 		model.addAttribute("pageunit", resultPage.getPageunit());

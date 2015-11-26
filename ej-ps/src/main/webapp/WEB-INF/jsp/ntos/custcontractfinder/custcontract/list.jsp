@@ -44,9 +44,7 @@
 </table>
 <!--end of title-->
 
-<!-- 이 model은 어디에서 정의되어 있나?????? customer product custcontract-->
-
-<form:form modelAttribute="CustContract" method="post" name="searchForm">
+<form:form modelAttribute="custContract" method="post" name="searchForm">
 <!--begin of search-->
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
 		<tr>
@@ -62,23 +60,12 @@
 			</td>
 			
 			<td align="right">
-			<%-- 	<form:select path="codeInfo.code" cssClass="ct_input_g" cssStyle="width:80px;">
-					<form:option value="">전체</form:option>
-					<form:option value="1">사용자</form:option>
-					<form:option value="2">가입자</form:option>
-				</form:select>
-				
-				<form:select path="searchCondition">
-					<form:option value="고객번호">고객번호</form:option>
-					<form:option value="고객명">고객명</form:option>
-				</form:select> --%>
 				
 				<form:input path = "searchKeyword" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="50" />
 				
 				<a href="javascript:fncSearchCustContract();"><img src="<c:url value='/sample/images/btn_search.png'/>" width="25" height="18" border="0" align="middle"/></a>
 			</td>
-			<!-- <input type="hidden" id="cnm" name="cnm"/>
-			<input type="hidden" id="cusNo" name="cusNo"/> -->
+
 		</tr>
 	</table>
 	<!--end of search-->
@@ -86,14 +73,14 @@
 		<thead>
 			<tr>
 				<th scope="col" style="border-right: 1px #CCCCCC solid">No.</th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.cusNameNo"/></th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.incoStacC"/></th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.entrDate"/></th>
-				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.retrDate"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.cus_name_no"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.inco_stac_c"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.entr_date"/></th>
+				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="custcontract.retr_date"/></th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="custContract" items="${CustContracts}">
+			<c:forEach var="custContract" items="${custContracts}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
 					<td align="center">${custContract.no}</td>
 					<td class="underline" align="center">
