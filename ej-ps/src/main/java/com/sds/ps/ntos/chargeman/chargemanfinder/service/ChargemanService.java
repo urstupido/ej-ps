@@ -4,7 +4,7 @@ import com.sds.ps.domain.Chargeman;
 
 public interface ChargemanService {
 
-	Chargeman get(String contNo) throws Exception;
+	Chargeman get(String contNo, String chmnSeq) throws Exception;
 
 	void create(Chargeman chargeman) throws Exception;
 

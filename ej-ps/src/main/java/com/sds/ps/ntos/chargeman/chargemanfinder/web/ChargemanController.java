@@ -52,13 +52,18 @@ public class ChargemanController {
 	}
 
 	@RequestMapping(params = "method=get")
-	public String get(@RequestParam("contNo") String contNo, Model model)
+	public String get(@RequestParam("contNo") String contNo,
+					  @RequestParam("chmnSeq") String chmnSeq,
+					  Model model)
 			throws Exception {
-		Chargeman chargeman = this.chargemanService.get(contNo);
+		Chargeman chargeman = this.chargemanService.get(contNo, chmnSeq);
 		if (chargeman == null) {
-			throw new Exception("Resource not found " + contNo);
+			throw new Exception("Resource not found " + contNo+ chmnSeq);
 		}
 		model.addAttribute(chargeman);
+		
+		System.out.println("==============================================");
+		System.out.println(model.toString());
 
 		return "ntosViewChargeman";
 	}

@@ -101,7 +101,7 @@
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >
 					<td align="center">${chargeman.no}</td>
 					<td class="underline" align="center">
-						<a class="linkClass" href="${ctx}/ntosChargeman.do?method=get&contNo=${chargeman.contNo}">${chargeman.contNo}</a>
+						<a class="linkClass" href="${ctx}/ntosChargeman.do?method=get&contNo=${chargeman.contNo}&chmnSeq=${chargeman.chmnSeq}">${chargeman.contNo}</a>
 					</td>
 					<td align="center">${chargeman.chmnSeq}</td>
 					<td align="center">${chargeman.chmnNm}</td>
