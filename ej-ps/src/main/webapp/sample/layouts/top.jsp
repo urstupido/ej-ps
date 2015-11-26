@@ -2,10 +2,6 @@
 	contentType="text/html;charset=utf-8"%>
 <%@ include file="/sample/common/taglibs.jsp"%>
 
-<%-- 	<script type="text/javascript" src="<c:url value='/sample/javascript/modernizr.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/sample/javascript/main.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
- --%>
 <div id="Topapplication" style="margin: 0">
 	<header class="cd-main-header">
 

@@ -9,11 +9,13 @@
 					   cont_no,
 					   prod_no,
 					   seq,
+					   p.prod_name,
 					   dstr_rto,
 					   dstr_rto_reg_dt,
 					   last_chng_usid,
 					   last_chng_dt
-				FROM prod_dstr_rto
+				FROM prod_dstr_rto d, prod_base p
+				WHERE d.prod_no = p.prod_no
 			</statement>
 		</query>
 		

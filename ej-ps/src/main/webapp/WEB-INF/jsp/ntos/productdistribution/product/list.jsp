@@ -90,7 +90,7 @@
 					<td align="center">${productDistribution.no}</td>
 					<td align="center">${productDistribution.contNo}</td>
 					<td align="center">${productDistribution.prodNo}</td>
-					<td align="center">${productDistribution.seq}</td>
+					<td align="center">${productDistribution.prodName}</td>
 					<td align="center"><input type="text" value="${productDistribution.dstrRto}"></td>
 				</tr>
 			</c:forEach>

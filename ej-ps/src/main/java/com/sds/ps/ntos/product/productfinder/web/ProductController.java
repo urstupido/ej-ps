@@ -48,7 +48,7 @@ public class ProductController {
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
 		model.addAttribute(new Product());
-		return "ntosViewProduct";
+		return "ntosViewCreateProduct";
 	}
 
 	@RequestMapping(params = "method=create")
