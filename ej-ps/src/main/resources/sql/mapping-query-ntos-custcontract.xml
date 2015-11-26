@@ -18,21 +18,18 @@
 		</query>
 
 		<query id="findCustContractByPk">
-			<statement>
-				SELECT prod_no,
-				prod_name,
-				prod_lcls_c,
-				prod_mcls_c,
-				prod_scls_c,
-				prod_sell_entr_dt,
-				prod_sell_end_dt,
-				asts_mng_org_c,
-				prod_offr_org_c,
-				last_chng_usid,
-				last_chng_dt
-				FROM prod_base
+			<statement>  계약번호 고객번호
+			             재직상태코드
+			             가입일자 퇴사일자
+				SELECT cont_no,
+				cus_no,
+				co.code_name as incoStacC,
+				cc.entr_date,
+				cc.retr_date
+				FROM enmn_cont cc, code co
 				WHERE 1=1
-				and prod_no = :vo.prodNo
+				and cont_no = :vo.contNo
+				and cus_no = :vo.cusNo
 			</statement>
 			<result class="com.sds.ps.domain.CustContract" />
 		</query>
