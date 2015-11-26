@@ -205,7 +205,7 @@
 			<spring:message code="customer.pictureFile"/></td><td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">		
 				<c:if test="${not empty customer.pictureFile}">
-					<img src="<c:url value='${customer.pictureFile}'/>" alt="<spring:message code='customer.pictureFile'/>" border="0" />
+					<img src="<c:url value='${customer.pictureFile}'/>" width="250px" height="200px" alt="<spring:message code='customer.pictureFile'/>" border="0" />
 					<form:hidden path="pictureFile"/>
 				</c:if>
 				<c:if test="${empty customer.pictureFile}">
