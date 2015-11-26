@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.validation.constraints.Size;
-import javax.validation.constraints.NotNull;
 
 public class Contract extends CommonVo implements Serializable {
 
@@ -28,6 +27,9 @@ public class Contract extends CommonVo implements Serializable {
 
 	@Size(min = 1, max = 14)
 	private String cusNo = "";
+	
+	@Size(min = 1, max = 14)
+	private String cusName = "";
 
 	@Size(min = 1, max = 1)
 	private String planKindC = "";
@@ -88,6 +90,14 @@ public class Contract extends CommonVo implements Serializable {
 		this.cusNo = cusNo;
 	}
 
+	public String getCusName() {
+		return cusName;
+	}
+
+	public void setCusName(String cusName) {
+		this.cusName = cusName;
+	}
+	
 	public String getPlanKindC() {
 		return planKindC;
 	}
@@ -188,8 +198,6 @@ public class Contract extends CommonVo implements Serializable {
 		this.contProc = contProc;
 	}
 
-	
-	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -199,6 +207,12 @@ public class Contract extends CommonVo implements Serializable {
 		builder.append(no);
 		builder.append(", codeInfo=");
 		builder.append(codeInfo);
+		builder.append(", contNameNo=");
+		builder.append(contNameNo);
+		builder.append(", planCode=");
+		builder.append(planCode);
+		builder.append(", contProc=");
+		builder.append(contProc);
 		builder.append(", cusNo=");
 		builder.append(cusNo);
 		builder.append(", planKindC=");
@@ -222,5 +236,10 @@ public class Contract extends CommonVo implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
+	
+
+
 
 }

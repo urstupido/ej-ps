@@ -1,3 +1,4 @@
+
 window.onload = function(){
 document.addEventListener("keypress", function() {
 	if (event.keyCode == 46) {
@@ -517,5 +518,5 @@ function fncNumLengthCheck(value, first, last){
             return true;
         } else {
             return false;
-	        }
-}
+        }
+    }

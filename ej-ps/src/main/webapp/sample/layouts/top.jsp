@@ -1,29 +1,21 @@
-<%@ page language="java" pageEncoding="UTF-8"
-	contentType="text/html;charset=utf-8"%>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ include file="/sample/common/taglibs.jsp"%>
 
-<%-- 	<script type="text/javascript" src="<c:url value='/sample/javascript/modernizr.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/sample/javascript/main.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script> 
- --%>
-<div id="Topapplication" style="margin: 0">
-	<header class="cd-main-header">
-
-		<a class="cd-logo" href="http://localhost:8080/ej-ps/">Ntos</a> <a
-			class="cd-logo" href="http://localhost:8080/ej-ps/"> <img
-			src="<c:url value='/sample/css/cd-logo.svg'/>"></a>
+<div id="Topapplication" style="margin:0">
+<header class="cd-main-header">
+		
+		<a class="cd-logo" href="http://localhost:8080/ej-ps/">Ntos</a>
+		<a class="cd-logo" href="http://localhost:8080/ej-ps/"> <img src="<c:url value='/sample/css/cd-logo.svg'/>"></a>
 
 		<ul class="cd-header-buttons">
 			<li><a class="cd-search-trigger" href="#cd-search"><span></span></a></li>
 			<li><a class="cd-nav-trigger" href="#cd-primary-nav"><span></span></a></li>
 		</ul>
-		<!-- cd-header-buttons -->
 	</header>
 
-	<main class="cd-main-content"> <!-- your content here --> </main>
-
+	<main class="cd-main-content">
+	</main>
 	<div class="cd-overlay"></div>
-
 	<nav class="cd-nav">
 		<ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
 			<li class="has-children"><a href="http://codyhouse.co/?p=409">View</a>
@@ -61,7 +53,7 @@
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosCustContractFinder.do?method=list">가입자목록</a></li>
-							<li>가입자등록</li>
+							<li><a href="${ctx}/ntosCustContract.do?method=createView">가입자등록</a></li>
 						</ul></li>
 
 					<li class="has-children"><a href="http://codyhouse.co/?p=409">고객관리</a>
@@ -72,12 +64,11 @@
 							<li><a href="${ctx}/ntosCustomer.do?method=createView">고객등록</a></li>
 						</ul></li>
 
-					<li class="has-children"><a href="http://codyhouse.co/?p=409">운용비율관리</a>
+					<li class="has-children"><a href="http://codyhouse.co/?p=409">상품배분비율관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
-							<li>운용비율목록</li>
-
+							<li><a href="${ctx}/ntosProductDistributionFinder.do?method=list">상품배분비율</a></li>
 						</ul></li>
 
 

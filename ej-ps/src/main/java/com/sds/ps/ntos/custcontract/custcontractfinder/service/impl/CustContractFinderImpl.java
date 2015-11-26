@@ -17,13 +17,13 @@ public class CustContractFinderImpl implements CustContractFinder {
 	private CustContractDao custcontractDao;
 
 	@Override
-	public Page getPagingList(CustContract custcontract, int pageSize, int pageIndex)throws Exception {
-		return this.custcontractDao.getPagingList(custcontract, pageSize, pageIndex);
+	public Page getPagingList(CustContract custContract, int pageSize, int pageIndex)throws Exception {
+		return this.custcontractDao.getPagingList(custContract, pageSize, pageIndex);
 	}
 
 	@Override
-	public Page getPagingList(CustContract custcontract) throws Exception {
-		return this.custcontractDao.getPagingList(custcontract);
+	public Page getPagingList(CustContract custContract) throws Exception {
+		return this.custcontractDao.getPagingList(custContract);
 	}
 
 }

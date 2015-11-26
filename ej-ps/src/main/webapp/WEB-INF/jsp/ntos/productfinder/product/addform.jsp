@@ -5,9 +5,6 @@
     <title> <spring:message code="productDetail.title"/> </title>
     <meta name="heading" content="<spring:message code='productDetail.heading'/>"/>    
 	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">                    
-	<script type="text/javascript" src="<c:url value='/sample/javascript/calendar.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
-	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			for (var i = 1; i < document.getElementById("prodMclsC").length; i++) {
@@ -148,7 +145,6 @@
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01" colspan="6">
 				<input type="text" id="prodSellEndDt" name="prodSellEndDt" value="날짜를 선택하세요" onclick="fnPopUpCalendar(prodSellEndDt,prodSellEndDt,'yyyymmdd')" class='text_box1'>
-
 			</td>
 		</tr>
 		<tr>

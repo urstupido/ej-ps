@@ -21,33 +21,33 @@ public class CustContractDao extends AbstractDAO {
 		super.setQueryService(queryService);
 	}
 
-	public void create(CustContract custcontract) throws Exception {
-		create("CustContract", custcontract);
+	public void create(CustContract custContract) throws Exception {
+		create("CustContract", custContract);
 	}
 
 	public void remove(String contNo) throws Exception {
-		CustContract custcontract = new CustContract();
-		custcontract.setContNo(contNo);
-		remove("CustContract", custcontract);
+		CustContract custContract = new CustContract();
+		custContract.setContNo(contNo);
+		remove("CustContract", custContract);
 	}
 
-	public void update(CustContract custcontract) throws Exception {
-		update("CustContract", custcontract);
+	public void update(CustContract custContract) throws Exception {
+		update("CustContract", custContract);
 	}
 
 	public CustContract get(String contNo) throws Exception {
-		CustContract custcontract = new CustContract();
-		custcontract.setContNo(contNo);
-		return (CustContract) findByPk("CustContract", custcontract);
+		CustContract custContract = new CustContract();
+		custContract.setContNo(contNo);
+		return (CustContract) findByPk("CustContract", custContract);
 	}
 
-	public Page getPagingList(CustContract custcontract, int pageSize ,int pageIndex) throws Exception {
-		return this.findListWithPaging("CustContract", custcontract, pageIndex, pageSize,
+	public Page getPagingList(CustContract custContract, int pageSize ,int pageIndex) throws Exception {
+		return this.findListWithPaging("CustContract", custContract, pageIndex, pageSize,
 				pageUnit);
 	}
 
-	public Page getPagingList(CustContract custcontract)  throws Exception {
-		return findListWithPaging("CustContract", custcontract, custcontract.getCurrentPageNo(),
-				custcontract.getRecordCountPerPage());
+	public Page getPagingList(CustContract custContract)  throws Exception {
+		return findListWithPaging("CustContract", custContract, custContract.getCurrentPageNo(),
+				custContract.getRecordCountPerPage());
 	}
 }
