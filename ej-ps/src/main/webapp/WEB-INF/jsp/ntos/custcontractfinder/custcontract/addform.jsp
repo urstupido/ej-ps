@@ -5,7 +5,7 @@
     <title> <spring:message code="custcontractDetail.title"/> </title>
     <meta name="heading" content="<spring:message code='custcontractDetail.heading'/>"/>    
 	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">                    
-	<%-- <script type="text/javascript" src="<c:url value='/sample/javascript/calendar.js'/>"></script> --%>
+    <script type="text/javascript" src="<c:url value='/sample/javascript/calendar.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	<script type="text/javascript">

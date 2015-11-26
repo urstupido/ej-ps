@@ -18,7 +18,7 @@ public class CustContract extends CommonVo implements Serializable {
 
 	// 받아오는 고객번호
 	@NotNull
-	@Size(min = 1, max = 14)
+	@Size(min = 1, max = 50)
 	private String cusNo = "";
 
 	// 고객명
@@ -28,7 +28,7 @@ public class CustContract extends CommonVo implements Serializable {
 
 	// 받아오는 계약번호
 	@NotNull
-	@Size(min = 1, max = 14)
+	@Size(min = 1, max = 50)
 	private String contNo = "";
 
 	@NotNull

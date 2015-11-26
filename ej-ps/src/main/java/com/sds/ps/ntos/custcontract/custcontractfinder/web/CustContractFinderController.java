@@ -37,6 +37,8 @@ public class CustContractFinderController {
 		model.addAttribute("pageunit", resultPage.getPageunit());
 		model.addAttribute("resultPage", resultPage);
 		
+		
+		
 		return "ntosListCustContract";
 	}
 }
