@@ -29,13 +29,15 @@ public class ContractFinderController {
 			Contract contract, BindingResult result, Model model) throws Exception {
 
 		Page resultPage = contractFinder.getPagingList(contract, pageSize, pageIndex);
-
+		
 		model.addAttribute("contract", contract);
 		model.addAttribute("contracts", resultPage.getList());
 		model.addAttribute("size", resultPage.getTotalCount());
 		model.addAttribute("pagesize", resultPage.getPagesize());
 		model.addAttribute("pageunit", resultPage.getPageunit());
 		model.addAttribute("resultPage", resultPage);
+
+		System.out.println(resultPage.getList());
 		
 		return "ntosListContract";
 	}

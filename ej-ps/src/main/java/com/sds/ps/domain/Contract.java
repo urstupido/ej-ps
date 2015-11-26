@@ -198,8 +198,6 @@ public class Contract extends CommonVo implements Serializable {
 		this.contProc = contProc;
 	}
 
-	
-	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -209,6 +207,12 @@ public class Contract extends CommonVo implements Serializable {
 		builder.append(no);
 		builder.append(", codeInfo=");
 		builder.append(codeInfo);
+		builder.append(", contNameNo=");
+		builder.append(contNameNo);
+		builder.append(", planCode=");
+		builder.append(planCode);
+		builder.append(", contProc=");
+		builder.append(contProc);
 		builder.append(", cusNo=");
 		builder.append(cusNo);
 		builder.append(", planKindC=");
@@ -232,5 +236,10 @@ public class Contract extends CommonVo implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
+	
+
+
 
 }
