@@ -12,20 +12,6 @@
 				if (key.keyCode == 13) {
 					searchContract();
 				}
-<<<<<<< HEAD
-    		})
-    	})
-    	
-	/*  	function fncSearchContract(arg) {
-			if ($('#gubun').val() == '고객번호') {
-				$('#contNo').val($('#keyword').val());
-			}else{
-				$('#cnm').val($('#keyword').val());
-			}
-		   	document.searchForm.action="<c:url value='/ntosContractFinder.do?method=list'/>";
-		   	document.searchForm.submit();						
-		}  */
-=======
 			})
 		});
 	
@@ -33,8 +19,6 @@
 		   	document.searchForm.action="<c:url value='/ntosContractFinder.do?method=popup'/>";
 		   	document.searchForm.submit();		
 		}
->>>>>>> refs/remotes/origin/development
-    	
 		
 		function createContractView(){
 			document.location.href="<c:url value='/ntosContract.do?method=createView'/>";
