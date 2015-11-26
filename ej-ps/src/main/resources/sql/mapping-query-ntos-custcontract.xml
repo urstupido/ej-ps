@@ -10,7 +10,7 @@
 				cu.cus_no,
 				cu.cnm || '(' || cu.cus_no || ')' as cus_name_no,
 				cc.cont_no,
-				cc.entr_date ,
+				cc.entr_date,
 				co.code_name as incoStacC,
 				cc.retr_date
 				from custom cu, enmn_cont cc, code co

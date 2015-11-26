@@ -93,7 +93,7 @@
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
 					<td align="center">${custContract.no}</td>
 					<td class="underline" align="center">
-						<a class="linkClass" href="${ctx}/ntosCustContract.do?method=get&cusNameNo=${custContract.cusNameNo}">${custContract.cusNameNo}</a>
+						<a class="linkClass" href="${ctx}/ntosCustContract.do?method=get&contNo=${custContract.contNo}">${custContract.cusNameNo}</a>
 					</td>
 					<td align="center">${custContract.incoStacC}</td>
 					<td align="center">${custContract.entrDate}</td>
