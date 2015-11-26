@@ -66,14 +66,9 @@
 </head>
 <!-- <body class="tundra spring"> -->
 <body class="nav-is-fixed">
-<!-- <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
- -- Top ----
-  <tr>
-    <td height="100%" align="left" valign="top"> -->
+
     	<tiles:insertAttribute name="top"/>
-<!--     </td>
-  </tr>
-</table> -->
+
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
   <!---- Left Menu ------>

@@ -25,11 +25,10 @@ public class CustomerServiceImpl implements CustomerService{
 	private CustomerDao customerDao;
 	
 	public void create(Customer customer) throws Exception {
-		if(customer == null) {
-			
-		}
-		
 		customer.setCusNo(idGenerationService.getNextStringId());
+		if (customer.getPictureFile() != null) {
+			customer.setPictureFile(customer.getPictureFile()+customer.getCusNo()+".png");
+		}
 		customerDao.create(customer);
 	}
 	

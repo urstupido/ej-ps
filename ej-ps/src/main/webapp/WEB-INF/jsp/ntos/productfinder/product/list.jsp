@@ -9,14 +9,15 @@
 	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/sample/css/list/component.css'/>" type="text/css">
 	<!-- script -->
+
 	 <script type="text/javascript">
     	$(function(){
-    		$('#keyword').keypress(function(key){
+    		$('#searchKeyword').keypress(function(key){
     			if (key.keyCode == 13) {
     				searchProduct();
 				}
     		})
-    	})
+    	});
     	
 		function searchProduct(arg) {			
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
@@ -43,6 +44,23 @@
 		<div class="right">
 			<form:select path="searchCondition" cssClass="ct_input_list" id="gubun">
 					<form:option value="" selected="selected">전체</form:option>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px; vertical-align: center;">
+		<tr>
+			<td align="left">
+				총 ${size}건
+				
+				<form:select path="pageSize" cssClass="ct_input_g" cssStyle="width:80px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
+					<form:option value="10" selected="selected">10건씩 보기</form:option>
+					<form:option value="20">20건씩 보기</form:option>
+					<form:option value="30">30건씩 보기</form:option>
+					<form:option value="40">40건씩 보기</form:option>
+					<form:option value="50">50건씩 보기</form:option>
+				</form:select>
+			</td>
+			
+			<td align="right">
+				<form:select path="searchCondition" cssClass="ct_input_g" cssStyle="width:80px;" id="gubun">
+					<form:option value="2" selected="selected">전체</form:option>
 					<form:option value="1">상품번호</form:option>
 					<form:option value="2">상품명</form:option>
 				</form:select>
@@ -52,17 +70,7 @@
 				<button class="list_search_btn" onclick='searchProduct();'>검색</button>
 		</div>
 	</div>
-	<table class="table table-condensed">
-		<tr>
-			<td align="left">
-				
-			</td>
-			
-			<td align="right">
-				</td>
-			
-		</tr>
-	</table>
+
 	<!--end of search-->
 	<div class="table_view">
 	<table width="100%;">
@@ -136,13 +144,6 @@
 			</td>
 		</tr>
 	</table>
-<%-- 
-	<table class="table table-striped table-bordered table-condensed">
-		<tr>
-			<td align="right"><a href='<c:url value="javascript:createProductView();" />'><img
-				src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a></td>
-		</tr>
-	</table> --%>
 	</div>
 </form:form>
 
