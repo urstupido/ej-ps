@@ -9,7 +9,6 @@ import anyframe.common.Page;
 import anyframe.core.query.AbstractDAO;
 import anyframe.core.query.IQueryService;
 
-import com.sds.ps.domain.Product;
 import com.sds.ps.domain.ProductSelect;
 
 @Repository("ntosProductSelectDao")

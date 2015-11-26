@@ -113,7 +113,7 @@
 			<c:forEach var="productSelect" items="${productSelects}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >
 					<td align="center">${productSelect.rows}</td>
-					<td align="center">${productSelect.contract.contNo}</td>
+					<td align="center"><a class="linkClass" href="${ctx}/ntosProductSelect.do?method=get&contNo=${productSelect.contract.contNo}&prodNo=${productSelect.product.prodNo}">${productSelect.contract.contNo}<a></a></td>
 					<td align="center">${productSelect.contract.planKindC}</td>
 					<td align="center">${productSelect.product.prodNo}</td>
 					<td align="center">${productSelect.product.prodName}</td>
