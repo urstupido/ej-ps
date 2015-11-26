@@ -20,12 +20,8 @@
 		}
 		
 		function updateChargeman() {
-			alert($('#email2').val());
-			
 			$('#chmnMnph').val($('#mnph1').val() + $('#mnph2').val() + $('#mnph3').val());
 			$('#chmnEmail').val($('#email1').val() + "@" + $('#email2').val());
-			
-			alert($('#chmnEmail').val());
 			
 		    document.chargemanForm.action="<c:url value='/ntosChargeman.do?method=update'/>";
 		    document.chargemanForm.submit();

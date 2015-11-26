@@ -38,6 +38,7 @@ public class CustContractDao extends AbstractDAO {
 	public CustContract get(String contNo) throws Exception {
 		CustContract custContract = new CustContract();
 		custContract.setContNo(contNo);
+		System.out.println("==========DAO================================================"+custContract.toString());
 		return (CustContract) findByPk("CustContract", custContract);
 	}
 

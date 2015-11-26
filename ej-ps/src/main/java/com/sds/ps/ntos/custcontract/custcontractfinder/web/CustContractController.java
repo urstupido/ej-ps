@@ -60,9 +60,13 @@ public class CustContractController {
 	public String get(@RequestParam("contNo") String contNo, Model model)
 			throws Exception {
 		CustContract custContract = this.custContractService.get(contNo);
-		if (custContract == null) {
-			throw new Exception("Resource not found " + contNo);
-		}
+		System.out.println("=====================================Controller==================");
+		System.out.println("contNo"+contNo);
+		System.out.println(custContract.toString());
+//		if (custContract == null) {
+//			System.out.println("널이니??");
+//			throw new Exception("Resource not found " + contNo);
+//		}
 		model.addAttribute(custContract);
 
 		return "ntosViewCustContract";
