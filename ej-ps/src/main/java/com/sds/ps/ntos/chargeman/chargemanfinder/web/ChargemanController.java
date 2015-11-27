@@ -43,7 +43,7 @@ public class ChargemanController {
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
 		model.addAttribute(new Chargeman());
-		return "ntosAddChargeman";
+		return "ntosViewCreateChargeman";
 	}
 
 	@RequestMapping(params = "method=create")

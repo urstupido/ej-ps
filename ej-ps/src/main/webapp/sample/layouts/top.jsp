@@ -85,7 +85,7 @@
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosChargemanFinder.do?method=list">사무담당자목록</a></li>
-							<li>사무담당자등록</li>
+							<li><a href="${ctx}/ntosChargeman.do?method=createView">사무담당자등록</a></li>
 						</ul></li>
 				</ul></li>
 

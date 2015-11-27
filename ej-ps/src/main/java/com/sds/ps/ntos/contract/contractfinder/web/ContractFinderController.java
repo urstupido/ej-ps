@@ -60,4 +60,23 @@ public class ContractFinderController {
 		
 		return "ntosContractPopup";
 	}
+	
+	@RequestMapping(params="method=contractpopup")
+	public String popupContractList(
+			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+			Contract contract, BindingResult result, Model model) throws Exception {
+		
+		Page resultPage = contractFinder.getPagingList(contract, pageSize, pageIndex);
+		
+		model.addAttribute("contract", contract);
+		model.addAttribute("contracts", resultPage.getList());
+		model.addAttribute("size", resultPage.getTotalCount());
+		model.addAttribute("pagesize", resultPage.getPagesize());
+		model.addAttribute("pageunit", resultPage.getPageunit());
+		model.addAttribute("resultPage", resultPage);
+		model.addAttribute("windowName", "contractpopup");
+		
+		return "ntosContractPopup";
+	}
 }

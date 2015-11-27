@@ -71,6 +71,10 @@
     <definition name="ntosViewChargeman" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/form.jsp" />
     </definition>    
+	<!-- chargeman create view -->
+    <definition name="ntosViewCreateChargeman" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/addform.jsp" />
+    </definition>    
     
 <!-- 우편번호 -->
     <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
