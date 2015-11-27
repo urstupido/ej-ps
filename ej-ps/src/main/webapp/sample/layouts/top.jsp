@@ -76,7 +76,7 @@
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosProductSelectFinder.do?method=list">상품선정목록</a></li>
-							<li>상품선정등록</li>
+							<li><a href="${ctx}/ntosProductSelect.do?method=createView">상품선정등록</a></li>
 						</ul></li>
 
 					<li class="has-children"><a href="#0">사무담당자관리</a>
@@ -139,7 +139,7 @@
 								<c:out value='${userId}' />
 								님&nbsp;&nbsp;
 							</div></li>
-						<li class="action-btn"><a href="${ctx}/logout.do">Logout</a></li>
+						<li class="action-btn"><a href="${ctx}/sample/logout.do">Logout</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="action-btn"><a href="${ctx}/sample/login.jsp">Login</a></li>

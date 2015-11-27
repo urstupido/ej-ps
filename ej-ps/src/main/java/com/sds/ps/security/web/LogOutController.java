@@ -15,10 +15,10 @@ import anyframe.web.springmvc.controller.AnyframeFormController;
  * @author Heewon Jung
  */
 @Controller
-public class LogOutController extends AnyframeFormController {
+public class LogOutController {
     
-    @RequestMapping("/logout.do")
-    public ModelAndView process(HttpServletRequest request,
+    @RequestMapping("/sample/logout.do")
+    public String process(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
         HttpSession session = request.getSession();
@@ -27,6 +27,6 @@ public class LogOutController extends AnyframeFormController {
         session.removeAttribute("subject");
         session.removeAttribute("userId");
         
-        return new ModelAndView("welcomeAction");
+        return "loginPage";
     }
 }

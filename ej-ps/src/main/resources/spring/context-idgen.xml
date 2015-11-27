@@ -7,7 +7,7 @@
 	<bean name="idGenerationServiceMovie" class="anyframe.core.idgen.impl.TableIdGenerationService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
 		<property name="strategy" ref="mixPrefixMovie" />
-		<config:configuration block-size="1" table="ids" key-table="PROD_BASE" />
+		<config:configuration block-size="1" table="ids" key-table="MOVIE" />
 	</bean>
 
 	<bean name="mixPrefixMovie" class="anyframe.core.idgen.impl.strategy.MixPrefix">
@@ -20,7 +20,7 @@
 	<bean name="idGenerationServiceProduct" class="anyframe.core.idgen.impl.TableIdGenerationService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
 		<property name="strategy" ref="mixPrefixProduct" />
-		<config:configuration block-size="1" table="ids" key-table="PROD_BASE" />
+		<config:configuration block-size="1" table="ids" key-table="PRODUCT" />
 	</bean>
 
 	<bean name="mixPrefixProduct" class="anyframe.core.idgen.impl.strategy.MixPrefix">

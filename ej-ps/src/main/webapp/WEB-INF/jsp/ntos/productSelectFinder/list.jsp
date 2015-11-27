@@ -30,6 +30,11 @@
     		document.searchForm.action="<c:url value='/ntosProductSelectFinder.do?method=list'/>";
 		   	document.searchForm.submit();
     	}
+    	
+    	function openPopup(){
+    		window.open("${ctx}/ntosContractFinder.do?method=popup", "popup", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+    		event.preventDefault();
+    	}
 	</script>
 </head>
 
@@ -44,11 +49,10 @@
 		<div class="left">PRODUCT SELECT MANAGEMENT</div>
 		<div class="center"></div>
 		<div class="right">
-			<button class="list_search_btn_find">계약찾기</button>
-				<input type="hidden" id="prodName" name="prodName"/>
-				<input type="hidden" id="prodNo" name="prodNo"/>
-				<form:input path="searchKeyword" cssClass="ct_input_g" placeholder="검색하세요.." cssErrorClass="text medium error" maxlength="50"/>
-				<button class="list_search_btn" onclick='searchProduct();'>검색</button>
+			<button class="list_search_btn_find" onclick="openPopup()">계약찾기</button>
+				<form:input path="searchKeyword" cssClass="ct_input_g" cssStyle="width: 200px;" id="contNo"/>
+				<form:input path="product.prodName" cssClass="ct_input_g" cssStyle="width: 200px;" id="cusName"/>
+				<button class="list_search_btn" onclick='searchProductSelect();'>검색</button>
 		</div>
 	</div>
 	<table class="table table-condensed">

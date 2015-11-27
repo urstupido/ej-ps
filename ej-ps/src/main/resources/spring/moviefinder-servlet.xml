@@ -61,7 +61,7 @@
 	
 	
 
-	<mvc:view-controller path="/plugin.do" view-name="foundationLayout" />
+	<mvc:view-controller path="/plugin.do" view-name="loginPage" />
 
 	<mvc:view-controller path="/index.do" view-name="standardLayout" />
 	

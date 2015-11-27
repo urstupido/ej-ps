@@ -2,7 +2,6 @@ package com.sds.ps.ntos.product.productfinder.service;
 
 import anyframe.common.Page;
 
-import com.sds.ps.domain.CustContract;
 import com.sds.ps.domain.Product;
 
 public interface ProductFinder {

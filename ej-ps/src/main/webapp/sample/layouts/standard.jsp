@@ -61,6 +61,10 @@
 				}
 			}
 		);
+		if ('${userId}' == "") {
+			alert("login을 하지 않았거나 \n시간이 경과하여 로그아웃이 되었습니다.");
+			location.href = '${pageContext.request.contextPath}/sample/login.jsp';
+		}
 	});
 	</script>
 </head>

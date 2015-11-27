@@ -30,7 +30,6 @@ public class ProductSelectController {
 
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
-		model.addAttribute(new ProductSelect());
 		return "ntosAddProductSelect";
 	}
 

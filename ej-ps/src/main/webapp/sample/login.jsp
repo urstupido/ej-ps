@@ -7,9 +7,9 @@
 		<link rel="stylesheet" href="<c:url value='/sample/css/loginUi.css'/>" type="text/css">
 		<link href='https://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-		<script language="javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
-		<script src="./javascript/jquery-2.1.1.js"></script>
-		<script src="./javascript/jquery.vide.js"></script>
+		<script language="javascript" src="${pageContext.request.contextPath}/sample/javascript/CommonScript.js"></script>
+		<script src="${pageContext.request.contextPath}/sample/javascript/jquery-2.1.1.js"></script>
+		<script src="${pageContext.request.contextPath}/sample/javascript/jquery.vide.js"></script>
 		<script language="JavaScript">
 			function fncLogin() {
 				if(FormValidation(document.loginForm) != false) {
@@ -21,9 +21,9 @@
 </head>
 
 <body text="#000000" data-vide-bg="video/ocean">
-	<div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-image: none; background-color: transparent; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;">
+	<div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-image: none; background-color: transparent; background-siz..e: cover; background-position: 50% 50%; background-repeat: no-repeat;">
 		<video autoplay="" loop="" muted="" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: hidden; opacity: 0; width: auto; height: 951px;">
-		<source src="./video/ocean.mp4" type="video/mp4"></video>
+		<source src="${pageContext.request.contextPath}/sample/video/ocean.mp4" type="video/mp4"></video>
 	</div>
 
 	<form name="loginForm" method="post">
