@@ -1,20 +1,13 @@
 package com.sds.ps.ntos.product.productdistribution.web;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -38,6 +31,7 @@ public class ProductDistributionController {
 			@RequestParam(value = "prodNo") List<String> prodNo,
 			@RequestParam(value = "dstrRto") List<String> dstrRto,
 			@RequestParam(value = "seq") List<String> seq,
+			@RequestParam(value = "dstrRtoRegDt") List<String> dstrRtoRegDt,
 			HttpServletRequest request, SessionStatus status) throws Exception {
 
 		
@@ -47,6 +41,7 @@ public class ProductDistributionController {
 			productDistribution.setProdNo(prodNo.get(i));
 			productDistribution.setDstrRto(dstrRto.get(i));
 			productDistribution.setSeq(seq.get(i));
+			productDistribution.setDstrRtoRegDt(dstrRtoRegDt.get(i));
 			this.productDistributionService.update(productDistribution);
 		}
 

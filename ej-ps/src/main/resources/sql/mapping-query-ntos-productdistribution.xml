@@ -31,14 +31,14 @@
 					del_yn = 'Y'
 				WHERE prod_no = :vo.prodNo
 				and cont_no = :vo.contNo
-				and seq = : vo:seq
+				and seq = :vo.seq
 			</statement>
 		</query>
 		
 		<query id="createProductDistribution">
 			<statement>
-				INSERT INTO prod_dstr_rto (cont_no, prod_no, seq, dstr_rto, dstr_rto_reg_dt, last_chng_usid, last_chng_dt)
-				VALUES (:vo.contNo, :vo.prodNo, convert(convert(:vo.seq, SQL_INTEGER)+1, SQL_VARCHAR), :vo.dstrRto, :vo.dstrRtoRegDt, :vo.lastChngUsid, sysdate)
+				INSERT INTO prod_dstr_rto (cont_no, prod_no, seq, dstr_rto, dstr_rto_reg_dt, last_chng_usid, last_chng_dt, del_yn)
+				VALUES (:vo.contNo, :vo.prodNo, lpad(convert(convert(:vo.seq, SQL_INTEGER)+1, SQL_VARCHAR),3,'0'), :vo.dstrRto, :vo.dstrRtoRegDt, 'test', sysdate, 'N')
 			</statement>
 		</query>
 		
