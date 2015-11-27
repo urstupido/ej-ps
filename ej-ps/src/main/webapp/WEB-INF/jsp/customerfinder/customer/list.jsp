@@ -24,6 +24,12 @@
 		function createCustomerView(){
 			document.location.href="<c:url value='/ntosCustomer.do?method=createView'/>";
 		}
+		
+		function addToOpener(val1){
+			$('#cusNo', opener.document).val(val1);
+			window.close();
+		}
+		
 	</script>
 	
 </head>
@@ -110,7 +116,15 @@
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >				
 					<td align="center">${customer.no}</td>
 					<td class="underline" align="center">
-						<a class="linkClass" href="${ctx}/ntosCustomer.do?method=get&cusNo=${customer.cusNo}">${customer.cusNo}</a>
+						<c:choose>
+							<c:when test="${windowName eq 'popup'}" >
+								<a class="linkClass" href="javascript:addToOpener('${customer.cusNo}' )">${customer.cusNo}</a>
+							</c:when>					
+							<c:otherwise>
+								<a class="linkClass" href="${ctx}/ntosCustomer.do?method=get&cusNo=${customer.cusNo}">${customer.cusNo}</a>
+							</c:otherwise>
+						</c:choose>
+					
 					</td>
 					<td align="center">${customer.codeInfo.codeName}</td>
 					<td align="center">${customer.cnm}</td>

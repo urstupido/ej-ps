@@ -97,7 +97,7 @@
 		<tr>
 			<td width="150" bgcolor="#f3f3f3" colspan="3">
 			<spring:message code="contract.contNo" /> &nbsp;*</td>
-			<td class="ct_write01" colspan="5"><form:input path="contNo"
+			<td class="ct_write01" colspan="5"><form:input path="contNo" 
 					cssClass="ct_input_g" cssStyle="width:300px;" cssErrorClass="text medium error" size="40"
 					maxlength="50" readonly="true" /> <form:errors path="contNo"
 					cssClass="errors" /></td>
@@ -105,11 +105,11 @@
 		<tr>
 			<td width="150" bgcolor="#f3f3f3" colspan="3"><spring:message
 					code="contract.cusNo" /></td>
-				<td class="ct_write01" colspan="1"><form:input path="cusNo"
+				<td class="ct_write01" colspan="1"><form:input path="cusNo" id="cusNo"
 					cssClass="ct_input_g" cssStyle="width:300px;" cssErrorClass="text medium error" size="40"
 					maxlength="50" /> <form:errors path="cusNo" cssClass="errors" />
 
-				<button class="list_search_btn" style="margin-left: -5px" onclick='searchCus()'>계약찾기</button>
+				<button class="list_search_btn" style="margin-left: -5px" onclick='findCustomer()'>고객찾기</button>
 <!-- 				<input type="button" value="고객찾기" onclick="searchCus()" /></td> -->
 			<td width="150" bgcolor="#f3f3f3" colspan="3"><spring:message code="contract.contProc" /></td>
 			<td class="ct_write01" colspan="1"><form:select
