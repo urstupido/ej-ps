@@ -93,38 +93,38 @@
 				<ul class="cd-nav-gallery is-hidden">
 					<li class="go-back"><a href="#0">back</a></li>
 					<li><a class="cd-nav-item" href=""> <img
-							src="<c:url value='/sample/images/img01_r.png'/>" alt="상품등록">
+							src="<c:url value='/sample/images/image01_regi.png'/>" alt="상품등록">
 							<h3>상품등록</h3>
 					</a></li>
 
 					<li><a class="cd-nav-item" href=""> <img
-							src="<c:url value='/sample/images/img.jpg'/>" alt="고객등록">
+							src="<c:url value='/sample/images/image02_regi.png'/>" alt="고객등록">
 							<h3>고객등록</h3>
 					</a></li>
 
 					<li><a class="cd-nav-item" href=""> <img
-							src="<c:url value='/sample/images/img.jpg'/>" alt="플랜등록">
+							src="<c:url value='/sample/images/image03_regi.png'/>" alt="플랜등록">
 							<h3>플랜등록</h3>
 					</a></li>
 
 					<li><a class="cd-nav-item" href=""> <img
-							src="<c:url value='/sample/images/img.jpg'/>" alt="가입자등록">
+							src="<c:url value='/sample/images/image04_regi.png'/>" alt="가입자등록">
 							<h3>가입자등록</h3>
 					</a></li>
 
 					<li><a class="cd-nav-item" href=""> <img
-							src="<c:url value='/sample/images/img.jpg'/>" alt="사무담당자등록">
+							src="<c:url value='/sample/images/image05_regi.png'/>" alt="사무담당자등록">
 							<h3>사무담당자등록</h3>
 					</a></li>
 
 
 					<li><a class="cd-nav-item" href=""> <img
-							src="<c:url value='/sample/images/img.jpg'/>" alt="운영비율등록">
+							src="<c:url value='/sample/images/image06_regi.png'/>" alt="운영비율등록">
 							<h3>운영비율등록</h3>
 					</a></li>
 
 					<li><a class="cd-nav-item" href=""> <img
-							src="<c:url value='/sample/images/img.jpg'/>" alt="상품선정등록">
+							src="<c:url value='/sample/images/image07_regi.png'/>" alt="상품선정등록">
 							<h3>상품선정등록</h3>
 					</a></li>
 

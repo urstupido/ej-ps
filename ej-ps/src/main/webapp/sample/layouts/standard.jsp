@@ -8,7 +8,7 @@
 	<title>Ntos System</title>
 	
 	<!-- jQuery -->
-	<script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/sample/javascript/jquery-2.1.1.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/sample/javascript/list/jquery.mixitup.min.js'/>"></script> 
     
     <!-- JS Plugin -->
@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="<c:url value='/sample/javascript/main.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/sample/javascript/list/contetns-filter.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/sample/javascript/list/classie.js'/>"></script> 
+	<script type="text/javascript" src="<c:url value='/sample/javascript/welcome.js'/>"></script> 
 	
 	<!-- Basic JS -->
 	<script type="text/javascript" src="<c:url value="/resources/dojo/dojo.js" />"></script>  
@@ -35,6 +36,8 @@
 	<link rel="stylesheet" href="<c:url value='/sample/css/tundra-customized.css'/>" type="text/css">
 	<!-- WEB FONT -->
 	<link href='https://fonts.googleapis.com/css?family=Cantarell:700,400' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css'>
+
 	
 	<!-- 상단바 투명 처리 -->
 	<script>
