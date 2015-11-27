@@ -17,7 +17,6 @@ public class ContractFinderImpl implements ContractFinder {
 	private ContractDao contractDao;
 
 	public Page getPagingList(Contract contract, int pageSize, int pageIndex)throws Exception {
-		System.out.println("리스트 받아와랏" + contract.toString());
 		return this.contractDao.getPagingList(contract, pageSize, pageIndex);
 	}
 

@@ -25,9 +25,6 @@ public class ContractServiceImpl implements ContractService {
 	private ContractDao contractDao;
 
 	public void create(Contract contract) throws Exception {
-		if(contract == null){
-			
-		}
 		
 		contract.setContNo(idGenerationService.getNextStringId());
 		contractDao.create(contract);

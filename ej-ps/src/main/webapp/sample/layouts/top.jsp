@@ -34,7 +34,7 @@
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosContractFinder.do?method=list">계약목록</a></li>
-							<li>계약등록</li>
+							<li><a href="${ctx}/ntosContract.do?method=createView">계약등록</a></li>
 							<!-- <li class="has-children">
 								<a href="#0">계약등록</a>
 
