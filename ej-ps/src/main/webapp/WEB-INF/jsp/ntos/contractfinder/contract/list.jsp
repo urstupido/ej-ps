@@ -37,6 +37,8 @@
 		function selectPageSize(selectObj) {
 			if(window.name == "popup"){
 				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=popup'/>";
+			} else if(window.name == "contractpopup"){
+				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=contractpopup'/>";
 			} else {
 				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=list'/>";
 			}
@@ -135,6 +137,9 @@
 					<td class="underline" align="center">
 						<c:choose>
 							<c:when test="${windowName eq 'popup'}">
+								<a class="linkClass" href="javascript:addToOpener('${contract.contNo}', '${contract.cusName}')">${contract.contNo}</a>
+							</c:when>
+							<c:when test="${windowName eq 'contractpopup'}">
 								<a class="linkClass" href="javascript:addToOpener('${contract.contNo}', '${contract.cusName}')">${contract.contNo}</a>
 							</c:when>
 							<c:otherwise>

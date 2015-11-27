@@ -22,7 +22,7 @@
 		}
 		
     	function findContract(){
-    		window.open("${ctx}/ntosContractFinder.do?method=contractpopup", "popup", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+    		window.open("${ctx}/ntosContractFinder.do?method=contractpopup", "contractpopup", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
     		event.preventDefault();
     	}
 		
