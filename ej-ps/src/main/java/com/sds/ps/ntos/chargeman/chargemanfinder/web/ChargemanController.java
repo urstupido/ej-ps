@@ -49,6 +49,7 @@ public class ChargemanController {
 	@RequestMapping(params = "method=create")
 	public String create(@Valid Chargeman chargeman, BindingResult results, SessionStatus status, HttpSession session)
 			throws Exception {
+		
 		chargeman.setLastChngUsid("test");
 		chargeman.setLastChngDt(new Date(0));
 		/*if(results.hasErrors()){

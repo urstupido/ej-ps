@@ -27,8 +27,12 @@
     	}
 		
 		function createChargeman() {
-	    	document.productForm.action="<c:url value='/ntosChargeman.do?method=create'/>";
-	    	document.productForm.submit();
+			$('#chmnRrno').val($('#rrno1').val() + $('#rrno2').val());
+			$('#chmnMnph').val($('#mnph1').val() + $('#mnph2').val() + $('#mnph3').val());
+			$('#chmnEmail').val($('#email1').val() + "@" + $('#email2').val());
+			
+	    	document.chargemanForm.action="<c:url value='/ntosChargeman.do?method=create'/>";
+	    	document.chargemanForm.submit();
 		}
 		
 	</script>
@@ -48,7 +52,7 @@
 				<button class="add_button" onclick='goBack();'>&lt;&nbsp;BACK</button>
 				<button class="add_button" onclick='createChargeman();'>+ADD</button>
 		</div>
-	</div>
+</div>
 <table class="table table-condensed">
 		<tr>
 			<td align="left">
@@ -59,7 +63,7 @@
 				</td>
 			
 		</tr>
-	</table>	
+</table>	
 
 <form:form modelAttribute="chargeman" name="chargemanForm" method="post">
 	<div class="table_view">
@@ -81,6 +85,7 @@
 			</td>
 			<td width="150" colspan="2" bgcolor="#f3f3f3"> <spring:message code="chargeman.chmnRrno" /></td>
 			<td class="ct_write01">
+				<form:hidden path="chmnRrno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" />
 				<input type="text" class="ct_input_g" value="${fn:substring(chargeman.chmnRrno,0,6)}" id="rrno1"> -
 				<input type="text" class="ct_input_g" value="${fn:substring(chargeman.chmnRrno,6,13)}" id="rrno2">
 			</td>
