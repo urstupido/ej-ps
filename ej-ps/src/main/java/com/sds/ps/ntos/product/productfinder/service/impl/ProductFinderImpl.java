@@ -23,4 +23,5 @@ public class ProductFinderImpl implements ProductFinder {
 	public Page getPagingList(Product product) throws Exception {
 		return this.productDao.getPagingList(product);
 	}
+
 }

@@ -19,7 +19,7 @@
     		})
     	})
     	
-		function searchProduct(arg) {			
+		function searchProduct(arg) {	
 		   	document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
 		   	document.searchForm.submit();		
 		}
@@ -32,6 +32,14 @@
     		document.searchForm.action="<c:url value='/ntosProductFinder.do?method=list'/>";
 		   	document.searchForm.submit();
     	}
+    	
+    	function addToOpener(){
+   			$("#prodNo", opener.document).val('${prodNo}');
+   			$("#prodNo", opener.document).val('${prodNo}');
+  			$("#cusName", opener.document).val(val2);
+   			window.close();
+    	}
+    	
 	</script>
 </head>
 
@@ -113,7 +121,14 @@
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >
 					<td align="center">${product.no}</td>
 					<td class="underline" align="center">
-						<a class="linkClass" href="${ctx}/ntosProduct.do?method=get&prodNo=${product.prodNo}">${product.prodNo}</a>
+						<c:choose>
+							<c:when test="${windowName eq 'popup'}">
+								<a class="linkClass" href="javascript:addToOpener()">${product.prodNo}</a>
+							</c:when>
+							<c:otherwise>
+								<a class="linkClass" href="${ctx}/ntosProduct.do?method=get&prodNo=${product.prodNo}">${product.prodNo}</a>
+							</c:otherwise>
+						</c:choose>
 					</td>
 					<td align="center">${product.prodName}</td>
 					<td align="center">${product.prodLclsC}</td>

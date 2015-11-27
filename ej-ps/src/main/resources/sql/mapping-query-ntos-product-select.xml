@@ -12,6 +12,9 @@
 					and ps.cont_no = cb.cont_no
 					and ps.prod_no = p.prod_no
 					and cb.plan_kind_c = c.code
+					#if($vo.searchKeyword != "") 
+					and ps.cont_no = :vo.searchKeyword
+					#end
 			</statement>
 			<result class="com.sds.ps.domain.ProductSelect">
 				<result-mapping column="{plan_kind_c}" attribute="{contract.planKindC}" />

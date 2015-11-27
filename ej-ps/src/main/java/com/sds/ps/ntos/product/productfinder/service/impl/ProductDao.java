@@ -50,4 +50,5 @@ public class ProductDao extends AbstractDAO {
 		return findListWithPaging("Product", product, product.getCurrentPageNo(),
 				product.getRecordCountPerPage());
 	}
+
 }

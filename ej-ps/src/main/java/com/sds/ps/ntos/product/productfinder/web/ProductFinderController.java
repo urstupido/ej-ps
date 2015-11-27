@@ -39,4 +39,23 @@ public class ProductFinderController {
 		
 		return "ntosListProduct";
 	}
+	
+	@RequestMapping(params="method=popup")
+	public String popupList(
+			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+			Product product, BindingResult result, Model model) throws Exception {
+		
+		Page resultPage = productFinder.getPagingList(product, pageSize, pageIndex);
+
+		model.addAttribute("product", product);
+		model.addAttribute("products", resultPage.getList());
+		model.addAttribute("size", resultPage.getTotalCount());
+		model.addAttribute("pagesize", resultPage.getPagesize());
+		model.addAttribute("pageunit", resultPage.getPageunit());
+		model.addAttribute("resultPage", resultPage);
+		model.addAttribute("windowName", "popup");
+		
+		return "ntosProductPopup";
+	}
 }

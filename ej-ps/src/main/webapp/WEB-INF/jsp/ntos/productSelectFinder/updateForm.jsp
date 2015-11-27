@@ -21,14 +21,6 @@
 		function goBack(){
 			window.history.back();
 		}
-		function searchContract(){
-			
-		}
-		
-		function searchProduct(){
-			/* window.open("${ctx}/ntosZipcodeFinder.do?method=openWindow", "zipcode", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;"); */
-		}
-		
 	</script>
 </head>
 <!--begin of title-->
@@ -55,7 +47,6 @@
 			<td class="ct_write01">
 				<form:input path="contract.contNo" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
 				<form:errors path="contract.contNo" cssClass="errors" />
-				<input type="button" value="계약찾기" onclick="searchContract()">
 			</td>
 			
 			<td width="150" class="ct_td"><spring:message code="productSelect.customerName" /></td>
@@ -74,7 +65,6 @@
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
 				<form:input path="product.prodNo" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/> <form:errors path="product.prodNo" cssClass="errors" />
-				<input type="button" value="상품찾기" onclick="searchProduct()">
 			</td>
 			
 			<td width="150" class="ct_td" ><spring:message code="productSelect.prodName" /></td>
@@ -91,12 +81,12 @@
 		 	<td width="150" class="ct_td" ><spring:message code="productSelect.prodSelectDate" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<input type="date" cssClass="ct_input_g" size="40" maxlength="50" value="${productSelect.prodSlctDate}">				
+				<input type="date" cssClass="ct_input_g" size="40" maxlength="50" value="${productSelect.prodSlctDate}" readonly="true">				
 			</td> 
 		 	<td width="150" class="ct_td" ><spring:message code="productSelect.prodEndDate" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">
-				<input type="date" cssClass="ct_input_g" size="40" maxlength="50" value="${productSelect.prodRelsDate}">
+				<input type="date" cssClass="ct_input_g" size="40" maxlength="50" value="${productSelect.prodRelsDate}" readonly="true">
 			</td> 
 		</tr>
 		
@@ -104,12 +94,10 @@
 		<tr>
 			<td height="24" colspan="2" align="center">
 					<a href="javascript:goBack();"><img src="<c:url value='/sample/images/btn_back.png'/>" width="64" height="18" border="0" /></a>
-					<a id="updatelink" href="javascript:updateProductSelect();"><img src="<c:url value='/sample/images/btn_update.png'/>" width="64" height="18" border="0" /></a>
 					<script type="text/javascript">
 					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'updatelink', event:'onclick'}));
 					</script>
 					<a href="javascript:removeProductSelect();"><img src="<c:url value='/sample/images/btn_delete.png'/>" width="64" height="18" border="0" /></a>
-					<input type="reset" value="RESET">
 			</td>
 		</tr>
 	</table>

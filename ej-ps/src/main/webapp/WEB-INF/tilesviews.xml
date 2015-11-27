@@ -33,6 +33,9 @@
     <definition name="ntosViewCreateProduct" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/addform.jsp" />
     </definition>
+    <definition name="ntosProductPopup" extends="popupLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/productfinder/product/list.jsp" />
+    </definition>
 
 <!-- 고객 -->
     <!-- customer list view -->
@@ -54,6 +57,9 @@
   	</definition>
     <definition name="ntosUpdateProductSelect" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/ntos/productSelectFinder/updateForm.jsp" /> 
+  	</definition>
+    <definition name="ntosAddProductSelect" extends="foundationLayout">
+  		<put-attribute name="body" value="/WEB-INF/jsp/ntos/productSelectFinder/addForm.jsp" /> 
   	</definition>
   	
 <!-- 상품배분비율 -->
@@ -118,10 +124,10 @@
         <put-attribute name="left" value="/sample/layouts/left.jsp" />
         <put-attribute name="body" value="/sample/layouts/welcome.jsp" />
     </definition>
-    
-    	<definition name="welcomeAction" extends="popupLayout">
+   	<definition name="welcomeAction" extends="popupLayout">
 		<put-attribute name="body" value="/index.do" />
 	</definition>
+	<definition name="loginPage" template ="/sample/login.jsp"/>
 	<definition name="welcome" extends="foundationLayout">
 		<put-attribute name="body" value="/sample/layouts/welcome.jsp" />
 	</definition>
