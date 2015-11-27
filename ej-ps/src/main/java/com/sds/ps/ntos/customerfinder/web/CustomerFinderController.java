@@ -26,6 +26,8 @@ public class CustomerFinderController {
 	@RequestMapping(params = "method=list")
 	public String list(
 			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+			
 			Customer customer, BindingResult result, Model model) throws Exception {
 		if (customer.getCodeInfo() == null) {
 			CodeInfo code = new CodeInfo();
@@ -44,4 +46,29 @@ public class CustomerFinderController {
 
 		return "customerListView";
 	}
+	
+	
+	@RequestMapping(params = "method=popup")
+	public String pupupList(
+			@RequestParam(value = "pageIndex", defaultValue = "1") int pageIndex,
+			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+			Customer customer, BindingResult result, Model model) throws Exception {
+		if (customer.getCodeInfo() == null) {
+			CodeInfo code = new CodeInfo();
+			code.setCode("");
+			customer.setCodeInfo(code);
+		}
+		
+		Page resultPage = customerFinder.getPagingList(customer, pageIndex);
+		
+		model.addAttribute("customer", customer);
+		model.addAttribute("customers", resultPage.getList());
+		model.addAttribute("size", resultPage.getTotalCount());
+		model.addAttribute("pagesize", resultPage.getPagesize());
+		model.addAttribute("pageunit", resultPage.getPageunit());		
+		model.addAttribute("resultPage", resultPage);
+
+		return "customerPopup";
+	}
+	
 }
