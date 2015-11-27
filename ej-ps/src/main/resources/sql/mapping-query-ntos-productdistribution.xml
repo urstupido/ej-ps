@@ -3,7 +3,7 @@
 "http://www.anyframejava.org/dtd/anyframe-core-query-mapping-3.2.dtd">
 <queryservice>
 	<queries>
-		<query id="findProductDistributionList">
+		<query id="findProductDistributionList" isDynamic="true">
 			<statement>
 				SELECT rownum as no,
 					   cont_no,
@@ -16,6 +16,10 @@
 					   last_chng_dt
 				FROM prod_dstr_rto d, prod_base p
 				WHERE d.prod_no = p.prod_no
+				  and d.del_yn = 'N'
+				  #if ($vo.contNo)
+				  and d.cont_no = :vo.contNo
+				  #end
 			</statement>
 		</query>
 		

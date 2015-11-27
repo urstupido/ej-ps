@@ -2,15 +2,18 @@ package com.sds.ps.ntos.product.productdistribution.web;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 
 import anyframe.common.Page;
 
+import com.sds.ps.domain.Product;
 import com.sds.ps.domain.ProductDistribution;
 import com.sds.ps.ntos.product.productdistribution.service.ProductDistributionFinder;
 
