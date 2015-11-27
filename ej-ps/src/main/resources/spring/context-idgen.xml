@@ -31,8 +31,8 @@
 	
 	<bean name="idGenerationServiceContract" class="anyframe.core.idgen.impl.TableIdGenerationService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
-		<property name="strategy" ref="mixPrefixProduct" />
-		<config:configuration block-size="1" table="ids" key-table="CONTRACT" />
+		<property name="strategy" ref="mixPrefixContract" />
+		<config:configuration block-size="1" table="ids" key-table="CONT_BASE" />
 	</bean>
 
 	<bean name="mixPrefixContract" class="anyframe.core.idgen.impl.strategy.MixPrefix">
@@ -59,6 +59,7 @@
 	</bean>
 
 	<bean name="mixPrefixChargeman" class="anyframe.core.idgen.impl.strategy.MixPrefix">
+		<property name="prefix" value="0" />
 		<property name="cipers" value="3" />
 		<property name="fillChar" value="0" />
 	</bean>	

@@ -81,72 +81,89 @@
 		window.history.back();
 	}
 	
+	function resetForm(){
+		document.customerForm.reset();
+	}
+	
 	</script>         
 </head>
 <!--************************** begin of contents *****************************-->
 
+
+
+
 <!--begin of title-->
-<table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td background="<c:url value='/sample/images/ct_ttl_img02.gif'/>" width="100%" style="padding-left: 10px;">
-		<table width="100%" height="24" border="0" cellpadding="0" cellspacing="0">
-			<tr>
-				<td height="24" class="ct_ttl01" style="padding-left: 12px">
-				 	<c:if test="${empty customer.cusNo}">
-				 	Add Customer Information
+<div class="list_header">
+		<div class="left">
+			<c:if test="${empty customer.cusNo}">
+				 	Add CUSTOMER INFORMATION
 				 	<c:set var="readonly" value="false"/>
 					</c:if>
 			
 				    <c:if test="${not empty customer.cusNo}">	
-					Update Customer Information
+					UPDATE CUSTOMER INFORMATION
 					<c:set var="readonly" value="true"/>				 
-					</c:if>					
-				</td>
-			</tr>
-		</table>
-		</td>
-	</tr>
-</table>
+					</c:if>	
+		</div>
+		<div class="center"></div>
+		<div class="right">
+		
+			<c:if test="${empty customer.cusNo}">
+					<button id="updatelink" class="add_button" onclick="goBack()">&lt;&nbsp;BACK</button>
+					<button id="createlink" class="add_button" onclick='createCustomer()'>+ADD</button>
+					<script type="text/javascript">
+					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'createlink', event:'onclick'}));
+					</script>
+					<button class="add_button" onclick='resetForm()'>RESET</button>
+			</c:if>
+			<c:if test="${not empty customer.cusNo}">
+					<button class="add_button" onclick="goBack()">&lt;&nbsp;BACK</button>
+					<button id="updatelink" class="add_button" onclick='updateCustomer()'>UPDATE</button>
+					<script type="text/javascript">
+					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'updatelink', event:'onclick'}));
+					</script>
+					<button class="add_button" onclick='removeCustomer()'>DELETE</button>
+					<button class="add_button" onclick='resetForm()'>RESET</button>
+			</c:if>
+		</div>
+	</div>
+
+<table class="table table-condensed">
+		<tr>
+			<td align="left">
+			</td>
+			<td align="right">
+			</td>
+		</tr>
+</table>	
+
 <form:form modelAttribute="customer" name="customerForm" method="post" enctype="multipart/form-data">
-	
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
+	<div class="table_view">
+	<table class="table table-bordered">
 		<c:if test="${not empty customer.cusNo}">
 		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.no" />&nbsp;*</td>
-			<td bgcolor="D6D6D6" width="1"></td>
+			<td width="150" bgcolor="#f3f3f3" colspan="2"><spring:message code="customer.no" />&nbsp;*</td>
 			<td class="ct_write01">
 				<form:input path="cusNo" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/> <form:errors path="cusNo" cssClass="errors" />
 			</td>
 		</tr>
-		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
 		</c:if>
 		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.cnm" />&nbsp;*</td>
-			<td bgcolor="D6D6D6" width="1"></td>
+			<td width="150" bgcolor="#f3f3f3" colspan="2"><spring:message code="customer.cnm" />&nbsp;*</td>
 			<td class="ct_write01">
 				<form:input path="cnm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="cnm" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6" ></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.userTc" />&nbsp;*</td>
-			<td bgcolor="D6D6D6" width="1"></td>
+			<td width="150" bgcolor="#f3f3f3" colspan="2"><spring:message code="customer.userTc" />&nbsp;*</td>
 			<td class="ct_write01">
-			<form:select path="codeInfo.code">
-            	<form:options items="${codeList}" itemValue="code" itemLabel="codeName"/>
+			<form:select path="codeInfo.code" cssClass="ct_input_list">
+            	<form:options items="${codeList}"   itemValue="code" itemLabel="codeName"/>
           	</form:select>
 			</td>
 		</tr>
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td" colspan="2"><spring:message code="customer.rbno" />&nbsp;*</td>
-			<td bgcolor="D6D6D6" width="1"></td>
+			<td width="150" bgcolor="#f3f3f3" colspan="2"><spring:message code="customer.rbno" />&nbsp;*</td>
 			<td class="ct_write01" name="rbno">
 			<c:if test="${empty customer.cusNo}">
 				<input type="radio" name="bunho" value="saup"> 사업자등록번호
@@ -155,105 +172,75 @@
 			</c:if>
 			<form:hidden path="rbno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="rbno" cssClass="errors" />
 			<div <c:if test="${fn:length(customer.rbno) != 13}">hidden="hidden"</c:if> id="jumin">
-				<input type="text" value="${fn:substring(customer.rbno,0,6)}" id="rbno1" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>> -
-				<input type="text" value="${fn:substring(customer.rbno,6,13)}" id="rbno2" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>>
+				<input type="text" class="ct_input_g" style="width: 100px" value="${fn:substring(customer.rbno,0,6)}" id="rbno1" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>> -
+				<input type="text" class="ct_input_g" style="width: 100px" value="${fn:substring(customer.rbno,6,13)}" id="rbno2" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>>
 			</div>
 			<div <c:if test="${fn:length(customer.rbno) != 10}">hidden="hidden"</c:if> id="saup">
-				<input type="text" value="${fn:substring(customer.rbno,0,3)}" id="rbno3" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>> -
-				<input type="text" value="${fn:substring(customer.rbno,3,5)}" id="rbno4" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>> -
-				<input type="text" value="${fn:substring(customer.rbno,5,10)}" id="rbno5" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>>
+				<input type="text" class="ct_input_g" style="width: 100px" value="${fn:substring(customer.rbno,0,3)}" id="rbno3" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>> -
+				<input type="text" class="ct_input_g" style="width: 100px" value="${fn:substring(customer.rbno,3,5)}" id="rbno4" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>> -
+				<input type="text" class="ct_input_g" style="width: 100px" value="${fn:substring(customer.rbno,5,10)}" id="rbno5" <c:if test="${not empty customer.cusNo}"> readonly="readonly" </c:if>>
 			</div>
 			</td>
 		</tr>
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td rowspan="5" class="ct_td">우편물 수령지</td>
-			<td width="150" class="ct_td"><spring:message code="customer.psno" />&nbsp;*</td>
-			<td bgcolor="D6D6D6" width="1"></td>
+			<td rowspan="3" bgcolor="#f3f3f3">우편물 수령지</td>
+			<td width="150" bgcolor="#f3f3f3"><spring:message code="customer.psno" />&nbsp;*</td>
 			<td class="ct_write01">
-				<input type="text" value="${fn:substring(customer.psno,0,3)}" id="psno1" onclick="findZipCode()" readonly="true"> - 
-				<input type="text" value="${fn:substring(customer.psno,3,6)}" id="psno2" onclick="findZipCode()" readonly="true">
+				<input type="text" class="ct_input_g" style="width: 100px" value="${fn:substring(customer.psno,0,3)}" id="psno1" onclick="findZipCode()" readonly="true"> - 
+				<input type="text" class="ct_input_g" style="width: 100px" value="${fn:substring(customer.psno,3,6)}" id="psno2" onclick="findZipCode()" readonly="true">
 				<form:hidden path="psno"/>
-				<input type="button" value="우편번호 찾기" onclick="findZipCode()">
+				<button class="list_search_btn" style="margin-left: -5px; width: 100px" onclick='findZipCode()'>우편번호 찾기</button>
+		<!-- 		<input type="button" value="우편번호 찾기" onclick="findZipCode()"> -->
 				<form:errors path="psno" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.addr" />&nbsp;*</td>
-			<td bgcolor="D6D6D6" width="1"></td>
+			<td width="150" bgcolor="#f3f3f3"><spring:message code="customer.addr" />&nbsp;*</td>
 			<td class="ct_write01">
 				<form:input path="addr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" readonly="true" onclick="findZipCode()"/>
 				<form:errors path="addr" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr>
-		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.dongBlwAddr" /></td>
-			<td bgcolor="D6D6D6" width="1"></td>
+			<td width="150" bgcolor="#f3f3f3"><spring:message code="customer.dongBlwAddr" /></td>
 			<td class="ct_write01">
 				<form:input path="dongBlwAddr" cssClass="ct_input_g" cssErrorClass="text medium error" maxlength="10" />
 				<form:errors path="dongBlwAddr" cssClass="errors" />
 			</td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td" colspan="2">
-			<spring:message code="customer.pictureFile"/></td><td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">		
+			<td width="150" height="200px" bgcolor="#f3f3f3">
+			<spring:message code="customer.pictureFile"/>
+			</td>
+			<td class="ct_write01" colspan="2">		
 				<c:if test="${not empty customer.pictureFile}">
 					<img src="<c:url value='${customer.pictureFile}'/>" width="250px" height="200px" alt="<spring:message code='customer.pictureFile'/>" border="0" />
 					<form:hidden path="pictureFile"/>
 				</c:if>
-				<input type="file" name="realPictureFile" class="ct_input_g" style="width:309px; height:19px" maxLength="100" >
+				<!-- <button class="list_search_btn" style="margin-left: -5px; width: 100px" onclick='findZipCode()'>파일선태</button> -->
+				<br>
+				<input type="file" name="realPictureFile" class="ct_input_g" style="width:309px; height:50px; vertical-align:"top" maxLength="100" >
+
 			</td>
 		</tr>
 	</table>
-	<br>
 	
 	<%-- <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
 		<tr>
-			<td width="150" class="ct_td" colspan="7">최종변경정보</td>
+			<td width="150" bgcolor="#f3f3f3" colspan="7">최종변경정보</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 		</tr>
 		<tr>
-			<td width="150" class="ct_td"><spring:message code="customer.lastChngUsid"/></td>
+			<td width="150" bgcolor="#f3f3f3"><spring:message code="customer.lastChngUsid"/></td>
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01">${customer.lastChngUsid}</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td width="150" class="ct_td"><spring:message code="customer.lastChngDt"/></td>
+			<td width="150" bgcolor="#f3f3f3"><spring:message code="customer.lastChngDt"/></td>
 			<td bgcolor="D6D6D6" width="1"></td><td class="ct_write01">${customer.lastChngDt}
 			</td>
 		</tr>
 	</table> --%>
 	
 	<!--begin of button-->
-	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
-		<tr>
-			<td height="24" colspan="2" align="center">
-				<c:if test="${empty customer.cusNo}">
-					<a href="javascript:goBack();"><img src="<c:url value='/sample/images/btn_back.png'/>" width="64" height="18" border="0" /></a>
-					<a id="createlink" href="javascript:createCustomer();"><img src="<c:url value='/sample/images/btn_add.png'/>" width="64" height="18" border="0" /></a>
-					<script type="text/javascript">
-					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'createlink', event:'onclick'}));
-					</script>
-					<input type="reset" value="RESET">
-				</c:if>
-				<c:if test="${not empty customer.cusNo}">
-					<a href="javascript:goBack();"><img src="<c:url value='/sample/images/btn_back.png'/>" width="64" height="18" border="0" /></a>
-					<a id="updatelink" href="javascript:updateCustomer();"><img src="<c:url value='/sample/images/btn_update.png'/>" width="64" height="18" border="0" /></a>
-					<script type="text/javascript">
-					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'updatelink', event:'onclick'}));
-					</script>
-					<a href="javascript:removeCustomer();"><img src="<c:url value='/sample/images/btn_delete.png'/>" width="64" height="18" border="0" /></a>
-					<input type="reset" value="RESET">
-				</c:if>
-			</td>
-		</tr>
-	</table>
+	</div>
 </form:form>

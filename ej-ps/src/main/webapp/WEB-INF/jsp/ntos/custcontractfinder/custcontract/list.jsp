@@ -37,9 +37,9 @@
 		
 		
 			<button class="list_search_btn_find" value="<spring:message code="productDistribution.find_contract"/>" onclick="findContract()">계약찾기</button>
-			<input type="text" id="contNo" readonly="true" class="ct_input_g">
+			<input type="text" id="contNo" style="width: 200px" readonly="true" class="ct_input_g">
 				
-			<form:input path="searchKeyword" cssClass="ct_input_g" placeholder="가입자명 검색" cssStyle="width: 220px;" cssErrorClass="text medium error" maxlength="50"/>
+			<form:input path="searchKeyword" cssClass="ct_input_g" placeholder="가입자명 검색" cssStyle="width: 150px;" cssErrorClass="text medium error" maxlength="50"/>
 			<button class="list_search_btn" onclick='fncSearchCustContract();'>검색</button>
 		</div>
 	</div>

@@ -51,6 +51,11 @@
         <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/jqgrid/list.jsp" />
     </definition>
 
+<!-- 고객팝업 -->
+   	<definition name="customerPopup" extends="popupLayout">
+   		<put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/list.jsp" />
+	 </definition>  
+
 <!-- 상품선정 -->
     <definition name="ntosListProductSelect" extends="foundationLayout">
   		<put-attribute name="body" value="/WEB-INF/jsp/ntos/productSelectFinder/list.jsp" /> 
@@ -77,6 +82,10 @@
     <definition name="ntosViewChargeman" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/form.jsp" />
     </definition>    
+	<!-- chargeman create view -->
+    <definition name="ntosViewCreateChargeman" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/chargemanfinder/chargeman/addform.jsp" />
+    </definition>    
     
 <!-- 우편번호 -->
     <definition name="ntosListZipcode" template="/WEB-INF/jsp/ntos/zipcode/popup.jsp">
@@ -92,6 +101,11 @@
     <definition name="ntosContractPopup" extends="popupLayout">
     	<put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/list.jsp" />
     </definition>   
+    
+    <definition name="ntosViewCreateContract" extends="foundationLayout">
+  		<put-attribute name="body" value="/WEB-INF/jsp/ntos/contractfinder/contract/addform.jsp" /> 
+  	</definition> 
+    
     
 <!-- 가입자 -->
     <definition name="ntosListCustContract" extends="foundationLayout">

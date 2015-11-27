@@ -61,7 +61,7 @@
 		function goBack() {
 		    window.history.back();
 		}
-</script>
+	</script>
 </head>
 <!--************************** begin of contents *****************************-->
 
@@ -124,7 +124,7 @@
 				</form:select>
 				<form:errors path="prodMclsC" cssClass="errors" />
 			</td> 
-		 	<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="product.prod_scls_c"/> *</td>
+		 	<td width="150" colspan="3" bgcolor="#f3f3f3"><spring:message code="product.prod_scls_c"/> *</td>
 			<td class="ct_write01">
 				<form:select path="prodSclsC" id="prodSclsC" cssClass="ct_input_list" cssStyle="width:200px;" onchange="javascript:selectProdC(this)">
 					<form:option value="" label="-- 선택하세요 --"/>				
@@ -159,13 +159,19 @@
 				<form:errors path="prodOffrOrgC" cssClass="errors" />
 			</td> 
 		 	<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="product.asts_mng_org_c" /> *</td>
-			<td colspan="6">
+			<td colspan="2">
 				<form:select path="astsMngOrgC" id="astsMngOrgC" cssClass="ct_input_list" cssStyle="width:200px;" onchange="javascript:selectProdC(this)">
 					<form:option value="" label="기관을 선택하세요"/>				
 					<form:options items="${orgCodeList}" itemValue="code" itemLabel="codeName"/>
 				</form:select>
 				<form:errors path="astsMngOrgC" cssClass="errors" />
 			</td> 
+			
+			<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="product.max_ivt_rto"/> *</td>
+			<td class="ct_write01" colspan="2">
+				<form:input path="maxIvtRto" cssClass="ct_input_g" cssStyle="width:200px;" size="40" maxlength="3" /> <form:errors path="maxIvtRto" cssClass="errors" />
+			</td>
+			
 		</tr>
 	</div>
 </form:form>

@@ -5,7 +5,7 @@
 <header class="cd-main-header">
 		
 		<a class="cd-logo" href="http://localhost:8080/ej-ps/">Ntos</a>
-		<a class="cd-logo" href="http://localhost:8080/ej-ps/"> <img src="<c:url value='/sample/css/cd-logo.svg'/>"></a>
+		<a id="top_menu1" class="cd-logo" href="http://localhost:8080/ej-ps/"> <img src="<c:url value='/sample/css/cd-logo.svg'/>"></a>
 
 		<ul class="cd-header-buttons">
 			<li><a class="cd-search-trigger" href="#cd-search"><span></span></a></li>
@@ -18,11 +18,10 @@
 	<div class="cd-overlay"></div>
 	<nav class="cd-nav">
 		<ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
-			<li class="has-children"><a href="">NAVIGATION</a>
-
+			<li id="top_menu2" class="has-children"><a href="">NAVIGATION</a>
 				<ul class="cd-secondary-nav is-hidden">
 					<li class="go-back"><a href="#0">Menu</a></li>
-					<li class="has-children"><a href="">상품관리</a>
+					<li class="has-children"><a href="#">상품관리</a>
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosProductFinder.do?method=list">상품목록</a></li>
@@ -30,11 +29,11 @@
 
 						</ul></li>
 
-					<li class="has-children"><a href="">플랜(계약)관리</a>
+					<li class="has-children"><a href="#0">플랜(계약)관리</a>
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosContractFinder.do?method=list">계약목록</a></li>
-							<li>계약등록</li>
+							<li><a href="${ctx}/ntosContract.do?method=createView">계약등록</a></li>
 							<!-- <li class="has-children">
 								<a href="#0">계약등록</a>
 
@@ -49,22 +48,22 @@
 							</li> -->
 						</ul></li>
 
-					<li class="has-children"><a href="">가입자관리</a>
+					<li class="has-children"><a href="#0">가입자관리</a>
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosCustContractFinder.do?method=list">가입자목록</a></li>
 							<li><a href="${ctx}/ntosCustContract.do?method=createView">가입자등록</a></li>
 						</ul></li>
 
-					<li class="has-children"><a href="">고객관리</a>
+					<li class="has-children"><a href="#0">고객관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
-							<li><a href="${ctx}/ntosCustomerFinder.do?method=list">고객목록</a></li>
+							<li><a id="middle_menu1" href="${ctx}/ntosCustomerFinder.do?method=list">고객목록</a></li>
 							<li><a href="${ctx}/ntosCustomer.do?method=createView">고객등록</a></li>
 						</ul></li>
 
-					<li class="has-children"><a href="">상품배분비율관리</a>
+					<li class="has-children"><a href="#0">상품배분비율관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
@@ -72,7 +71,7 @@
 						</ul></li>
 
 
-					<li class="has-children"><a href="">상품선정관리</a>
+					<li class="has-children"><a href="#0">상품선정관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
@@ -80,16 +79,16 @@
 							<li><a href="${ctx}/ntosProductSelect.do?method=createView">상품선정등록</a></li>
 						</ul></li>
 
-					<li class="has-children"><a href="">사무담당자관리</a>
+					<li class="has-children"><a href="#0">사무담당자관리</a>
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">back</a></li>
 							<li><a href="${ctx}/ntosChargemanFinder.do?method=list">사무담당자목록</a></li>
-							<li>사무담당자등록</li>
+							<li><a href="${ctx}/ntosChargeman.do?method=createView">사무담당자등록</a></li>
 						</ul></li>
 				</ul></li>
 
-			<li class="has-children"><a href="http://codyhouse.co/?p=409">REGISTRATION</a>
+			<li id="top_menu3" class="has-children"><a href="http://codyhouse.co/?p=409">REGISTRATION</a>
 
 				<ul class="cd-nav-gallery is-hidden">
 					<li class="go-back"><a href="#0">back</a></li>
@@ -131,7 +130,7 @@
 
 
 				</ul></li>
-			<li class="has-children"><c:choose>
+			<li id="top_menu4" class="has-children"><c:choose>
 					<c:when test="${userId!=null}">
 						<li class="logmsg"><img
 							src="<c:url value='/sample/images/usericon.png'/>"

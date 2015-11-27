@@ -23,8 +23,8 @@ public class ChargemanServiceImpl implements ChargemanService {
 	private ChargemanDao chargemanDao;
 
 	public void create(Chargeman chargeman) throws Exception {
-//		chargeman.setContNo(idGenerationService.getNextStringId());
-//		chargemanDao.create(chargeman);
+//		chargeman.setChmnSeq(idGenerationService.getNextStringId());
+		chargemanDao.create(chargeman);
 	}
 
 	public void remove(String contNo) throws Exception {
@@ -35,7 +35,6 @@ public class ChargemanServiceImpl implements ChargemanService {
 		chargemanDao.update(chargeman);
 	}
 	public Chargeman get(String contNo, String chmnSeq) throws Exception {
-		System.out.println("=========================serviceImpl");
 		return chargemanDao.get(contNo, chmnSeq);
 	}
 }

@@ -49,5 +49,14 @@
 				  and chmn_seq = :vo.chmnSeq
 			</statement>
 		</query>	
+		
+		<query id="createChargeman">
+			<statement>
+				INSERT INTO chmn_istm(cont_no, chmn_seq, chmn_nm, chmn_rrno, chmn_dpnm, chmn_psnm, chmn_mnph, 
+									  chmn_email, last_chng_usid, last_chng_dt)
+				VALUES (:vo.contNo, (select lpad(CAST(max(chmn_seq) as integer)+1, 3, '0') from chmn_istm where cont_no = :vo.contNo), 
+						:vo.chmnNm, :vo.chmnRrno, :vo.chmnDpnm, :vo.chmnPsnm, :vo.chmnMnph, :vo.chmnEmail, :vo.lastChngUsid, sysdate)
+			</statement>
+		</query>
 	</queries>
 </queryservice>

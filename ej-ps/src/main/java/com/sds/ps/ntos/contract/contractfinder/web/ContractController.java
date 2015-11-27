@@ -1,6 +1,7 @@
 package com.sds.ps.ntos.contract.contractfinder.web;
 
 import java.awt.List;
+import java.sql.Date;
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -57,52 +58,26 @@ public class ContractController {
 	public String createView(Model model) throws Exception {
 		model.addAttribute(new Contract());
 		
-		return "ntosViewContract";
+		return "ntosViewCreateContract";
 	}
-
-	/*@RequestMapping(params = "method=create")
+	
+	@RequestMapping(params = "method=create")
 	public String create(
-			@RequestParam(value = "realPosterFile", required = false) MultipartFile posterFile,
-			@Valid Contract Contract, BindingResult results, SessionStatus status, HttpSession session)
+			@Valid Contract contract, BindingResult results, SessionStatus status)
 			throws Exception {
 		
-		if (results.hasErrors()) {
-			return "ntosViewContract";
-		}
+		System.out.println("========================욜로들어왓젱??");
+		System.out.println(contract.toString());
 		
-		System.out.println(results);
+		contract.setLastChngUsid("test");
+		contract.setLastChngDt(new Date(0));
 		
-		if (posterFile != null && !posterFile.getOriginalFilename().equals("")) {
-			String pictureName = posterFile.getOriginalFilename();
-
-			String destDir = session.getServletContext().getRealPath(
-					"/sample/images/posters/");
-
-			File dirPath = new File(destDir);
-			if (!dirPath.exists()) {
-				boolean created = dirPath.mkdirs();
-				if (!created) {
-					throw new Exception(
-							"Fail to create a directory for Contract image. ["
-									+ destDir + "]");
-				}
-			}
-			
-			File destination = File
-					.createTempFile("file", pictureName, dirPath);
-
-			FileCopyUtils.copy(posterFile.getInputStream(),
-					new FileOutputStream(destination));
-
-			Contract.setPosterFile("sample/images/posters/"
-					+ destination.getName());
-		}
-
-		this.ContractService.create(Contract);
+		System.out.println("크리에이트전");
+		this.ContractService.create(contract);
 		status.setComplete();
-
+		System.out.println("크리에이트후");
 		return "redirect:/ntosContractFinder.do?method=list";
-	}*/
+	}
 
 	@RequestMapping(params = "method=get")
 	public String get(@RequestParam("contNo") String contNo, Model model)
