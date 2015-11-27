@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import anyframe.common.Page;
 
-import com.sds.ntos.customerfinder.service.CustomerFinder;
 import com.sds.ps.domain.Customer;
+import com.sds.ps.ntos.customerfinder.service.CustomerFinder;
 
 @Service("ntosCustomerFinder")
 public class CustomerFinderImpl implements CustomerFinder {
