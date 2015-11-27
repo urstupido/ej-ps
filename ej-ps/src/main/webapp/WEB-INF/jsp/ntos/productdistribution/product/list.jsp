@@ -33,10 +33,18 @@
 		    $('#test').submit();
 		}
 		
+		function checkDistributionRatio(prodNo, maxRto){
+			if (parseInt($('#'+prodNo).val()) > parseInt(maxRto)) {
+				alert("최대 "+maxRto+"까지 입력가능합니다.");
+				$('#'+prodNo).val(maxRto);
+			}
+		}
+		
+		/*
 		function selectPageSize(selectObj) {
     		document.searchForm.action="<c:url value='/ntosProductDistributionFinder.do?method=list'/>";
 		   	document.searchForm.submit();
-    	}
+    	}*/
 	</script>
 </head>
 
@@ -60,7 +68,7 @@
 				<td>
 				<span class="search_result_msg">총 ${size}건의 검색결과가 있습니다.</span>
 				</td>
-				<td align="right">
+				<!-- <td align="right">
 				<form:select path="pageSize" cssClass="ct_input_list_num" cssStyle="width:150px;" id="tableSize" name ="tableSize" onchange="javascript:selectPageSize(this)">
 					<form:option value="10" selected="selected">10건씩 보기</form:option>
 					<form:option value="20">20건씩 보기</form:option>
@@ -68,7 +76,7 @@
 					<form:option value="40">40건씩 보기</form:option>
 					<form:option value="50">50건씩 보기</form:option>
 				</form:select>
-				</td>
+				</td> -->
 			</tr>
 		</thead>
 	</table>
@@ -93,7 +101,7 @@
 					<td align="center">${productDistribution.prodNo}</td>
 					<td align="center">${productDistribution.prodName}</td>
 					<td align="center">
-						<input id="dstrRto" name = "dstrRto" value="${productDistribution.dstrRto}" class="ct_input_g_dist" style="width: 100%;">
+						<input type="text" id="${productDistribution.prodNo}" name = "${productDistribution.prodNo}" value="${productDistribution.dstrRto}" class="ct_input_g_dist" style="width: 100%" onInput="javascript:checkDistributionRatio('${productDistribution.prodNo}','${productDistribution.maxIvtRto}')">
 					</td>
 					<input type="hidden" name = "contNo" value="${productDistribution.contNo}">
 					<input type="hidden" name = "prodNo" value="${productDistribution.prodNo}">

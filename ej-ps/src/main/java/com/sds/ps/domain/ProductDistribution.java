@@ -27,6 +27,14 @@ public class ProductDistribution extends CommonVo implements Serializable {
 	private String seq;
 	
 	@NotNull
+	@Size(min = 1, max = 30)
+	private String prodName;
+	
+	@NotNull
+	@Size(min = 1, max =3)
+	private String maxIvtRto;
+	
+	@NotNull
 	@Size(min = 1, max = 3)
 	private String dstrRto;
 	
@@ -73,6 +81,22 @@ public class ProductDistribution extends CommonVo implements Serializable {
 		this.seq = seq;
 	}
 
+	public String getProdName() {
+		return prodName;
+	}
+
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+
+	public String getMaxIvtRto() {
+		return maxIvtRto;
+	}
+
+	public void setMaxIvtRto(String maxIvtRto) {
+		this.maxIvtRto = maxIvtRto;
+	}
+
 	public String getDstrRto() {
 		return dstrRto;
 	}
@@ -111,12 +135,30 @@ public class ProductDistribution extends CommonVo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ProductDistribution [no=" + no + ", contNo=" + contNo
-				+ ", prodNo=" + prodNo + ", seq=" + seq + ", dstrRto="
-				+ dstrRto + ", dstrRtoRegDt=" + dstrRtoRegDt
-				+ ", lastChngUsid=" + lastChngUsid + ", lastChngDt="
-				+ lastChngDt + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("ProductDistribution [no=");
+		builder.append(no);
+		builder.append(", contNo=");
+		builder.append(contNo);
+		builder.append(", prodNo=");
+		builder.append(prodNo);
+		builder.append(", seq=");
+		builder.append(seq);
+		builder.append(", prodName=");
+		builder.append(prodName);
+		builder.append(", maxIvtRto=");
+		builder.append(maxIvtRto);
+		builder.append(", dstrRto=");
+		builder.append(dstrRto);
+		builder.append(", dstrRtoRegDt=");
+		builder.append(dstrRtoRegDt);
+		builder.append(", lastChngUsid=");
+		builder.append(lastChngUsid);
+		builder.append(", lastChngDt=");
+		builder.append(lastChngDt);
+		builder.append("]");
+		return builder.toString();
 	}
-	
+
 	
 }
