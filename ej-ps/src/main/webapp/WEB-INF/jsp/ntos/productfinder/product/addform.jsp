@@ -61,7 +61,7 @@
 		function goBack() {
 		    window.history.back();
 		}
-</script>
+	</script>
 </head>
 <!--************************** begin of contents *****************************-->
 
@@ -124,7 +124,7 @@
 				</form:select>
 				<form:errors path="prodMclsC" cssClass="errors" />
 			</td> 
-		 	<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="product.prod_scls_c"/> *</td>
+		 	<td width="150" colspan="3" bgcolor="#f3f3f3"><spring:message code="product.prod_scls_c"/> *</td>
 			<td class="ct_write01">
 				<form:select path="prodSclsC" id="prodSclsC" cssClass="ct_input_list" cssStyle="width:200px;" onchange="javascript:selectProdC(this)">
 					<form:option value="" label="-- 선택하세요 --"/>				

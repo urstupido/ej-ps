@@ -46,12 +46,24 @@
 		<div class="left">PRODUCT DIST MANAGEMENT</div>
 		<div class="center"></div>
 		<div class="right">
+				<button id="updatelink" class="add_button" onclick='updateProductDistribution()'>UPDATE</button>
 				<button class="list_search_btn_find" value="<spring:message code="productDistribution.find_contract"/>" onclick="findContract()">계약찾기</button>
-				<input type="text" id="contNo" name="contNo" readonly="true" class="ct_input_g">
-				<input type="text" id="cusName" readonly="true" class="ct_input_g">
+
+				<input type="text" style="width: 200px" id="contNo" readonly="true" class="ct_input_g">
+				<input type="text" style="width: 150px" id="cusName" readonly="true" class="ct_input_g">
+
 				<button class="list_search_btn" onclick="searchProductDistribution()">검색</button>
 		</div>
 	</div>
+	
+	<table class="table table-condensed">
+		<tr>
+			<td align="left">
+			</td>
+			<td align="right">
+			</td>
+		</tr>
+</table>
 	<!--end of search-->
 	<div class="table_view">
 	<table width="100%;">
@@ -120,7 +132,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
 			<td align="right">
-			<a id="updatelink" href="javascript:updateProductDistribution();"><img src="<c:url value='/sample/images/btn_update.png'/>" width="64" height="18" border="0" /></a>
+			
 			</td>
 		</tr>
 	</table>

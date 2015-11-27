@@ -95,7 +95,7 @@
 		</thead>
 	</table>
 		<div class="table_spacing"></div>
-	<table class="table table-striped table-bordered table-condensed">
+	<table id="hoho" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
 				<th scope="col" style="border-right: 1px #CCCCCC solid">No.</th>
