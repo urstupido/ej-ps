@@ -22,6 +22,8 @@
 		function searchContract() {
 			if(window.name == "popup"){
 				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=popup'/>";
+			} else if(window.name == "contractpopup"){
+				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=contractpopup'/>";
 			} else {
 				document.searchForm.action="<c:url value='/ntosContractFinder.do?method=list'/>";
 			}
@@ -53,9 +55,6 @@
 </head>
 
 
-
-
-
 <form:form modelAttribute="contract" method="post" name="searchForm">
 	<!--begin of search-->
 	<div class="list_header">
@@ -64,12 +63,14 @@
 		<div class="right">
 			<form:select path="searchCondition" cssClass="ct_input_list" id="gubun">
 					<form:option value="1" selected="selected">계약번호</form:option>
-					<form:option value="2">계약자명</form:option>
+					<c:if test="${windowName ne 'contractpopup'}">
+						<form:option value="2">계약자명</form:option>
+					</c:if>
 				</form:select>
-				<input type="hidden" id="prodName" name="prodName"/>
-				<input type="hidden" id="prodNo" name="prodNo"/>
+				<input type="hidden" id="contNo" name="contNo"/>
+				<input type="hidden" id="cusNo" name="cusNo"/>
 				<form:input path="searchKeyword" cssClass="ct_input_g" placeholder="검색하세요.." cssErrorClass="text medium error" maxlength="50"/>
-				<button class="list_search_btn" onclick='searchProduct();'>검색</button>
+				<button class="list_search_btn" onclick='searchContract();'>검색</button>
 		</div>
 	</div>
 	<table class="table table-condensed">

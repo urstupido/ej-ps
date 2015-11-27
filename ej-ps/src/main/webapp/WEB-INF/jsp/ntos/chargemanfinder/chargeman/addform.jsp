@@ -3,15 +3,13 @@
 <head>
     <%@ include file="/sample/common/meta.jsp" %>
     <title> <spring:message code="chargemanDetail.title"/> </title>
-    <meta name="heading" content="<spring:message code='chargemanDetail.heading'/>"/>    
-	
+    <meta name="heading" content="<spring:message code='chargemanDetail.heading'/>"/>  
+      
 	<link rel="stylesheet" href="<c:url value='/sample/css/reset.css'/>" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/sample/css/bootstrap.css'/>" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">
-	                    
-	<script type="text/javascript" src="<c:url value='/sample/javascript/calendar.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
-	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	               
 	<script type="text/javascript">
 		function findEmailAddr() {
 			if ($('#emailAddr').val() != "") {
@@ -23,31 +21,36 @@
 			}
 		}
 		
-		function updateChargeman() {
+    	function findContract(){
+    		window.open("${ctx}/ntosContractFinder.do?method=contractpopup", "popup", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+    		event.preventDefault();
+    	}
+		
+		function createChargeman() {
+			$('#chmnRrno').val($('#rrno1').val() + $('#rrno2').val());
 			$('#chmnMnph').val($('#mnph1').val() + $('#mnph2').val() + $('#mnph3').val());
 			$('#chmnEmail').val($('#email1').val() + "@" + $('#email2').val());
 			
-		    document.chargemanForm.action="<c:url value='/ntosChargeman.do?method=update'/>";
-		    document.chargemanForm.submit();
-		}
-		
-		function removeChargeman(){	
-			if(confirmDelete('chargeman')) {
-			    document.chargemanForm.action="<c:url value='/ntosChargeman.do?method=remove'/>";
-			    document.chargemanForm.submit();
-			}	    
+	    	document.chargemanForm.action="<c:url value='/ntosChargeman.do?method=create'/>";
+	    	document.chargemanForm.submit();
 		}
 		
 	</script>
+	<script>
+		function goBack() {
+		    window.history.back();
+		}
+</script>
 </head>
+<!--************************** begin of contents *****************************-->
+
 <!--begin of title-->
 <div class="list_header">
-		<div class="left">Update Chargeman Information </div>
+		<div class="left">ADD Chargeman Information </div>
 		<div class="center"></div>
 		<div class="right">
 				<button class="add_button" onclick='goBack();'>&lt;&nbsp;BACK</button>
-				<button class="add_button" onclick='updateChargeman()();'>+UPDATE</button>
-				<button class="add_button" onclick='removeChargeman()();'>+DELETE</button>
+				<button class="add_button" onclick='createChargeman();'>+ADD</button>
 		</div>
 </div>
 <table class="table table-condensed">
@@ -60,38 +63,34 @@
 				</td>
 			
 		</tr>
-</table>
+</table>	
 
 <form:form modelAttribute="chargeman" name="chargemanForm" method="post">
 	<div class="table_view">
 	<table class="table table-bordered">
 		<tr>
-		<c:if test="${not empty chargeman.contNo}">
 			<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="chargeman.contNo" />&nbsp;*</td>
-			<td class="ct_write01">
-				<form:input path="contNo" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
+			<td class="ct_write01" colspan="4">
+				<form:input path="contNo" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50"/>
 				<form:errors path="contNo" cssClass="errors" />
-			</td>
-		</c:if>
-			<td width="150" colspan="2" bgcolor="#f3f3f3"> <spring:message code="chargeman.chmnSeq" /> *</td>
-			<td class="ct_write01">
-				<form:input path="chmnSeq" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
-				<form:errors path="chmnSeq" cssClass="errors" />
+			<button class="list_search_btn_find" value="<spring:message code="chargeman.find_contract"/>" onclick="findContract()">계약찾기</button>
 			</td>
 		</tr>
-
+		
 		<tr>
 			<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="chargeman.chmnNm" /></td>
 			<td class="ct_write01">
-				<form:input path="chmnNm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/>
+				<form:input path="chmnNm" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50"/>
 				<form:errors path="chmnNm" cssClass="errors" />
 			</td>
 			<td width="150" colspan="2" bgcolor="#f3f3f3"> <spring:message code="chargeman.chmnRrno" /></td>
 			<td class="ct_write01">
-				<input class="ct_input_g" type="text" value="${fn:substring(chargeman.chmnRrno,0,6)}" id="rrno1" readonly="readonly"> -
-				<input class="ct_input_g" type="text" value="${fn:substring(chargeman.chmnRrno,6,13)}" id="rrno2" readonly="readonly">
+				<form:hidden path="chmnRrno" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" />
+				<input type="text" class="ct_input_g" value="${fn:substring(chargeman.chmnRrno,0,6)}" id="rrno1"> -
+				<input type="text" class="ct_input_g" value="${fn:substring(chargeman.chmnRrno,6,13)}" id="rrno2">
 			</td>
 		</tr>
+		
 
 		<tr>
 			<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="chargeman.chmnDpnm" /></td>
@@ -105,6 +104,7 @@
 				<form:errors path="chmnPsnm" cssClass="errors" />
 			</td>
 		</tr>
+
 
 		<tr>
 			<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="chargeman.chmnMnph" /></td>
@@ -148,24 +148,5 @@
 			</td>
 		</tr>
 		 
-		<tr>
-			<td height="25" colspan="3" ></td>
-		</tr>
-		
-		<tr>
-		 	<td width="150" class="ct_td" colspan="12">최종변경정보</td>
-		</tr>
-		<tr>
-		 	<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="chargeman.lastChngDt" /></td>
-			<td class="ct_write01">
-				<form:input path="lastChngDt" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/> <form:errors path="lastChngDt" cssClass="errors" />
-			</td> 
-		 	<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="chargeman.lastChngUsid" /></td>
-			<td class="ct_write01" colspan="6">
-				<form:input path="lastChngUsid" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" readonly="true"/> <form:errors path="lastChngUsid" cssClass="errors" />
-			</td> 
-		</tr>
-		</table>
-	
-</div>
+	</div>
 </form:form>

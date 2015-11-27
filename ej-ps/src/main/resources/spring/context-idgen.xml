@@ -59,6 +59,7 @@
 	</bean>
 
 	<bean name="mixPrefixChargeman" class="anyframe.core.idgen.impl.strategy.MixPrefix">
+		<property name="prefix" value="0" />
 		<property name="cipers" value="3" />
 		<property name="fillChar" value="0" />
 	</bean>	
