@@ -29,8 +29,8 @@
 		}
     	
 		function updateProductDistribution() {
-		    document.searchForm.action="<c:url value='/ntosProductDistribution.do?method=update'/>";
-		    document.searchForm.submit();
+		    /* document.searchForm.action="<c:url value='/ntosProductDistribution.do?method=update'/>"; */
+		    $('#test').submit();
 		}
 		
 		function selectPageSize(selectObj) {
@@ -83,6 +83,8 @@
 				<th scope="col" style="border-right: 1px #CCCCCC solid"><spring:message code="productDistribution.dstr_rto"/></th>
 			</tr>
 		</thead>
+		</form:form>
+		<form action="${ctx}/ntosProductDistribution.do?method=update" method="post" id="test">
 		<tbody>
 			<c:forEach var="productDistribution" items="${productDistributions}">
 				<tr class="board" onMouseOver="this.style.backgroundColor='#e4eaff';return true;" onMouseOut="this.style.backgroundColor=''; return true;" >
@@ -91,11 +93,15 @@
 					<td align="center">${productDistribution.prodNo}</td>
 					<td align="center">${productDistribution.prodName}</td>
 					<td align="center">
-						<input id="${productDistribution.dstrRto}" name = "${productDistribution.dstrRto}" value="${productDistribution.dstrRto}" class="ct_input_g_dist" style="width: 100%;">
+						<input id="dstrRto" name = "dstrRto" value="${productDistribution.dstrRto}" class="ct_input_g_dist" style="width: 100%;">
 					</td>
+					<input type="hidden" name = "contNo" value="${productDistribution.contNo}">
+					<input type="hidden" name = "prodNo" value="${productDistribution.prodNo}">
+					<input type="hidden" name = "seq" value="${productDistribution.seq}">
 				</tr>
 			</c:forEach>
 		</tbody>
+		</form>
 	</table>
 	<table width="100%">
 		<tr>
@@ -119,4 +125,3 @@
 		</tr>
 	</table>
 	</div>
-</form:form>

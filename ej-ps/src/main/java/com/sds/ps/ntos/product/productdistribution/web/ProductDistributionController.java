@@ -1,9 +1,12 @@
 package com.sds.ps.ntos.product.productdistribution.web;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -24,17 +29,27 @@ import com.sds.ps.ntos.product.productdistribution.service.ProductDistributionSe
 public class ProductDistributionController {
 
 	@Inject
-	@Named("ntosProductDistributionService") 
+	@Named("ntosProductDistributionService")
 	private ProductDistributionService productDistributionService;
 
 	@RequestMapping(params = "method=update")
-	public String update(@Valid @ModelAttribute("productDistributions")List<ProductDistribution> productDistributions, BindingResult results, SessionStatus status) throws Exception {
+	public String update(
+			@RequestParam(value = "contNo") List<String> contNo,
+			@RequestParam(value = "prodNo") List<String> prodNo,
+			@RequestParam(value = "dstrRto") List<String> dstrRto,
+			@RequestParam(value = "seq") List<String> seq,
+			HttpServletRequest request, SessionStatus status) throws Exception {
+
 		
-//		System.out.println("######  " + prodDistributionList.size() );
-		if (results.hasErrors()) {			
-			return "ntosViewProductDistributionFinder";
+		for (int i = 0; i < dstrRto.size(); i++) {
+			ProductDistribution productDistribution = new ProductDistribution();
+			productDistribution.setContNo(contNo.get(i));
+			productDistribution.setProdNo(prodNo.get(i));
+			productDistribution.setDstrRto(dstrRto.get(i));
+			productDistribution.setSeq(seq.get(i));
+			this.productDistributionService.update(productDistribution);
 		}
-//		this.productDistributionService.update(productDistribution);
+
 		status.setComplete();
 		return "redirect:/ntosProductDistributionFinder.do?method=list";
 	}
