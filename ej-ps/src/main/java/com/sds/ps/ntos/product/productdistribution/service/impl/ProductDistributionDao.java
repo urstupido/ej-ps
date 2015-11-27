@@ -22,6 +22,7 @@ public class ProductDistributionDao extends AbstractDAO {
 	}
 
 	public void update(ProductDistribution productDistribution) throws Exception {
+		create("ProductDistribution", productDistribution);
 		update("ProductDistribution", productDistribution);
 	}
 
