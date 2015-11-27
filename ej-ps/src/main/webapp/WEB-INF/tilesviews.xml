@@ -43,6 +43,10 @@
   	<definition name="ntosViewCustomer" extends="foundationLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/customer/form.jsp" />
     </definition>
+  	<!-- customer jqgrid view -->
+  	<definition name="jqgridListCustomer" extends="foundationLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/customerfinder/jqgrid/list.jsp" />
+    </definition>
 
 <!-- 상품선정 -->
     <definition name="ntosListProductSelect" extends="foundationLayout">

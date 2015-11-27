@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sds.ntos.customerfinder.service.CustomerService;
 import com.sds.ps.domain.CodeInfo;
 import com.sds.ps.domain.Customer;
 import com.sds.ps.ntos.codefinder.service.CodeService;
+import com.sds.ps.ntos.customerfinder.service.CustomerService;
 
 @Controller("ntosCustomerController")
 @RequestMapping("/ntosCustomer.do")
