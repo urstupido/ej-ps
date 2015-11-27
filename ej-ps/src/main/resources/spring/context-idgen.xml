@@ -31,7 +31,7 @@
 	
 	<bean name="idGenerationServiceContract" class="anyframe.core.idgen.impl.TableIdGenerationService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
-		<property name="strategy" ref="mixPrefixProduct" />
+		<property name="strategy" ref="mixPrefixContract" />
 		<config:configuration block-size="1" table="ids" key-table="CONT_BASE" />
 	</bean>
 
