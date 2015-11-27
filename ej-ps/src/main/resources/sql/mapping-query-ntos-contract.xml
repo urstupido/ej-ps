@@ -24,6 +24,9 @@
 				and cd1.code_type='CONT_PROC_STAT_C'
 				and cd2.code_type='PLAN_KIND_C'
 				and cb.rsnd_acc_bnk_c = cd3.code
+				and cd3.code_type='BNK_C'
+				
+				
 				#if ($vo.searchCondition=="1")
 				  and cb.cont_no like '%' || :vo.searchKeyword || '%'
 				#end

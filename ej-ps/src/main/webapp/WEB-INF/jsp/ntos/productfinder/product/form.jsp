@@ -4,7 +4,7 @@
     <%@ include file="/sample/common/meta.jsp" %>
     <title> <spring:message code="productDetail.title"/> </title>
     <meta name="heading" content="<spring:message code='productDetail.heading'/>"/>    
-	<link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>" type="text/css">                    
+	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">                    
 	<script type="text/javascript">
 		$(function(){
 			for (var i = 1; i < document.getElementById("prodMclsC").length; i++) {
@@ -22,14 +22,23 @@
 		
 		function removeProduct(){	
 			if(confirmDelete('product')) {
-			    document.productForm.action="<c:url value='/ntosProduct.do?method=remove'/>";
-			    document.productForm.submit();
-			}	    
+				var prodNo = $('#prodNo').val();
+				 $.ajax({
+					"url" : "${ctx}/ntosProduct.do?method=remove",
+					"type" : "POST",
+					"dataType" : "json",
+					"data" : {"prodNo" : prodNo},
+					success : function(data) {
+						location.href = "${ctx}/ntosProductFinder.do?method=list";
+					},
+					error : function(request, status, error){
+						alert("해당 상품은 선정된 계약이 있어서 삭제가 불가능합니다.");
+					}
+				});
+			}	  
 		}
 		
-function selectProdC(obj) {
-			
-			
+		function selectProdC(obj) {
 			if(obj.id=="prodLclsC"){
 				document.getElementById("prodMclsC")[0].selected = true;
 				document.getElementById("prodSclsC")[0].selected = true;
@@ -78,7 +87,6 @@ function selectProdC(obj) {
 <form:form modelAttribute="product" name="productForm" method="post">
 	
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
-		<c:if test="${not empty product.prodNo}">
 		<tr>
 			<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_no" />&nbsp;*</td>
 			<td bgcolor="D6D6D6" width="1"></td>
@@ -90,7 +98,6 @@ function selectProdC(obj) {
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 		</tr>
-		</c:if>
 		
 		<tr>
 			<td width="150" class="ct_td" colspan="2"> <spring:message code="product.prod_name" /> *</td>

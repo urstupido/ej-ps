@@ -8,8 +8,6 @@
 	content="<spring:message code='contractDetail.heading'/>" />
 <link rel="stylesheet" href="<c:url value='/sample/css/admin.css'/>"
 	type="text/css">
-<script type="text/javascript"
-	src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 <script type="text/javascript">
 	function createContract() {
 		document.contractForm.action = "<c:url value='/ntosContract.do?method=create'/>";
@@ -27,6 +25,28 @@
 			document.contractForm.submit();
 		}
 	}
+	
+	function removeContract(){	
+		if(confirmDelete('contract')) {
+			var prodNo = $('#contNo').val();
+			 $.ajax({
+				"url" : "${ctx}/ntosContract.do?method=remove",
+				"type" : "POST",
+				"dataType" : "json",
+				"data" : {"contNo" : contNo},
+				success : function(data) {
+					location.href = "${ctx}/ntosContractFinder.do?method=list";
+				},
+				error : function(request, status, error){
+					alert("해당 계약은 가입자가 있어서 삭제가 불가능합니다.");
+				}
+			});
+		}	  
+	}
+
+	function searchCus() {
+		alert("안뇽");
+	}
 </script>
 </head>
 <!--************************** begin of contents *****************************-->
@@ -41,8 +61,7 @@
 				cellspacing="0">
 				<tr>
 					<td height="24" class="ct_ttl01" style="padding-left: 12px">
-						Update Contract Information
-					</td>
+						Update Contract Information</td>
 				</tr>
 			</table>
 		</td>
@@ -54,7 +73,7 @@ ${contract.contNo}
 
 <form:form modelAttribute="contract" name="contractForm" method="post">
 
- <table width="100%" border="0" cellspacing="0" cellpadding="0"
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"
 		style="margin-top: 13px;">
 		<tr>
 			<td width="150" class="ct_td" colspan="3"><spring:message
@@ -75,39 +94,58 @@ ${contract.contNo}
 			<td class="ct_write01" colspan="1"><form:input path="cusNo"
 					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
 					maxlength="50" /> <form:errors path="cusNo" cssClass="errors" />
-			</td>
+
+				<input type="button" value="고객찾기" onclick="searchCus()" /></td>
 			<td width="150" class="ct_td" colspan="3"><spring:message
 					code="contract.contProc" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01" colspan="1"><form:input path="contProc"
-					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
-					maxlength="50" /> <form:errors path="contProc" cssClass="errors" />
-			</td>
+			<td class="ct_write01" colspan="1"><form:select
+					path="ContProcStatC" id="ContProcStatC" cssClass="ct_input_g"
+					cssStyle="width:150px;">
+					<form:options items="${ContProcList}" itemValue="code"
+						itemLabel="codeName" />
+					<c:if test="${codeInfo.codeType eq 'CONT_PROC_STAT_C'}">
+						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}" />
+					</c:if>
+				</form:select> <form:errors path="ContProcStatC" cssClass="errors" /></td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr> 
+		</tr>
 
 
 		<tr>
 			<td rowspan="5" class="ct_td"><spring:message
 					code="contract.rsndAccBnk" /></td>
 			<td rowspan="5" bgcolor="D6D6D6" width="1"></td>
-			
+
 			<td width="150" class="ct_td"><spring:message
-					code="contract.rsndAccBnk_c"/></td>
+					code="contract.rsndAccBnk_c" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
-				
-			</td>
+			<td class="ct_write01"><form:select path="rsndAccBnkC"
+					id="rsndAccBnkC" cssClass="ct_input_g" cssStyle="width:150px;">
+					<form:options items="${BankList}" itemValue="code"
+						itemLabel="codeName" />
+					<c:if test="${codeInfo.codeType eq 'RSND_ACC_BAK_C'}">
+						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}" />
+					</c:if>
+				</form:select> <form:errors path="rsndAccBnkC" cssClass="errors" /></td>
 			<td rowspan="5" class="ct_td"><spring:message
 					code="contract.contInfo" /></td>
 			<td rowspan="5" bgcolor="D6D6D6" width="1"></td>
-			
+
 			<td width="150" class="ct_td"><spring:message
 					code="contract.planCode" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">(제도구분)</td>
+			<td class="ct_write01"><form:select path="PlanKindC"
+					id="PlanKindC" cssClass="ct_input_g" cssStyle="width:150px;"
+					>
+					<form:options items="${PlanKindList}" itemValue="code"
+						itemLabel="codeName" />
+					<c:if test="${codeInfo.codeType eq 'PLAN_KIND_C'}">
+						<form:option value="${codeInfo.code}" label="${codeInfo.codeName}" />
+					</c:if>
+				</form:select> <form:errors path="PlanKindC" cssClass="errors" /></td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -118,15 +156,13 @@ ${contract.contNo}
 			<td bgcolor="D6D6D6" width="1"></td>
 			<td class="ct_write01"><form:input path="rsndAccNo"
 					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
-					maxlength="50" /> <form:errors path="rsndAccNo"
-					cssClass="errors" /></td>
+					maxlength="50" /> <form:errors path="rsndAccNo" cssClass="errors" /></td>
 			<td width="150" class="ct_td"><spring:message
 					code="contract.planEntrDate" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01"><form:input path="planEntrDate"
-					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
-					maxlength="50" /> <form:errors path="planEntrDate"
-					cssClass="errors" /></td>
+			<td class="ct_write01">
+				<input type="text" id="planEntrDate" name="planEntrDate" value="${contract.planEntrDate}" onclick="fnPopUpCalendar(planEntrDate,planEntrDate,'yyyymmdd')" class='text_box1'>
+			</td>
 		</tr>
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -142,26 +178,16 @@ ${contract.contNo}
 			<td width="150" class="ct_td"><spring:message
 					code="contract.planEndDate" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01"><form:input path="planEndDate"
-					cssClass="ct_input_g" cssErrorClass="text medium error" size="40"
-					maxlength="50" /> <form:errors path="planEndDate"
-					cssClass="errors" /></td>
-			
+			<td class="ct_write01">
+				<input type="text" id="planEndDate" name="planEndDate" value="${contract.planEndDate}" onclick="fnPopUpCalendar(planEndDate,planEndDate,'yyyymmdd')" class='text_box1'>
+			</td>
 		</tr>
-		
-		
-		
-		
-		
-		
-
-
 
 		<tr>
 			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr> 
+		</tr>
 
-	<%-- 	<tr>
+		<%-- 	<tr>
 			<td width="150" class="ct_td" colspan="2"><spring:message
 					code="contract.cont_lcls_c" /></td>
 			<td bgcolor="D6D6D6" width="1"></td>
@@ -229,7 +255,7 @@ ${contract.contNo}
 		</tr> --%>
 
 
-	<%-- 	<tr>
+		<%-- 	<tr>
 			<td width="150" class="ct_td" colspan="12">최종변경정보</td>
 			<td bgcolor="D6D6D6" width="1"></td>
 		</tr>
@@ -253,43 +279,29 @@ ${contract.contNo}
 					readonly="true" /> <form:errors path="lastChngUsid"
 					cssClass="errors" /></td>
 		</tr> --%>
-</table>
 
 
+	</table>
 
-<%-- 
-		<table width="100%" border="0" cellspacing="0" cellpadding="0"
-			style="margin-top: 10px;">
-			<tr>
-				<td height="24" colspan="2" align="center"><c:if
-						test="${empty contract.contNo}">
-						<a id="createlink" href="javascript:createContract();"><img
-							src="<c:url value='/sample/images/btn_add.png'/>" width="64"
-							height="18" border="0" /></a>
-						<script type="text/javascript">
-							Spring
-									.addDecoration(new Spring.ValidateAllDecoration(
-											{
-												elementId : 'createlink',
-												event : 'onclick'
-											}));
-						</script>
-					</c:if> <c:if test="${not empty contract.contNo}">
-						<a id="updatelink" href="javascript:updateContract();"><img
-							src="<c:url value='/sample/images/btn_update.png'/>" width="64"
-							height="18" border="0" /></a>
-						<script type="text/javascript">
-							Spring
-									.addDecoration(new Spring.ValidateAllDecoration(
-											{
-												elementId : 'updatelink',
-												event : 'onclick'
-											}));
-						</script>
-						<a href="javascript:removeContract();"><img
-							src="<c:url value='/sample/images/btn_delete.png'/>" width="64"
-							height="18" border="0" /></a>
-					</c:if></td>
-			</tr>
-		</table> --%>
-	</form:form>
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0"
+		style="margin-top: 10px;">
+		<tr>
+			<td height="24" colspan="2" align="center"><c:if
+					test="${not empty contract.contNo}">
+					<a id="updatelink" href="javascript:updateContract();"><img
+						src="<c:url value='/sample/images/btn_update.png'/>" width="64"
+						height="18" border="0" /></a>
+					<script type="text/javascript">
+						Spring.addDecoration(new Spring.ValidateAllDecoration({
+							elementId : 'updatelink',
+							event : 'onclick'
+						}));
+					</script>
+					<a href="javascript:removeContract();"><img
+						src="<c:url value='/sample/images/btn_delete.png'/>" width="64"
+						height="18" border="0" /></a>
+				</c:if></td>
+		</tr>
+	</table>
+</form:form>

@@ -92,7 +92,7 @@
         <put-attribute name="body" value="/WEB-INF/jsp/ntos/custcontractfinder/custcontract/list.jsp" />
     </definition>
     <definition name="ntosViewCustContract" extends="foundationLayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/ntos/custcontractfinder/custcontract/addform.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/ntos/custcontractfinder/custcontract/form.jsp" />
     </definition>
     
     

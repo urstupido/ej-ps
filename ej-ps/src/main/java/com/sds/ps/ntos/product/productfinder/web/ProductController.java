@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -92,10 +93,11 @@ public class ProductController {
 		return "redirect:/ntosProductFinder.do?method=list";
 	}
 
+	@ResponseBody
 	@RequestMapping(params = "method=remove")
 	public String remove(@RequestParam("prodNo") String prodNo)
 			throws Exception {
 		this.productService.remove(prodNo);
-		return "redirect:/ntosProductFinder.do?method=list";
+		return "1";
 	}
 }

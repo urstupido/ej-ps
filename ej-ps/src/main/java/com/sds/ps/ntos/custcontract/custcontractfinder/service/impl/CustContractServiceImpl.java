@@ -41,6 +41,8 @@ public class CustContractServiceImpl implements CustContractService {
 	}
 
 	public CustContract get(String contNo) throws Exception {
+		System.out.println("=============================serviceImpl==================");
+		System.out.println("contNo"+contNo);
 		return custcontractDao.get(contNo);
 	}
 }

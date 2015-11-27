@@ -22,6 +22,7 @@
 		function updateChargeman() {
 			$('#chmnMnph').val($('#mnph1').val() + $('#mnph2').val() + $('#mnph3').val());
 			$('#chmnEmail').val($('#email1').val() + "@" + $('#email2').val());
+			
 		    document.chargemanForm.action="<c:url value='/ntosChargeman.do?method=update'/>";
 		    document.chargemanForm.submit();
 		}
@@ -135,20 +136,23 @@
 				<form:hidden path="chmnEmail" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> 
 				<form:errors path="chmnEmail" cssClass="errors" />
 				<input type="text" value="${fn:substringBefore(chargeman.chmnEmail, '@')}" id="email1"> @
-				<input type="text" value="${fn:substringAfter(chargeman.chmnEmail, '@')}" id="email2">
-			        <select onchange="findEmailAddr()" id="emailAddr">
-						<option value="samsung.com">samsung.com</option>
-						<option value="naver.com">naver.com</option>
-						<option value="hanmail.net">hanmail.net</option>
-						<option value="nate.com">nate.com</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="hotmail.com">hotmail.com</option>
-						<option value="lycos.co.kr">lycos.co.kr</option>
-						<option value="empal.com">empal.com</option>
-						<option value="dreamwiz.com">dreamwiz.com</option>
-						<option value="korea.com">korea.com</option>
-				        <option value="" selected="selected">직접입력</option>
-			        </select>
+				<input type="text" value="${fn:substringAfter(chargeman.chmnEmail, '@')}" id="email2" >
+				
+				
+				<form:select path="chmnEmail2" id="emailAddr"  cssClass="ct_input_g" cssStyle="width:150px;" onchange="findEmailAddr(this)">
+					<form:option value="" label="직접입력" selected="selected"/>
+					<c:forEach items="${emailCodeList}" var="codeInfo" varStatus="status">
+						<c:choose>
+							<c:when test="${fn:substringAfter(chargeman.chmnEmail, '@') eq codeInfo.codeName}">
+								<form:option value="${codeInfo.codeName}" label="${codeInfo.codeName}" selected="selected"/>
+							</c:when>
+							<c:otherwise>
+								<form:option value="${codeInfo.codeName}" label="${codeInfo.codeName}" />
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</form:select>
+				<form:errors path="chmnEmail2" cssClass="errors" />
 			</td>
 		</tr>
 		 

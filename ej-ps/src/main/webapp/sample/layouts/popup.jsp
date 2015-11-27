@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="<c:url value="/resources/spring/Spring-Dojo.js" />"> </script>
 	<script type="text/javascript" src="<c:url value='/sample/javascript/CommonScript.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/sample/javascript/calendar.js'/>"></script>	
+	<script type="text/javascript" src="<c:url value='/sample/javascript/jquery-1.10.2.min.js'/>"></script>
 </head>
 <body class="tundra spring">
         	<tiles:insertAttribute name="body"/>

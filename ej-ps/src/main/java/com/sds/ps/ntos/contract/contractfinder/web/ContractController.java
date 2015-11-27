@@ -1,5 +1,6 @@
 package com.sds.ps.ntos.contract.contractfinder.web;
 
+import java.awt.List;
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -37,10 +38,20 @@ public class ContractController {
 	@Named("ntosCodeService")
 	private CodeService codeService;
 	
-	@ModelAttribute("codeList")
-	public Collection<CodeInfo> populateGenreList() throws Exception {
+
+	@ModelAttribute("BankList")
+	public Collection<CodeInfo> populateBankList() throws Exception {
+		return this.codeService.getList("BNK_C");
+	}
+	@ModelAttribute("PlanKindList")
+	public Collection<CodeInfo> populatePlanKindList() throws Exception {
+		return this.codeService.getList("PLAN_KIND_C");
+	}
+	@ModelAttribute("ContProcList")
+	public Collection<CodeInfo> populateContProcList() throws Exception {
 		return this.codeService.getList("CONT_PROC_STAT_C");
 	}
+	
 	
 	@RequestMapping(params = "method=createView")
 	public String createView(Model model) throws Exception {
