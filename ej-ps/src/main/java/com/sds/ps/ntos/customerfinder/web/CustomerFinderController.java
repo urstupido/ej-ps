@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import anyframe.common.Page;
 
-import com.sds.ntos.customerfinder.service.CustomerFinder;
 import com.sds.ps.domain.CodeInfo;
 import com.sds.ps.domain.Customer;
+import com.sds.ps.ntos.customerfinder.service.CustomerFinder;
 
 @Controller("ntosCustomerFinderController")
 @RequestMapping("/ntosCustomerFinder.do")

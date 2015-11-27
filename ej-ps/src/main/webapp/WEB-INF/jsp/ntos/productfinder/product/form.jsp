@@ -186,13 +186,18 @@
 			</td> 
 		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.asts_mng_org_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01" colspan="6">
+			<td class="ct_write01" colspan="2">
 				<form:select path="astsMngOrgC" id="astsMngOrgC" cssClass="ct_input_g" cssStyle="width:150px;" onchange="javascript:selectProdC(this)">
 					<form:option value="" label="기관을 선택하세요"/>				
 					<form:options items="${orgCodeList}" itemValue="code" itemLabel="codeName"/>
 				</form:select>
 				<form:errors path="astsMngOrgC" cssClass="errors" />
 			</td> 
+			
+			<td width="150" class="ct_td" colspan="2"> <spring:message code="product.max_ivt_rto" /> *</td>
+			<td class="ct_write01" colspan="2">
+				<form:input path="maxIvtRto" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" /> <form:errors path="maxIvtRto" cssClass="errors" />
+			</td>
 		</tr>
 		
 		<tr>

@@ -1,4 +1,4 @@
-package com.sds.ntos.customerfinder.service;
+package com.sds.ps.ntos.customerfinder.service;
 
 import com.sds.ps.domain.Customer;
 

@@ -48,7 +48,7 @@ public class Product extends CommonVo implements Serializable {
 	@NotNull
 	private String prodSellEndDt;
 
-//	@NotNull
+	@NotNull
 	@Size(min = 1, max = 3)
 	private String maxIvtRto;
 

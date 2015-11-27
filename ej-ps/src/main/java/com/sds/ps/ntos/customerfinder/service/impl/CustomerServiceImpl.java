@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sds.ntos.customerfinder.service.CustomerService;
 import com.sds.ps.domain.Customer;
+import com.sds.ps.ntos.customerfinder.service.CustomerService;
 
 import anyframe.core.idgen.IIdGenerationService;
 
