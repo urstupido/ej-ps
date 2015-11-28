@@ -33,10 +33,35 @@
 		    $('#test').submit();
 		}
 		
-		function checkDistributionRatio(prodNo, maxRto){
-			if (parseInt($('#'+prodNo).val()) > parseInt(maxRto)) {
+		function checkDistributionRatio(rownum, contNo, maxRto){
+			if (parseInt($('#'+rownum).val()) > parseInt(maxRto)) {
 				alert("최대 "+maxRto+"까지 입력가능합니다.");
-				$('#'+prodNo).val(maxRto);
+				$('#'+rownum).val(maxRto);
+			} else {
+				var yegumCheGwonRto = 0;
+				var jusikFundELSRto = 0;
+				
+				for (var i = 1; i <= parseInt("${size}"); i++) {
+					if(typeof $('#'+i+contNo).val() != "undefined"){
+						var prodLclsC = $('#'+i+contNo).val().split("/")[0];
+						
+						if((prodLclsC =="1" || prodLclsC == "5") && i != parseInt(rownum)){
+							yegumCheGwonRto += parseInt($('#'+i).val());
+						} else {
+							jusikFundELSRto += parseInt($('#'+i).val());
+						}
+					}
+				}
+				
+				if(yegumCheGwonRto <= 50) {
+					alert("예금, 채권 상품 비율의 합이 50이 넘어야 합니다.");
+					$('#'+rownum).val(50- (yegumCheGwonRto-parseInt($('#'+rownum).val())));
+				}
+				
+				if(jusikFundELSRto > 40) {
+					alert("주식, 펀드, ELS 상품 비율의 합이 40을 넘을 수 없습니다.");
+					$('#'+rownum).val(40-(jusikFundELSRto - parseInt($('#'+rownum).val())));
+				}
 			}
 		}
 		
@@ -101,7 +126,8 @@
 					<td align="center">${productDistribution.prodNo}</td>
 					<td align="center">${productDistribution.prodName}</td>
 					<td align="center">
-						<input type="text" id="${productDistribution.prodNo}" name = "${productDistribution.prodNo}" value="${productDistribution.dstrRto}" class="ct_input_g_dist" style="width: 100%" onInput="javascript:checkDistributionRatio('${productDistribution.prodNo}','${productDistribution.maxIvtRto}')">
+						<input type="text" id="${productDistribution.no}" value="${productDistribution.dstrRto}" class="ct_input_g_dist" style="width: 100%" onInput="javascript:checkDistributionRatio('${productDistribution.no}','${productDistribution.contNo}' ,'${productDistribution.maxIvtRto}')">
+						<input type="hidden" id="${productDistribution.no}${productDistribution.contNo}" value="${productDistribution.prodLclsC}/${productDistribution.dstrRto}">
 					</td>
 					<input type="hidden" name = "contNo" value="${productDistribution.contNo}">
 					<input type="hidden" name = "prodNo" value="${productDistribution.prodNo}">

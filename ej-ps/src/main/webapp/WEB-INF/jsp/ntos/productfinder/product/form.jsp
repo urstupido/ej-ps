@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="<c:url value='/sample/css/style.css'/>" type="text/css">  
 	                  
 	<script type="text/javascript">
+
 		$(function(){
 			for (var i = 1; i < document.getElementById("prodMclsC").length; i++) {
 				document.getElementById("prodMclsC")[i].hidden = "hidden";
@@ -168,11 +169,11 @@
 		<tr>
 		 	<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="product.prod_sell_entr_dt" /> *</td>
 			<td class="ct_write01">
-			    <input type="text" class="ct_input_g_cal" id="prodSellEntrDt" name="prodSellEntrDt" value="날짜를 선택하세요" onclick="fnPopUpCalendar(prodSellEntrDt,prodSellEntrDt,'yyyymmdd')">
+				<form:input path="prodSellEntrDt" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" onclick="fnPopUpCalendar(prodSellEntrDt,prodSellEntrDt,'yyyymmdd')"/>
 			</td> 
 		 	<td width="150" colspan="2" bgcolor="#f3f3f3"><spring:message code="product.prod_sell_end_dt" /> *</td>
 			<td class="ct_write01" colspan="6">
-				<input type="text" class="ct_input_g_cal" id="prodSellEndDt" name="prodSellEndDt" value="날짜를 선택하세요" onclick="fnPopUpCalendar(prodSellEndDt,prodSellEndDt,'yyyymmdd')">
+				<form:input path="prodSellEndDt" cssClass="ct_input_g" cssErrorClass="text medium error" size="40" maxlength="50" onclick="fnPopUpCalendar(prodSellEndDt,prodSellEndDt,'yyyymmdd')"/>
 			</td>
 		</tr>
 
