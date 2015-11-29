@@ -34,4 +34,9 @@ public class ProductServiceImpl implements ProductService {
 	public Product get(String prodNo) throws Exception {
 		return productDao.get(prodNo);
 	}
+
+	@Override
+	public Product getAjax(String prodNo) throws Exception {
+		return productDao.getAjax(prodNo);
+	}
 }

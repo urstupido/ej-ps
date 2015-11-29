@@ -31,7 +31,31 @@
 				alert("상품검색하기에 앞서 계약을 먼저 선택해주세요!");
 				return;
 			}
-			window.open("${ctx}/ntosProductFinder.do?method=popup&contNo="+contNo, "popup", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+			window.open("${ctx}/ntosProductFinder.do?method=popup", "popup", "left=150, top = 150, width=650, height=500, resizable=no, scrollbars=no, status=no;");
+		}
+		
+		function addInfo(val1){
+			 $.ajax({
+					"url" : "${ctx}/ntosProduct.do?method=getAjax",
+					"type" : "POST",
+					"dataType" : "json",
+					"data" : {"prodNo" : val1},
+					success : function(data) {
+						$('#prodName').text(data.prodName);
+						$('#prodLclsC').text(data.prodLclsC);
+						$('#prodMclsC').text(data.prodMclsC);
+						$('#prodSclsC').text(data.prodSclsC);
+						$('#prodOffrOrgC').text(data.prodOffrOrgC);
+						$('#astsMngOrgC').text(data.astsMngOrgC);
+					},
+					error : function(request, status, error){
+						alert("error");
+					}
+				});
+		}
+		
+		function validateProduct(){
+			alert("test");
 		}
 		
 	</script>
@@ -68,9 +92,13 @@
 		<tr>
 			<td width="150" class="ct_td" > <spring:message code="productSelect.prodNo" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01" colspan ="7">
+			<td class="ct_write01">
 				<input type="text" readonly="readonly" class="ct_input_g" id="prodNo"/>
 				<input type="button" value="상품찾기" onclick="searchProduct()">
+			</td>
+			<td width="150" class="ct_td" ><spring:message code="product.prod_name" /> *</td>
+			<td bgcolor="D6D6D6" width="1"></td>
+			<td class="ct_write01" colspan ="5" id="prodName">
 			</td>
 		</tr>
 		<tr>
@@ -80,64 +108,47 @@
 		<tr>
 		 	<td width="150" class="ct_td" ><spring:message code="product.prod_lcls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
+			<td class="ct_write01" id="prodLclsC">
 			
 			</td>
 			<td width="150" class="ct_td" ><spring:message code="product.prod_mcls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
+			<td class="ct_write01" id="prodMclsC">
 			
 			</td>
 			<td width="150" class="ct_td" ><spring:message code="product.prod_scls_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
+			<td class="ct_write01" id="prodSclsC">
 			
 			</td>			
 		</tr>
 		<tr>
 			<td height="1" bgcolor="D6D6D6"></td>
 		</tr>
-		<%-- <tr>
-		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_sell_entr_dt" /> *</td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01">
-			</td> 
-		 	<td width="150" class="ct_td" colspan="2"><spring:message code="product.prod_sell_end_dt" /> *</td>
-			<td bgcolor="D6D6D6" width="1"></td>
-			
-			<td class="ct_write01">
-				
-			</td>
-		</tr>
-		
-		<tr>
-			<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-		</tr> --%>
-		
 		<tr>
 		 	<td width="150" class="ct_td" ><spring:message code="product.prod_offr_org_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			
-			<td class="ct_write01">
+			<td class="ct_write01" id="prodOffrOrgC">
 			</td> 
 			
 		 	<td width="150" class="ct_td" ><spring:message code="product.asts_mng_org_c" /> *</td>
 			<td bgcolor="D6D6D6" width="1"></td>
-			<td class="ct_write01" colspan="4">
+			<td class="ct_write01" colspan="4" id="astsMngOrgC">
 			
 			</td> 
 		</tr>
+		</table>
+		<div align="center">
+			<button onclick="validateProduct()">상품 추가</button>
+		</div>
+		<form>
 		
-	 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
+		</form>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 		<tr>
 			<td height="24" colspan="2" align="center">
 					<a href="javascript:goBack();"><img src="<c:url value='/sample/images/btn_back.png'/>" width="64" height="18" border="0" /></a>
-					<a id="updatelink" href="javascript:updateProductSelect();"><img src="<c:url value='/sample/images/btn_update.png'/>" width="64" height="18" border="0" /></a>
-					<script type="text/javascript">
-					    Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'updatelink', event:'onclick'}));
-					</script>
-					<a href="javascript:removeProductSelect();"><img src="<c:url value='/sample/images/btn_delete.png'/>" width="64" height="18" border="0" /></a>
-					<input type="reset" value="RESET">
+					<button type="submit">상품추가</button>
 			</td>
 		</tr>
 	</table>

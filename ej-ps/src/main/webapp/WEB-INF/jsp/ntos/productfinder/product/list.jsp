@@ -33,11 +33,10 @@
 		   	document.searchForm.submit();
     	}
     	
-    	function addToOpener(){
-   			$("#prodNo", opener.document).val('${prodNo}');
-   			$("#prodNo", opener.document).val('${prodNo}');
-  			$("#cusName", opener.document).val(val2);
-   			window.close();
+    	function addToOpener(val1){
+    		opener.addInfo(val1);
+    		$('#prodNo', opener.document).val(val1);
+    		window.close();
     	}
     	
 	</script>
@@ -123,17 +122,17 @@
 					<td class="underline" align="center">
 						<c:choose>
 							<c:when test="${windowName eq 'popup'}">
-								<a class="linkClass" href="javascript:addToOpener()">${product.prodNo}</a>
+								<a class="linkClass" href="javascript:addToOpener('${product.prodNo}')">${product.prodNo}</a>
 							</c:when>
 							<c:otherwise>
 								<a class="linkClass" href="${ctx}/ntosProduct.do?method=get&prodNo=${product.prodNo}">${product.prodNo}</a>
 							</c:otherwise>
 						</c:choose>
 					</td>
-					<td align="center">${product.prodName}</td>
-					<td align="center">${product.prodLclsC}</td>
-					<td align="center">${product.prodOffrOrgC}</td>
-					<td align="center">${product.astsMngOrgC}</td>
+					<td align="center" name="${product.prodNo}-name">${product.prodName}</td>
+					<td align="center" name="${product.prodNo}-prodLclsC">${product.prodLclsC}</td>
+					<td align="center" name="${product.prodNo}-prodOffrOrgC">${product.prodOffrOrgC}</td>
+					<td align="center" name="${product.prodNo}-astsMngOrgC">${product.astsMngOrgC}</td>
 					<td align="center">${product.prodSellEntrDt}</td>
 					<td align="center">${product.prodSellEndDt}</td>
 				</tr>

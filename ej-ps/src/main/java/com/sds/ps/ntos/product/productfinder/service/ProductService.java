@@ -12,5 +12,5 @@ public interface ProductService {
 
 	void remove(String prodNo) throws Exception;
 
-
+	Product getAjax(String prodNo) throws Exception;
 }

@@ -51,4 +51,10 @@ public class ProductDao extends AbstractDAO {
 				product.getRecordCountPerPage());
 	}
 
+	public Product getAjax(String prodNo) throws Exception {
+		Product product = new Product();
+		product.setProdNo(prodNo);
+		return (Product) findByPk("ProductAjax", product);
+	}
+
 }

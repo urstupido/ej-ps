@@ -36,22 +36,56 @@
 			<statement>
 				SELECT prod_no, 
 					   prod_name,
+					   c1.code_name as prodLclsC,
+					   c2.code_name as astsMngOrgC, 
+					   c3.code_name as prodOffrOrgC,
 					   prod_lcls_c,
 					   prod_mcls_c,
 					   prod_scls_c,					   
 					   prod_sell_entr_dt,
 					   prod_sell_end_dt,
-					   asts_mng_org_c, 
-					   prod_offr_org_c,
 					   last_chng_usid,
 					   last_chng_dt,
 					   max_ivt_rto
 				FROM prod_base 
 				WHERE 1=1
 				  and prod_no = :vo.prodNo
+				  and p.prod_lcls_c = c1.code
+				  and c1.code_type = 'PROD_LCLS_C'
+				  and p.asts_mng_org_c = c2.code 
+				  and p.prod_offr_org_c = c3.code
 			</statement>
 			<result class="com.sds.ps.domain.Product" />
-		</query>	
+		</query>
+		
+		<query id="findProductAjaxByPk">
+			<statement>
+				SELECT prod_no, 
+					   prod_name,
+					   c1.code_name as prod_Lcls_C,
+					   c2.code_name as asts_Mng_Org_C, 
+					   c3.code_name as prod_Offr_Org_C,
+					   c4.code_name as prod_Mcls_C,
+					   c5.code_name as prod_Scls_C,					   
+					   prod_sell_entr_dt,
+					   prod_sell_end_dt,
+					   last_chng_usid,
+					   last_chng_dt,
+					   max_ivt_rto
+				FROM prod_base p, code c1, code c2, code c3, code c4, code c5
+				WHERE 1=1
+				  and prod_no = :vo.prodNo
+				  and p.prod_lcls_c = c1.code
+				  and c1.code_type = 'PROD_LCLS_C'
+				  and p.asts_mng_org_c = c2.code 
+				  and p.prod_offr_org_c = c3.code
+				  and c4.code_type= 'PROD_MCLS_C'
+				  and p.prod_mcls_c = c4.code
+				  and c5.code_type= 'PROD_SCLS_C'
+				  and p.prod_scls_c = c5.code
+			</statement>
+			<result class="com.sds.ps.domain.Product" />
+		</query>
 		
 		
 		<query id="updateProduct">

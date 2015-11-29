@@ -100,4 +100,17 @@ public class ProductController {
 		this.productService.remove(prodNo);
 		return "1";
 	}
+	
+	@ResponseBody
+	@RequestMapping(params = "method=getAjax")
+	public Product getAjax(@RequestParam("prodNo") String prodNo)
+			throws Exception {
+		Product Product = this.productService.getAjax(prodNo);
+
+		if (Product == null) {
+			throw new Exception("Resource not found " + prodNo);
+		}
+
+		return Product;
+	}
 }
